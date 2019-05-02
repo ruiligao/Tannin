@@ -13,15 +13,36 @@ class Home extends Component {
   state = {
     books: [],
     q: "",
-    message: "Search For A Book To Begin!",
 
+    showMe: false,
+    
     id:"",
     restaurant:"",
     name:"",
     lastName:"",
     email:"",
     password:"",
+    loginemail:"",
+    loginpassword:""
   };
+
+
+  hideShow = () => {
+    const newState = {...this.state}
+    newState.showMe = !newState.showMe 
+    newState.scale = this.state.scale > 1 ? 1 : 1.5
+    
+    // this.setState({
+      
+    // })
+    
+    // alert( "hi")
+
+// newState.showMe = !newState.showMe;
+
+    this.setState(newState);
+  }
+
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -77,58 +98,14 @@ class Home extends Component {
              lastName={this.state.lastName}
              email={this.state.email}
              password={this.state.password}
+             loginemail={this.state.loginemail}
+             loginpassword={this.state.loginpassword}
+showMe={this.state.showMe}
+      hideShow = {this.hideShow}
             ></Loginsignup>
-          <Col size="md-12">
-            <Jumbotron>
-            
-              <h1 className="text-center">
-                <strong>(React) Google Books Search</strong>
-              </h1>
-              <h2 className="text-center">Search for and Save Books of Interest.</h2>
+          
 
-            </Jumbotron>
-          </Col>
-          <Col size="md-12">
-            <Card title="Book Search" icon="far fa-book">
-
-              <Form
-                handleInputChange={this.handleInputChange}
-                handleFormSubmit={this.handleFormSubmit}
-                q={this.state.q}
-              />
-            </Card>
-          </Col>
-        </Row>
-        <Row>
-          <Col size="md-12">
-            <Card title="Results">
-              {this.state.books.length ? (
-                <List>
-                  {this.state.books.map(book => (
-                    <Book
-                      key={book.id}
-                      title={book.volumeInfo.title}
-                      subtitle={book.volumeInfo.subtitle}
-                      link={book.volumeInfo.infoLink}
-                      authors={book.volumeInfo.authors.join(", ")}
-                      description={book.volumeInfo.description}
-                      image={book.volumeInfo.imageLinks.thumbnail}
-                      Button={() => (
-                        <button
-                          onClick={() => this.handleBookSave(book.id)}
-                          className="btn btn-primary ml-2"
-                        >
-                          Save
-                        </button>
-                      )}
-                    />
-                  ))}
-                </List>
-              ) : (
-                <h2 className="text-center">{this.state.message}</h2>
-              )}
-            </Card>
-          </Col>
+ 
         </Row>
         <Footer />
       </Container>
