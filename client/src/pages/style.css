@@ -3,3 +3,42 @@
     display: flex;
     flex-direction: row;
 }
+
+.wineColWrap {
+    background-color: gray;
+    height: 300px;
+    overflow: auto;
+    width: 90%;
+    padding: 10px;
+}
+
+.employeeColWrap {
+    background-color: gray;
+    height: 300px;
+    overflow: auto;
+    width: 90%;
+    padding: 10px;
+}
+
+.empTitleWrap {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}
+
+.wineTitleWrap  {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}
+
+.nav-link:link {
+    text-decoration-style: none;
+}
+.active {
+    text-decoration-style: none;
+}
+
+a:link {
+    text-decoration: none;
+  }
