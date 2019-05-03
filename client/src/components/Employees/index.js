@@ -6,6 +6,7 @@ import "./style.css";
 function Employees({ title, subtitle, authors, link, description, image, Button }) {
   return (
     <ListItem>
+        <div className="listitemdiv2">
         <div>
           <h3 className="font-italic">{title}</h3>
           {subtitle && <h5 className="font-italic">{subtitle}</h5>}
@@ -22,7 +23,7 @@ function Employees({ title, subtitle, authors, link, description, image, Button 
       
 
           <p>{description}</p>
-        
+          </div>
     </ListItem>
   );
 }
