@@ -69,10 +69,12 @@ class Home extends Component {
   render() {
     return (
       <Container>
-        
-          
+        <div>
+           <Link className="navbar-brand" to="/">
+          Wine academy
+        </Link>
+        </div>
 <div>
-  
               <Link
                 onClick={this.toggleNav}
                 className={window.location.pathname === "/admin" ? "nav-link active" : "nav-link"}

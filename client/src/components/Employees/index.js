@@ -19,7 +19,7 @@ function Employees({ title, subtitle, authors, link, description, image, Button 
             <Button />
           </div>
 
-          <img className="img-thumbnail img-fluid w-100" src={image} alt={title} />
+          {/* <img className="img-thumbnail img-fluid w-100" src={image} alt={title} /> */}
       
 
           <p>{description}</p>

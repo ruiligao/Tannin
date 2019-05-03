@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import Jumbotron from "../components/Jumbotron";
 import Wine from "../components/Wine";
-import Employees from "../components/Employees";
+
 import Addemployee from "../components/Addemployee";
 import Footer from "../components/Footer";
 import API from "../utils/API";
@@ -114,14 +114,14 @@ showMe={this.state.showMe}
         <div className="wineCol">
         <div className="wineTitleWrap">
         <div className="wineTitleWrap1">
-        <div>Wine</div>
-        <div><Link
+        <div>Employee Chart</div>
+        {/* <div><Link
             className={window.location.pathname === "/wines" ? "nav-link active" : "nav-link"} 
             to="/wines"
           ><button>
-            Add Wine
+          
             </button>
-              </Link></div>
+              </Link></div> */}
         </div>
         </div>
 
@@ -140,63 +140,34 @@ showMe={this.state.showMe}
                   description={book.description}
                   image={book.image}
                   Button={() => (
+                    <div>
                     <button
                       onClick={() => this.handleBookDelete(book._id)}
                       className="btn btn-danger ml-2"
                     >
                       Delete
                         </button>
+
+<button
+onClick={() => this.handleBookDelete(book._id)}
+className="btn btn-danger ml-2"
+>
+Quiz
+  </button></div>
                   )}
                 />
               ))}
             </List>
           ) : (
-              <h2 className="text-center">Not Available</h2>
+              <h2 className="text-center">Pick a wine</h2>
             )}
             </div>
             </div>
         </div>
 {/* -----------------EMPLOYEES COLUMN------------------- */}
-        <div className="employeeCol">
-        <div className="empTitleWrap">
-        <div className="empTitleWrap1">
-        <div>Employees</div>
-        <div><button onClick={() => this.hideShow()}>Add Employee</button></div>
+        
         </div>
-        </div>
-
-        <div className="employeeColWrap">
-        <div className="employeeColWrap1">
-          {this.state.books.length ? (
-            <List>
-              {this.state.books.map(book => (
-                <Employees
-                  key={book._id}
-                  title={book.title}
-                  subtitle={book.subtitle}
-                  link={book.link}
-                  authors={book.authors.join(", ")}
-                  description={book.description}
-                  image={book.image}
-                  Button={() => (
-                    <button
-                      onClick={() => this.handleBookDelete(book._id)}
-                      className="btn btn-danger ml-2"
-                    >
-                      Delete
-                        </button>
-                  )}
-                />
-              ))}
-            </List>
-          ) : (
-              <h2 className="text-center">Add Employees</h2>
-            )}
-            </div>
-            </div>
-        </div>
-        </div>
-
+        
 
         <Footer />
       </Container>
