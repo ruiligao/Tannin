@@ -36,7 +36,7 @@ class Nav extends Component {
         <Link className="navbar-brand" to="/">
           Wine academy
         </Link>
-        <button
+        {/* <button
           onClick={this.toggleNav}
           className="navbar-toggler"
           data-toggle="collapse"
@@ -46,9 +46,10 @@ class Nav extends Component {
           aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon" />
-        </button>
+        </button> */}
 
         <div className={`${this.state.open ? "" : "collapse "}navbar-collapse`} id="navbarNav">
+        
           <ul className="navbar-nav">
 
           {/* <li className="nav-item">
@@ -82,28 +83,11 @@ class Nav extends Component {
               </Link>
             </li> */}
 
-            <li className="nav-item">
-              <Link
-                onClick={this.toggleNav}
-                className={window.location.pathname === "/admin" ? "nav-link active" : "nav-link"}
-                to="/admin"
-              >
-                Admin Page
-              </Link>
+            
 
-            </li>
+           
 
-            <li className="nav-item">
-              <Link
-                onClick={this.toggleNav}
-                className={window.location.pathname === "/wines" ? "nav-link active" : "nav-link"}
-                to="/wines"
-              >
-                Wine Page (show all wines from database)
-              </Link>
-            </li>
-
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <Link
                 onClick={this.toggleNav}
                 className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}
@@ -112,7 +96,7 @@ class Nav extends Component {
                 Back to login page
               </Link>
               
-            </li>
+            </li> */}
 
           </ul>
 
