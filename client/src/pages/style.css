@@ -5,31 +5,49 @@
 }
 
 .wineColWrap {
+justify-content: center;
+display: flex;
+}
+
+.wineColWrap1 {
     background-color: gray;
     height: 300px;
     overflow: auto;
-    width: 90%;
-    padding: 10px;
+    width: 80%;
 }
 
 .employeeColWrap {
+    justify-content: center;
+    display: flex;
+}
+
+.employeeColWrap1 {
     background-color: gray;
     height: 300px;
     overflow: auto;
-    width: 90%;
-    padding: 10px;
+    width: 80%;
 }
 
 .empTitleWrap {
     display: flex;
-    justify-content: space-between;
-    width: 90%;
+    justify-content: center;
+    width: 100%;
 }
-
-.wineTitleWrap  {
+.empTitleWrap1 {
     display: flex;
     justify-content: space-between;
-    width: 90%;
+    width: 80%;
+}
+
+.wineTitleWrap {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.wineTitleWrap1  {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
 }
 
 .nav-link:link {
