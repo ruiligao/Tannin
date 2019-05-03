@@ -34,7 +34,7 @@ class Nav extends Component {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light mb-2">
         <Link className="navbar-brand" to="/">
-          Google Books
+          Wine academy
         </Link>
         <button
           onClick={this.toggleNav}
@@ -51,16 +51,17 @@ class Nav extends Component {
         <div className={`${this.state.open ? "" : "collapse "}navbar-collapse`} id="navbarNav">
           <ul className="navbar-nav">
 
-          <li className="nav-item">
-              <Link
+          {/* <li className="nav-item">
+             <button><Link
                 onClick={this.toggleNav}
                 className={window.location.pathname === "/home" ? "nav-link active" : "nav-link"}
                 to="/home"
               >
                 Home
-              </Link>
-            </li>
-            <li className="nav-item">
+              </Link></button>
+            </li> */}
+
+            {/* <li className="nav-item">
               <Link
                 onClick={this.toggleNav}
                 className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}
@@ -68,8 +69,10 @@ class Nav extends Component {
               >
                 Search
               </Link>
-            </li>
-            <li className="nav-item">
+
+            </li> */}
+
+            {/* <li className="nav-item">
               <Link
                 onClick={this.toggleNav}
                 className={window.location.pathname === "/saved" ? "nav-link active" : "nav-link"}
@@ -77,8 +80,43 @@ class Nav extends Component {
               >
                 Saved
               </Link>
+            </li> */}
+
+            <li className="nav-item">
+              <Link
+                onClick={this.toggleNav}
+                className={window.location.pathname === "/admin" ? "nav-link active" : "nav-link"}
+                to="/admin"
+              >
+                Admin Page
+              </Link>
+
             </li>
+
+            <li className="nav-item">
+              <Link
+                onClick={this.toggleNav}
+                className={window.location.pathname === "/wines" ? "nav-link active" : "nav-link"}
+                to="/wines"
+              >
+                Wine Page (show all wines from database)
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link
+                onClick={this.toggleNav}
+                className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}
+                to="/" 
+              >
+                Back to login page
+              </Link>
+              
+            </li>
+
           </ul>
+
+
         </div>
       </nav>
     );

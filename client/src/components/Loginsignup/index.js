@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./style.css";
 
 function Loginsignup({ showMe, hideShow, restaurant, name, lastName, email,password, loginemail, loginpassword, handleInputChange, handleFormSubmit }) {
@@ -154,11 +155,20 @@ function Loginsignup({ showMe, hideShow, restaurant, name, lastName, email,passw
           type="submit"
           className="btn btn-lg btn-danger float-right"
         >
-          Submit
+          Login
         </button>
       </div>
     </form>
     </div>
+
+<br></br>
+
+<button><Link
+                className={window.location.pathname === "/admin" ? "nav-link active" : "nav-link"}
+                to="/admin"
+              >
+                admin
+              </Link></button>
 
     <button onClick={() => hideShow()}>CLOSE</button>
       
