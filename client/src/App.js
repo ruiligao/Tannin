@@ -7,6 +7,7 @@ import Admin from "./pages/Admin";
 // import Saved from "./pages/Saved";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
+import Question from './components/Question';
 
 function App() {
   return (
