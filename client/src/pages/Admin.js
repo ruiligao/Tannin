@@ -73,9 +73,11 @@ class Saved extends Component {
     return (
 
       <Container>
+
+
         <div>
            <Link className="navbar-brand" to="/">
-          Wine academy
+           <i class="fas fa-wine-glass-alt"></i> Wine academy
         </Link>
         </div>
         <div>
