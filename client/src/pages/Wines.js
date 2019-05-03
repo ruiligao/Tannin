@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Jumbotron from "../components/Jumbotron";
 import Card from "../components/Card";
 import Form from "../components/Form";
-import Book from "../components/Book";
+import Wine from "../components/Wine";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 import API from "../utils/API";
@@ -103,7 +103,7 @@ class Home extends Component {
               {this.state.books.length ? (
                 <List>
                   {this.state.books.map(book => (
-                    <Book
+                    <Wine
                       key={book.id}
                       title={book.volumeInfo.title}
                       subtitle={book.volumeInfo.subtitle}
