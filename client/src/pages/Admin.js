@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Jumbotron from "../components/Jumbotron";
 import Wine from "../components/Wine";
 import Employees from "../components/Employees";
+import Addemployee from "../components/Addemployee";
 import Footer from "../components/Footer";
 import API from "../utils/API";
 import { Container } from "../components/Grid";
@@ -12,12 +13,47 @@ import "./style.css";
 
 class Saved extends Component {
   state = {
-    books: []
+    books: [],
+
+    showMe: false,
+
+    id:"",
+    restaurant:"",
+    name:"",
+    lastName:"",
+    email:"",
+    password:"",
+    loginemail:"",
+    loginpassword:""
   };
 
   componentDidMount() {
     this.getSavedBooks();
   }
+
+  hideShow = () => {
+    const newState = {...this.state}
+    newState.showMe = !newState.showMe 
+    newState.scale = this.state.scale > 1 ? 1 : 1.5
+    
+    // this.setState({
+      
+    // })
+    
+    // alert( "hi")
+
+// newState.showMe = !newState.showMe;
+
+    this.setState(newState);
+  }
+
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+      
+    });
+  };
 
   getSavedBooks = () => {
     API.getSavedBooks()
@@ -37,6 +73,21 @@ class Saved extends Component {
     return (
 
       <Container>
+
+<Addemployee
+            handleInputChange={this.handleInputChange}
+            id={this.state.id}
+             restaurant={this.state.restaurant}
+             name={this.state.name}
+             lastName={this.state.lastName}
+             email={this.state.email}
+             password={this.state.password}
+             loginemail={this.state.loginemail}
+             loginpassword={this.state.loginpassword}
+showMe={this.state.showMe}
+      hideShow = {this.hideShow}
+            ></Addemployee>
+
         <div>
           <Link className="navbar-brand" to="/">
             Logout
@@ -97,7 +148,7 @@ class Saved extends Component {
         <div className="employeeCol">
         <div className="empTitleWrap">
         <div>Employees</div>
-        <div><button>Add Employee</button></div>
+        <div><button onClick={() => this.hideShow()}>Add Employee</button></div>
         </div>
         <div className="employeeColWrap">
           {this.state.books.length ? (
@@ -128,6 +179,8 @@ class Saved extends Component {
             </div>
         </div>
         </div>
+
+
         <Footer />
       </Container>
     );

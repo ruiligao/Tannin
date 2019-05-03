@@ -1,38 +1,22 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./style.css";
 
-function Loginsignup({ showMe, hideShow, restaurant, name, lastName, email,password, loginemail, loginpassword, handleInputChange, handleFormSubmit }) {
+function Addemployee({ showMe, hideShow, name, lastName, email,password, loginemail, loginpassword, handleInputChange, handleFormSubmit }) {
   return (
 
     <div>
-<button className="sampleBtn" onClick={() => hideShow()}>Login/ Sign Up</button>
+
     {showMe ?
-      <div className="overlay">
-        <div className="wrap1">
-        <div className="wrap2">
-        <div className="wrap3">
-        
-      <div className="signUpwrap">
-      <div> Sign Up</div>
+      <div className="overlay1">
+        <div className="wrapper1">
+        <div className="wrapper2">
+        <div className="wrapper3">
+      <div>
+      <div> New Employee Form</div>
     <form>
       <div className="form-group">
       <div>
-      <label>
-          <strong>Restaurant</strong>
-        </label>
-        <div>
-        <input
-          className="form-control"
-          id=""
-          type="text"
-          value={restaurant}
-          placeholder="Restaurant"
-          name="restaurant"
-          onChange={handleInputChange}
-          required
-        />
-        </div>
+      
         </div>
         <div>
         <label>
@@ -123,76 +107,12 @@ function Loginsignup({ showMe, hideShow, restaurant, name, lastName, email,passw
     </form>
     </div>
 
-<div className="signUpwrap">
-<br></br>
-  <div> Log In</div>
-<form>
-      <div className="form-group">
-<div>
-
-<label>
-          <strong>Email</strong>
-        </label>
-        <div>
-        <input
-          className="form-control"
-          id=""
-          type="email"
-          value={loginemail}
-          placeholder="Email Address"
-          name="loginemail"
-          onChange={handleInputChange}
-          required
-        />
-        </div>
-
-<label>
-          <strong>Password</strong>
-        </label>
-        <div>
-        <input
-          className="form-control"
-          id=""
-          type="password"
-          value={loginpassword}
-          placeholder="Password"
-          name="loginpassword"
-          onChange={handleInputChange}
-          required
-        />
-        </div>
-</div>
-      </div>
-
-      <div className="pull-right">
-
-        <button
-          onClick={handleFormSubmit}
-          type="submit"
-          className="btn btn-lg btn-danger float-right"
-        >
-          Login
-        </button>
-      </div>
-    </form>
-    </div>
 
 <br></br>
-
-
-      
-      </div>
-      <div className="btnwrap">
-      <button><Link
-                className={window.location.pathname === "/admin" ? "nav-link active" : "nav-link"}
-                to="/admin"
-              >
-                admin
-              </Link></button>
 
     <button onClick={() => hideShow()}>CLOSE</button>
     </div>
-      </div>
+    </div>
       </div>
       </div>
       :null
@@ -202,4 +122,4 @@ function Loginsignup({ showMe, hideShow, restaurant, name, lastName, email,passw
   );
 }
 
-export default Loginsignup;
+export default Addemployee;
