@@ -3,7 +3,7 @@ import { ListItem } from "../List";
 
 import "./style.css";
 
-function Book({ title, subtitle, authors, link, description, image, Button }) {
+function Wine({ title, subtitle, authors, link, description, image, Button }) {
   return (
     <ListItem>
       
@@ -31,4 +31,4 @@ function Book({ title, subtitle, authors, link, description, image, Button }) {
   );
 }
 
-export default Book;
+export default Wine;
