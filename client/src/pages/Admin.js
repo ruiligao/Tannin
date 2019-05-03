@@ -44,14 +44,7 @@ class Saved extends Component {
         </div>
         <br></br>
 
-        <div>
-          <Link
-            className={window.location.pathname === "/wines" ? "nav-link active" : "nav-link"}
-            to="/wines"
-          >
-            Go to Wine Page (show all wines from database)
-              </Link>
-              </div>
+
 
         <Jumbotron>
           <h1 className="text-center">
@@ -62,7 +55,17 @@ class Saved extends Component {
 
 <div className="wineandemployeewrapper">
         <div className="wineCol">
-        <h1>Wine Collections</h1>
+        <div className="wineTitleWrap">
+        <div>Wine</div>
+        <div><Link
+            className={window.location.pathname === "/wines" ? "nav-link active" : "nav-link"} 
+            to="/wines"
+          ><button>
+            Add Wine
+            </button>
+              </Link></div>
+        </div>
+        <div className="wineColWrap">
           {this.state.books.length ? (
             <List>
               {this.state.books.map(book => (
@@ -88,12 +91,15 @@ class Saved extends Component {
           ) : (
               <h2 className="text-center">No Saved Books</h2>
             )}
+            </div>
         </div>
 {/* -----------------EMPLOYEES COLUMN------------------- */}
-
-
         <div className="employeeCol">
-        <h1>Employees</h1>
+        <div className="empTitleWrap">
+        <div>Employees</div>
+        <div><button>Add Employee</button></div>
+        </div>
+        <div className="employeeColWrap">
           {this.state.books.length ? (
             <List>
               {this.state.books.map(book => (
@@ -119,6 +125,7 @@ class Saved extends Component {
           ) : (
               <h2 className="text-center">No Saved Books</h2>
             )}
+            </div>
         </div>
         </div>
         <Footer />
