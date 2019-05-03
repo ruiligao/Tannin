@@ -1,13 +1,9 @@
 import React, { Component } from "react";
-import Jumbotron from "../components/Jumbotron";
-import Card from "../components/Card";
-import Form from "../components/Form";
-import Book from "../components/Book";
+
 import Footer from "../components/Footer";
 import Loginsignup from "../components/Loginsignup";
 import API from "../utils/API";
-import { Col, Row, Container } from "../components/Grid";
-import { List } from "../components/List";
+import { Container } from "../components/Grid";
 
 
 class Home extends Component {
@@ -90,7 +86,7 @@ class Home extends Component {
   render() {
     return (
       <Container>
-        <Row>
+        
         <Loginsignup
             handleInputChange={this.handleInputChange}
             id={this.state.id}
@@ -107,7 +103,7 @@ showMe={this.state.showMe}
           
 
  
-        </Row>
+        
         <Footer />
       </Container>
     );

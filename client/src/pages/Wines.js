@@ -4,10 +4,11 @@ import Card from "../components/Card";
 import Form from "../components/Form";
 import Book from "../components/Book";
 import Footer from "../components/Footer";
-
+import { Link } from "react-router-dom";
 import API from "../utils/API";
-import { Col, Row, Container } from "../components/Grid";
+import { Container } from "../components/Grid";
 import { List } from "../components/List";
+
 
 class Home extends Component {
   state = {
@@ -68,20 +69,26 @@ class Home extends Component {
   render() {
     return (
       <Container>
-        <Row>
-
-          <Col size="md-12">
+          
+<div>
+              <Link
+                onClick={this.toggleNav}
+                className={window.location.pathname === "/admin" ? "nav-link active" : "nav-link"}
+                to="/admin"
+              >
+                Go to Admin Page
+              </Link>
+              </div>
             <Jumbotron>
             
               <h1 className="text-center">
-                <strong>(React) Google Books Search</strong>
+                <strong>ALL THE WINES IN THE DATABASE</strong>
               </h1>
-              <h2 className="text-center">Search for and Save Books of Interest.</h2>
+              <h2 className="text-center">Search for WINE.</h2>
 
             </Jumbotron>
-          </Col>
-          <Col size="md-12">
-            <Card title="Book Search" icon="far fa-book">
+          
+            <Card title="Wine Search" icon="far fa-book">
 
               <Form
                 handleInputChange={this.handleInputChange}
@@ -89,10 +96,8 @@ class Home extends Component {
                 q={this.state.q}
               />
             </Card>
-          </Col>
-        </Row>
-        <Row>
-          <Col size="md-12">
+          
+
             <Card title="Results">
               {this.state.books.length ? (
                 <List>
@@ -120,8 +125,7 @@ class Home extends Component {
                 <h2 className="text-center">{this.state.message}</h2>
               )}
             </Card>
-          </Col>
-        </Row>
+         
         <Footer />
       </Container>
     );
