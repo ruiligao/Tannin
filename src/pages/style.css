@@ -1,0 +1,102 @@
+.wineandemployeewrapper {
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    height: 100vw;
+    width:100%;
+}
+.wineCol {
+  width:50%;
+}
+
+.employeeCol {
+  width:50%;
+}
+.wineColWrap {
+justify-content: center;
+display: flex;
+
+}
+
+.wineColWrap1 {
+    background-color: gray;
+    height: 300px;
+    overflow: auto;
+    width: 80%;
+}
+
+.employeeColWrap {
+    justify-content: center;
+    display: flex;
+}
+
+.employeeColWrap1 {
+    background-color: gray;
+    height: 300px;
+    overflow: auto;
+    width: 80%;
+}
+
+.empTitleWrap {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.empTitleWrap1 {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.wineTitleWrap {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.wineTitleWrap1  {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.nav-link:link {
+    text-decoration-style: none;
+}
+.active {
+    text-decoration-style: none;
+}
+
+a:link {
+    text-decoration: none;
+    color: none;
+  }
+
+  button:focus {
+    outline: none !important;
+    -ms-transform: scale(1.2); /* IE 9 */
+    -webkit-transform: scale(1.2); /* Safari 3-8 */
+    transform: scale(1.2); 
+  }
+
+
+  .navbar-brand:focus {
+    outline: none !important;
+
+  }
+
+  .btn:focus {
+    outline: none !important;
+  }
+  .nav-link:focus {
+    outline: none !important;
+    -ms-transform: scale(1.2); /* IE 9 */
+    -webkit-transform: scale(1.2); /* Safari 3-8 */
+    transform: scale(1.2); 
+  }
+
+
+  button:hover {
+    -ms-transform: scale(1.2); /* IE 9 */
+    -webkit-transform: scale(1.2); /* Safari 3-8 */
+    transform: scale(1.2); 
+  }
