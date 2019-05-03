@@ -84,6 +84,7 @@ class Home extends Component {
               <h1 className="text-center">
                 <strong>ALL THE WINES IN THE DATABASE</strong>
               </h1>
+              
               <h2 className="text-center">Search for WINE.</h2>
 
             </Jumbotron>
