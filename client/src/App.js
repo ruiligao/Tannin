@@ -7,12 +7,7 @@ import EmployeePage from "./pages/EmployeePage";
 import Admin from "./pages/Admin";
 // import Saved from "./pages/Saved";
 import NoMatch from "./pages/NoMatch";
-<<<<<<< HEAD
 // import Nav from "./components/Nav";
-=======
-import Nav from "./components/Nav";
-import Question from './components/Question';
->>>>>>> 7de0d199a7de3c95a1dce003a07aba8532e83fa0
 
 function App() {
   return (
