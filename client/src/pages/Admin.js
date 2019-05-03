@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import "./style.css";
 
 
-class Saved extends Component {
+class Admin extends Component {
   state = {
     books: [],
 
@@ -206,4 +206,4 @@ showMe={this.state.showMe}
   }
 }
 
-export default Saved;
+export default Admin;

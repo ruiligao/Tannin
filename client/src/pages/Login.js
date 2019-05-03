@@ -6,11 +6,10 @@ import API from "../utils/API";
 import { Container } from "../components/Grid";
 
 
-class Home extends Component {
+class Login extends Component {
   state = {
     books: [],
     q: "",
-
     showMe: false,
 
     id:"",
@@ -102,4 +101,4 @@ showMe={this.state.showMe}
   }
 }
 
-export default Home;
+export default Login;

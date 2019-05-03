@@ -10,7 +10,7 @@ import { Container } from "../components/Grid";
 import { List } from "../components/List";
 
 
-class Home extends Component {
+class Wines extends Component {
   state = {
     books: [],
     q: "",
@@ -158,4 +158,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default Wines;
