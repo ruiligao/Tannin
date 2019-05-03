@@ -5,18 +5,20 @@ function Form({ q, handleInputChange, handleFormSubmit }) {
     <form>
       <div className="form-group">
         <label htmlFor="Query">
-          <strong>Book</strong>
+          <strong>Wine</strong>
         </label>
+        <div>
         <input
           className="form-control"
           id="Title"
           type="text"
           value={q}
-          placeholder="Ready Player One"
+          placeholder="Choose your Wine"
           name="q"
           onChange={handleInputChange}
           required
         />
+        </div>
       </div>
       <div className="pull-right">
         <button

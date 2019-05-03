@@ -14,7 +14,7 @@ class Home extends Component {
   state = {
     books: [],
     q: "",
-    message: "Search For A Book To Begin!",
+    message: "Search for a wine",
 
     id:"",
     restaurant:"",
@@ -69,14 +69,16 @@ class Home extends Component {
   render() {
     return (
       <Container>
+        
           
 <div>
+  
               <Link
                 onClick={this.toggleNav}
                 className={window.location.pathname === "/admin" ? "nav-link active" : "nav-link"}
                 to="/admin"
               >
-                Go to Admin Page
+                Back to Admin Page
               </Link>
               </div>
             <Jumbotron>
@@ -89,7 +91,7 @@ class Home extends Component {
 
             </Jumbotron>
           
-            <Card title="Wine Search" icon="far fa-book">
+            <Card title="Wine Search">
 
               <Form
                 handleInputChange={this.handleInputChange}

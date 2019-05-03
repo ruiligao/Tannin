@@ -107,6 +107,7 @@ showMe={this.state.showMe}
 <div className="wineandemployeewrapper">
         <div className="wineCol">
         <div className="wineTitleWrap">
+        <div className="wineTitleWrap1">
         <div>Wine</div>
         <div><Link
             className={window.location.pathname === "/wines" ? "nav-link active" : "nav-link"} 
@@ -116,7 +117,11 @@ showMe={this.state.showMe}
             </button>
               </Link></div>
         </div>
+        </div>
+
+
         <div className="wineColWrap">
+        <div className="wineColWrap1">
           {this.state.books.length ? (
             <List>
               {this.state.books.map(book => (
@@ -140,17 +145,22 @@ showMe={this.state.showMe}
               ))}
             </List>
           ) : (
-              <h2 className="text-center">No Saved Books</h2>
+              <h2 className="text-center">Not Available</h2>
             )}
+            </div>
             </div>
         </div>
 {/* -----------------EMPLOYEES COLUMN------------------- */}
         <div className="employeeCol">
         <div className="empTitleWrap">
+        <div className="empTitleWrap1">
         <div>Employees</div>
         <div><button onClick={() => this.hideShow()}>Add Employee</button></div>
         </div>
+        </div>
+
         <div className="employeeColWrap">
+        <div className="employeeColWrap1">
           {this.state.books.length ? (
             <List>
               {this.state.books.map(book => (
@@ -174,8 +184,9 @@ showMe={this.state.showMe}
               ))}
             </List>
           ) : (
-              <h2 className="text-center">No Saved Books</h2>
+              <h2 className="text-center">Add Employees</h2>
             )}
+            </div>
             </div>
         </div>
         </div>
