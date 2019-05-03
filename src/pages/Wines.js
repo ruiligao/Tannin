@@ -33,11 +33,12 @@ class Home extends Component {
   };
 
   getBooks = () => {
-    API.getBooks(this.state.q)
-      .then(res =>
+    API.getMaster(this.state.q)
+      .then(res => {
+        console.log(res.data);
         this.setState({
-          books: res.data
-        })
+          wine: res.data
+        })}
       )
       .catch(() =>
         this.setState({
