@@ -24,6 +24,22 @@ class Home extends Component {
     password:"",
   };
 
+  // componentDidMount() {
+  //   this.getMaster();
+  // }
+
+
+  // getMaster = () => {
+  //   API.getMaster()
+  //     .then(res =>
+  //       this.setState({
+  //         books: res.data
+  //       })
+  //     )
+  //     .catch(err => console.log(err));
+  // };
+
+
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -42,7 +58,7 @@ class Home extends Component {
       .catch(() =>
         this.setState({
           books: [],
-          message: "No New Books Found, Try a Different Query"
+          message: "Wine not available"
         })
       );
   };
@@ -83,6 +99,8 @@ class Home extends Component {
                 Back to Admin Page
               </Link>
               </div>
+
+              
             <Jumbotron>
             
               <h1 className="text-center">
@@ -131,6 +149,9 @@ class Home extends Component {
               )}
             </Card>
          
+{/* -------------------- */}
+
+        
         <Footer />
       </Container>
     );
