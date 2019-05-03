@@ -2,11 +2,20 @@
     justify-content: center;
     display: flex;
     flex-direction: row;
+    height: 100vw;
+    width:100%;
+}
+.wineCol {
+  width:50%;
 }
 
+.employeeCol {
+  width:50%;
+}
 .wineColWrap {
 justify-content: center;
 display: flex;
+
 }
 
 .wineColWrap1 {
@@ -59,4 +68,35 @@ display: flex;
 
 a:link {
     text-decoration: none;
+    color: none;
+  }
+
+  button:focus {
+    outline: none !important;
+    -ms-transform: scale(1.2); /* IE 9 */
+    -webkit-transform: scale(1.2); /* Safari 3-8 */
+    transform: scale(1.2); 
+  }
+
+
+  .navbar-brand:focus {
+    outline: none !important;
+
+  }
+
+  .btn:focus {
+    outline: none !important;
+  }
+  .nav-link:focus {
+    outline: none !important;
+    -ms-transform: scale(1.2); /* IE 9 */
+    -webkit-transform: scale(1.2); /* Safari 3-8 */
+    transform: scale(1.2); 
+  }
+
+
+  button:hover {
+    -ms-transform: scale(1.2); /* IE 9 */
+    -webkit-transform: scale(1.2); /* Safari 3-8 */
+    transform: scale(1.2); 
   }

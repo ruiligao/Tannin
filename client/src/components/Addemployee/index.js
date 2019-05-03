@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./style.css";
 
 function Addemployee({ showMe, hideShow, name, lastName, email,password, loginemail, loginpassword, handleInputChange, handleFormSubmit }) {
@@ -111,6 +112,14 @@ function Addemployee({ showMe, hideShow, name, lastName, email,password, loginem
 <br></br>
 
     <button onClick={() => hideShow()}>CLOSE</button>
+
+    <div><Link
+            className={window.location.pathname === "/employeepage" ? "nav-link active" : "nav-link"} 
+            to="/employeepage"
+          ><button>
+            Emplyee page
+            </button>
+              </Link></div>
     </div>
     </div>
       </div>
