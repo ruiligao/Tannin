@@ -77,7 +77,7 @@ class Saved extends Component {
 
         <div>
            <Link className="navbar-brand" to="/">
-           <i class="fas fa-wine-glass-alt"></i> Wine academy
+           <i className="fas fa-wine-glass-alt"></i> Wine academy
         </Link>
         </div>
         <div>
