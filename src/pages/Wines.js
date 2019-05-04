@@ -10,9 +10,10 @@ import { Container } from "../components/Grid";
 import { List } from "../components/List";
 
 
-class Home extends Component {
+class Wines extends Component {
   state = {
     books: [],
+    wines:[],
     q: "",
     message: "Search for a wine",
 
@@ -24,6 +25,26 @@ class Home extends Component {
     password:"",
   };
 
+  componentDidMount() {
+    this.getMaster();
+  }
+
+
+  getMaster = () => {
+    API.getMaster()
+      .then(res => {
+        console.log(res.data);
+        this.setState({
+          wines: res.data
+        })}
+      )
+      .catch(() =>
+        this.setState({
+          message: "Wine not available"
+        })
+      );
+  };
+
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -32,42 +53,62 @@ class Home extends Component {
     });
   };
 
-  getBooks = () => {
-    API.getMaster(this.state.q)
-      .then(res => {
-        console.log(res.data);
-        this.setState({
-          wine: res.data
-        })}
-      )
-      .catch(() =>
-        this.setState({
-          books: [],
-          message: "No New Books Found, Try a Different Query"
-        })
-      );
+//   getWineId = id => {
+//     API.getWineId(id).then(res => {
+//       console.log(res.data);
+//     this.setState({
+// wine: res.data
+//     })}
+//     )
+//     .catch(() =>
+//         this.setState({
+//           books: [],
+//           message: "Wine not available"
+//         })
+//       );
+//   };
+  
+// getMaster = () => {
+//     API.getMaster(this.state.q)
+//       .then(res => {
+//         console.log(res.data);
+//         this.setState({
+//           wine: res.data
+//         })}
+//       )
+//       .catch(() =>
+//         this.setState({
+//           books: [],
+//           message: "Wine not available"
+//         })
+//       );
+//   };
+
+  // handleFormSubmit = event => {
+  //   event.preventDefault();
+  //   this.getBooks();
+  // };
+
+  handleWineAdd = id => {
+    const wine = this.state.wines.find(wine => wine._id === id);
+
+    API.addWine({
+      wineId: id ,
+      name: wine.name,
+      // subtitle: book.volumeInfo.subtitle,
+      // link: book.volumeInfo.infoLink,
+      // authors: book.volumeInfo.authors,
+      // description: book.volumeInfo.description,
+      // image: book.volumeInfo.imageLinks.thumbnail
+    }).then(() => this.getMaster());
   };
 
-  handleFormSubmit = event => {
-    event.preventDefault();
-    this.getBooks();
-  };
-
-  handleBookSave = id => {
-    const book = this.state.books.find(book => book.id === id);
-
-    API.saveBook({
-      googleId: book.id,
-      title: book.volumeInfo.title,
-      subtitle: book.volumeInfo.subtitle,
-      link: book.volumeInfo.infoLink,
-      authors: book.volumeInfo.authors,
-      description: book.volumeInfo.description,
-      image: book.volumeInfo.imageLinks.thumbnail
-    }).then(() => this.getBooks());
-  };
+  // handleWineAdd = id => {
+  //   API.addWine(id).then(res => this.getMaster());
+  // };
 
   render() {
+
     return (
       <Container>
         <div>
@@ -84,6 +125,8 @@ class Home extends Component {
                 Back to Admin Page
               </Link>
               </div>
+
+              
             <Jumbotron>
             
               <h1 className="text-center">
@@ -105,20 +148,15 @@ class Home extends Component {
           
 
             <Card title="Results">
-              {this.state.books.length ? (
+              {this.state.wines.length ? (
                 <List>
-                  {this.state.books.map(book => (
+                  {this.state.wines.map(wine => (
                     <Wine
-                      key={book.id}
-                      title={book.volumeInfo.title}
-                      subtitle={book.volumeInfo.subtitle}
-                      link={book.volumeInfo.infoLink}
-                      authors={book.volumeInfo.authors.join(", ")}
-                      description={book.volumeInfo.description}
-                      image={book.volumeInfo.imageLinks.thumbnail}
+                    id={wine.id}
+                      name={wine.name}
                       Button={() => (
                         <button
-                          onClick={() => this.handleBookSave(book.id)}
+                          onClick={() => this.handleWineAdd(wine._id)}
                           className="btn btn-primary ml-2"
                         >
                           Save
@@ -132,10 +170,13 @@ class Home extends Component {
               )}
             </Card>
          
+{/* -------------------- */}
+
+        
         <Footer />
       </Container>
     );
   }
 }
 
-export default Home;
+export default Wines;

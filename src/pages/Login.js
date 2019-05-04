@@ -6,11 +6,10 @@ import API from "../utils/API";
 import { Container } from "../components/Grid";
 
 
-class Home extends Component {
+class Login extends Component {
   state = {
     books: [],
     q: "",
-
     showMe: false,
 
     id:"",
@@ -28,14 +27,6 @@ class Home extends Component {
     const newState = {...this.state}
     newState.showMe = !newState.showMe 
     newState.scale = this.state.scale > 1 ? 1 : 1.5
-    
-    // this.setState({
-      
-    // })
-    
-    // alert( "hi")
-
-// newState.showMe = !newState.showMe;
 
     this.setState(newState);
   }
@@ -110,4 +101,4 @@ showMe={this.state.showMe}
   }
 }
 
-export default Home;
+export default Login;

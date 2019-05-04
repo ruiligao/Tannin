@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import "./style.css";
 
 
-class Saved extends Component {
+class Admin extends Component {
   state = {
     books: [],
 
@@ -27,9 +27,9 @@ class Saved extends Component {
     loginpassword:""
   };
 
-  componentDidMount() {
-    this.getSavedBooks();
-  }
+  // componentDidMount() {
+  //   this.getSavedBooks();
+  // }
 
   hideShow = () => {
     const newState = {...this.state}
@@ -55,15 +55,15 @@ class Saved extends Component {
     });
   };
 
-  getSavedBooks = () => {
-    API.getSavedBooks()
-      .then(res =>
-        this.setState({
-          books: res.data
-        })
-      )
-      .catch(err => console.log(err));
-  };
+  // getSavedBooks = () => {
+  //   API.getSavedBooks()
+  //     .then(res =>
+  //       this.setState({
+  //         books: res.data
+  //       })
+  //     )
+  //     .catch(err => console.log(err));
+  // };
 
   handleBookDelete = id => {
     API.deleteBook(id).then(res => this.getSavedBooks());
@@ -73,9 +73,11 @@ class Saved extends Component {
     return (
 
       <Container>
+
+
         <div>
            <Link className="navbar-brand" to="/">
-          Wine academy
+           <i className="fas fa-wine-glass-alt"></i> Wine academy
         </Link>
         </div>
         <div>
@@ -204,4 +206,4 @@ showMe={this.state.showMe}
   }
 }
 
-export default Saved;
+export default Admin;
