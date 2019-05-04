@@ -1,42 +1,24 @@
 import React, { Component } from "react";
-
+import { Redirect } from 'react-router-dom';
 import Footer from "../components/Footer";
-import Loginsignup from "../components/Loginsignup";
+import LoginForm from "../components/LoginForm";
 import API from "../utils/API";
 import { Container } from "../components/Grid";
 
 
-class Home extends Component {
+class Login extends Component {
   state = {
-    books: [],
-    q: "",
-
     showMe: false,
-
-    id:"",
-    restaurant:"",
-    name:"",
-    lastName:"",
-    email:"",
-    password:"",
-    loginemail:"",
-    loginpassword:""
-  };
-
-
+    loginemail: "",
+    loginpassword: "",
+    redirectTo: null
+  }
+  // this.handleFormSubmit = this.handleFormSubmit.bind(this)
+  // this.handleInChange = this.handleInChange.bind(this)
   hideShow = () => {
-    const newState = {...this.state}
-    newState.showMe = !newState.showMe 
+    const newState = { ...this.state }
+    newState.showMe = !newState.showMe
     newState.scale = this.state.scale > 1 ? 1 : 1.5
-    
-    // this.setState({
-      
-    // })
-    
-    // alert( "hi")
-
-// newState.showMe = !newState.showMe;
-
     this.setState(newState);
   }
 
@@ -45,69 +27,48 @@ class Home extends Component {
     const { name, value } = event.target;
     this.setState({
       [name]: value
-      
-    });
-  };
 
-  getBooks = () => {
-    API.getBooks(this.state.q)
-      .then(res =>
-        this.setState({
-          books: res.data
-        })
-      )
-      .catch(() =>
-        this.setState({
-          books: [],
-          message: "No New Books Found, Try a Different Query"
-        })
-      );
+    });
   };
 
   handleFormSubmit = event => {
     event.preventDefault();
-    this.getBooks();
+    this.login();
   };
 
-  handleBookSave = id => {
-    const book = this.state.books.find(book => book.id === id);
-
-    API.saveBook({
-      googleId: book.id,
-      title: book.volumeInfo.title,
-      subtitle: book.volumeInfo.subtitle,
-      link: book.volumeInfo.infoLink,
-      authors: book.volumeInfo.authors,
-      description: book.volumeInfo.description,
-      image: book.volumeInfo.imageLinks.thumbnail
-    }).then(() => this.getBooks());
-  };
-
+  login() {
+    API.logIn(this.state.username, this.state.password).then(response => {
+      console.log(response)
+      if (response.status === 200) {
+        // update the state
+        this.setState({
+          loggedIn: true,
+          user: response.data.user,
+          redirectTo: '/admin'
+        })
+      }
+    })
+  }
   render() {
+    if (this.state.redirectTo) {
+			return <Redirect to={{ pathname: this.state.redirectTo }} />
+		} else {
     return (
       <Container>
-        
-        <Loginsignup
-            handleInputChange={this.handleInputChange}
-            id={this.state.id}
-             restaurant={this.state.restaurant}
-             name={this.state.name}
-             lastName={this.state.lastName}
-             email={this.state.email}
-             password={this.state.password}
-             loginemail={this.state.loginemail}
-             loginpassword={this.state.loginpassword}
-showMe={this.state.showMe}
-      hideShow = {this.hideShow}
-            ></Loginsignup>
-          
-
- 
-        
+        <LoginForm
+          handleInputChange={this.handleInputChange}
+          handleFormSubmit={this.handleFormSubmit}
+          id={this.state.id}
+          loginemail={this.state.loginemail}
+          loginpassword={this.state.loginpassword}
+          showMe={this.state.showMe}
+          hideShow={this.hideShow}
+        />
         <Footer />
       </Container>
     );
   }
 }
+}
 
-export default Home;
+export default Login;

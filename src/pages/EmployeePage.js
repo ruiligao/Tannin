@@ -19,7 +19,7 @@ class Saved extends Component {
 
     id:"",
     restaurant:"",
-    name:"",
+    firstName:"",
     lastName:"",
     email:"",
     password:"",

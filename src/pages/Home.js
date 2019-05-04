@@ -1,131 +1,117 @@
-// import React, { Component } from "react";
-// import Jumbotron from "../components/Jumbotron";
-// import Card from "../components/Card";
-// import Form from "../components/Form";
-// import Book from "../components/Book";
+import React, { Component } from "react";
 // import Footer from "../components/Footer";
+// import Loginsignup from "../components/Loginsignup";
+import API from "../utils/API";
+// import { Container } from "../components/Grid";
+import { Link } from 'react-router-dom'
+import Login from "./Login";
+import Signup from "./Signup";
 
-// import API from "../utils/API";
-// import { Col, Row, Container } from "../components/Grid";
-// import { List } from "../components/List";
+const DisplayLinks = props => {
+	if (props.loggedIn) {
+		return (
+			//go to the user page 
+			<nav className="navbar">
+				<ul className="nav">
+					<li className="nav-item">
+						<Link to="/admin" className="nav-link">
+							Admin
+						</Link>
+					</li>
+					<li>
+						<Link to="#" className="nav-link" onClick={props.logout}>
+							Logout
+						</Link>
+					</li>
+				</ul>
+			</nav>
+		)
+	} else {
+		//stay on the home page
+		return (
+			<nav className="navbar">
+				<ul className="nav">
+					<li className="nav-item">
+						<Link to="/" className="nav-link">
+							Home
+						</Link>
+					</li>
+					<li className="nav-item">
+						<Link to="/login" className="nav-link">
+							login
+						</Link>
+					</li>
+					<li className="nav-item">
+						<Link to="/signup" className="nav-link">
+							sign up
+						</Link>
+					</li>
+				</ul>
+			</nav>
+		)
+	}
+}
 
-// class Home extends Component {
-//   state = {
-//     books: [],
-//     q: "",
-//     message: "Search For A Book To Begin!",
+class Home extends Component {
+	constructor() {
+		super()
+		this.state = {
+			loggedIn: false,
+			user: null
+		}
+		this.logout = this.logout.bind(this)
+		// this.login = this.login.bind(this)
+	}
+	// componentDidMount() {
+	// 	API.getUser.then(response => {
+	// 		console.log(response.data)
+	// 		if (!!response.data.user) {
+	// 			console.log('THERE IS A USER')
+	// 			this.setState({
+	// 				loggedIn: true,
+	// 				user: response.data.user
+	// 			})
+	// 		} else {
+	// 			this.setState({
+	// 				loggedIn: false,
+	// 				user: null
+	// 			})
+	// 		}
+	// 	})
+	// }
 
-//     id:"",
-//     restaurant:"",
-//     name:"",
-//     lastName:"",
-//     email:"",
-//     password:"",
-//   };
+	logout(event) {
+		event.preventDefault()
+		console.log('logging out')
+		API.logOut.then(response => {
+			console.log(response.data)
+			if (response.status === 200) {
+				this.setState({
+					loggedIn: false,
+					user: null
+				})
+			}
+		})
+	}
 
-//   handleInputChange = event => {
-//     const { name, value } = event.target;
-//     this.setState({
-//       [name]: value
-      
-//     });
-//   };
+	render() {
+		return (
+			<div className="App">
+				{/* <h1>This is the main App component</h1> */}
+				{/* <Header user={this.state.user} /> */}
+				{/* <DisplayLinks logout={this.logout} loggedIn={this.state.loggedIn} /> */}
+				{/* <Login login={this.login}/> */}
+				<Signup />
+				{/* <Route exact path="/" render={() => <Home user={this.state.user} />} />
+				
+						<Login
+							login={this.login}
+						/>
+				/>
+				<Route exact path="/signup" component={Signup} /> */}
+			</div>
+		)
+	}
+}
 
-//   getBooks = () => {
-//     API.getBooks(this.state.q)
-//       .then(res =>
-//         this.setState({
-//           books: res.data
-//         })
-//       )
-//       .catch(() =>
-//         this.setState({
-//           books: [],
-//           message: "No New Books Found, Try a Different Query"
-//         })
-//       );
-//   };
-
-//   handleFormSubmit = event => {
-//     event.preventDefault();
-//     this.getBooks();
-//   };
-
-//   handleBookSave = id => {
-//     const book = this.state.books.find(book => book.id === id);
-
-//     API.saveBook({
-//       googleId: book.id,
-//       title: book.volumeInfo.title,
-//       subtitle: book.volumeInfo.subtitle,
-//       link: book.volumeInfo.infoLink,
-//       authors: book.volumeInfo.authors,
-//       description: book.volumeInfo.description,
-//       image: book.volumeInfo.imageLinks.thumbnail
-//     }).then(() => this.getBooks());
-//   };
-
-//   render() {
-//     return (
-//       <Container>
-//         <Row>
-
-//           <Col size="md-12">
-//             <Jumbotron>
-            
-//               <h1 className="text-center">
-//                 <strong>(React) Google Books Search</strong>
-//               </h1>
-//               <h2 className="text-center">Search for and Save Books of Interest.</h2>
-
-//             </Jumbotron>
-//           </Col>
-//           <Col size="md-12">
-//             <Card title="Book Search" icon="far fa-book">
-
-//               <Form
-//                 handleInputChange={this.handleInputChange}
-//                 handleFormSubmit={this.handleFormSubmit}
-//                 q={this.state.q}
-//               />
-//             </Card>
-//           </Col>
-//         </Row>
-//         <Row>
-//           <Col size="md-12">
-//             <Card title="Results">
-//               {this.state.books.length ? (
-//                 <List>
-//                   {this.state.books.map(book => (
-//                     <Book
-//                       key={book.id}
-//                       title={book.volumeInfo.title}
-//                       subtitle={book.volumeInfo.subtitle}
-//                       link={book.volumeInfo.infoLink}
-//                       authors={book.volumeInfo.authors.join(", ")}
-//                       description={book.volumeInfo.description}
-//                       image={book.volumeInfo.imageLinks.thumbnail}
-//                       Button={() => (
-//                         <button
-//                           onClick={() => this.handleBookSave(book.id)}
-//                           className="btn btn-primary ml-2"
-//                         >
-//                           Save
-//                         </button>
-//                       )}
-//                     />
-//                   ))}
-//                 </List>
-//               ) : (
-//                 <h2 className="text-center">{this.state.message}</h2>
-//               )}
-//             </Card>
-//           </Col>
-//         </Row>
-//         <Footer />
-//       </Container>
-//     );
-//   }
-// }
-
-// export default Home;
+export default Home
