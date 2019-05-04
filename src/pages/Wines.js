@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Jumbotron from "../components/Jumbotron";
 import Card from "../components/Card";
-import Form from "../components/Form";
+// import Form from "../components/Form";
 import Wine from "../components/Wine";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
@@ -12,23 +12,19 @@ import { List } from "../components/List";
 
 class Wines extends Component {
   state = {
-    books: [],
+    // books: [],
     wines:[],
-    q: "",
+    // q: "",
     message: "Search for a wine",
 
-    id:"",
-    restaurant:"",
-    name:"",
-    lastName:"",
-    email:"",
-    password:"",
+    // text: "add wine",
+
+    // id:"",
   };
 
   componentDidMount() {
     this.getMaster();
   }
-
 
   getMaster = () => {
     API.getMaster()
@@ -45,44 +41,28 @@ class Wines extends Component {
       );
   };
 
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
+  // handleInputChange = event => {
+  //   const { name, value } = event.target;
+  //   this.setState({
+  //     [name]: value
       
-    });
-  };
-
-//   getWineId = id => {
-//     API.getWineId(id).then(res => {
-//       console.log(res.data);
-//     this.setState({
-// wine: res.data
-//     })}
-//     )
-//     .catch(() =>
-//         this.setState({
-//           books: [],
-//           message: "Wine not available"
-//         })
-//       );
-//   };
+  //   });
+  // };
   
-// getMaster = () => {
-//     API.getMaster(this.state.q)
-//       .then(res => {
-//         console.log(res.data);
-//         this.setState({
-//           wine: res.data
-//         })}
-//       )
-//       .catch(() =>
-//         this.setState({
-//           books: [],
-//           message: "Wine not available"
-//         })
-//       );
-//   };
+  // getBooks = () => {
+  //   API.getBooks(this.state.q)
+  //     .then(res =>
+  //       this.setState({
+  //         books: res.data
+  //       })
+  //     )
+  //     .catch(() =>
+  //       this.setState({
+  //         books: [],
+  //         message: "No New Books Found, Try a Different Query"
+  //       })
+  //     );
+  // };
 
   // handleFormSubmit = event => {
   //   event.preventDefault();
@@ -90,22 +70,18 @@ class Wines extends Component {
   // };
 
   handleWineAdd = id => {
+    // const newState = {...this.state}
+    // newState.text = "added" 
+
     const wine = this.state.wines.find(wine => wine._id === id);
 
     API.addWine({
-      wineId: id ,
-      name: wine.name,
-      // subtitle: book.volumeInfo.subtitle,
-      // link: book.volumeInfo.infoLink,
-      // authors: book.volumeInfo.authors,
-      // description: book.volumeInfo.description,
-      // image: book.volumeInfo.imageLinks.thumbnail
+// wineId: id,
+// name: wine.name,
+// lacidity:wine.wine.aciditys,
+    Wines: wine,
     }).then(() => this.getMaster());
   };
-
-  // handleWineAdd = id => {
-  //   API.addWine(id).then(res => this.getMaster());
-  // };
 
   render() {
 
@@ -125,8 +101,6 @@ class Wines extends Component {
                 Back to Admin Page
               </Link>
               </div>
-
-              
             <Jumbotron>
             
               <h1 className="text-center">
@@ -137,14 +111,14 @@ class Wines extends Component {
 
             </Jumbotron>
           
-            <Card title="Wine Search">
+            {/* <Card title="Wine Search">
 
               <Form
                 handleInputChange={this.handleInputChange}
                 handleFormSubmit={this.handleFormSubmit}
                 q={this.state.q}
               />
-            </Card>
+            </Card> */}
           
 
             <Card title="Results">
@@ -152,14 +126,15 @@ class Wines extends Component {
                 <List>
                   {this.state.wines.map(wine => (
                     <Wine
-                    id={wine.id}
+                    key={wine._id}
                       name={wine.name}
                       Button={() => (
                         <button
                           onClick={() => this.handleWineAdd(wine._id)}
                           className="btn btn-primary ml-2"
                         >
-                          Save
+                          {/* {this.state.text} */}
+                          add wine
                         </button>
                       )}
                     />
