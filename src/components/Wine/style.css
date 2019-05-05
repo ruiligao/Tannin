@@ -1,6 +1,7 @@
 .listitemdiv {
-    background-color: gray;
-    width:95%;
+justify-content: center;
+display: flex;
+    width:100%;
 }
 
 .overlay4 {
@@ -19,4 +20,54 @@
     transition-timing-function: ease-in;
     overflow: hidden;
     
+  }
+
+  .winenamediv {
+      margin:20px;
+      padding: 10px;
+      background-color: rgb(243, 210, 210);
+      width: 80%;
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+
+  }
+
+  .winenamediv2 {
+ 
+    justify-content: space-between;
+    display: flex;
+}
+
+  .fa-plus-circle {
+      color:rgb(139, 46, 101)
+  }
+
+  .btnadd {
+      height: 20px;
+      width: 30px;
+      border-radius: 50%;
+      border-style: none;
+      background-color: transparent;
+      margin-right: 10px;
+  }
+  .fontitalic{
+      padding-bottom:5px;
+      font-size: 20px;
+  }
+
+  .winenamebtn {
+    padding-bottom:5px;
+    font-size: 20px;
+    margin: 0;
+    background-color: transparent;
+    border-style: none;
+   margin-left:20px;
+  }
+
+  .winenamebtn:focus {
+    outline: none !important;
+    -ms-transform: scale(1.1); /* IE 9 */
+    -webkit-transform: scale(1.1); /* Safari 3-8 */
+    transform: scale(1.1); 
   }
