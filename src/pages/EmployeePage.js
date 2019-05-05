@@ -27,9 +27,9 @@ class EmployeePage extends Component {
     loginpassword:""
   };
 
-  componentDidMount() {
-    this.getSavedBooks();
-  }
+  // componentDidMount() {
+  //   this.getSavedBooks();
+  // }
 
   hideShow = () => {
     const newState = {...this.state}
@@ -55,15 +55,15 @@ class EmployeePage extends Component {
     });
   };
 
-  getSavedBooks = () => {
-    API.getSavedBooks()
-      .then(res =>
-        this.setState({
-          books: res.data
-        })
-      )
-      .catch(err => console.log(err));
-  };
+  // getSavedBooks = () => {
+  //   API.getSavedBooks()
+  //     .then(res =>
+  //       this.setState({
+  //         books: res.data
+  //       })
+  //     )
+  //     .catch(err => console.log(err));
+  // };
 
   handleBookDelete = id => {
     API.deleteBook(id).then(res => this.getSavedBooks());
@@ -167,8 +167,6 @@ Quiz
 {/* -----------------EMPLOYEES COLUMN------------------- */}
         
         </div>
-        
-
         <Footer />
       </Container>
     );

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 
-function Addemployee({ showMe, hideShow, name, lastName, email,password, loginemail, loginpassword, handleInputChange, handleFormSubmit }) {
+function Addemployee({ showMe, hideShow, name, lastName, email,password, handleInputChange, handleFormSubmit }) {
   return (
 
     <div>
