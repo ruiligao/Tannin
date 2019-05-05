@@ -19,7 +19,6 @@ class Wines extends Component {
     message: "Search for a wine",
     showMe: false,
     // text: "add wine",
-
     wineId: "",
     wineName:""
   
@@ -93,8 +92,8 @@ class Wines extends Component {
 
     API.addWine({
       wineId: id,
-      name: wine.name,
-      lacidity: wine.wine.aciditys,
+      // name: wine.name,
+      // lacidity: wine.wine.aciditys,
       Wines: wine,
     }).then(() => this.getMaster());
   };
@@ -137,6 +136,8 @@ class Wines extends Component {
                 q={this.state.q}
               />
             </Card> */}
+            <div className="cardwrapper1">
+      <div className="cardwrapper2">
         <Card title="Available Wines">
           {this.state.wines.length ? (
             <List>
@@ -160,7 +161,8 @@ class Wines extends Component {
             )}
         </Card>
 
-
+        </div>
+        </div>
         {/* -------------------- */}
 
 
