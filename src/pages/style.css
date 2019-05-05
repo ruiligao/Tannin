@@ -126,6 +126,8 @@ a:link {
     display: flex;
     height: 100%;
     overflow: hidden;
+    background-color: rgb(131, 11, 61);
+    margin-top: 50px;
 }
 .cardwrapper2 {
 width: 80%;
@@ -142,25 +144,36 @@ height: 100%;
 
 .mainWrapper1 {
   width:40%;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgb(70, 69, 69)), to(rgb(5, 5, 5))) fixed;
-  color:white;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgb(5, 5, 5)), to(rgb(59, 58, 58))) fixed;
+  color:white;  
   margin: 0;
+  box-shadow: 5px 3px 6px rgb(192, 187, 187), 0 3px 6px #999;
 }
 
 .cardwrapper0 {
   width:60%;
   height: 100%;
+  background-color: rgb(131, 11, 61);
+  position:relative;
 }
 
-.winesnav {
-  display: flex;
-  justify-content: space-between;
-}
+
 
 .winesheader {
   justify-content: center;
   display: flex;
-  background-color: rgb(221, 146, 146, 0.5  );
+  position:absolute;
+  width: 100%;
+  background-color: rgb(131, 11, 61, .8);
+  color: white;
+}
+
+.winesheader2 {
+  justify-content: center;
+  display: flex;
+  position:absolute;
+  text-align: center;
+  /* background-color: rgba(8, 8, 8, 0.5); */
 }
 
 span {
