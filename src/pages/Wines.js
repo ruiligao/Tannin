@@ -16,7 +16,7 @@ class Wines extends Component {
     // books: [],
     wines: [],
     // q: "",
-    message: "Search for a wine",
+    // message: "Search for a wine",
     showMe: false,
     // text: "add wine",
     wineId: "",
@@ -152,11 +152,15 @@ class Wines extends Component {
               />
             </Card> */}
             <div className="cardwrapper0">
+
             <div className="winesheader">
-            <h1 className="text-center">
+            
+            <h1 className="textcenter">
             <strong>Search for WINE</strong>
           </h1>
           </div>
+
+
             <div className="cardwrapper1">
       <div className="cardwrapper2">
         <Card title="">
