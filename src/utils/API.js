@@ -25,9 +25,9 @@ export default {
   //   return axios.post("/api/wine", wineData);
   // }
 
-//DMS ---- hit route restaurant
+// DMS ---- hit route restaurant
 addWine: function(wineData) {
-  return axios.post("https://tannin-api.herokuapp.com/api/restaurant");
+  return axios.post("https://tannin-api.herokuapp.com/api/restaurant", wineData);
 }
 
 };  
