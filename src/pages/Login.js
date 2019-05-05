@@ -9,8 +9,8 @@ import { Container } from "../components/Grid";
 class Login extends Component {
   state = {
     showMe: false,
-    loginemail: "",
-    loginpassword: "",
+    username: "",
+    password: "",
     redirectTo: null
   }
   // this.handleFormSubmit = this.handleFormSubmit.bind(this)
@@ -59,8 +59,8 @@ class Login extends Component {
           handleInputChange={this.handleInputChange}
           handleFormSubmit={this.handleFormSubmit}
           id={this.state.id}
-          loginemail={this.state.loginemail}
-          loginpassword={this.state.loginpassword}
+          loginemail={this.state.username}
+          loginpassword={this.state.password}
           showMe={this.state.showMe}
           hideShow={this.hideShow}
         />

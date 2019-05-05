@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 
-function LoginForm ({ showMe, hideShow, restaurant, firstName, lastName, email, password, loginemail, loginpassword, handleInputChange, handleFormSubmit }) {
+function LoginForm({ showMe, hideShow, restaurant, firstName, lastName, email, password, loginemail, loginpassword, handleInputChange, handleFormSubmit }) {
   return (
 
     <div>
@@ -133,7 +133,7 @@ function LoginForm ({ showMe, hideShow, restaurant, firstName, lastName, email, 
                             type="email"
                             value={loginemail}
                             placeholder="Email Address"
-                            name="loginemail"
+                            name="username"
                             onChange={handleInputChange}
                             required
                           />
@@ -149,7 +149,7 @@ function LoginForm ({ showMe, hideShow, restaurant, firstName, lastName, email, 
                             type="password"
                             value={loginpassword}
                             placeholder="Password"
-                            name="loginpassword"
+                            name="password"
                             onChange={handleInputChange}
                             required
                           />

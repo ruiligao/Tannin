@@ -45,7 +45,10 @@ class SignupLogin extends Component {
         if (!response.data.errmsg) {
           console.log('youre good')
           this.setState({
-            redirectTo: '/login'
+            redirectTo: '/admin',
+            loggedIn: true,
+            user: response.data.user,
+
           })
         } else {
           console.log('duplicate')
@@ -63,11 +66,13 @@ class SignupLogin extends Component {
 
   handleLoginFormSubmit = event => {
     event.preventDefault();
-    this.login();
+    const loginInfor= {loginemail:this.state.loginemail,loginpassword: this.state.loginpassword}
+    this.login(loginInfor);
   };
 
-  login() {
-    API.logIn(this.state.username, this.state.password).then(response => {
+  login(loginInfor) {
+    
+    API.logIn(loginInfor).then(response => {
       console.log(response)
       if (response.status === 200) {
         // update the state

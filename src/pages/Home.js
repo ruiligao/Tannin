@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import API from "../utils/API";
 // import { Container } from "../components/Grid";
 import { Link } from 'react-router-dom'
-import Login from "./Login";
+// import Login from "./Login";
 import Signup from "./Signup";
 
 const DisplayLinks = props => {
@@ -62,23 +62,23 @@ class Home extends Component {
 		this.logout = this.logout.bind(this)
 		// this.login = this.login.bind(this)
 	}
-	// componentDidMount() {
-	// 	API.getUser.then(response => {
-	// 		console.log(response.data)
-	// 		if (!!response.data.user) {
-	// 			console.log('THERE IS A USER')
-	// 			this.setState({
-	// 				loggedIn: true,
-	// 				user: response.data.user
-	// 			})
-	// 		} else {
-	// 			this.setState({
-	// 				loggedIn: false,
-	// 				user: null
-	// 			})
-	// 		}
-	// 	})
-	// }
+	componentDidMount() {
+		API.getUser().then(response => {
+			console.log(response.data)
+			if (!!response.data.user) {
+				console.log('THERE IS A USER')
+				this.setState({
+					loggedIn: true,
+					user: response.data.user
+				})
+			} else {
+				this.setState({
+					loggedIn: false,
+					user: null
+				})
+			}
+		})
+	}
 
 	logout(event) {
 		event.preventDefault()
@@ -99,7 +99,7 @@ class Home extends Component {
 			<div className="App">
 				{/* <h1>This is the main App component</h1> */}
 				{/* <Header user={this.state.user} /> */}
-				{/* <DisplayLinks logout={this.logout} loggedIn={this.state.loggedIn} /> */}
+				<DisplayLinks logout={this.logout} loggedIn={this.state.loggedIn} />
 				{/* <Login login={this.login}/> */}
 				<Signup />
 				{/* <Route exact path="/" render={() => <Home user={this.state.user} />} />
