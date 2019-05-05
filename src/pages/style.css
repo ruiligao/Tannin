@@ -78,6 +78,26 @@ a:link {
     transform: scale(1.2); 
   }
 
+  .btnadminpage {
+    color:white;
+    background-color: red;
+    border-style: none;
+    height: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 50px;
+    font-size: 15px;
+  }
+.btnadminpagewrap {
+  justify-content: center;
+  display: flex;
+  margin-top: 150px;
+}
+
+::-webkit-scrollbar { 
+  display: none; 
+}
+
 
   .navbar-brand:focus {
     outline: none !important;
@@ -104,11 +124,46 @@ a:link {
   .cardwrapper1 {
     justify-content: center;
     display: flex;
-    height: 300px;
+    height: 100%;
     overflow: hidden;
 }
 .cardwrapper2 {
-width: 50%;
-height: 300px;
+width: 80%;
+height: 650px;
 overflow: auto;
 }
+
+.allwrap { 
+  justify-content: center;
+flex-direction: row;
+display: flex;
+height: 100%;
+}
+
+.mainWrapper1 {
+  width:40%;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgb(70, 69, 69)), to(rgb(5, 5, 5))) fixed;
+  color:white;
+  margin: 0;
+}
+
+.cardwrapper0 {
+  width:60%;
+  height: 100%;
+}
+
+.winesnav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.winesheader {
+  justify-content: center;
+  display: flex;
+  background-color: rgb(221, 146, 146, 0.5  );
+}
+
+span {
+  font-family: 'Lato', sans-serif;
+}
+

@@ -20,7 +20,7 @@ function Wine({ name, id, hideShow, showMe, handleWineAdd,wineName, wineId }) {
             </div>
             <div>
               {showMe ?
-                <div className="overlay">
+                <div className="overlay4">
                   <div className="wrap1">
                     <div className="wrap2">
                       <div className="wrap3">
