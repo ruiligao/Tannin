@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 // import Footer from "../components/Footer";
 // import Loginsignup from "../components/Loginsignup";
-// import API from "../utils/API";
+import API from "../utils/API";
 // import { Container } from "../components/Grid";
 import { Link } from 'react-router-dom'
 // import Login from "./Login";
-import Signup from "./Signup";
+import SignupLogin from "./SignupLogin";
 
 const DisplayLinks = props => {
 	if (props.loggedIn) {
@@ -87,7 +87,7 @@ class Home extends Component {
 				{/* <Header user={this.state.user} /> */}
 				<DisplayLinks logout={this.logout} loggedIn={this.state.loggedIn} />
 				{/* <Login login={this.login}/> */}
-				<Signup />
+				<SignupLogin />
 				{/* <Route exact path="/" render={() => <Home user={this.state.user} />} />
 				
 						<Login

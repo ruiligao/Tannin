@@ -41,8 +41,8 @@ class Saved extends Component {
 				})
 			} else {
 				this.setState({
-					loggedIn: false,
-          user: null,
+					// loggedIn: false,
+          // user: null,
           redirectTo: "/"
 				})
 			}

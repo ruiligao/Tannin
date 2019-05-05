@@ -42,7 +42,7 @@ class SignupLogin extends Component {
       const userInfo = { firstName, lastName, restaurant, email, password }
       // console.log(userInfo);
       API.signUpSubmit(userInfo).then(response => {
-        console.log(response)
+        console.log(response);
         if (!response.data.error) {
           console.log('youre good')
           this.setState({
@@ -77,14 +77,13 @@ class SignupLogin extends Component {
   };
 
   login(loginInfor) {
-
     API.logIn(loginInfor).then(response => {
-      console.log(response)
+      console.log(response);
       if (response.status === 200) {
         // update the state
         this.setState({
-          loggedIn: true,
-          user: response.data.user,
+          // loggedIn: true,
+          // user: response.data.user,
           redirectTo: '/admin'
         })
       }

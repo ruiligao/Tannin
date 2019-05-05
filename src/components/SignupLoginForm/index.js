@@ -12,7 +12,6 @@ function SignupLoginForm({ showMe, hideShow, restaurant, firstName, lastName, em
           <div className="wrap1">
             <div className="wrap2">
               <div className="wrap3">
-
                 <div className="signUpwrap">
                   <div> Sign Up</div>
                   <form>
