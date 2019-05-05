@@ -15,6 +15,7 @@ class SignupLogin extends Component {
     password: "",
     loginemail: "",
     loginpassword: "",
+    loggedIn: false,
     redirectTo: null
   }
   // this.handleFormSubmit = this.handleFormSubmit.bind(this)
@@ -42,16 +43,21 @@ class SignupLogin extends Component {
       // console.log(userInfo);
       API.signUpSubmit(userInfo).then(response => {
         console.log(response)
-        if (!response.data.errmsg) {
+        if (!response.data.error) {
           console.log('youre good')
           this.setState({
             redirectTo: '/admin',
             loggedIn: true,
             user: response.data.user,
-
           })
-        } else {
+        }
+        else {
           console.log('duplicate')
+          this.setState({
+            redirectTo: null,
+            loggedIn: false,
+          })
+          alert(response.data.error)
         }
       })
     }
@@ -66,12 +72,12 @@ class SignupLogin extends Component {
 
   handleLoginFormSubmit = event => {
     event.preventDefault();
-    const loginInfor= {loginemail:this.state.loginemail,loginpassword: this.state.loginpassword}
+    const loginInfor = { email: this.state.loginemail, password: this.state.loginpassword }
     this.login(loginInfor);
   };
 
   login(loginInfor) {
-    
+
     API.logIn(loginInfor).then(response => {
       console.log(response)
       if (response.status === 200) {

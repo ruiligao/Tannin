@@ -9,12 +9,13 @@ import { Container } from "../components/Grid";
 import { List } from "../components/List";
 import { Link } from "react-router-dom";
 import "./style.css";
+// import { userInfo } from "os";
 
 
 class Saved extends Component {
   state = {
     books: [],
-
+    user: "",
     showMe: false,
 
     id:"",
@@ -23,13 +24,45 @@ class Saved extends Component {
     lastName:"",
     email:"",
     password:"",
-    loginemail:"",
-    loginpassword:""
+    loginemail: "",
+    loginpassword:"",
+    loggedIn: true,
+    redirectTo: null
   };
 
   componentDidMount() {
-    this.getSavedBooks();
-  }
+		API.getUser().then(response => {
+			console.log(response.data)
+			if (!!response.data.user) {
+				console.log('THERE IS A USER')
+				this.setState({
+					loggedIn: true,
+					user: response.data.user
+				})
+			} else {
+				this.setState({
+					loggedIn: false,
+          user: null,
+          redirectTo: "/"
+				})
+			}
+		})
+	}
+  handleLogout = event => {
+		event.preventDefault()
+		console.log('logging out')
+		API.logOut().then(response => {
+			console.log(response.data)
+			if (response.status === 200) {
+				this.setState({
+					loggedIn: false,
+          user: null,
+          redirectTo: '/'
+					
+				})
+			}
+		})
+	}
 
   hideShow = () => {
     const newState = {...this.state}
@@ -79,10 +112,11 @@ class Saved extends Component {
         </Link>
         </div>
         <div>
-          <Link className="navbar-brand" to="/">
-            Logout
-        </Link>
+        <button onClick={this.handleLogout} type="submit"className="btn btn-lg btn-danger float-right">
+               Logout
+        </button>
         </div>
+        <div><h2>Hello {this.state.user}</h2></div>
 
 <Addemployee
             handleInputChange={this.handleInputChange}

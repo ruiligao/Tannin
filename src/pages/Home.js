@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import Footer from "../components/Footer";
 // import Loginsignup from "../components/Loginsignup";
-import API from "../utils/API";
+// import API from "../utils/API";
 // import { Container } from "../components/Grid";
 import { Link } from 'react-router-dom'
 // import Login from "./Login";
@@ -30,12 +30,12 @@ const DisplayLinks = props => {
 		//stay on the home page
 		return (
 			<nav className="navbar">
-				<ul className="nav">
-					<li className="nav-item">
+				{/* <ul className="nav">
+					<li className="nav-item"> */}
 						<Link to="/" className="nav-link">
 							Home
 						</Link>
-					</li>
+					{/* </li>
 					<li className="nav-item">
 						<Link to="/login" className="nav-link">
 							login
@@ -46,7 +46,7 @@ const DisplayLinks = props => {
 							sign up
 						</Link>
 					</li>
-				</ul>
+				</ul> */}
 			</nav>
 		)
 	}
@@ -59,40 +59,26 @@ class Home extends Component {
 			loggedIn: false,
 			user: null
 		}
-		this.logout = this.logout.bind(this)
+		// this.logout = this.logout.bind(this)
 		// this.login = this.login.bind(this)
 	}
-	componentDidMount() {
-		API.getUser().then(response => {
-			console.log(response.data)
-			if (!!response.data.user) {
-				console.log('THERE IS A USER')
-				this.setState({
-					loggedIn: true,
-					user: response.data.user
-				})
-			} else {
-				this.setState({
-					loggedIn: false,
-					user: null
-				})
-			}
-		})
-	}
-
-	logout(event) {
-		event.preventDefault()
-		console.log('logging out')
-		API.logOut.then(response => {
-			console.log(response.data)
-			if (response.status === 200) {
-				this.setState({
-					loggedIn: false,
-					user: null
-				})
-			}
-		})
-	}
+	// componentDidMount() {
+	// 	API.getUser().then(response => {
+	// 		console.log(response.data)
+	// 		if (!!response.data.user) {
+	// 			console.log('THERE IS A USER')
+	// 			this.setState({
+	// 				loggedIn: true,
+	// 				user: response.data.user
+	// 			})
+	// 		} else {
+	// 			this.setState({
+	// 				loggedIn: false,
+	// 				user: null
+	// 			})
+	// 		}
+	// 	})
+	// }
 
 	render() {
 		return (

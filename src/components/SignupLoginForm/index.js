@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 
-function SignupForm({ showMe, hideShow, restaurant, firstName, lastName, email, password, loginemail, loginpassword, handleSubmitInputChange, handleSignupFormSubmit, handleLoginInputChange,handleLoginFormSubmit }) {
+function SignupLoginForm({ showMe, hideShow, restaurant, firstName, lastName, email, password, loginemail, loginpassword, handleSubmitInputChange, handleSignupFormSubmit, handleLoginInputChange,handleLoginFormSubmit }) {
   return (
 
     <div>
@@ -190,4 +190,4 @@ function SignupForm({ showMe, hideShow, restaurant, firstName, lastName, email, 
   );
 }
 
-export default SignupForm;
+export default SignupLoginForm;
