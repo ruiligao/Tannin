@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import Jumbotron from "../components/Jumbotron";
-import Wine from "../components/Wine";
+import Restowine from "../components/Restowine";
 import Employees from "../components/Employees";
 import Addemployee from "../components/Addemployee";
 import Footer from "../components/Footer";
@@ -103,8 +103,6 @@ showMe={this.state.showMe}
 
         <br></br>
 
-
-
         {/* <Jumbotron>
           <h1 className="text-center">
             <strong>ADMIN PAGE WINE COLLECTIONS & EMPLOYEE LIST</strong>
@@ -133,7 +131,7 @@ showMe={this.state.showMe}
           {this.state.books.length ? (
             <List>
               {this.state.books.map(book => (
-                <Wine
+                <Restowine
                   key={book._id}
                   title={book.title}
                   subtitle={book.subtitle}
