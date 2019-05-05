@@ -3,10 +3,10 @@ import { ListItem } from "../List";
 
 import "./style.css";
 
-function Employees({ title, subtitle, authors, link, description, Button }) {
+function Restowine({ title, subtitle, authors, link, description, Button }) {
   return (
     <ListItem>
-        <div className="listitemdiv2">
+        <div className="listitemdiv3">
         <div>
           <h3 className="font-italic">{title}</h3>
           {subtitle && <h5 className="font-italic">{subtitle}</h5>}
@@ -28,4 +28,4 @@ function Employees({ title, subtitle, authors, link, description, Button }) {
   );
 }
 
-export default Employees;
+export default Restowine;

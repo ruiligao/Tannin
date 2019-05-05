@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import "./style.css";
 
 
-class Saved extends Component {
+class EmployeePage extends Component {
   state = {
     books: [],
 
@@ -27,9 +27,9 @@ class Saved extends Component {
     loginpassword:""
   };
 
-  componentDidMount() {
-    this.getSavedBooks();
-  }
+  // componentDidMount() {
+  //   this.getSavedBooks();
+  // }
 
   hideShow = () => {
     const newState = {...this.state}
@@ -55,15 +55,15 @@ class Saved extends Component {
     });
   };
 
-  getSavedBooks = () => {
-    API.getSavedBooks()
-      .then(res =>
-        this.setState({
-          books: res.data
-        })
-      )
-      .catch(err => console.log(err));
-  };
+  // getSavedBooks = () => {
+  //   API.getSavedBooks()
+  //     .then(res =>
+  //       this.setState({
+  //         books: res.data
+  //       })
+  //     )
+  //     .catch(err => console.log(err));
+  // };
 
   handleBookDelete = id => {
     API.deleteBook(id).then(res => this.getSavedBooks());
@@ -167,12 +167,10 @@ Quiz
 {/* -----------------EMPLOYEES COLUMN------------------- */}
         
         </div>
-        
-
         <Footer />
       </Container>
     );
   }
 }
 
-export default Saved;
+export default EmployeePage;

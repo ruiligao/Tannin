@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import Jumbotron from "../components/Jumbotron";
-import Wine from "../components/Wine";
+import Restowine from "../components/Restowine";
 import Employees from "../components/Employees";
 import Addemployee from "../components/Addemployee";
 import Footer from "../components/Footer";
@@ -12,7 +12,7 @@ import "./style.css";
 // import { userInfo } from "os";
 
 
-class Saved extends Component {
+class Admin extends Component {
   state = {
     books: [],
     user: "",
@@ -63,20 +63,21 @@ class Saved extends Component {
 			}
 		})
 	}
+    // restaurants: [],
+    // employees: [],
+
+    // showMe: false,
+
+  };
+
+  // componentDidMount() {
+  //   this.getSavedBooks();
+  // }
 
   hideShow = () => {
     const newState = {...this.state}
     newState.showMe = !newState.showMe 
     newState.scale = this.state.scale > 1 ? 1 : 1.5
-    
-    // this.setState({
-      
-    // })
-    
-    // alert( "hi")
-
-// newState.showMe = !newState.showMe;
-
     this.setState(newState);
   }
 
@@ -88,33 +89,56 @@ class Saved extends Component {
     });
   };
 
-  getSavedBooks = () => {
-    API.getSavedBooks()
+  getSavedWine = () => {
+    API.getSavedWine()
       .then(res =>
         this.setState({
-          books: res.data
+          restaurants: res.data
         })
       )
       .catch(err => console.log(err));
   };
 
-  handleBookDelete = id => {
-    API.deleteBook(id).then(res => this.getSavedBooks());
+  getSavedEmployee = () => {
+    API.getSavedEmployee()
+      .then(res =>
+        this.setState({
+          employees: res.data
+        })
+      )
+      .catch(err => console.log(err));
+  };
+
+  handleWineDelete = id => {
+    API.deleteWine(id).then(res => this.getSavedWine());
+  };
+
+  handleEmployeeDelete = id => {
+    API.deleteEmployee(id).then(res => this.getSavedEmployee());
   };
 
   render() {
     return (
 
       <Container>
+
+
         <div>
            <Link className="navbar-brand" to="/">
-          Wine academy
+           <i className="fas fa-wine-glass-alt"></i> Wine academy
         </Link>
         </div>
         <div>
+<<<<<<< HEAD
         <button onClick={this.handleLogout} type="submit"className="btn btn-lg btn-danger float-right">
                Logout
         </button>
+=======
+          <Link className="navbar-brand" to="/">
+            Logout
+        </Link>
+        
+>>>>>>> 843bcddea5d71ea7dc9988c9e2a06951a214d71f
         </div>
         <div><h2>Hello {this.state.user}</h2></div>
 
@@ -134,8 +158,6 @@ showMe={this.state.showMe}
 
 
         <br></br>
-
-
 
         {/* <Jumbotron>
           <h1 className="text-center">
@@ -162,20 +184,20 @@ showMe={this.state.showMe}
 
         <div className="wineColWrap">
         <div className="wineColWrap1">
-          {this.state.books.length ? (
+          {this.state.restaurants.length ? (
             <List>
-              {this.state.books.map(book => (
-                <Wine
-                  key={book._id}
-                  title={book.title}
-                  subtitle={book.subtitle}
-                  link={book.link}
-                  authors={book.authors.join(", ")}
-                  description={book.description}
-                  image={book.image}
+              {this.state.restaurants.map(restaurant => (
+                <Restowine
+                  key={restaurant._id}
+                  title={restaurant.title}
+                  subtitle={restaurant.subtitle}
+                  link={restaurant.link}
+                  authors={restaurant.authors.join(", ")}
+                  description={restaurant.description}
+                  image={restaurant.image}
                   Button={() => (
                     <button
-                      onClick={() => this.handleBookDelete(book._id)}
+                      onClick={() => this.handleBookDelete(restaurant._id)}
                       className="btn btn-danger ml-2"
                     >
                       Delete
@@ -201,20 +223,20 @@ showMe={this.state.showMe}
 
         <div className="employeeColWrap">
         <div className="employeeColWrap1">
-          {this.state.books.length ? (
+          {this.state.employees.length ? (
             <List>
-              {this.state.books.map(book => (
+              {this.state.employees.map(employee => (
                 <Employees
-                  key={book._id}
-                  title={book.title}
-                  subtitle={book.subtitle}
-                  link={book.link}
-                  authors={book.authors.join(", ")}
-                  description={book.description}
-                  image={book.image}
+                  key={employee._id}
+                  title={employee.title}
+                  subtitle={employee.subtitle}
+                  link={employee.link}
+                  authors={employee.authors.join(", ")}
+                  description={employee.description}
+                  image={employee.image}
                   Button={() => (
                     <button
-                      onClick={() => this.handleBookDelete(book._id)}
+                      onClick={() => this.handleEmployeeDelete(employee._id)}
                       className="btn btn-danger ml-2"
                     >
                       Delete
@@ -238,4 +260,4 @@ showMe={this.state.showMe}
   }
 }
 
-export default Saved;
+export default Admin;
