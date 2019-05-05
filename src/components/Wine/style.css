@@ -1,4 +1,22 @@
 .listitemdiv {
-    background-color: white;
+    background-color: gray;
     width:95%;
 }
+
+.overlay4 {
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: -webkit-gradient(linear, left top, left bottom, from(rgb(248, 252, 250)), to(rgb(102, 42, 42))) fixed;
+    z-index: 2;
+    cursor: pointer;
+    transition-delay: 10s;
+    transition-timing-function: ease-in;
+    overflow: hidden;
+    
+  }
