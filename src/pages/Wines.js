@@ -154,8 +154,6 @@ class Wines extends Component {
                 >
                 </Wine>
               ))}
-
-
             </List>
           ) : (
               <h2 className="text-center">{this.state.message}</h2>
