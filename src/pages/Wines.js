@@ -102,32 +102,47 @@ class Wines extends Component {
 
     return (
       <Container>
+<div className="allwrap">
+<div className="mainWrapper1">
+<div className="mainWrapper2">
+<div className="mainWrapper3">
 
-
+        <div className="winesnav">
         <div>
-          <Link className="navbar-brand" to="/">
+          {/* <Link className="navbar-brand" to="/">
             Wine academy
-        </Link>
+        </Link> */}
         </div>
-        <div>
-          <Link
-            onClick={this.toggleNav}
-            className={window.location.pathname === "/admin" ? "nav-link active" : "nav-link"}
-            to="/admin"
-          >
-            Back to Admin Page
-              </Link>
+       
         </div>
+<br></br>
         <Jumbotron>
 
+        <h1 className="text-center">
+            <strong>TANNIN</strong>
+          </h1>
+          <br></br>
           <h1 className="text-center">
-            <strong>ALL THE WINES IN THE DATABASE</strong>
+            <strong>Wine Collections</strong>
           </h1>
 
-          <h2 className="text-center">Search for WINE.</h2>
+          <h2 className="text-center">Add Wine to your Restaurant.</h2>
 
         </Jumbotron>
 
+        <div className="btnadminpagewrap">
+          <Link
+            className={window.location.pathname === "/admin" ? "nav-link active" : "nav-link"}
+            to="/admin"
+          ><button className="btnadminpage"><i className="fas fa-wine-glass-alt">   <span>YOUR RESTAURANT</span></i>
+              
+            </button>
+              </Link>
+        </div>
+
+        </div>
+        </div>
+        </div>
         {/* <Card title="Wine Search">
 
               <Form
@@ -136,9 +151,15 @@ class Wines extends Component {
                 q={this.state.q}
               />
             </Card> */}
+            <div className="cardwrapper0">
+            <div className="winesheader">
+            <h1 className="text-center">
+            <strong>Search for WINE</strong>
+          </h1>
+          </div>
             <div className="cardwrapper1">
       <div className="cardwrapper2">
-        <Card title="Available Wines">
+        <Card title="">
           {this.state.wines.length ? (
             <List>
 
@@ -160,12 +181,13 @@ class Wines extends Component {
               <h2 className="text-center">{this.state.message}</h2>
             )}
         </Card>
-
+        </div>
         </div>
         </div>
         {/* -------------------- */}
 
-
+        </div>
+        
         <Footer />
       </Container>
     );
