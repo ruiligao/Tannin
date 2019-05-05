@@ -10,11 +10,10 @@ function Card({ title, children }) {
           </strong>
         </h3>
       </div>
-      <div className="cardwrapper1">
-      <div className="cardwrapper2">
+
       <div className="cardbody">{children}</div>
-      </div>
-      </div>
+      
+      
     </div>
   );
 }

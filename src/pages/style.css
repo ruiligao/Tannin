@@ -100,3 +100,15 @@ a:link {
     -webkit-transform: scale(1.2); /* Safari 3-8 */
     transform: scale(1.2); 
   }
+
+  .cardwrapper1 {
+    justify-content: center;
+    display: flex;
+    height: 300px;
+    overflow: hidden;
+}
+.cardwrapper2 {
+width: 50%;
+height: 300px;
+overflow: auto;
+}
