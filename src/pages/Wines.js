@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Jumbotron from "../components/Jumbotron";
 import Card from "../components/Card";
-import Form from "../components/Form";
+// import Form from "../components/Form";
 import Wine from "../components/Wine";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
@@ -10,64 +10,81 @@ import { Container } from "../components/Grid";
 import { List } from "../components/List";
 
 
-class Home extends Component {
+class Wines extends Component {
   state = {
-    books: [],
-    q: "",
+    // books: [],
+    wines:[],
+    // q: "",
     message: "Search for a wine",
 
-    id:"",
-    restaurant:"",
-    name:"",
-    lastName:"",
-    email:"",
-    password:"",
+    // text: "add wine",
+
+    // id:"",
   };
 
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-      
-    });
-  };
+  componentDidMount() {
+    this.getMaster();
+  }
 
-  getBooks = () => {
-    API.getMaster(this.state.q)
+  getMaster = () => {
+    API.getMaster()
       .then(res => {
         console.log(res.data);
         this.setState({
-          wine: res.data
+          wines: res.data
         })}
       )
       .catch(() =>
         this.setState({
-          books: [],
-          message: "No New Books Found, Try a Different Query"
+          message: "Wine not available"
         })
       );
   };
 
-  handleFormSubmit = event => {
-    event.preventDefault();
-    this.getBooks();
-  };
+  // handleInputChange = event => {
+  //   const { name, value } = event.target;
+  //   this.setState({
+  //     [name]: value
+      
+  //   });
+  // };
+  
+  // getBooks = () => {
+  //   API.getBooks(this.state.q)
+  //     .then(res =>
+  //       this.setState({
+  //         books: res.data
+  //       })
+  //     )
+  //     .catch(() =>
+  //       this.setState({
+  //         books: [],
+  //         message: "No New Books Found, Try a Different Query"
+  //       })
+  //     );
+  // };
 
-  handleBookSave = id => {
-    const book = this.state.books.find(book => book.id === id);
+  // handleFormSubmit = event => {
+  //   event.preventDefault();
+  //   this.getBooks();
+  // };
 
-    API.saveBook({
-      googleId: book.id,
-      title: book.volumeInfo.title,
-      subtitle: book.volumeInfo.subtitle,
-      link: book.volumeInfo.infoLink,
-      authors: book.volumeInfo.authors,
-      description: book.volumeInfo.description,
-      image: book.volumeInfo.imageLinks.thumbnail
-    }).then(() => this.getBooks());
+  handleWineAdd = id => {
+    // const newState = {...this.state}
+    // newState.text = "added" 
+
+    const wine = this.state.wines.find(wine => wine._id === id);
+
+    API.addWine({
+// wineId: id,
+// name: wine.name,
+// lacidity:wine.wine.aciditys,
+    Wines: wine,
+    }).then(() => this.getMaster());
   };
 
   render() {
+
     return (
       <Container>
         <div>
@@ -94,34 +111,30 @@ class Home extends Component {
 
             </Jumbotron>
           
-            <Card title="Wine Search">
+            {/* <Card title="Wine Search">
 
               <Form
                 handleInputChange={this.handleInputChange}
                 handleFormSubmit={this.handleFormSubmit}
                 q={this.state.q}
               />
-            </Card>
+            </Card> */}
           
 
             <Card title="Results">
-              {this.state.books.length ? (
+              {this.state.wines.length ? (
                 <List>
-                  {this.state.books.map(book => (
+                  {this.state.wines.map(wine => (
                     <Wine
-                      key={book.id}
-                      title={book.volumeInfo.title}
-                      subtitle={book.volumeInfo.subtitle}
-                      link={book.volumeInfo.infoLink}
-                      authors={book.volumeInfo.authors.join(", ")}
-                      description={book.volumeInfo.description}
-                      image={book.volumeInfo.imageLinks.thumbnail}
+                    key={wine._id}
+                      name={wine.name}
                       Button={() => (
                         <button
-                          onClick={() => this.handleBookSave(book.id)}
+                          onClick={() => this.handleWineAdd(wine._id)}
                           className="btn btn-primary ml-2"
                         >
-                          Save
+                          {/* {this.state.text} */}
+                          add wine
                         </button>
                       )}
                     />
@@ -132,10 +145,13 @@ class Home extends Component {
               )}
             </Card>
          
+{/* -------------------- */}
+
+        
         <Footer />
       </Container>
     );
   }
 }
 
-export default Home;
+export default Wines;
