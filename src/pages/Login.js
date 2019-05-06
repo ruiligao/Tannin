@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
 import Loginsignup from "../components/Loginsignup";
 import API from "../utils/API";
 import { Container } from "../components/Grid";
@@ -94,8 +94,8 @@ showMe={this.state.showMe}
           
 
  
-        
-        <Footer />
+{/*         
+        <Footer /> */}
       </Container>
     );
   }

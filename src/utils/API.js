@@ -36,18 +36,12 @@ export default {
     return axios.delete("/api/books/" + id);
   },
 
-  // addWine: function(wineData) {
-  //   return axios.post("/api/wine", wineData);
-  // }
-
 // DMS ---- hit route restaurant
 addWine: function(wineData) {
-  return axios.post("https://tannin-api.herokuapp.com/api/restaurant", wineData);
+  return axios.put("https://tannin-api.herokuapp.com/api/addwine", wineData);
 }
+
 
 };  
 
-//   saveBook: function(bookData) {
-//     return axios.post("/api/books", bookData);
-//   }
-// };
+

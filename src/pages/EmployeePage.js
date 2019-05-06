@@ -3,8 +3,12 @@ import React, { Component } from "react";
 import Wine from "../components/Wine";
 
 import Addemployee from "../components/Addemployee";
+<<<<<<< HEAD
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+=======
+// import Footer from "../components/Footer";
+>>>>>>> 15f4ac6c09e2d0096c54526b5c26b6764a87368c
 import API from "../utils/API";
 import { Container } from "../components/Grid";
 import { List } from "../components/List";
@@ -204,7 +208,7 @@ Quiz
 {/* -----------------EMPLOYEES COLUMN------------------- */}
         
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </Container>
     );
   }

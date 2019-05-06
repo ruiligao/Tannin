@@ -18,6 +18,7 @@ class Admin extends Component {
     books: [],
     user: "",
     showMe: false,
+    message:""
 
     id:"",
     restaurant:"",
@@ -98,23 +99,29 @@ class Admin extends Component {
   }
   getSavedWine = () => {
     API.getSavedWine()
-      .then(res =>
+      .then(res => {
+        console.log(res.data);
         this.setState({
           restaurants: res.data
         })
+      }
       )
-      .catch(err => console.log(err));
+      .catch(() =>
+        this.setState({
+          message: "Wine not available"
+        })
+      );
   };
 
-  getSavedEmployee = () => {
-    API.getSavedEmployee()
-      .then(res =>
-        this.setState({
-          employees: res.data
-        })
-      )
-      .catch(err => console.log(err));
-  };
+  // getSavedEmployee = () => {
+  //   API.getSavedEmployee()
+  //     .then(res =>
+  //       this.setState({
+  //         employees: res.data
+  //       })
+  //     )
+  //     .catch(err => console.log(err));
+  // };
 
   handleWineDelete = id => {
     API.deleteWine(id).then(res => this.getSavedWine());
@@ -161,7 +168,6 @@ showMe={this.state.showMe}
             ></Addemployee>
 
 
-        <br></br>
 
         {/* <Jumbotron>
           <h1 className="text-center">
@@ -171,6 +177,20 @@ showMe={this.state.showMe}
         </Jumbotron> */}
 
 <div className="wineandemployeewrapper">
+<div className="brandCol">
+<div>
+           <Link className="navbar-brand" to="/">
+           <i className="fas fa-wine-glass-alt"></i> Wine academy
+        </Link>
+        </div>
+        <div>
+          <Link className="navbar-brand" to="/">
+            Logout
+        </Link>
+        
+        </div>
+
+</div>
         <div className="wineCol">
         <div className="wineTitleWrap">
         <div className="wineTitleWrap1">
@@ -184,8 +204,6 @@ showMe={this.state.showMe}
               </Link></div>
         </div>
         </div>
-
-
         <div className="wineColWrap">
         <div className="wineColWrap1">
           {/* {this.state.restaurants.length ? (
@@ -193,12 +211,8 @@ showMe={this.state.showMe}
               {this.state.restaurants.map(restaurant => (
                 <Restowine
                   key={restaurant._id}
-                  title={restaurant.title}
-                  subtitle={restaurant.subtitle}
-                  link={restaurant.link}
-                  authors={restaurant.authors.join(", ")}
-                  description={restaurant.description}
-                  image={restaurant.image}
+                  id={restaurant._id}
+ wines={restaurant.Wines}
                   Button={() => (
                     <button
                       onClick={() => this.handleBookDelete(restaurant._id)}
@@ -257,8 +271,8 @@ showMe={this.state.showMe}
         </div>
         </div>
 
-
-        <Footer />
+{/* 
+        <Footer /> */}
       </Container>
     );
   };

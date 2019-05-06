@@ -3,7 +3,7 @@ import Jumbotron from "../components/Jumbotron";
 import Card from "../components/Card";
 // import Form from "../components/Form";
 import Wine from "../components/Wine";
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
 // import Infowine from "../components/Infowine";
 import { Link } from "react-router-dom";
 import API from "../utils/API";
@@ -16,11 +16,25 @@ class Wines extends Component {
     // books: [],
     wines: [],
     // q: "",
-    message: "Search for a wine",
+    // message: "Search for a wine",
     showMe: false,
     // text: "add wine",
     wineId: "",
-    wineName:""
+    wineName:"",
+    wineacidity: "",
+    wineageability: "",
+    winealcohol: "",
+    winebody: "",
+    winedecant: "",
+    wineglassType: "",
+    winepairings: "",
+    wineprimaryFlavors: [],
+    winepronunciation: "",
+    winesummary: "",
+    winesweetness: "",
+    winetannin: "",
+    winetemp: "",
+
   
   };
 
@@ -30,6 +44,19 @@ class Wines extends Component {
     const wine = this.state.wines.find(wine => wine._id === id);
     newState.wineId = id
     newState.wineName = wine.name
+    newState.wineacidity = wine.acidity
+newState.wineageability = wine.ageability
+newState.winealcohol = wine.alcohol
+newState.winebody = wine.body
+newState.winedecant = wine.decant
+newState.wineglassType = wine.glassType
+newState.winepairings = wine.pairings
+newState.wineprimaryFlavors = wine.primaryFlavors
+newState.winepronunciation = wine.pronunciation
+newState.winesummary = wine.summary
+newState.winesweetness = wine.sweetness
+newState.winetannin = wine.tannin
+newState.winetemp = wine.temp
     newState.showMe = !newState.showMe
     newState.scale = this.state.scale > 1 ? 1 : 1.5
 
@@ -91,7 +118,7 @@ class Wines extends Component {
     const wine = this.state.wines.find(wine => wine._id === id);
 
     API.addWine({
-      wineId: id,
+      // wineId: id,
       // name: wine.name,
       // lacidity: wine.wine.aciditys,
       Wines: wine,
@@ -102,32 +129,47 @@ class Wines extends Component {
 
     return (
       <Container>
+<div className="allwrap">
+<div className="mainWrapper1">
+<div className="mainWrapper2">
+<div className="mainWrapper3">
 
-
+        <div className="winesnav">
         <div>
-          <Link className="navbar-brand" to="/">
+          {/* <Link className="navbar-brand" to="/">
             Wine academy
-        </Link>
+        </Link> */}
         </div>
-        <div>
-          <Link
-            onClick={this.toggleNav}
-            className={window.location.pathname === "/admin" ? "nav-link active" : "nav-link"}
-            to="/admin"
-          >
-            Back to Admin Page
-              </Link>
+       
         </div>
+<br></br>
         <Jumbotron>
 
+        <h1 className="text-center">
+            <strong>TANNIN</strong>
+          </h1>
+          <br></br>
           <h1 className="text-center">
-            <strong>ALL THE WINES IN THE DATABASE</strong>
+            <strong>Wine Collections</strong>
           </h1>
 
-          <h2 className="text-center">Search for WINE.</h2>
+          <h2 className="text-center">Add Wine to your Restaurant.</h2>
 
         </Jumbotron>
 
+        <div className="btnadminpagewrap">
+          <Link
+            className={window.location.pathname === "/admin" ? "nav-link active" : "nav-link"}
+            to="/admin"
+          ><button className="btnadminpage"><i className="fas fa-wine-glass-alt">   <span>YOUR RESTAURANT</span></i>
+              
+            </button>
+              </Link>
+        </div>
+
+        </div>
+        </div>
+        </div>
         {/* <Card title="Wine Search">
 
               <Form
@@ -136,9 +178,19 @@ class Wines extends Component {
                 q={this.state.q}
               />
             </Card> */}
+            <div className="cardwrapper0">
+
+            <div className="winesheader">
+            
+            <h1 className="textcenter">
+            <strong>Search for WINE</strong>
+          </h1>
+          </div>
+
+
             <div className="cardwrapper1">
       <div className="cardwrapper2">
-        <Card title="Available Wines">
+        <Card title="">
           {this.state.wines.length ? (
             <List>
 
@@ -152,6 +204,19 @@ class Wines extends Component {
                   handleWineAdd={this.handleWineAdd}
                   wineName={this.state.wineName}
                   wineId={this.state.wineId}
+                  wineacidity={this.state.wineacidity}
+                  wineageability={this.state.wineageability}
+                  winealcohol={this.state.winealcohol}
+                  winebody={this.state.winebody}
+                  winedecant={this.state.winedecant}
+                  wineglassType={this.state.wineglassType}
+                  winepairings={this.state.winepairings}
+                  wineprimaryFlavors={this.state.wineprimaryFlavors}
+                  winepronunciation={this.state.winepronunciation}
+                  winesummary={this.state.winesummary}
+                  winesweetness={this.state.winesweetness}
+                  winetannin={this.state.winetannin}
+                  winetemp={this.state.winetemp}
                 >
                 </Wine>
               ))}
@@ -160,13 +225,14 @@ class Wines extends Component {
               <h2 className="text-center">{this.state.message}</h2>
             )}
         </Card>
-
+        </div>
         </div>
         </div>
         {/* -------------------- */}
 
-
-        <Footer />
+        </div>
+{/*         
+        <Footer /> */}
       </Container>
     );
   }
