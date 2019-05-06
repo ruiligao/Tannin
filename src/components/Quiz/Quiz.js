@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Question from '../components/Question';
-import QuestionCount from '../components/QuestionCount';
+import QuestionCount from '../components/Quiz';
 import AnswerOption from '../components/AnswerOption';
 
 function Quiz(props) {
@@ -17,8 +17,7 @@ function Quiz(props) {
              </ul>   
         </div>
     );
-}
-
+    }
 Quiz.propTypes = {
     answer: PropTypes.string.isRequired,
     

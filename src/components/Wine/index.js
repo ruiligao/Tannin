@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import "./style.css";
 
 // subtitle, authors, link, description, 
-function Wine({ name, id, hideShow, showMe, handleWineAdd,wineName, wineId }) {
+function Wine({ name, id, hideShow, showMe, handleWineAdd,wineName, wineId, winetemp, winetannin, winesweetness, winesummary, winepronunciation, wineprimaryFlavors, winepairings, winedecant, wineglassType, winebody, winealcohol, wineageability, wineacidity}) {
 
   return (
     <div>
@@ -20,11 +20,25 @@ function Wine({ name, id, hideShow, showMe, handleWineAdd,wineName, wineId }) {
             <div>
               {showMe ?
                 <div className="overlay4">
-                  <div className="wrap1">
-                    <div className="wrap2">
-                      <div className="wrap3">
-                        <div className="signUpwrap">
+                  <div className="wrapinfo1">
+                    <div className="wrapinfo2">
+                      <div className="wrapinfo3">
+                        <div className="infowrap">
+
                           <div>{wineName}</div>
+                          <div>{wineacidity}</div>
+                          <div>{wineageability}</div>
+                          <div>{winealcohol}</div>
+                          <div>{winebody}</div>
+                          <div>{winedecant}</div>
+                          <div>{wineglassType}</div>
+                          <div>{winepairings}</div>
+                          <div>{wineprimaryFlavors}</div>
+                          <div>{winepronunciation}</div>
+                          <div>{winesummary}</div>
+                          <div>{winesweetness}</div>
+                          <div>{winetannin}</div>
+                          <div>{winetemp}</div>
                           <div>{wineId}</div>
                         </div>
 
