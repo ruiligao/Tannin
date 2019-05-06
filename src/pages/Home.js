@@ -6,6 +6,7 @@ import API from "../utils/API";
 import { Link } from 'react-router-dom'
 // import Login from "./Login";
 import SignupLogin from "./SignupLogin";
+import currentUser from "../components/currentUser";
 
 const DisplayLinks = props => {
 	if (props.loggedIn) {
@@ -86,6 +87,7 @@ class Home extends Component {
 				{/* <h1>This is the main App component</h1> */}
 				{/* <Header user={this.state.user} /> */}
 				<DisplayLinks logout={this.logout} loggedIn={this.state.loggedIn} />
+				{/* <currentUser user={this.state.user} /> */}
 				{/* <Login login={this.login}/> */}
 				<SignupLogin />
 				{/* <Route exact path="/" render={() => <Home user={this.state.user} />} />

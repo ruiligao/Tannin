@@ -4,6 +4,7 @@ import Restowine from "../components/Restowine";
 import Employees from "../components/Employees";
 import Addemployee from "../components/Addemployee";
 import Footer from "../components/Footer";
+import Header from "../components/Header";
 import API from "../utils/API";
 import { Container } from "../components/Grid";
 import { List } from "../components/List";
@@ -20,6 +21,7 @@ class Admin extends Component {
 
     id:"",
     restaurant:"",
+    employees:"",
     name:"",
     lastName:"",
     email:"",
@@ -27,7 +29,8 @@ class Admin extends Component {
     loginemail: "",
     loginpassword:"",
     loggedIn: true,
-    redirectTo: null
+    redirectTo: null,
+
   };
 
   componentDidMount() {
@@ -55,24 +58,15 @@ class Admin extends Component {
 			console.log(response.data)
 			if (response.status === 200) {
 				this.setState({
-					loggedIn: false,
-          user: null,
+					// loggedIn: false,
+          // user: null,
           redirectTo: '/'
 					
 				})
 			}
 		})
 	}
-    // restaurants: [],
-    // employees: [],
-
-    // showMe: false,
-
-  };
-
-  // componentDidMount() {
-  //   this.getSavedBooks();
-  // }
+  
 
   hideShow = () => {
     const newState = {...this.state}
@@ -88,7 +82,20 @@ class Admin extends Component {
       
     });
   };
+  handleLogout= event => {
+    event.preventDefault()
+		console.log('logging out')
+		API.logOut().then(response => {
+			console.log(response.data)
+			if (response.status === 200) {
+				this.setState({
+					loggedIn: false,
+					user: null
+				})
+			}
+		})
 
+  }
   getSavedWine = () => {
     API.getSavedWine()
       .then(res =>
@@ -129,18 +136,15 @@ class Admin extends Component {
         </Link>
         </div>
         <div>
-<<<<<<< HEAD
         <button onClick={this.handleLogout} type="submit"className="btn btn-lg btn-danger float-right">
                Logout
         </button>
-=======
-          <Link className="navbar-brand" to="/">
+          {/* <Link className="navbar-brand" to="/">
             Logout
-        </Link>
+        </Link> */}
         
->>>>>>> 843bcddea5d71ea7dc9988c9e2a06951a214d71f
         </div>
-        <div><h2>Hello {this.state.user}</h2></div>
+        <Header user={this.state.user} />
 
 <Addemployee
             handleInputChange={this.handleInputChange}
@@ -184,7 +188,7 @@ showMe={this.state.showMe}
 
         <div className="wineColWrap">
         <div className="wineColWrap1">
-          {this.state.restaurants.length ? (
+          {/* {this.state.restaurants.length ? (
             <List>
               {this.state.restaurants.map(restaurant => (
                 <Restowine
@@ -208,7 +212,7 @@ showMe={this.state.showMe}
             </List>
           ) : (
               <h2 className="text-center">Not Available</h2>
-            )}
+            )} */}
             </div>
             </div>
         </div>
@@ -257,7 +261,7 @@ showMe={this.state.showMe}
         <Footer />
       </Container>
     );
-  }
+  };
 }
-
+  
 export default Admin;

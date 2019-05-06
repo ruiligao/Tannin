@@ -42,14 +42,17 @@ class SignupLogin extends Component {
       const userInfo = { firstName, lastName, restaurant, email, password }
       // console.log(userInfo);
       API.signUpSubmit(userInfo).then(response => {
-        console.log(response);
+        console.log(">>>>>>>>>>>>>");
+        console.log(response.data.email);
+        console.log(response.data.password);
+        console.log(">>>>>>>>>>>>>")
         if (!response.data.error) {
           console.log('youre good')
-          this.setState({
-            redirectTo: '/admin',
-            loggedIn: true,
-            user: response.data.user,
-          })
+          // this.login(loginInfor);
+            // 
+            this.setState({
+              redirectTo: "/admin"
+            })
         }
         else {
           console.log('duplicate')
@@ -78,14 +81,20 @@ class SignupLogin extends Component {
 
   login(loginInfor) {
     API.logIn(loginInfor).then(response => {
-      console.log(response);
+      console.log(response.data.isAdmin);
       if (response.status === 200) {
         // update the state
+        if(response.data.isAdmin){
         this.setState({
           // loggedIn: true,
           // user: response.data.user,
           redirectTo: '/admin'
-        })
+        })}
+        else {
+          this.setState({
+            redirectTo: "/employeepage"
+          })
+        }
       }
     })
   }
