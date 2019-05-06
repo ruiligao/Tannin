@@ -143,7 +143,7 @@ showMe={this.state.showMe}
  wines={restaurant.Wines}
                   Button={() => (
                     <button
-                      onClick={() => this.handleBookDelete(restaurant._id)}
+                      onClick={() => this.handleWineDelete(restaurant._id)}
                       className="btn btn-danger ml-2"
                     >
                       Delete
