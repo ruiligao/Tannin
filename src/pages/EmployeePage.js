@@ -3,7 +3,12 @@ import React, { Component } from "react";
 import Wine from "../components/Wine";
 
 import Addemployee from "../components/Addemployee";
+<<<<<<< HEAD
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+=======
 // import Footer from "../components/Footer";
+>>>>>>> 15f4ac6c09e2d0096c54526b5c26b6764a87368c
 import API from "../utils/API";
 import { Container } from "../components/Grid";
 import { List } from "../components/List";
@@ -16,21 +21,38 @@ class EmployeePage extends Component {
     books: [],
 
     showMe: false,
-
+    
     id:"",
     restaurant:"",
-    name:"",
+    firstName:"",
     lastName:"",
     email:"",
     password:"",
     loginemail:"",
-    loginpassword:""
+    loginpassword:"",
+    user: "",
+    loggedIn: true,
+    redirectTo: null,
   };
 
-  // componentDidMount() {
-  //   this.getSavedBooks();
-  // }
-
+  componentDidMount() {
+		API.getUser().then(response => {
+      console.log("GET USER");
+			console.log(response.data)
+			if (!!response.data.user) {
+				console.log('THERE IS A USER')
+				this.setState({
+					user: response.data.user
+				})
+			} else {
+				this.setState({
+					// loggedIn: false,
+          // user: null,
+          redirectTo: "/"
+				})
+			}
+		})
+	}
   hideShow = () => {
     const newState = {...this.state}
     newState.showMe = !newState.showMe 
@@ -54,6 +76,22 @@ class EmployeePage extends Component {
       
     });
   };
+
+  handleLogout = event => {
+		event.preventDefault()
+		console.log('logging out')
+		API.logOut().then(response => {
+			console.log(response.data)
+			if (response.status === 200) {
+				this.setState({
+					// loggedIn: false,
+          // user: null,
+          redirectTo: '/'
+					
+				})
+			}
+		})
+	}
 
   // getSavedBooks = () => {
   //   API.getSavedBooks()
@@ -79,11 +117,14 @@ class EmployeePage extends Component {
         </Link>
         </div>
         <div>
-          <Link className="navbar-brand" to="/">
+        <button onClick={this.handleLogout} type="submit"className="btn btn-lg btn-danger float-right">
+               Logout
+        </button>
+          {/* <Link className="navbar-brand" to="/">
             Logout
-        </Link>
+        </Link> */}
         </div>
-
+        <Header user={this.state.user} />
 <Addemployee
             handleInputChange={this.handleInputChange}
             id={this.state.id}

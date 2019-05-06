@@ -3,27 +3,71 @@ import React, { Component } from "react";
 import Restowine from "../components/Restowine";
 import Employees from "../components/Employees";
 import Addemployee from "../components/Addemployee";
-// import Footer from "../components/Footer";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 import API from "../utils/API";
 import { Container } from "../components/Grid";
 import { List } from "../components/List";
 import { Link } from "react-router-dom";
 import "./style.css";
+// import { userInfo } from "os";
 
 
 class Admin extends Component {
   state = {
-    restaurants: [],
-    employees: [],
-
+    books: [],
+    user: "",
     showMe: false,
     message:""
+
+    id:"",
+    restaurant:"",
+    employees:"",
+    name:"",
+    lastName:"",
+    email:"",
+    password:"",
+    loginemail: "",
+    loginpassword:"",
+    loggedIn: true,
+    redirectTo: null,
 
   };
 
   componentDidMount() {
-    this.getSavedWine();
-  }
+		API.getUser().then(response => {
+			console.log(response.data)
+			if (!!response.data.user) {
+				console.log('THERE IS A USER')
+				this.setState({
+					loggedIn: true,
+					user: response.data.user
+				})
+			} else {
+				this.setState({
+					// loggedIn: false,
+          // user: null,
+          redirectTo: "/"
+				})
+			}
+		})
+	}
+  handleLogout = event => {
+		event.preventDefault()
+		console.log('logging out')
+		API.logOut().then(response => {
+			console.log(response.data)
+			if (response.status === 200) {
+				this.setState({
+					// loggedIn: false,
+          // user: null,
+          redirectTo: '/'
+					
+				})
+			}
+		})
+	}
+  
 
   hideShow = () => {
     const newState = {...this.state}
@@ -39,7 +83,20 @@ class Admin extends Component {
       
     });
   };
+  handleLogout= event => {
+    event.preventDefault()
+		console.log('logging out')
+		API.logOut().then(response => {
+			console.log(response.data)
+			if (response.status === 200) {
+				this.setState({
+					loggedIn: false,
+					user: null
+				})
+			}
+		})
 
+  }
   getSavedWine = () => {
     API.getSavedWine()
       .then(res => {
@@ -80,7 +137,22 @@ class Admin extends Component {
       <Container>
 
 
+        <div>
+           <Link className="navbar-brand" to="/">
+           <i className="fas fa-wine-glass-alt"></i> Wine academy
+        </Link>
+        </div>
+        <div>
+        <button onClick={this.handleLogout} type="submit"className="btn btn-lg btn-danger float-right">
+               Logout
+        </button>
+          {/* <Link className="navbar-brand" to="/">
+            Logout
+        </Link> */}
         
+        </div>
+        <Header user={this.state.user} />
+
 <Addemployee
             handleInputChange={this.handleInputChange}
             id={this.state.id}
@@ -134,7 +206,7 @@ showMe={this.state.showMe}
         </div>
         <div className="wineColWrap">
         <div className="wineColWrap1">
-          {this.state.restaurants.length ? (
+          {/* {this.state.restaurants.length ? (
             <List>
               {this.state.restaurants.map(restaurant => (
                 <Restowine
@@ -154,7 +226,7 @@ showMe={this.state.showMe}
             </List>
           ) : (
               <h2 className="text-center">Not Available</h2>
-            )}
+            )} */}
             </div>
             </div>
         </div>
@@ -203,7 +275,7 @@ showMe={this.state.showMe}
         <Footer /> */}
       </Container>
     );
-  }
+  };
 }
-
+  
 export default Admin;
