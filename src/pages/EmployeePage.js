@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import Wine from "../components/Wine";
 
 import Addemployee from "../components/Addemployee";
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
 import API from "../utils/API";
 import { Container } from "../components/Grid";
 import { List } from "../components/List";
@@ -167,7 +167,7 @@ Quiz
 {/* -----------------EMPLOYEES COLUMN------------------- */}
         
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </Container>
     );
   }

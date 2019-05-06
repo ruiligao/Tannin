@@ -2,15 +2,28 @@
     justify-content: center;
     display: flex;
     flex-direction: row;
-    height: 100vw;
+    height: 100%;
     width:100%;
+    margin:0;
+}
+
+.container {
+  margin: 0;
+  height: 100%;
+}
+.brandCol {
+  width:30%;
+  background-color: black;
+  color: white;
+  height: 100vh;
+
 }
 .wineCol {
-  width:50%;
+  width:35%;
 }
 
 .employeeCol {
-  width:50%;
+  width:35%;
 }
 .wineColWrap {
 justify-content: center;
@@ -20,7 +33,7 @@ display: flex;
 
 .wineColWrap1 {
     background-color: gray;
-    height: 300px;
+    height: 500px;
     overflow: auto;
     width: 80%;
 }
@@ -32,7 +45,7 @@ display: flex;
 
 .employeeColWrap1 {
     background-color: gray;
-    height: 300px;
+    height: 500px;
     overflow: auto;
     width: 80%;
 }
@@ -41,6 +54,7 @@ display: flex;
     display: flex;
     justify-content: center;
     width: 100%;
+    margin-top:  50px;
 }
 .empTitleWrap1 {
     display: flex;
@@ -52,6 +66,7 @@ display: flex;
     display: flex;
     justify-content: center;
     width: 100%;
+    margin-top:  50px;
 }
 .wineTitleWrap1  {
     display: flex;
@@ -124,14 +139,14 @@ a:link {
   .cardwrapper1 {
     justify-content: center;
     display: flex;
-    height: 100%;
+    /* height: 100vh; */
     overflow: hidden;
     background-color: rgb(131, 11, 61);
-    margin-top: 50px;
+    
 }
 .cardwrapper2 {
 width: 80%;
-height: 650px;
+height: 500px;
 overflow: auto;
 }
 
@@ -139,7 +154,7 @@ overflow: auto;
   justify-content: center;
 flex-direction: row;
 display: flex;
-height: 100%;
+height: 100vh;
 }
 
 .mainWrapper1 {
@@ -148,13 +163,14 @@ height: 100%;
   color:white;  
   margin: 0;
   box-shadow: 5px 3px 6px rgb(192, 187, 187), 0 3px 6px #999;
+  height: 100vh;
 }
 
 .cardwrapper0 {
   width:60%;
   height: 100%;
   background-color: rgb(131, 11, 61);
-  position:relative;
+  
 }
 
 
@@ -162,7 +178,7 @@ height: 100%;
 .winesheader {
   justify-content: center;
   display: flex;
-  position:absolute;
+  /* position:absolute; */
   width: 100%;
   background-color: rgb(131, 11, 61, .8);
   color: white;

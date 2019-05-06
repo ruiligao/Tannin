@@ -3,7 +3,7 @@ import Jumbotron from "../components/Jumbotron";
 import Card from "../components/Card";
 // import Form from "../components/Form";
 import Wine from "../components/Wine";
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
 // import Infowine from "../components/Infowine";
 import { Link } from "react-router-dom";
 import API from "../utils/API";
@@ -20,7 +20,21 @@ class Wines extends Component {
     showMe: false,
     // text: "add wine",
     wineId: "",
-    wineName:""
+    wineName:"",
+    wineacidity: "",
+    wineageability: "",
+    winealcohol: "",
+    winebody: "",
+    winedecant: "",
+    wineglassType: "",
+    winepairings: "",
+    wineprimaryFlavors: [],
+    winepronunciation: "",
+    winesummary: "",
+    winesweetness: "",
+    winetannin: "",
+    winetemp: "",
+
   
   };
 
@@ -30,6 +44,19 @@ class Wines extends Component {
     const wine = this.state.wines.find(wine => wine._id === id);
     newState.wineId = id
     newState.wineName = wine.name
+    newState.wineacidity = wine.acidity
+newState.wineageability = wine.ageability
+newState.winealcohol = wine.alcohol
+newState.winebody = wine.body
+newState.winedecant = wine.decant
+newState.wineglassType = wine.glassType
+newState.winepairings = wine.pairings
+newState.wineprimaryFlavors = wine.primaryFlavors
+newState.winepronunciation = wine.pronunciation
+newState.winesummary = wine.summary
+newState.winesweetness = wine.sweetness
+newState.winetannin = wine.tannin
+newState.winetemp = wine.temp
     newState.showMe = !newState.showMe
     newState.scale = this.state.scale > 1 ? 1 : 1.5
 
@@ -91,7 +118,7 @@ class Wines extends Component {
     const wine = this.state.wines.find(wine => wine._id === id);
 
     API.addWine({
-      wineId: id,
+      // wineId: id,
       // name: wine.name,
       // lacidity: wine.wine.aciditys,
       Wines: wine,
@@ -177,6 +204,19 @@ class Wines extends Component {
                   handleWineAdd={this.handleWineAdd}
                   wineName={this.state.wineName}
                   wineId={this.state.wineId}
+                  wineacidity={this.state.wineacidity}
+                  wineageability={this.state.wineageability}
+                  winealcohol={this.state.winealcohol}
+                  winebody={this.state.winebody}
+                  winedecant={this.state.winedecant}
+                  wineglassType={this.state.wineglassType}
+                  winepairings={this.state.winepairings}
+                  wineprimaryFlavors={this.state.wineprimaryFlavors}
+                  winepronunciation={this.state.winepronunciation}
+                  winesummary={this.state.winesummary}
+                  winesweetness={this.state.winesweetness}
+                  winetannin={this.state.winetannin}
+                  winetemp={this.state.winetemp}
                 >
                 </Wine>
               ))}
@@ -191,8 +231,8 @@ class Wines extends Component {
         {/* -------------------- */}
 
         </div>
-        
-        <Footer />
+{/*         
+        <Footer /> */}
       </Container>
     );
   }
