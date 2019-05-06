@@ -3,7 +3,7 @@ import axios from "axios";
 export default {
 
   getMaster: function(q) {
-    return axios.get("https://tannin-api.herokuapp.com/api/wine");
+    return axios.get("http://localhost:3001/api/wine/");
   },
 
   // getWineId: function(id) {
@@ -15,7 +15,7 @@ export default {
   // },
 
   getSavedWine: function() {
-    return axios.post("https://tannin-api.herokuapp.com/api/restaurant");
+    return axios.post("http://localhost:3001/api/restaurant");
   },
 
   deleteBook: function(id) {
@@ -28,7 +28,7 @@ export default {
 
 // DMS ---- hit route restaurant
 addWine: function(wineData) {
-  return axios.post("https://tannin-api.herokuapp.com/api/restaurant", wineData);
+  return axios.post("http://localhost:3001/api/restaurant/api/restaurant", wineData);
 }
 
 };  
