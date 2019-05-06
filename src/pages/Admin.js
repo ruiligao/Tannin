@@ -17,12 +17,13 @@ class Admin extends Component {
     employees: [],
 
     showMe: false,
+    message:""
 
   };
 
-  // componentDidMount() {
-  //   this.getSavedBooks();
-  // }
+  componentDidMount() {
+    this.getSavedWine();
+  }
 
   hideShow = () => {
     const newState = {...this.state}
@@ -41,23 +42,29 @@ class Admin extends Component {
 
   getSavedWine = () => {
     API.getSavedWine()
-      .then(res =>
+      .then(res => {
+        console.log(res.data);
         this.setState({
           restaurants: res.data
         })
+      }
       )
-      .catch(err => console.log(err));
+      .catch(() =>
+        this.setState({
+          message: "Wine not available"
+        })
+      );
   };
 
-  getSavedEmployee = () => {
-    API.getSavedEmployee()
-      .then(res =>
-        this.setState({
-          employees: res.data
-        })
-      )
-      .catch(err => console.log(err));
-  };
+  // getSavedEmployee = () => {
+  //   API.getSavedEmployee()
+  //     .then(res =>
+  //       this.setState({
+  //         employees: res.data
+  //       })
+  //     )
+  //     .catch(err => console.log(err));
+  // };
 
   handleWineDelete = id => {
     API.deleteWine(id).then(res => this.getSavedWine());
@@ -123,8 +130,6 @@ showMe={this.state.showMe}
               </Link></div>
         </div>
         </div>
-
-
         <div className="wineColWrap">
         <div className="wineColWrap1">
           {this.state.restaurants.length ? (
@@ -132,12 +137,8 @@ showMe={this.state.showMe}
               {this.state.restaurants.map(restaurant => (
                 <Restowine
                   key={restaurant._id}
-                  title={restaurant.title}
-                  subtitle={restaurant.subtitle}
-                  link={restaurant.link}
-                  authors={restaurant.authors.join(", ")}
-                  description={restaurant.description}
-                  image={restaurant.image}
+                  id={restaurant._id}
+ wines={restaurant.Wines}
                   Button={() => (
                     <button
                       onClick={() => this.handleBookDelete(restaurant._id)}

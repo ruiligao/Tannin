@@ -118,7 +118,7 @@ newState.winetemp = wine.temp
     const wine = this.state.wines.find(wine => wine._id === id);
 
     API.addWine({
-      wineId: id,
+      // wineId: id,
       // name: wine.name,
       // lacidity: wine.wine.aciditys,
       Wines: wine,

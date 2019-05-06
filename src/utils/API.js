@@ -31,6 +31,11 @@ addWine: function(wineData) {
   return axios.post("https://tannin-api.herokuapp.com/api/restaurant", wineData);
 }
 
+// something: function(wineData) {
+//   return axios.post("https://tannin-api.herokuapp.com/api/addwine", wineData);
+// }
+
+
 };  
 
 //   saveBook: function(bookData) {
