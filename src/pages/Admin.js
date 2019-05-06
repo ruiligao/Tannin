@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import Restowine from "../components/Restowine";
 import Employees from "../components/Employees";
 import Addemployee from "../components/Addemployee";
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
 import API from "../utils/API";
 import { Container } from "../components/Grid";
 import { List } from "../components/List";
@@ -80,18 +80,7 @@ class Admin extends Component {
       <Container>
 
 
-        <div>
-           <Link className="navbar-brand" to="/">
-           <i className="fas fa-wine-glass-alt"></i> Wine academy
-        </Link>
-        </div>
-        <div>
-          <Link className="navbar-brand" to="/">
-            Logout
-        </Link>
         
-        </div>
-
 <Addemployee
             handleInputChange={this.handleInputChange}
             id={this.state.id}
@@ -107,7 +96,6 @@ showMe={this.state.showMe}
             ></Addemployee>
 
 
-        <br></br>
 
         {/* <Jumbotron>
           <h1 className="text-center">
@@ -117,6 +105,20 @@ showMe={this.state.showMe}
         </Jumbotron> */}
 
 <div className="wineandemployeewrapper">
+<div className="brandCol">
+<div>
+           <Link className="navbar-brand" to="/">
+           <i className="fas fa-wine-glass-alt"></i> Wine academy
+        </Link>
+        </div>
+        <div>
+          <Link className="navbar-brand" to="/">
+            Logout
+        </Link>
+        
+        </div>
+
+</div>
         <div className="wineCol">
         <div className="wineTitleWrap">
         <div className="wineTitleWrap1">
@@ -197,8 +199,8 @@ showMe={this.state.showMe}
         </div>
         </div>
 
-
-        <Footer />
+{/* 
+        <Footer /> */}
       </Container>
     );
   }

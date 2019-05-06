@@ -3,7 +3,7 @@ import Jumbotron from "../components/Jumbotron";
 import Card from "../components/Card";
 // import Form from "../components/Form";
 import Wine from "../components/Wine";
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
 // import Infowine from "../components/Infowine";
 import { Link } from "react-router-dom";
 import API from "../utils/API";
@@ -231,8 +231,8 @@ newState.winetemp = wine.temp
         {/* -------------------- */}
 
         </div>
-        
-        <Footer />
+{/*         
+        <Footer /> */}
       </Container>
     );
   }
