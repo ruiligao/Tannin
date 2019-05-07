@@ -7,6 +7,7 @@ import EmployeePage from "./pages/EmployeePage";
 import Admin from "./pages/Admin";
 // import Saved from "./pages/Saved";
 import NoMatch from "./pages/NoMatch";
+import Quiz from "./pages/Quiz";
 // import Nav from "./components/Nav";
 // import Question from "./pages/Question";
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route exact path="/" component={Login} />
         <Route exact path="/admin" component={Admin} />
         <Route exact path="/wines" component={Wines} />
+        <Route exact path="/quiz" component={Quiz} />
         <Route exact path="/employeepage" component={EmployeePage} />
           <Route component={NoMatch} />
         </Switch>
