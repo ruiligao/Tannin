@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 // importing components
-import QuestionCard from "./components/QuestionCard";
-import Wrapper from "./components/Wrapper";
+import QuestionCard from "../components/QuestionCard";
+import Wrapper from "../components/Wrapper";
 // importing the characters array from the json file
-import questions from "./questions.json";
+import questions from "../questions.json";
 //importing css stylings
-import './App.css';
+// import './App.css';
 
 class Quiz extends Component {
   // Setting this.state.characters to the character json array
