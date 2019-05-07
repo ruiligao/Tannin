@@ -4,6 +4,7 @@ import Restowine from "../components/Restowine";
 import Employees from "../components/Employees";
 import Addemployee from "../components/Addemployee";
 // import Footer from "../components/Footer";
+import Header from "../components/Header";
 import API from "../utils/API";
 import { Container } from "../components/Grid";
 import { List } from "../components/List";
@@ -36,10 +37,38 @@ class Admin extends Component {
     winetannin: "",
     winetemp: "",
 
+    user: "",
+    id: "",
+    restaurant: "",
+    name: "",
+    lastName: "",
+    email: "",
+    password: "",
+    loginemail: "",
+    loginpassword: "",
+    loggedIn: true,
+    redirectTo: null,
+
   };
 
   componentDidMount() {
     this.getSavedWine();
+    API.getUser().then(response => {
+      console.log("LOGGED IN USER: ", response)
+      if (!!response.data.user) {
+        console.log('THERE IS A USER')
+        this.setState({
+          loggedIn: true,
+          user: response.data.user
+        });
+      } else {
+        this.setState({
+          loggedIn: false,
+          user: null,
+          redirectTo: "/"
+        });
+      }
+    });
   }
 
   hideShow2 = () => {
@@ -83,6 +112,18 @@ class Admin extends Component {
       
     });
   };
+  handleLogout = event => {
+    event.preventDefault();
+    console.log('logging out');
+    API.logOut().then(response => {
+      console.log(response.data);
+      this.setState({
+        loggedIn: false,
+        user: null,
+      })
+      this.props.history.push(`/`);
+    });
+  };
 
   getSavedWine = () => {
     API.getSavedWine()
@@ -124,8 +165,8 @@ class Admin extends Component {
     return (
 
       <Container>
-
-<Addemployee
+        <Header user={this.state.user} /> 
+      <Addemployee
             handleInputChange={this.handleInputChange}
             id={this.state.id}
              restaurant={this.state.restaurant}
@@ -156,9 +197,10 @@ showMe2={this.state.showMe2}
         </Link>
         </div>
         <div>
-          <Link className="navbar-brand" to="/">
+        <button onClick={this.handleLogout} type="submit" className="btn btn-lg btn-danger float-right">
             Logout
-        </Link>
+         </button>
+
         
         </div>
 
