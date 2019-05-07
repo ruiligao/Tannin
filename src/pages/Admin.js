@@ -116,20 +116,9 @@ class Admin extends Component {
   render() {
     return (
       <Container>
-        <div>
-          <Link className="navbar-brand" to="/">
-            <i className="fas fa-wine-glass-alt"></i> Wine academy
-        </Link>
-        </div>
-        <div>
-          <button onClick={this.handleLogout} type="submit" className="btn btn-lg btn-danger float-right">
-            Logout
-        </button>
           {/* <Link className="navbar-brand" to="/">
             Logout
         </Link> */}
-
-        </div>
         <Header user={this.state.user} />
 
         <Addemployee
@@ -163,9 +152,9 @@ class Admin extends Component {
         </Link>
             </div>
             <div>
-              <Link className="navbar-brand" to="/">
-                Logout
-        </Link>
+            <button onClick={this.handleLogout} type="submit" className="btn btn-lg btn-danger float-right">
+            Logout
+        </button>
 
             </div>
 
