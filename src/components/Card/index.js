@@ -2,7 +2,7 @@ import React from "react";
 import "./style.css";
 function Card({ title, children }) {
   return (
-    <div className="card mt-4">
+    <div className="card1">
       <div className="card-header">
         <h3>
           <strong>
