@@ -40,6 +40,7 @@ class SignupLogin extends Component {
     const { restaurant, firstName, lastName, email, password } = this.state;
     if (firstName && lastName && restaurant && email && password) {
       const userInfo = { firstName, lastName, restaurant, email, password }
+      const loginInfor = { email, password }
       // console.log(userInfo);
       API.signUpSubmit(userInfo).then(response => {
         console.log(">>>>>>>>>>>>>");
@@ -48,11 +49,27 @@ class SignupLogin extends Component {
         console.log(">>>>>>>>>>>>>")
         if (!response.data.error) {
           console.log('youre good')
-          // this.login(loginInfor);
-          // 
-          this.setState({
-            redirectTo: "/admin"
-          })
+          API.logIn(loginInfor).then(response => {
+            console.log("USER OBJ: ", response);
+            if (response.status === 200) {
+              // update the state
+              if (response.data.isAdmin) {
+                this.setState({
+                  // loggedIn: true,
+                  // user: response.data.user,
+                  redirectTo: '/admin'
+                });
+              }
+              else {
+                this.setState({
+                  redirectTo: "/employeepage"
+                });
+              }
+            }
+          }).catch(err => {
+            console.log(err)
+          });
+
         }
         else {
           console.log('duplicate')
@@ -98,7 +115,7 @@ class SignupLogin extends Component {
       console.log(err)
     });
   }
-  
+
   render() {
     if (this.state.redirectTo) {
       return <Redirect to={{ pathname: this.state.redirectTo }} />
