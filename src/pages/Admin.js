@@ -15,9 +15,25 @@ class Admin extends Component {
   state = {
     restaurants: [],
     employees: [],
+    wines:[],
 
     showMe: false,
-    message:""
+    // text: "add wine",
+    wineId: "",
+    wineName:"",
+    wineacidity: "",
+    wineageability: "",
+    winealcohol: "",
+    winebody: "",
+    winedecant: "",
+    wineglassType: "",
+    winepairings: "",
+    wineprimaryFlavors: [],
+    winepronunciation: "",
+    winesummary: "",
+    winesweetness: "",
+    winetannin: "",
+    winetemp: "",
 
   };
 
@@ -25,12 +41,31 @@ class Admin extends Component {
     this.getSavedWine();
   }
 
-  hideShow = () => {
-    const newState = {...this.state}
-    newState.showMe = !newState.showMe 
+  hideShow = id => {
+    const newState = { ...this.state }
+    const wine = this.state.wines.find(wine => wine._id === id);
+    newState.wineId = id
+    newState.wineName = wine.name
+    newState.wineacidity = wine.acidity
+    newState.wineageability = wine.ageability
+    newState.winealcohol = wine.alcohol
+    newState.winebody = wine.body
+    newState.winedecant = wine.decant
+    newState.wineglassType = wine.glassType
+    newState.winepairings = wine.pairings
+    newState.wineprimaryFlavors = wine.primaryFlavors
+    newState.winepronunciation = wine.pronunciation
+    newState.winesummary = wine.summary
+    newState.winesweetness = wine.sweetness
+    newState.winetannin = wine.tannin
+    newState.winetemp = wine.temp
+    newState.showMe = !newState.showMe
     newState.scale = this.state.scale > 1 ? 1 : 1.5
+
     this.setState(newState);
   }
+
+  
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -44,8 +79,10 @@ class Admin extends Component {
     API.getSavedWine()
       .then(res => {
         console.log(res.data);
+        // console.log(res.data[0]);
         this.setState({
-          restaurants: res.data
+          restaurants: res.data[0],
+          wines: res.data[0].Wines
         })
       }
       )
@@ -134,21 +171,33 @@ showMe={this.state.showMe}
         </div>
         <div className="wineColWrap">
         <div className="wineColWrap1">
-          {this.state.restaurants.length ? (
+          {this.state.wines.length ? (
             <List>
-              {this.state.restaurants.map(restaurant => (
+              {this.state.wines.map(wine => (
                 <Restowine
-                  key={restaurant._id}
-                  id={restaurant._id}
- wines={restaurant.Wines}
-                  Button={() => (
-                    <button
-                      onClick={() => this.handleWineDelete(restaurant._id)}
-                      className="btn btn-danger ml-2"
-                    >
-                      Delete
-                        </button>
-                  )}
+                  key={wine._id}
+                  id={wine._id}
+                  name={wine.name}
+                  handleWineDelete={this.handleWineDelete}
+
+                  showMe={this.state.showMe}
+                  hideShow={this.hideShow}
+                  wineName={this.state.wineName}
+                  wineId={this.state.wineId}
+                  wineacidity={this.state.wineacidity}
+                  wineageability={this.state.wineageability}
+                  winealcohol={this.state.winealcohol}
+                  winebody={this.state.winebody}
+                  winedecant={this.state.winedecant}
+                  wineglassType={this.state.wineglassType}
+                  winepairings={this.state.winepairings}
+                  wineprimaryFlavors={this.state.wineprimaryFlavors}
+                  winepronunciation={this.state.winepronunciation}
+                  winesummary={this.state.winesummary}
+                  winesweetness={this.state.winesweetness}
+                  winetannin={this.state.winetannin}
+                  winetemp={this.state.winetemp}
+
                 />
               ))}
             </List>

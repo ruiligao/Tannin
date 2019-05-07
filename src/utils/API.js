@@ -12,7 +12,7 @@ export default {
   // },
 
   // addWine: function(wineData) {
-  //   return axios.put("https://tannin-api.herokuapp.com/api/restaurant", wineData);
+  //   return axios.put("https://tannin-api.herokuapp.com/api/addwine", wineData);
   // },
 
   // deleteWine: function(id) {
@@ -26,12 +26,21 @@ export default {
   },
 
   getSavedWine: function() {
-    return axios.get("http://localhost:3001/api/restaurant/");
+    return axios.get("http://localhost:3001/api/getwine/");
   },
 
   addWine: function(wineData) {
-    return axios.put("http://localhost:3001/api/restaurant/", wineData);
+    console.log(wineData);
+    return axios.put("http://localhost:3001/api/addwine/", wineData);
   },
+ 
+  deleteWine: function(id) {
+    console.log(id);
+    return axios.delete("http://localhost:3001/api/addwine/" + id);
+  },
+
+
+
 
   // getWineId: function(id) {
   //   return axios.get("https://tannin-api.herokuapp.com/api/wine/" + id);
