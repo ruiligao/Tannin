@@ -116,14 +116,24 @@ newState.winetemp = wine.temp
     // newState.text = "added" 
 
     const wine = this.state.wines.find(wine => wine._id === id);
+console.log(id);
+const wineData = {
+Wines: wine
+}
+API.addWine(wineData).then(() => this.getMaster());
+console.log(id);
+};
 
-    API.addWine({
-      // wineId: id,
-      // name: wine.name,
-      // lacidity: wine.wine.aciditys,
-      Wines: wine,
-    }).then(() => this.getMaster());
-  };
+//     const wine = this.state.wines.find(wine => wine._id === id);
+// console.log(id);
+//     API.addWine({
+//       // wineId: id,
+//       // name: wine.name,
+//       // lacidity: wine.wine.aciditys,
+//       Wines: id,
+//     }).then(() => this.getMaster());
+//     console.log(id);
+//   };
 
   render() {
 

@@ -12,11 +12,14 @@ function Wine({ name, id, hideShow, showMe, handleWineAdd,wineName, wineId, wine
       <ListItem>
         <div className="listitemdiv">
           <div className="winenamediv">
+
           <div className="winenamediv2">
-               <div><button className="winenamebtn" onClick={() => hideShow(id)}>{name}</button></div> <div><button className="btnadd" onClick={() => handleWineAdd(id)}><i className="fa fa-plus-circle fa-2x" aria-hidden="true"></i></button></div>   
-               </div>        
+               <div><button className="winenamebtn" onClick={() => hideShow(id)}>{name}</button></div>
+               <div><button className="btnadd" onClick={() => handleWineAdd(id)}><i className="fa fa-plus-circle fa-2x" aria-hidden="true"></i></button></div>   
+               </div>
             
             <div>{id}</div>
+
             <div>
               {showMe ?
                 <div className="overlay4">
@@ -61,6 +64,8 @@ function Wine({ name, id, hideShow, showMe, handleWineAdd,wineName, wineId, wine
                 : null
               }
             </div>
+
+            
             </div>
             </div>
 
