@@ -2,28 +2,39 @@ import React, { Component } from 'react';
 // importing components
 import QuestionCard from "../components/QuestionCard";
 import Wrapper from "../components/Wrapper";
-// importing the characters array from the json file
+// importing the question array from the json file
 import questions from "../questions.json";
+// importing the wine template for testing purposes 
+import wineData from "../franciacorta.json"
 //importing css stylings
-// import './App.css';
+import './style.css';
 
 class Quiz extends Component {
     // Setting this.state.characters to the character json array
     // Setting score, losses, and highScore to 0 for the start of each game
     state = {
       questions,
-      clicked: false,
+      filteredQs: [],
+      wineData,
       score: 0,
       losses: 0,
       highScore: 0,
-      guesses: []
     };
   
     // componentWillMount shuffles the CharacterCards before the DOM is loaded
     componentWillMount() {
-      this.shuffle(questions);
+      const categories = Object.keys(wineData)
+      const filteredQs = questions.filter(q => {
+        return categories.includes(q.cat)
+      });
+      console.log(filteredQs)
+      this.setState ({filteredQs: filteredQs})
+      this.shuffle(filteredQs);
+
     };
   
+    
+
     // Here we use the Fisher-Yates alogrithm to randomize the characters array
     shuffle(arr) {
       var j, x, i;
@@ -41,11 +52,15 @@ class Quiz extends Component {
       const powerPuff = {...this.state};
   
       // in this if statement we check to see if the player lost, log their loss, and clear the guesses array & score
-      if(powerPuff.guesses.includes(questionId)) {
-        console.log("You lose");
-        powerPuff.losses = powerPuff.losses +1;
-        powerPuff.guesses = [];
-        powerPuff.score = 0
+      // if(powerPuff.guesses.includes(questionId)) {
+      //   console.log("You lose");
+      //   powerPuff.losses = powerPuff.losses +1;
+      //   powerPuff.guesses = [];
+      //   powerPuff.score = 0
+      // }
+
+      if ("button#false") {
+
       }
       // if they didn't lose, we increment their score and add the character to the guesses array
       else
@@ -77,14 +92,25 @@ class Quiz extends Component {
             <QuestionCard 
               // each card will inherit an id, a key, a name, and an image from its respective array object
               handleBtnClick={this.handleBtnClick}
+              shuffle={this.shuffle}
               id={question.id}
               key={question.id}
               question={question.question}
-              answers={question.falseAnswers}
-              shuffle={this.shuffle}
+              falseAnswers={question.falseAnswers}
+              category = {question.category}
+              wineName={wineData.name}
+              sweetness={wineData.sweetness}
+              body={wineData.body}
+              tannin={wineData.tannin}
+              acidity={wineData.acidity}
+              alcohol={wineData.alcohol}
+              temp={wineData.temp}
+              decant={wineData.decant}
+              ageability={wineData.ageability}
+              // filteredQs={this.filteredQs}
             />
           ))}
-            <button>Submit Answers</button>
+            <button className="submitFinal">Submit Answers</button>
   
         </Wrapper>
         </div>
