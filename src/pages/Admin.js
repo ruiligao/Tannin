@@ -38,8 +38,7 @@ class Admin extends Component {
     winetemp: "",
 
     user: "",
-    id: "",
-    restaurant: "",
+    restaurant_id: "",
     name: "",
     lastName: "",
     email: "",
@@ -52,25 +51,29 @@ class Admin extends Component {
   };
 
   componentDidMount() {
-    this.getSavedWine();
-    API.getUser().then(response => {
-      console.log("LOGGED IN USER: ", response)
-      if (!!response.data.user) {
-        console.log('THERE IS A USER')
-        this.setState({
-          loggedIn: true,
-          user: response.data.user
-        });
-      } else {
-        this.setState({
-          loggedIn: false,
-          user: null,
-          redirectTo: "/"
-        });
-      }
-    });
+    this.getUser()
   }
 
+
+  getUser= ()=> {
+  API.getUser().then(response => {
+    console.log("LOGGED IN USER: ", response)
+    if (!!response.data.user) {
+      console.log('THERE IS A USER')
+      this.setState({
+        loggedIn: true,
+        user: response.data.user
+      })
+      this.getSavedWine()
+    } else {
+      this.setState({
+        loggedIn: false,
+        user: null,
+        redirectTo: "/"
+      });
+    }
+  });
+}
   hideShow2 = () => {
     const newState = {...this.state}
     newState.showMe2 = !newState.showMe2
@@ -126,13 +129,17 @@ class Admin extends Component {
   };
 
   getSavedWine = () => {
-    API.getSavedWine()
+    console.log("////////////////");
+    console.log(this.state.user.email);
+    console.log("////////////////");
+    const admin={email:this.state.user.email};
+    API.getSavedWine(admin)
       .then(res => {
-        console.log(res.data);
+        console.log(res.data._id);
         // console.log(res.data[0]);
         this.setState({
-          restaurants: res.data[0],
-          wines: res.data[0].Wines
+          restaurant_id: res.data._id,
+          wines: res.data.Wines,
         })
       }
       )

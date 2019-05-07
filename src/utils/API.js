@@ -39,8 +39,9 @@ getUser: function () {
     return axios.get("http://localhost:3001/api/wine/");
   },
 
-  getSavedWine: function() {
-    return axios.get("http://localhost:3001/api/getwine/");
+  getSavedWine: function(admin) {
+    console.log(admin);
+    return axios.post("http://localhost:3001/api/getwine/",admin);
   },
 
   addWine: function(wineData) {
