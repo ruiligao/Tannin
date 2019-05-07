@@ -12,20 +12,20 @@ class Login extends Component {
     q: "",
     showMe: false,
 
-    id:"",
-    restaurant:"",
-    name:"",
-    lastName:"",
-    email:"",
-    password:"",
-    loginemail:"",
-    loginpassword:""
+    id: "",
+    restaurant: "",
+    name: "",
+    lastName: "",
+    email: "",
+    password: "",
+    loginemail: "",
+    loginpassword: ""
   };
 
 
   hideShow = () => {
-    const newState = {...this.state}
-    newState.showMe = !newState.showMe 
+    const newState = { ...this.state }
+    newState.showMe = !newState.showMe
     newState.scale = this.state.scale > 1 ? 1 : 1.5
 
     this.setState(newState);
@@ -36,7 +36,7 @@ class Login extends Component {
     const { name, value } = event.target;
     this.setState({
       [name]: value
-      
+
     });
   };
 
@@ -77,24 +77,24 @@ class Login extends Component {
   render() {
     return (
       <Container>
-        
-        <Loginsignup
-            handleInputChange={this.handleInputChange}
-            id={this.state.id}
-             restaurant={this.state.restaurant}
-             name={this.state.name}
-             lastName={this.state.lastName}
-             email={this.state.email}
-             password={this.state.password}
-             loginemail={this.state.loginemail}
-             loginpassword={this.state.loginpassword}
-showMe={this.state.showMe}
-      hideShow = {this.hideShow}
-            ></Loginsignup>
-          
 
- 
-{/*         
+        <Loginsignup
+          handleInputChange={this.handleInputChange}
+          id={this.state.id}
+          restaurant={this.state.restaurant}
+          name={this.state.name}
+          lastName={this.state.lastName}
+          email={this.state.email}
+          password={this.state.password}
+          loginemail={this.state.loginemail}
+          loginpassword={this.state.loginpassword}
+          showMe={this.state.showMe}
+          hideShow={this.hideShow}
+        ></Loginsignup>
+
+
+
+        {/*         
         <Footer /> */}
       </Container>
     );

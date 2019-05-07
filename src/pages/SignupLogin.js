@@ -33,7 +33,7 @@ class SignupLogin extends Component {
       [name]: value
 
     });
-  };
+  }
 
   handleSignupFormSubmit = async event => {
     event.preventDefault();
@@ -49,10 +49,10 @@ class SignupLogin extends Component {
         if (!response.data.error) {
           console.log('youre good')
           // this.login(loginInfor);
-            // 
-            this.setState({
-              redirectTo: "/admin"
-            })
+          // 
+          this.setState({
+            redirectTo: "/admin"
+          })
         }
         else {
           console.log('duplicate')
@@ -65,39 +65,40 @@ class SignupLogin extends Component {
       })
     }
   }
+
   handleLoginInputChange = event => {
     const { name, value } = event.target;
     this.setState({
       [name]: value
 
     });
-  };
+  }
 
   handleLoginFormSubmit = event => {
     event.preventDefault();
     const loginInfor = { email: this.state.loginemail, password: this.state.loginpassword }
-    this.login(loginInfor);
-  };
-
-  login(loginInfor) {
     API.logIn(loginInfor).then(response => {
-      console.log(response.data.isAdmin);
+      console.log("USER OBJ: ", response);
       if (response.status === 200) {
         // update the state
-        if(response.data.isAdmin){
-        this.setState({
-          // loggedIn: true,
-          // user: response.data.user,
-          redirectTo: '/admin'
-        })}
+        if (response.data.isAdmin) {
+          this.setState({
+            // loggedIn: true,
+            // user: response.data.user,
+            redirectTo: '/admin'
+          });
+        }
         else {
           this.setState({
             redirectTo: "/employeepage"
-          })
+          });
         }
       }
-    })
+    }).catch(err => {
+      console.log(err)
+    });
   }
+  
   render() {
     if (this.state.redirectTo) {
       return <Redirect to={{ pathname: this.state.redirectTo }} />
