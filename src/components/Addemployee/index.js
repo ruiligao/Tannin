@@ -2,12 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 
-function Addemployee({ showMe, hideShow, name, lastName, email,password, handleInputChange, handleFormSubmit }) {
+function Addemployee({ showMe2, hideShow2, name, lastName, email,password, handleInputChange, handleFormSubmit }) {
   return (
 
     <div>
 
-    {showMe ?
+    {showMe2 ?
       <div className="overlay1">
         <div className="wrapper1">
         <div className="wrapper2">
@@ -111,7 +111,7 @@ function Addemployee({ showMe, hideShow, name, lastName, email,password, handleI
 
 <br></br>
 
-    <button onClick={() => hideShow()}>CLOSE</button>
+    <button onClick={() => hideShow2()}>CLOSE</button>
 
     <div><Link
             className={window.location.pathname === "/employeepage" ? "nav-link active" : "nav-link"} 

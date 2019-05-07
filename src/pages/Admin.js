@@ -19,6 +19,7 @@ class Admin extends Component {
     wines:[],
 
     showMe: false,
+    showMe2: false,
     // text: "add wine",
     wineId: "",
     wineName:"",
@@ -68,6 +69,14 @@ class Admin extends Component {
         });
       }
     });
+  }
+
+  hideShow2 = () => {
+    const newState = {...this.state}
+    newState.showMe2 = !newState.showMe2
+    newState.scale = this.state.scale > 1 ? 1 : 1.5
+
+    this.setState(newState);
   }
 
   hideShow = id => {
@@ -167,8 +176,8 @@ class Admin extends Component {
              password={this.state.password}
              loginemail={this.state.loginemail}
              loginpassword={this.state.loginpassword}
-showMe={this.state.showMe}
-      hideShow = {this.hideShow}
+showMe2={this.state.showMe2}
+      hideShow2 = {this.hideShow2}
             ></Addemployee>
 
 
@@ -252,7 +261,7 @@ showMe={this.state.showMe}
         <div className="empTitleWrap">
         <div className="empTitleWrap1">
         <div>Employees</div>
-        <div><button onClick={() => this.hideShow()}>Add Employee</button></div>
+        <div><button onClick={() => this.hideShow2()}>Add Employee</button></div>
         </div>
         </div>
 
