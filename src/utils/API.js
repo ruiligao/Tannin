@@ -20,7 +20,21 @@ export default {
   // },
 
 //------------------------------------------------------
-
+signUpSubmit: function (userInfo) {
+  console.log(userInfo);
+  return axios.post("/api/user/signup", userInfo);
+},
+logIn: function (loginInfor) {
+  console.log(loginInfor);
+  return axios.post("/api/user/login", loginInfor);
+},
+logOut: function () {
+  // console.log(userInfo);
+  return axios.post("/api/user/logout");
+},
+getUser: function () {
+  return axios.get('/api/user/getUser');
+},
   getMaster: function(q) {
     return axios.get("http://localhost:3001/api/wine/");
   },
