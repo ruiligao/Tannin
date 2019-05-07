@@ -4,6 +4,7 @@ import Restowine from "../components/Restowine";
 import Employees from "../components/Employees";
 import Addemployee from "../components/Addemployee";
 // import Footer from "../components/Footer";
+import Header from "../components/Header";
 import API from "../utils/API";
 import { Container } from "../components/Grid";
 import { List } from "../components/List";
@@ -15,22 +16,98 @@ class Admin extends Component {
   state = {
     restaurants: [],
     employees: [],
+    wines:[],
 
     showMe: false,
-    message:""
+    showMe2: false,
+    // text: "add wine",
+    wineId: "",
+    wineName:"",
+    wineacidity: "",
+    wineageability: "",
+    winealcohol: "",
+    winebody: "",
+    winedecant: "",
+    wineglassType: "",
+    winepairings: "",
+    wineprimaryFlavors: [],
+    winepronunciation: "",
+    winesummary: "",
+    winesweetness: "",
+    winetannin: "",
+    winetemp: "",
+
+    user: "",
+    id: "",
+    restaurant: "",
+    name: "",
+    lastName: "",
+    email: "",
+    password: "",
+    loginemail: "",
+    loginpassword: "",
+    loggedIn: true,
+    redirectTo: null,
 
   };
 
   componentDidMount() {
     this.getSavedWine();
+
+    API.getUser().then(response => {
+      console.log("LOGGED IN USER: ", response)
+      if (!!response.data.user) {
+
+        console.log('THERE IS A USER')
+        this.setState({
+          loggedIn: true,
+          user: response.data.user
+          
+        });
+      } else {
+        this.setState({
+          loggedIn: false,
+          user: null,
+          redirectTo: "/"
+        });
+        console.log(this.state.user)
+      }
+    });
   }
 
-  hideShow = () => {
+  hideShow2 = () => {
     const newState = {...this.state}
-    newState.showMe = !newState.showMe 
+    newState.showMe2 = !newState.showMe2
     newState.scale = this.state.scale > 1 ? 1 : 1.5
+
     this.setState(newState);
   }
+
+  hideShow = id => {
+    const newState = { ...this.state }
+    const wine = this.state.wines.find(wine => wine._id === id);
+    newState.wineId = id
+    newState.wineName = wine.name
+    newState.wineacidity = wine.acidity
+    newState.wineageability = wine.ageability
+    newState.winealcohol = wine.alcohol
+    newState.winebody = wine.body
+    newState.winedecant = wine.decant
+    newState.wineglassType = wine.glassType
+    newState.winepairings = wine.pairings
+    newState.wineprimaryFlavors = wine.primaryFlavors
+    newState.winepronunciation = wine.pronunciation
+    newState.winesummary = wine.summary
+    newState.winesweetness = wine.sweetness
+    newState.winetannin = wine.tannin
+    newState.winetemp = wine.temp
+    newState.showMe = !newState.showMe
+    newState.scale = this.state.scale > 1 ? 1 : 1.5
+
+    this.setState(newState);
+  }
+
+  
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -39,13 +116,27 @@ class Admin extends Component {
       
     });
   };
+  handleLogout = event => {
+    event.preventDefault();
+    console.log('logging out');
+    API.logOut().then(response => {
+      console.log(response.data);
+      this.setState({
+        loggedIn: false,
+        user: null,
+      })
+      this.props.history.push(`/`);
+    });
+  };
 
   getSavedWine = () => {
     API.getSavedWine()
       .then(res => {
         console.log(res.data);
+        // console.log(res.data[0]);
         this.setState({
-          restaurants: res.data
+          restaurants: res.data[0],
+          wines: res.data[0].Wines
         })
       }
       )
@@ -67,7 +158,7 @@ class Admin extends Component {
   // };
 
   handleWineDelete = id => {
-    API.deleteWine(id).then(res => this.getSavedWine());
+    API.deleteWine(id).then(res => this.componentDidMount());
   };
 
   handleEmployeeDelete = id => {
@@ -80,8 +171,8 @@ class Admin extends Component {
       <Container>
 
 
-        
-<Addemployee
+        {/* MODAL ----------------------- */}
+      <Addemployee
             handleInputChange={this.handleInputChange}
             id={this.state.id}
              restaurant={this.state.restaurant}
@@ -91,11 +182,11 @@ class Admin extends Component {
              password={this.state.password}
              loginemail={this.state.loginemail}
              loginpassword={this.state.loginpassword}
-showMe={this.state.showMe}
-      hideShow = {this.hideShow}
+showMe2={this.state.showMe2}
+      hideShow2 = {this.hideShow2}
             ></Addemployee>
 
-
+        {/* MODAL ----------------------- */}
 
         {/* <Jumbotron>
           <h1 className="text-center">
@@ -107,14 +198,16 @@ showMe={this.state.showMe}
 <div className="wineandemployeewrapper">
 <div className="brandCol">
 <div>
+<Header user={this.state.user} /> 
            <Link className="navbar-brand" to="/">
            <i className="fas fa-wine-glass-alt"></i> Wine academy
         </Link>
         </div>
         <div>
-          <Link className="navbar-brand" to="/">
+        <button onClick={this.handleLogout} type="submit" className="btn btn-lg btn-danger float-right">
             Logout
-        </Link>
+         </button>
+
         
         </div>
 
@@ -134,21 +227,33 @@ showMe={this.state.showMe}
         </div>
         <div className="wineColWrap">
         <div className="wineColWrap1">
-          {this.state.restaurants.length ? (
+          {this.state.wines.length ? (
             <List>
-              {this.state.restaurants.map(restaurant => (
+              {this.state.wines.map(wine => (
                 <Restowine
-                  key={restaurant._id}
-                  id={restaurant._id}
- wines={restaurant.Wines}
-                  Button={() => (
-                    <button
-                      onClick={() => this.handleBookDelete(restaurant._id)}
-                      className="btn btn-danger ml-2"
-                    >
-                      Delete
-                        </button>
-                  )}
+                  key={wine._id}
+                  id={wine._id}
+                  name={wine.name}
+                  handleWineDelete={this.handleWineDelete}
+
+                  showMe={this.state.showMe}
+                  hideShow={this.hideShow}
+                  wineName={this.state.wineName}
+                  wineId={this.state.wineId}
+                  wineacidity={this.state.wineacidity}
+                  wineageability={this.state.wineageability}
+                  winealcohol={this.state.winealcohol}
+                  winebody={this.state.winebody}
+                  winedecant={this.state.winedecant}
+                  wineglassType={this.state.wineglassType}
+                  winepairings={this.state.winepairings}
+                  wineprimaryFlavors={this.state.wineprimaryFlavors}
+                  winepronunciation={this.state.winepronunciation}
+                  winesummary={this.state.winesummary}
+                  winesweetness={this.state.winesweetness}
+                  winetannin={this.state.winetannin}
+                  winetemp={this.state.winetemp}
+
                 />
               ))}
             </List>
@@ -163,7 +268,7 @@ showMe={this.state.showMe}
         <div className="empTitleWrap">
         <div className="empTitleWrap1">
         <div>Employees</div>
-        <div><button onClick={() => this.hideShow()}>Add Employee</button></div>
+        <div><button onClick={() => this.hideShow2()}>Add Employee</button></div>
         </div>
         </div>
 
