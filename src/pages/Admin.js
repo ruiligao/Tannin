@@ -51,7 +51,31 @@ class Admin extends Component {
   };
 
   componentDidMount() {
+<<<<<<< HEAD
     this.getUser()
+=======
+    this.getSavedWine();
+
+    API.getUser().then(response => {
+      console.log("LOGGED IN USER: ", response)
+      if (!!response.data.user) {
+
+        console.log('THERE IS A USER')
+        this.setState({
+          loggedIn: true,
+          user: response.data.user
+          
+        });
+      } else {
+        this.setState({
+          loggedIn: false,
+          user: null,
+          redirectTo: "/"
+        });
+        console.log(this.state.user)
+      }
+    });
+>>>>>>> 07db2655ffa1e802df1cccd81123e61fe2502903
   }
 
 
@@ -161,7 +185,7 @@ class Admin extends Component {
   // };
 
   handleWineDelete = id => {
-    API.deleteWine(id).then(res => this.getSavedWine());
+    API.deleteWine(id).then(res => this.componentDidMount());
   };
 
   handleEmployeeDelete = id => {
@@ -172,7 +196,9 @@ class Admin extends Component {
     return (
 
       <Container>
-        <Header user={this.state.user} /> 
+
+
+        {/* MODAL ----------------------- */}
       <Addemployee
             handleInputChange={this.handleInputChange}
             id={this.state.id}
@@ -187,7 +213,7 @@ showMe2={this.state.showMe2}
       hideShow2 = {this.hideShow2}
             ></Addemployee>
 
-
+        {/* MODAL ----------------------- */}
 
         {/* <Jumbotron>
           <h1 className="text-center">
@@ -199,6 +225,7 @@ showMe2={this.state.showMe2}
 <div className="wineandemployeewrapper">
 <div className="brandCol">
 <div>
+<Header user={this.state.user} /> 
            <Link className="navbar-brand" to="/">
            <i className="fas fa-wine-glass-alt"></i> Wine academy
         </Link>

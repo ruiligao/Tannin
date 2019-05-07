@@ -117,7 +117,7 @@ function Addemployee({ showMe2, hideShow2, name, lastName, email,password, handl
             className={window.location.pathname === "/employeepage" ? "nav-link active" : "nav-link"} 
             to="/employeepage"
           ><button>
-            Emplyee page
+            Employee page
             </button>
               </Link></div>
     </div>

@@ -3,15 +3,25 @@ import "./style.css";
 
 
 function QuestionCard(props) {
-    console.log(props);
-    const { answers } = props;
-    let shuffledAnswers = answers ? props.shuffle(answers):null
+    const { falseAnswers } = props;
+    let shuffledFalse = falseAnswers ? props.shuffle(falseAnswers):null
     return (
         <div className="card">
-        <h2 className="questionName">{props.question}{props.name}?</h2>
-                    {shuffledAnswers ? shuffledAnswers.slice(0,3).map(answer => { 
-                     return (<div><button>{ answer }</button><br/></div>)
-                    }) : <div><input></input><button>Submit</button></div>}
+        <h2 className="questionName">{props.question}{props.wineName}?</h2>
+                {/* If false answers are available, render button for each answer, else render a submit (specifically for the flavors question) */}
+                    {shuffledFalse ? shuffledFalse.slice(0,3).map(answer => { 
+                        return (
+                        <div>
+                            <button className="false">{ answer }</button><br/>
+                        </div>
+                        )
+                    }) : <div>
+                            <input></input>
+                            <button className="submitAnswer">Submit</button>
+                        </div>
+                    }
+
+                    <button className="true">{props[`${props.category}`]}</button>
         </div>
     );
 }
