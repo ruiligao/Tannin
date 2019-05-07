@@ -36,11 +36,8 @@ export default {
  
   deleteWine: function(id) {
     console.log(id);
-    return axios.delete("http://localhost:3001/api/addwine/" + id);
+    return axios.delete("http://localhost:3001/api/restaurant/" + id);
   },
-
-
-
 
   // getWineId: function(id) {
   //   return axios.get("https://tannin-api.herokuapp.com/api/wine/" + id);
