@@ -13,7 +13,7 @@ function Addemployee({ showMe2, hideShow2, name, lastName, email,password, handl
         <div className="wrapper2">
         <div className="wrapper3">
       <div>
-      <div> New Employee Form</div>
+      <div className="newempformtext"> New Employee Form</div>
     <form>
       <div className="form-group">
       <div>
@@ -29,7 +29,7 @@ function Addemployee({ showMe2, hideShow2, name, lastName, email,password, handl
           id=""
           type="text"
           value={name}
-          placeholder="First Name"
+          // placeholder="First Name"
           name="name"
           onChange={handleAddEmployeeChange}
           required
@@ -41,11 +41,11 @@ function Addemployee({ showMe2, hideShow2, name, lastName, email,password, handl
         </label>
         <div>
         <input
-          className="form-control"
+          className="formcontrol"
           id=""
           type="text"
           value={lastName}
-          placeholder="Last Name"
+          // placeholder="Last Name"
           name="lastName"
           onChange={handleAddEmployeeChange}
           required
@@ -59,11 +59,11 @@ function Addemployee({ showMe2, hideShow2, name, lastName, email,password, handl
         </label>
         <div>
         <input
-          className="form-control"
+          className="formcontrol"
           id=""
           type="email"
           value={email}
-          placeholder="Email Address"
+          // placeholder="Email Address"
           name="email"
           onChange={handleAddEmployeeChange}
           required
@@ -75,11 +75,11 @@ function Addemployee({ showMe2, hideShow2, name, lastName, email,password, handl
         </label>
         <div>
         <input
-          className="form-control"
+          className="formcontrol"
           id=""
           type="password"
           value={password}
-          placeholder="Password"
+          // placeholder="Password"
           name="password"
           onChange={handleAddEmployeeChange}
           required
@@ -88,15 +88,16 @@ function Addemployee({ showMe2, hideShow2, name, lastName, email,password, handl
 </div>
       </div>
 
-      <div className="pull-right">
+      <div className="btnwrap1awrap">
 
         <button
           onClick={handleAddEmpolyeeFormSubmit}
           type="submit"
-          className="btn btn-lg btn-danger float-right"
+          className="btnwrap1a"
         >
           Submit
         </button>
+        <button className="btnwrap1a" onClick={() => hideShow2()}>Close</button>
       </div>
     </form>
     </div>
@@ -104,7 +105,7 @@ function Addemployee({ showMe2, hideShow2, name, lastName, email,password, handl
 
 <br></br>
 
-    <button onClick={() => hideShow2()}>CLOSE</button>
+   
 
     <div><Link
             className={window.location.pathname === "/employeepage" ? "nav-link active" : "nav-link"} 

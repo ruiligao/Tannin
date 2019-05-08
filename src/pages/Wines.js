@@ -155,17 +155,20 @@ console.log(id);
         </div>
 <br></br>
         <Jumbotron>
-
-        <h1 className="text-center">
-            <strong>TANNIN</strong>
+<div className="texttanninwrap">
+        <h1 className="texttannin">
+            <strong>Tannin</strong>
           </h1>
+          </div>
           <br></br>
-          <h1 className="text-center">
+          <div className="textwinecolwrap">
+          <h1 className="textwinecol">
             <strong>Wine Collections</strong>
           </h1>
-
+</div>
+<div className="textwinecolwrap">
           <h2 className="text-center">Add Wine to your Restaurant.</h2>
-
+          </div>
         </Jumbotron>
 
         <div className="btnadminpagewrap">
@@ -194,11 +197,11 @@ console.log(id);
             <div className="winesheader">
             
             <h1 className="textcenter">
-            <strong>Search for WINE</strong>
+            <strong>Search for WINES</strong>
           </h1>
           </div>
 
-
+          <div className="cardwrapper1a">
             <div className="cardwrapper1">
       <div className="cardwrapper2">
         <Card title="">
@@ -236,6 +239,7 @@ console.log(id);
               <h2 className="text-center">{this.state.message}</h2>
             )}
         </Card>
+        </div>
         </div>
         </div>
         </div>

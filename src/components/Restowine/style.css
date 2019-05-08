@@ -23,13 +23,17 @@
       }
     
       .winecollectiondiv1 {
-          margin:20px;
-          padding: 10px;
-          background-color: rgb(243, 210, 210);
-          width: 80%;
-          border-top-left-radius: 20px;
-          border-bottom-left-radius: 20px;
-          border-bottom-right-radius: 20px;
+        margin:20px;
+        padding: 10px;
+        color: rgb(238, 221, 182);
+        background-color: rgb(173, 24, 61);
+        /* background-color: rgb(187, 25, 66); */
+          /* background-color: rgba(218, 73, 121, 0.8); */
+        /* background-color: rgb(243, 210, 210); */
+        width: 80%;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
     
       }
     
@@ -40,7 +44,7 @@
     }
     
       .fa-plus-circle {
-          color:rgb(139, 46, 101)
+          color:rgb(231, 102, 177)
       }
     
       .btnadd {
@@ -56,16 +60,19 @@
           font-size: 20px;
       }
     
-      .winenamebtn {
+      .winenamebtn1 {
         padding-bottom:5px;
         font-size: 20px;
         margin: 0;
         background-color: transparent;
         border-style: none;
        margin-left:20px;
+       color: rgb(236, 226, 201);
+       font-family: 'Special Elite', cursive;
+       letter-spacing: 2px;
       }
     
-      .winenamebtn:focus {
+      .winenamebtn1:focus {
         outline: none !important;
         -ms-transform: scale(1.1); /* IE 9 */
         -webkit-transform: scale(1.1); /* Safari 3-8 */

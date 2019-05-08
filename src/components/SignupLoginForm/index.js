@@ -6,14 +6,19 @@ function SignupLoginForm({ showMe, hideShow, restaurant, firstName, lastName, em
   return (
 
     <div>
-      <button className="sampleBtn" onClick={() => hideShow()}>Login/ Sign Up</button>
+      <div className="loginsignupbtnmainwrap">
+      <div className="loginsignupbtnmainwrap2">
+      <button className="loginsignupbtnmain" onClick={() => hideShow()}>Login/ Sign Up</button>
+      </div>
+      </div>
       {showMe ?
         <div className="overlay">
+        <div className="tannintextwrap">Tannin</div>
           <div className="wrap1">
             <div className="wrap2">
               <div className="wrap3">
                 <div className="signUpwrap">
-                  <div> Sign Up</div>
+                  <div className="signuptext"> Sign Up</div>
                   <form>
                     <div className="form-group">
                       <div>
@@ -23,10 +28,11 @@ function SignupLoginForm({ showMe, hideShow, restaurant, firstName, lastName, em
                         <div>
                           <input
                             className="form-control"
+                            // autoComplete="off"
                             id=""
                             type="text"
                             value={restaurant}
-                            placeholder="Restaurant"
+                            // placeholder="Restaurant"
                             name="restaurant"
                             onChange={handleSubmitInputChange}
                             required
@@ -34,16 +40,18 @@ function SignupLoginForm({ showMe, hideShow, restaurant, firstName, lastName, em
                         </div>
                       </div>
                       <div>
+                        <br></br>
                         <label>
                           <strong>First Name</strong>
                         </label>
                         <div>
                           <input
                             className="form-control"
+                            autoComplete="off"
                             id=""
                             type="text"
                             value={firstName}
-                            placeholder="First Name"
+                            // placeholder="First Name"
                             name="firstName"
                             onChange={handleSubmitInputChange}
                             required
@@ -59,7 +67,7 @@ function SignupLoginForm({ showMe, hideShow, restaurant, firstName, lastName, em
                             id=""
                             type="text"
                             value={lastName}
-                            placeholder="Last Name"
+                            // placeholder="Last Name"
                             name="lastName"
                             onChange={handleSubmitInputChange}
                             required
@@ -77,7 +85,7 @@ function SignupLoginForm({ showMe, hideShow, restaurant, firstName, lastName, em
                             id=""
                             type="email"
                             value={email}
-                            placeholder="Email Address"
+                            // placeholder="Email Address"
                             name="email"
                             onChange={handleSubmitInputChange}
                             required
@@ -93,7 +101,7 @@ function SignupLoginForm({ showMe, hideShow, restaurant, firstName, lastName, em
                             id=""
                             type="password"
                             value={password}
-                            placeholder="Password"
+                            // placeholder="Password"
                             name="password"
                             onChange={handleSubmitInputChange}
                             required
@@ -107,16 +115,16 @@ function SignupLoginForm({ showMe, hideShow, restaurant, firstName, lastName, em
                       <button
                         onClick={handleSignupFormSubmit}
                         type="submit"
-                        className="btn btn-lg btn-danger float-right"
+                        className="submitbtnsignup"
                       >
                         Submit
         </button>
                     </div>
                   </form>
                 </div>
-                <div className="signUpwrap">
+                <div className="loginwrap">
                   <br></br>
-                  <div> Log In</div>
+                  <div className="logintext"> Log In</div>
                   <form>
                     <div className="form-group">
                       <div>
@@ -130,7 +138,7 @@ function SignupLoginForm({ showMe, hideShow, restaurant, firstName, lastName, em
                             id=""
                             type="email"
                             value={loginemail}
-                            placeholder="Email Address"
+                            // placeholder="Email Address"
                             name="loginemail"
                             onChange={handleLoginInputChange}
                             required
@@ -146,7 +154,7 @@ function SignupLoginForm({ showMe, hideShow, restaurant, firstName, lastName, em
                             id=""
                             type="password"
                             value={loginpassword}
-                            placeholder="Password"
+                            // placeholder="Password"
                             name="loginpassword"
                             onChange={handleLoginInputChange}
                             required
@@ -160,7 +168,7 @@ function SignupLoginForm({ showMe, hideShow, restaurant, firstName, lastName, em
                       <button
                         onClick={handleLoginFormSubmit}
                         type="submit"
-                        className="btn btn-lg btn-danger float-right"
+                        className="loginbtnsignup"
                       >
                         Login
                       </button>
@@ -170,14 +178,16 @@ function SignupLoginForm({ showMe, hideShow, restaurant, firstName, lastName, em
                 <br></br>
               </div>
               <div className="btnwrap">
-                <button><Link
+
+                {/* <button><Link
                   className={window.location.pathname === "/admin" ? "nav-link active" : "nav-link"}
                   to="/admin"
                 >
                   admin
-              </Link></button>
+              </Link></button> */}
 
-                <button onClick={() => hideShow()}>CLOSE</button>
+
+<button className="backtohome" onClick={() => hideShow()}><i class="fa fa-chevron-circle-left 2x" aria-hidden="true"></i></button>
               </div>
             </div>
           </div>
