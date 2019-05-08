@@ -6,7 +6,11 @@ function SignupLoginForm({ showMe, hideShow, restaurant, firstName, lastName, em
   return (
 
     <div>
-      <button className="sampleBtn" onClick={() => hideShow()}>Login/ Sign Up</button>
+      <div className="loginsignupbtnmainwrap">
+      <div className="loginsignupbtnmainwrap2">
+      <button className="loginsignupbtnmain" onClick={() => hideShow()}>Login/ Sign Up</button>
+      </div>
+      </div>
       {showMe ?
         <div className="overlay">
         <div className="tannintextwrap">Tannin</div>
