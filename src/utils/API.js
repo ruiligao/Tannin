@@ -51,7 +51,11 @@ getUser: function () {
     console.log(wineData);
     return axios.put("http://localhost:3001/api/addwine/", wineData);
   },
- 
+  // getRestoId: function(wineData) {
+  //   console.log(wineData);
+  //   return axios.put("http://localhost:3001/api/addwine/", wineData);
+  // },
+  
   deleteWine: function(id) {
     console.log(id);
     return axios.delete("http://localhost:3001/api/restaurant/" + id);
