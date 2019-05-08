@@ -29,7 +29,7 @@ class Quiz extends Component {
       });
       console.log(filteredQs)
       this.setState ({filteredQs: filteredQs})
-      this.shuffle(filteredQs);
+      this.shuffle(questions);
 
     };
   
@@ -52,12 +52,12 @@ class Quiz extends Component {
       const powerPuff = {...this.state};
   
       // in this if statement we check to see if the player lost, log their loss, and clear the guesses array & score
-      // if(powerPuff.guesses.includes(questionId)) {
-      //   console.log("You lose");
-      //   powerPuff.losses = powerPuff.losses +1;
-      //   powerPuff.guesses = [];
-      //   powerPuff.score = 0
-      // }
+      if(powerPuff.guesses.includes(questionId)) {
+        console.log("You lose");
+        powerPuff.losses = powerPuff.losses +1;
+        powerPuff.guesses = [];
+        powerPuff.score = 0
+      }
 
       if ("button#false") {
 
@@ -96,7 +96,7 @@ class Quiz extends Component {
               id={question.id}
               key={question.id}
               question={question.question}
-              falseAnswers={question.falseAnswers}
+              answers={question.falseAnswers}
               category = {question.category}
               wineName={wineData.name}
               sweetness={wineData.sweetness}
