@@ -16,6 +16,7 @@ class Admin extends Component {
     restaurants: [],
     employees: [],
     wines: [],
+    wineCollections:[],
 
     showMe: false,
     showMe2: false,
@@ -135,12 +136,15 @@ class Admin extends Component {
     const admin = { email: this.state.user.email };
     API.getSavedWine(admin)
       .then(res => {
-        console.log(res.data);
-        console.log(res.data._id);
+        // console.log(res.data);
+        // console.log(res.data._id);
         // console.log(res.data[0]);
+        console.log("SAVESTAFF");
+        console.log(res.data.Employees);
+        console.log("SAVESTAFF");
         this.setState({
-          restaurantId: res.data._id,
-          wines: res.data.Wines,
+          employees: res.data.Employees,
+          wineCollections: res.data.Wines
         })
       }
 
@@ -267,9 +271,9 @@ class Admin extends Component {
             </div>
             <div className="wineColWrap">
               <div className="wineColWrap1">
-                {this.state.wines.length ? (
+                {this.state.wineCollections.length ? (
                   <List>
-                    {this.state.wines.map(wine => (
+                    {this.state.wineCollections.map(wine => (
                       <Restowine
                         key={wine._id}
                         id={wine._id}
@@ -319,7 +323,7 @@ class Admin extends Component {
                     {this.state.employees.map(employee => (
                       <Employees
                         key={employee}
-                        id={employee}
+                        id={employee.firstName}
                         // title={employee.title}
                         // subtitle={employee.subtitle}
                         // link={employee.link}

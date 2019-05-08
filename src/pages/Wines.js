@@ -81,12 +81,14 @@ class Wines extends Component {
     const admin = { email: this.state.user.email };
     API.getSavedWine(admin)
       .then(res => {
-        console.log(res.data);
-        console.log(res.data._id);
+        // console.log("SAVESTAFF")
+        // console.log(res.data);
+        // console.log("SAVESTAFF")
+        // console.log(res.data._id);
         // console.log(res.data[0]);
         this.setState({
           restaurantId: res.data._id,
-          wines: res.data.Wines,
+          // wines: res.data.Wines,
         })
       }
 
@@ -130,7 +132,9 @@ newState.winetemp = wine.temp
   getMaster = () => {
     API.getMaster()
       .then(res => {
+        console.log("COMEBACK FROM MASTER")
         console.log(res.data);
+        console.log("MASTER")
         this.setState({
           wines: res.data
         })
@@ -191,23 +195,21 @@ handleWineAdd = id => {
   console.log("REID: " + this.state.restaurantId);
   const wine = this.state.wines.find(wine => wine._id === id);
   const wineData = {
-    Wines: wine,
+    Wines: wine._id,
     restaurantId: this.state.restaurantId
     }
-  // const { restaurantId } = this.state;
-  // const employeeData = { name, lastName, email, password, restaurantId };
-  console.log(wineData);
-  API.addWine(wineData).then((res) => {
+    console.log("ADDWINE INFOR");
+    console.log(wineData);
+    console.log("ADDWINE INFOR");
+
+  API.addWine(wineData).then(res => {
     console.log("ADD WINE");
-    console.log(res.data);
-    if (res.data==="Wine already exists") {
-      alert(res.data)
-    }
-    else{
+    console.log(res.data.Wines);
+    console.log("ADD WINE");
     this.setState({
-      wineCollections: res.data
+      wineCollections: res.data.Wines
     });
-  }
+  
   });
 }
 //     const wine = this.state.wines.find(wine => wine._id === id);
