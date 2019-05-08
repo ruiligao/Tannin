@@ -4,6 +4,7 @@ display: flex;
     width:100%;
 }
 
+
 .overlay4 {
 
     position: absolute;
@@ -13,7 +14,8 @@ display: flex;
     left: 0;
     right: 0;
     bottom: 0;
-    background: -webkit-gradient(linear, left top, left bottom, from(rgb(248, 252, 250)), to(rgb(102, 42, 42))) fixed;
+    background-color: rgba(253, 227, 167, 1);
+    /* background: -webkit-gradient(linear, left top, left bottom, from(rgb(248, 252, 250)), to(rgb(102, 42, 42))) fixed; */
     z-index: 2;
     cursor: pointer;
     transition-delay: 10s;
@@ -25,7 +27,11 @@ display: flex;
   .winenamediv {
       margin:20px;
       padding: 10px;
-      background-color: rgb(243, 210, 210);
+      color: rgb(238, 221, 182);
+      background-color: rgb(173, 24, 61);
+      /* background-color: rgb(187, 25, 66); */
+        /* background-color: rgba(218, 73, 121, 0.8); */
+      /* background-color: rgb(243, 210, 210); */
       width: 80%;
       border-top-left-radius: 20px;
       border-bottom-left-radius: 20px;
@@ -63,6 +69,9 @@ display: flex;
     background-color: transparent;
     border-style: none;
    margin-left:20px;
+   color: rgb(236, 226, 201);
+   font-family: 'Special Elite', cursive;
+   letter-spacing: 2px;
   }
 
   .winenamebtn:focus {
