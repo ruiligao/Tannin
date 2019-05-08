@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from 'react-router-dom';
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
 import SignupLoginForm from "../components/SignupLoginForm";
 import API from "../utils/API";
 import { Container } from "../components/Grid";
@@ -138,7 +138,7 @@ class SignupLogin extends Component {
           showMe={this.state.showMe}
           hideShow={this.hideShow}
         />
-        <Footer />
+        {/* <Footer /> */}
       </Container>
     );
   }

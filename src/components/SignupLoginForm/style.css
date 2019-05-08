@@ -209,17 +209,14 @@ button:focus {
       border-radius: 50px;
       font-size: 15px;
     }
-  
-  
+
   .loginbtnsignup:focus {
     outline: none !important;
   }
-  
+
   button:focus {
     outline: none !important;
   }
-  
-  
 
   .loginbtnsignup:hover {
     -ms-transform: scale(1.2); /* IE 9 */
@@ -227,6 +224,34 @@ button:focus {
     transform: scale(1.2); 
   }
 
+
+
+  .loginsignupbtnmain{
+    color:white;
+        background-color: rgb(190, 39, 77);
+        border-style: none;
+        height: 40px;   
+        padding-left: 20px;
+        padding-right: 20px;
+        border-radius: 50px;
+        font-size: 15px;
+      }
+  
+    .loginsignupbtnmain:focus {
+      outline: none !important;
+    }
+  
+    button:focus {
+      outline: none !important;
+    }
+  
+    .loginsignupbtnmain:hover {
+      -ms-transform: scale(1.2); /* IE 9 */
+      -webkit-transform: scale(1.2); /* Safari 3-8 */
+      transform: scale(1.2); 
+    }
+
+  
   .tannintextwrap {
     text-align: center;
     margin-top: 20px;
@@ -244,3 +269,20 @@ font-family: 'Pacifico', cursive;
     border-style: none;
     background-color: transparent;
   }
+
+
+ 
+.loginsignupbtnmainwrap {
+  height: 100vh;
+ position: relative;
+}
+
+.loginsignupbtnmainwrap2 {
+  
+    position: absolute;
+    top: 50%;
+    left:43%;
+    transform: translateY(-50%);
+    
+  
+}
