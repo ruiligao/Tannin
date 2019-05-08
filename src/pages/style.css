@@ -119,9 +119,6 @@ a:link {
 
   }
 
-  .btn:focus {
-    outline: none !important;
-  }
   .nav-link:focus {
     outline: none !important;
     -ms-transform: scale(1.2); /* IE 9 */
@@ -129,6 +126,10 @@ a:link {
     transform: scale(1.2); 
   }
 
+  .btn:focus {
+    outline: none !important;
+  }
+  
 
   button:hover {
     -ms-transform: scale(1.2); /* IE 9 */
