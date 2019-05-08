@@ -173,7 +173,8 @@ class Admin extends Component {
     console.log(employeeData);
     API.addEmployee(employeeData).then((res) => {
       console.log("ADD Employees");
-      console.log(res.data.Employees);
+      console.log(res.data.employee);
+      console.log(res.data.restaurant);
       if (res.data==="Employee already exists") {
         alert(res.data)
       }
