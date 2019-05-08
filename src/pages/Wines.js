@@ -15,6 +15,7 @@ class Wines extends Component {
   state = {
     // books: [],
     wines: [],
+    wineCollections: [],
     // q: "",
     // message: "Search for a wine",
     showMe: false,
@@ -35,7 +36,16 @@ class Wines extends Component {
     winetannin: "",
     winetemp: "",
 
-    user:"",
+    user: "",
+    restaurantId: "",
+    name: "",
+    lastName: "",
+    email: "",
+    password: "",
+    // loginemail: "",
+    // loginpassword: "",
+    loggedIn: true,
+    redirectTo: null,
   
   };
 
@@ -181,20 +191,21 @@ handleWineAdd = id => {
   console.log("REID: " + this.state.restaurantId);
   const wine = this.state.wines.find(wine => wine._id === id);
   const wineData = {
-    Wines: wine
+    Wines: wine,
+    restaurantId: this.state.restaurantId
     }
-  const { name, lastName, email, password, restaurantId } = this.state;
-  const employeeData = { name, lastName, email, password, restaurantId };
-  console.log(employeeData);
-  API.addEmployee(employeeData).then((res) => {
-    console.log("ADD Employees");
-    console.log(res.data.Employees);
-    if (res.data==="Employee already exists") {
+  // const { restaurantId } = this.state;
+  // const employeeData = { name, lastName, email, password, restaurantId };
+  console.log(wineData);
+  API.addWine(wineData).then((res) => {
+    console.log("ADD WINE");
+    console.log(res.data);
+    if (res.data==="Wine already exists") {
       alert(res.data)
     }
     else{
     this.setState({
-     employees: res.data.Employees
+      wineCollections: res.data
     });
   }
   });
