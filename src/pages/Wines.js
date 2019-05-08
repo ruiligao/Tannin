@@ -64,6 +64,7 @@ newState.winetemp = wine.temp
   }
 
   componentDidMount() {
+
     this.getMaster();
   }
 

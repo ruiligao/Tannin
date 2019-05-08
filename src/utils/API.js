@@ -39,10 +39,14 @@ getUser: function () {
     return axios.get("http://localhost:3001/api/wine/");
   },
 
-  getSavedWine: function() {
-    return axios.get("http://localhost:3001/api/getwine/");
+  getSavedWine: function(admin) {
+    console.log(admin);
+    return axios.post("http://localhost:3001/api/getwine/",admin);
   },
-
+  addEmployee: function(employeeData) {
+    console.log(employeeData);
+    return axios.post("/api/addEmployee", employeeData)
+  },
   addWine: function(wineData) {
     console.log(wineData);
     return axios.put("http://localhost:3001/api/addwine/", wineData);
