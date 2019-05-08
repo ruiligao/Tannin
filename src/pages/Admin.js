@@ -11,7 +11,6 @@ import { List } from "../components/List";
 import { Link } from "react-router-dom";
 import "./style.css";
 
-
 class Admin extends Component {
   state = {
     restaurants: [],
