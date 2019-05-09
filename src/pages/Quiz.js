@@ -15,6 +15,8 @@ class Quiz extends Component {
   state = {
     questions,
     filteredQs: [],
+    aFlavor: wineData.primaryFlavors,
+    submitFlavor: "",
     wineData,
     score: 0,
     highScore: 0,
@@ -62,6 +64,11 @@ class Quiz extends Component {
   }
 
 
+  handleCheckFlavor = () => {
+    console.log(this.state.aFlavor)
+  }
+
+
   // renders react elements into the DOM
   render() {
     return (
@@ -91,6 +98,7 @@ class Quiz extends Component {
               decant={wineData.decant}
               ageability={wineData.ageability}
               truth={this.truth}
+              submitFlavor={this.state.submitFlavor}
             />
           ))}
           <button className="submitFinal">Submit Answers</button>

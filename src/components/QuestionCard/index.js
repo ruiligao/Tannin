@@ -17,14 +17,16 @@ import "./style.css";
                     {this.answers ? this.props.answers.slice(0,3).map(answer => { 
                         return (
                         <div>
-                            {this.handleBtnClick}
-                            <button className={this.props.id} value="0">{ answer }</button><br/>
+                            <button className={this.props.id} onClick = {(event) => {
+                               console.log(event.target.value) 
+                               
+                            }} value="0">{ answer }</button><br/>
                         </div>
                         )
                     }) : <div>
-                            <input></input>
-                            {this.handleBtnClick}
-                            <button className="submitAnswer">Submit</button>
+                        {/* on change! in input tag */}
+                            <input  value={this.props.submitFlavor}></input>
+                            <button onClick={this.props.handleCheckAnswer} className="submitAnswer">Submit</button>
                         </div>
                     }
 
