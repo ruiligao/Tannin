@@ -45,7 +45,7 @@ getUser: function () {
   },
   addEmployee: function(employeeData) {
     console.log(employeeData);
-    return axios.post("/api/addEmployee", employeeData)
+    return axios.post("http://localhost:3001/api/addEmployee", employeeData)
   },
   addWine: function(wineData) {
     console.log(wineData);
