@@ -187,7 +187,7 @@ function SignupLoginForm({ showMe, hideShow, restaurant, firstName, lastName, em
               </Link></button> */}
 
 
-<button className="backtohome" onClick={() => hideShow()}><i class="fa fa-chevron-circle-left 2x" aria-hidden="true"></i></button>
+<button className="backtohome" onClick={() => hideShow()}><i className="fa fa-chevron-circle-left 2x" aria-hidden="true"></i></button>
               </div>
             </div>
           </div>
