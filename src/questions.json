@@ -9,19 +9,19 @@
         "id": 2,
         "category": "body",
         "question": "How would you describe the body of ",
-        "falseAnswers": [ "Full body", "Medium-full body", "Medium body", "Medium-light body", "Light Body"]
+        "falseAnswers": [ "Full Body", "Medium-full Body", "Medium Body", "Medium-light Body", "Light Body"]
     },
     {
         "id": 3,
         "category": "tannin",
         "question": "How would you describe the tannin level of ",
-        "falseAnswers": [ "High tannin", "Medium-high tannin", "Medium tannin", "Medium-low tannin", "Low tannin"]
+        "falseAnswers": [ "High Tannin", "Medium-high Tannin", "Medium Tannin", "Medium-low Tannin", "Low to no Tannin"]
     },
     {
         "id": 4,
         "category": "acidity",
         "question": "How would you describe the acidity of ",
-        "falseAnswers": [ "High acidity", "Medium-high acidity", "Medium acidity", "Medium-low acidity", "Low acidity"]
+        "falseAnswers": [ "High Acidity", "Medium-high Acidity", "Medium Acidity", "Medium-low Acidity", "Low Acidity"]
     },
     {
         "id": 5,
@@ -33,7 +33,7 @@
         "id": 6,
         "category": "decant",
         "question": "How long should we decant ",
-        "falseAnswers": [ "30 minutes", "1 Hour", "2 Hours"]
+        "falseAnswers": [ "30 minutes", "1 Hour", "2 Hours", "This wine is not decanted"]
     },
     {
         "id": 7,
@@ -49,7 +49,7 @@
     },
     {
         "id": 9,
-        "category": "flavors",
+        "category": "primaryFlavors",
         "question": "Give one of the primary flavors of "
     }
 ]

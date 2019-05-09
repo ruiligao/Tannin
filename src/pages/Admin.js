@@ -144,7 +144,8 @@ class Admin extends Component {
         console.log("SAVESTAFF");
         this.setState({
           employees: res.data.Employees,
-          wineCollections: res.data.Wines
+          wineCollections: res.data.Wines,
+          restaurantId: res.data._id
         })
       }
 
