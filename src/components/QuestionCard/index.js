@@ -3,7 +3,9 @@ import "./style.css";
 
 
 function QuestionCard(props) {
-    const { answers } = props;
+    let { answers } = props;
+
+    let fakeVar = answers ? answers.splice(answers.indexOf(props[props.category]),1): null
     let shuffledAnswers = answers ? props.shuffle(answers):null
     return (
         <div className="card">
@@ -21,7 +23,7 @@ function QuestionCard(props) {
                         </div>
                     }
 
-                    <button className="true">{props[`${props.category}`]}</button>
+                    {answers ? <button className="true">{props[`${props.category}`]}</button> : null}
         </div>
     );
 }
