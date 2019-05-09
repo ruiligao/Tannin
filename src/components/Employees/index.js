@@ -37,7 +37,7 @@ import { Link } from "react-router-dom";
 
 import "./style.css";
 
-function Employees({handleWineDelete, id, hideShow, showMe, firstName}) {
+function Employees({handleEmployeeDelete, id, hideShow, showMe, firstName}) {
   return (
     <div>
     <ListItem>
@@ -46,7 +46,7 @@ function Employees({handleWineDelete, id, hideShow, showMe, firstName}) {
         <div className="winecollectionname1">
         {/* <div className="fontitalicsmall">{name}</div> */}
         <div><button className="winenamebtn1" onClick={() => hideShow(id)}>{firstName}</button></div>
-        <div><button className="winedelbtn" onClick={() => handleWineDelete(id)}>Delete</button></div>
+        <div><button className="winedelbtn" onClick={() =>handleEmployeeDelete(id)}>Delete</button></div>
           </div>
           <div><Link
             className="nav-link" 

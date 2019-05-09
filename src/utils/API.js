@@ -56,10 +56,14 @@ getUser: function () {
   //   return axios.put("http://localhost:3001/api/addwine/", wineData);
   // },
   
-  deleteWine: function(id) {
-    console.log(id);
-    return axios.delete("http://localhost:3001/api/restaurant/" + id);
+  deleteWine: function(delelteWine) {
+    console.log(delelteWine);
+    return axios.put("http://localhost:3001/api/restaurant/delete", delelteWine);
   },
+  deleteEmployee: function(deleteEmp) {http://localhost:3001/api/addEmployee/
+    console.log(deleteEmp);
+    return axios.put("http://localhost:3001/api/addEmployee/", deleteEmp)
+  }
 
   // getWineId: function(id) {
   //   return axios.get("https://tannin-api.herokuapp.com/api/wine/" + id);
