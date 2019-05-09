@@ -1,11 +1,10 @@
-.listitemdiv2 {
+.listitemdiv4 {
   justify-content: center;
   display: flex;
       width:100%;
   }
   
-  
-  .overlay4 {
+  .overlay7 {
   
       position: absolute;
       width: 100%;
@@ -14,8 +13,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: rgba(253, 227, 167, 1);
-      /* background: -webkit-gradient(linear, left top, left bottom, from(rgb(248, 252, 250)), to(rgb(102, 42, 42))) fixed; */
+      background: -webkit-gradient(linear, left top, left bottom, from(rgb(248, 252, 250)), to(rgb(102, 42, 42))) fixed;
       z-index: 2;
       cursor: pointer;
       transition-delay: 10s;
@@ -24,29 +22,31 @@
       
     }
   
-    .winenamediv {
-        margin:20px;
-        padding: 10px;
-        color: rgb(238, 221, 182);
-        background-color: rgb(173, 24, 61);
-        /* background-color: rgb(187, 25, 66); */
-          /* background-color: rgba(218, 73, 121, 0.8); */
-        /* background-color: rgb(243, 210, 210); */
-        width: 80%;
-        border-top-left-radius: 20px;
-        border-bottom-left-radius: 20px;
-        border-bottom-right-radius: 20px;
+    .empnamediv {
+      margin:20px;
+      padding: 10px;
+      color: rgb(238, 221, 182);
+      background-color: rgb(173, 24, 61);
+      /* background-color: rgb(187, 25, 66); */
+        /* background-color: rgba(218, 73, 121, 0.8); */
+      /* background-color: rgb(243, 210, 210); */
+      width: 80%;
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
   
     }
   
-    .winenamediv2 {
+    .empnamecollectionname1 {
    
       justify-content: space-between;
       display: flex;
   }
   
-    .fa-plus-circle {
-        color:rgb(139, 46, 101)
+    .fa-user-minus {
+        color:rgb(226, 11, 11);
+        font-size: 20px;
+        text-shadow: 1px 1px #3b0b02;
     }
   
     .btnadd {
@@ -57,12 +57,12 @@
         background-color: transparent;
         margin-right: 10px;
     }
-    .fontitalic{
+    .fontitalicsmall{
         padding-bottom:5px;
         font-size: 20px;
     }
   
-    .winenamebtn {
+    .empnamebtn1 {
       padding-bottom:5px;
       font-size: 20px;
       margin: 0;
@@ -74,34 +74,41 @@
      letter-spacing: 2px;
     }
   
-    .winenamebtn:focus {
+    .empnamebtn1:focus {
       outline: none !important;
       -ms-transform: scale(1.1); /* IE 9 */
       -webkit-transform: scale(1.1); /* Safari 3-8 */
       transform: scale(1.1); 
     }
   
-    .wrapinfo1 {
+    .empinfo1 {
       display: flex;
       justify-content: center;
       margin-top: 20px;
     }
     
-    .wrapinfo2{
+    .empinfo2{
     width: 50%;
     background: rgb(150, 142, 142);
     
     }
     
-    .wrapinfo3{
+    .empinfo3{
       width: 100%;
       background: rgb(150, 142, 142);
-    
       justify-content: center;
     display: flex;
         }
-    
-        .infowrap {
+
+        .infoempwrap {
           width: 50%;
           margin: 20px;
         }
+
+        .empdelbtn {
+          border-style: none;
+          background-color: transparent;
+
+        } 
+
+        

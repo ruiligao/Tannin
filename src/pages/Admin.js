@@ -20,6 +20,7 @@ class Admin extends Component {
 
     showMe: false,
     showMe2: false,
+    showMeEmp: false,
     // text: "add wine",
     wineId: "",
     wineName: "",
@@ -37,6 +38,10 @@ class Admin extends Component {
     winetannin: "",
     winetemp: "",
 
+    empId:"",
+    empfirstName:"",
+    emplastName:"",
+    empEmail:'"',
     user: "",
     restaurantId: "",
     name: "",
@@ -78,7 +83,7 @@ class Admin extends Component {
   hideShow2 = () => {
     const newState = { ...this.state }
     newState.showMe2 = !newState.showMe2
-    newState.scale = this.state.scale > 1 ? 1 : 1.5
+    // newState.scale = this.state.scale > 1 ? 1 : 1.5
 
     this.setState(newState);
   }
@@ -107,6 +112,20 @@ class Admin extends Component {
     this.setState(newState);
   }
 
+
+  hideShowEmp = id => {
+    const newState = { ...this.state }
+    const emp = this.state.employeesList.find(emp => emp._id === id);
+ 
+    newState.empId = id
+    newState.empfirstName = emp.firstName
+    newState.emplastName = emp.lastName
+    newState.empEmail = emp.email
+    
+    newState.showMeEmp = !newState.showMeEmp
+   
+    this.setState(newState);
+  }
 
 
   handleInputChange = event => {
@@ -137,7 +156,8 @@ class Admin extends Component {
     API.getSavedWine(admin)
       .then(res => {
         // console.log(res.data);
-        // console.log(res.data._id);
+        console.log("DEDADAEDAEDAEDAEDDA");
+        console.log(res.data._id);
         // console.log(res.data[0]);
         console.log("SAVESTAFF");
         console.log(res.data.Employees);
@@ -165,6 +185,7 @@ class Admin extends Component {
   handleAddEmpolyeeFormSubmit = event => {
     event.preventDefault();
     this.addEmployee();
+    // this.hideShow2();
   }
 
   addEmployee = () => {
@@ -181,6 +202,7 @@ class Admin extends Component {
       console.log(res.data.restaurant);
       if (res.data==="Employee already exists") {
         alert(res.data)
+        this.hideShow2();
       }
       else{
         // alert(JSON.stringify(res.data))
@@ -188,6 +210,7 @@ class Admin extends Component {
       this.setState({
        employees: this.state.employees
        });
+       this.hideShow2();
     }
     });
   }
@@ -262,14 +285,16 @@ class Admin extends Component {
           <div className="wineCol">
             <div className="wineTitleWrap">
               <div className="wineTitleWrap1">
-                <div>Wine</div>
-                <div><Link
-                  className={window.location.pathname === "/wines" ? "nav-link active" : "nav-link"}
+
+              <div><Link
+                  
                   to="/wines"
-                ><button>
-                    Add Wine
+                ><button className="addwinebtnmain"><i className="fas fa-wine-bottle"></i>
             </button>
+            
                 </Link></div>
+                <div></div>
+                
               </div>
             </div>
             <div className="wineColWrap">
@@ -314,8 +339,8 @@ class Admin extends Component {
           <div className="employeeCol">
             <div className="empTitleWrap">
               <div className="empTitleWrap1">
-                <div>Employees</div>
-                <div><button onClick={() => this.hideShow2()}>Add Employee</button></div>
+                <div></div>
+                <div><button className="addempbtnmain" onClick={() => this.hideShow2()}><i class="fas fa-user-plus"></i></button></div>
               </div>
             </div>
 
@@ -329,12 +354,14 @@ class Admin extends Component {
                         id={employee._id}
                         firstName={employee.firstName}
                         handleWineDelete={this.handleWineDelete}
-                        // title={employee.title}
-                        // subtitle={employee.subtitle}
-                        // link={employee.link}
-                        // authors={employee.authors.join(", ")}
-                        // description={employee.description}
-                        // image={employee.image}
+                        empId={this.state.empId}
+                        empfirstName={this.state.empfirstName}
+                        emplastName={this.state.emplastName}
+                        empEmail={this.state.empEmail}
+                       
+                        showMeEmp={this.state.showMeEmp}
+                        hideShowEmp={this.hideShowEmp}
+                 
                         Button={() => (
                           <button
                             onClick={() => this.handleEmployeeDelete(employee._id)}
