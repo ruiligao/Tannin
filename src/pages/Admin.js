@@ -5,7 +5,6 @@ import Employees from "../components/Employees";
 import Addemployee from "../components/Addemployee";
 // import Footer from "../components/Footer";
 import Header from "../components/Header";
-import Userinfo from "../components/Userinfo";
 import API from "../utils/API";
 import { Container } from "../components/Grid";
 import { List } from "../components/List";
@@ -16,7 +15,7 @@ class Admin extends Component {
   state = {
     restaurants: [],
     employees: [],
-    winesMaster: [],
+    wines: [],
     wineCollections:[],
 
     showMe: false,
@@ -38,8 +37,7 @@ class Admin extends Component {
     winetannin: "",
     winetemp: "",
 
-    restaurantData:[],
-    user: [],
+    user: "",
     restaurantId: "",
     name: "",
     lastName: "",
@@ -49,13 +47,6 @@ class Admin extends Component {
     // loginpassword: "",
     loggedIn: true,
     redirectTo: null,
-
-
-
-    ownerName:"",
-    ownerLastName:"",
-    ownerEmail: "",
-    showMe3: false
 
   };
 
@@ -94,8 +85,7 @@ class Admin extends Component {
 
   hideShow = id => {
     const newState = { ...this.state }
-    const wine = this.state.wineCollections.find(wine => wine._id === id);
-    // newState.wineId = wine.wine.aciditysa
+    const wine = this.state.wines.find(wine => wine._id === id);
     newState.wineId = id
     newState.wineName = wine.name
     newState.wineacidity = wine.acidity
@@ -117,18 +107,6 @@ class Admin extends Component {
     this.setState(newState);
   }
 
-  hideShow3 = ()=> {
-    const newState = { ...this.state }
-    // const owner = this.state.user.find(owner => owner._id === id);
-
-    // newState.ownerId = id
-    // newState.ownerName = owner.firstName
-    // newState.ownerLastName = owner.lastName
-    // newState.ownerEmail = owner.email
-    newState.showMe3 = !newState.showMe3
-
-    this.setState(newState);
-  }
 
 
   handleInputChange = event => {
@@ -158,8 +136,7 @@ class Admin extends Component {
     const admin = { email: this.state.user.email };
     API.getSavedWine(admin)
       .then(res => {
-        console.log(res.data);
-        console.log(res.data._id);
+        // console.log(res.data);
         // console.log(res.data._id);
         // console.log(res.data[0]);
         console.log("SAVESTAFF");
@@ -167,9 +144,7 @@ class Admin extends Component {
         console.log("SAVESTAFF");
         this.setState({
           employees: res.data.Employees,
-          wineCollections: res.data.Wines,
-          restaurantId: res.data._Id,
-          restaurantData: res.data
+          wineCollections: res.data.Wines
         })
       }
 
@@ -225,47 +200,11 @@ class Admin extends Component {
   //     .catch(err => console.log(err));
   // };
 
-  handleWineDelete = (id, restId) => {
-
-    // const rest = this.state.restaurantData.find(rest => rest._id === restId);
-    console.log("RESTA: " + this.state.restauran)
-    const wineData = {
-      Wines: id,
-      restaurantId: restId
-    }
-
-
-    API.deleteWine(wineData).then(res => this.componentDidMount());
-
+  handleWineDelete = id => {
+    API.deleteWine(id).then(res => this.componentDidMount());
   };
 
-
-//   handleWineAdd = id => {
-//   console.log("???????????????");
-//   console.log(this.state);
-//   console.log("REID: " + this.state.restaurantId);
-//   const wine = this.state.winesMaster.find(wine => wine._id === id);
-//   const wineData = {
-//     Wines: wine._id,
-//     restaurantId: this.state.restaurantId
-//     }
-//     console.log("ADDWINE INFOR");
-//     console.log(wineData);
-//     console.log("ADDWINE INFOR");
-
-//   API.addWine(wineData).then(res => {
-//     console.log("ADD WINE");
-//     console.log(res.data.Wines);
-//     console.log("ADD WINE");
-//     this.setState({
-//       wineCollections: res.data.Wines
-//     });
-  
-//   });
-// }
-
-  handleEmployeeDelete = (id, restId) => {
-    console.log(restId)
+  handleEmployeeDelete = id => {
     API.deleteEmployee(id).then(res => this.getSavedEmployee());
   };
 
@@ -274,15 +213,6 @@ class Admin extends Component {
 
       <Container>
 
-<Userinfo
-          id={this.state.user._id}
-          firstName={this.state.user.firstName}
-          lastName={this.state.user.lastName}
-          email={this.state.user.email}
-          showMe3={this.state.showMe3}
-          hideShow3={this.hideShow3}
-          restaurantId={this.state.restaurantId}
-        ></Userinfo>
 
         {/* MODAL ----------------------- */}
         <Addemployee
@@ -312,9 +242,7 @@ class Admin extends Component {
         <div className="wineandemployeewrapper">
           <div className="brandCol">
             <div>
-              <div></div>
-              
-              <div><button onClick={() => this.hideShow3()}><Header user={this.state.user} /></button></div>
+              <Header user={this.state.user} />
               <Link className="navbar-brand" to="/">
                 <i className="fas fa-wine-glass-alt"></i> Wine academy
         </Link>
@@ -351,7 +279,7 @@ class Admin extends Component {
                         id={wine._id}
                         name={wine.name}
                         handleWineDelete={this.handleWineDelete}
-                        restId = {this.state.restaurantId}
+
                         showMe={this.state.showMe}
                         hideShow={this.hideShow}
                         wineName={this.state.wineName}

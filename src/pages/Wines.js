@@ -14,7 +14,7 @@ import { List } from "../components/List";
 class Wines extends Component {
   state = {
     // books: [],
-    winesMaster: [],
+    wines: [],
     wineCollections: [],
     // q: "",
     // message: "Search for a wine",
@@ -102,7 +102,7 @@ class Wines extends Component {
 
   hideShow = id => {
     const newState = { ...this.state }
-    const wine = this.state.winesMaster.find(wine => wine._id === id);
+    const wine = this.state.wines.find(wine => wine._id === id);
     newState.wineId = id
     newState.wineName = wine.name
     newState.wineacidity = wine.acidity
@@ -136,7 +136,7 @@ newState.winetemp = wine.temp
         console.log(res.data);
         console.log("MASTER")
         this.setState({
-          winesMaster: res.data
+          wines: res.data
         })
       }
       )
@@ -193,7 +193,7 @@ handleWineAdd = id => {
   console.log("???????????????");
   console.log(this.state);
   console.log("REID: " + this.state.restaurantId);
-  const wine = this.state.winesMaster.find(wine => wine._id === id);
+  const wine = this.state.wines.find(wine => wine._id === id);
   const wineData = {
     Wines: wine._id,
     restaurantId: this.state.restaurantId
@@ -292,10 +292,10 @@ handleWineAdd = id => {
             <div className="cardwrapper1">
       <div className="cardwrapper2">
         <Card title="">
-          {this.state.winesMaster.length ? (
+          {this.state.wines.length ? (
             <List>
 
-              {this.state.winesMaster.map(wine => (
+              {this.state.wines.map(wine => (
                 <Wine
                   key={wine._id}
                   id={wine._id}
