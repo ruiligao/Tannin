@@ -14,8 +14,8 @@ import "./style.css";
 class Admin extends Component {
   state = {
     restaurants: [],
-    employees: [],
-    wines: [],
+    employeesList: [],
+    winesMaster: [],
     wineCollections:[],
 
     showMe: false,
@@ -85,14 +85,14 @@ class Admin extends Component {
 
   hideShow = id => {
     const newState = { ...this.state }
-    const wine = this.state.wines.find(wine => wine._id === id);
+    const wine = this.state.wineCollections.find(wine => wine._id === id);
     newState.wineId = id
     newState.wineName = wine.name
     newState.wineacidity = wine.acidity
     newState.wineageability = wine.ageability
     newState.winealcohol = wine.alcohol
     newState.winebody = wine.body
-    newState.winedecant = wine.decant
+    newState.winedecant = wine.decant 
     newState.wineglassType = wine.glassType
     newState.winepairings = wine.pairings
     newState.wineprimaryFlavors = wine.primaryFlavors
@@ -143,7 +143,7 @@ class Admin extends Component {
         console.log(res.data.Employees);
         console.log("SAVESTAFF");
         this.setState({
-          employees: res.data.Employees,
+          employeesList: res.data.Employees,
           wineCollections: res.data.Wines,
           restaurantId: res.data._id
         })
@@ -183,9 +183,11 @@ class Admin extends Component {
         alert(res.data)
       }
       else{
+        // alert(JSON.stringify(res.data))
+        this.state.employeesList.unshift(res.data.employee)
       this.setState({
-       employees: res.data.Employees
-      });
+       employees: this.state.employees
+       });
     }
     });
   }
@@ -319,12 +321,14 @@ class Admin extends Component {
 
             <div className="employeeColWrap">
               <div className="employeeColWrap1">
-                {this.state.employees.length ? (
+                {this.state.employeesList.length ? (
                   <List>
-                    {this.state.employees.map(employee => (
+                    {this.state.employeesList.map(employee => (
                       <Employees
-                        key={employee}
-                        id={employee.firstName}
+                        key={employee._id}
+                        id={employee._id}
+                        firstName={employee.firstName}
+                        handleWineDelete={this.handleWineDelete}
                         // title={employee.title}
                         // subtitle={employee.subtitle}
                         // link={employee.link}
