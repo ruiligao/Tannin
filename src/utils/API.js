@@ -39,19 +39,31 @@ getUser: function () {
     return axios.get("http://localhost:3001/api/wine/");
   },
 
-  getSavedWine: function() {
-    return axios.get("http://localhost:3001/api/getwine/");
+  getSavedWine: function(admin) {
+    console.log(admin);
+    return axios.post("http://localhost:3001/api/getwine/",admin);
   },
-
+  addEmployee: function(employeeData) {
+    console.log(employeeData);
+    return axios.post("/api/addEmployee", employeeData)
+  },
   addWine: function(wineData) {
     console.log(wineData);
     return axios.put("http://localhost:3001/api/addwine/", wineData);
   },
- 
-  deleteWine: function(id) {
-    console.log(id);
-    return axios.delete("http://localhost:3001/api/restaurant/" + id);
+  // getRestoId: function(wineData) {
+  //   console.log(wineData);
+  //   return axios.put("http://localhost:3001/api/addwine/", wineData);
+  // },
+  
+  deleteWine: function(delelteWine) {
+    console.log(delelteWine);
+    return axios.put("http://localhost:3001/api/restaurant/delete", delelteWine);
   },
+  deleteEmployee: function(deleteEmp) {http://localhost:3001/api/addEmployee/
+    console.log(deleteEmp);
+    return axios.put("http://localhost:3001/api/addEmployee/", deleteEmp)
+  }
 
   // getWineId: function(id) {
   //   return axios.get("https://tannin-api.herokuapp.com/api/wine/" + id);

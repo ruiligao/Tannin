@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import "./style.css";
 
-function Restowine({handleWineDelete, name, id, hideShow, showMe, wineName, wineId, winetemp, winetannin, winesweetness, winesummary, winepronunciation, wineprimaryFlavors, winepairings, winedecant, wineglassType, winebody, winealcohol, wineageability, wineacidity}) {
+function SavedWine({name, id, hideShow, showMe, wineName, wineId, winetemp, winetannin, winesweetness, winesummary, winepronunciation, wineprimaryFlavors, winepairings, winedecant, wineglassType, winebody, winealcohol, wineageability, wineacidity}) {
   return (
     <div>
     <ListItem>
@@ -13,7 +13,7 @@ function Restowine({handleWineDelete, name, id, hideShow, showMe, wineName, wine
         <div className="winecollectionname1">
         {/* <div className="fontitalicsmall">{name}</div> */}
         <div><button className="winenamebtn1" onClick={() => hideShow(id)}>{name}</button></div>
-        <div><button className="winedelbtn" onClick={() => handleWineDelete(id)}>Delete</button></div>
+        {/* <div><button className="winedelbtn" onClick={() => handleWineDelete(id)}>Delete</button></div> */}
           </div>
           <div><Link
             className="nav-link" 
@@ -53,12 +53,12 @@ function Restowine({handleWineDelete, name, id, hideShow, showMe, wineName, wine
 
                       </div>
                       <div className="btnwrap">
-                        <button><Link
+                        {/* <button><Link
                           className={window.location.pathname === "/admin" ? "nav-link active" : "nav-link"}
                           to="/admin"
                         >
                           admin
-          </Link></button>
+          </Link></button> */}
 
                         <button onClick={() => hideShow(id)}>CLOSE</button>
                       </div>
@@ -81,4 +81,4 @@ function Restowine({handleWineDelete, name, id, hideShow, showMe, wineName, wine
   );
 }
 
-export default Restowine;
+export default SavedWine;

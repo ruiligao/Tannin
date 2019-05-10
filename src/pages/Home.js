@@ -26,7 +26,7 @@ const DisplayLinks = props => {
 		return (
 			<nav className="navbar">
 						<Link to="/" className="nav-link">
-							Home
+							
 						</Link>
 			</nav>
 		)
@@ -38,7 +38,7 @@ class Home extends Component {
 		super()
 		this.state = {
 			loggedIn: false,
-			user: null
+			user: null,
 		}
 	}
 	

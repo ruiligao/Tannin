@@ -1,30 +1,74 @@
+
+
 import React from "react";
 import { ListItem } from "../List";
+import { Link } from "react-router-dom";
 
 import "./style.css";
 
-function Employees({ title, subtitle, authors, link, description, Button }) {
+
+function Employees({handleEmployeeDelete, id, firstName, empId, hideShowEmp, showMeEmp, empfirstName, emplastName, empEmail}) {
   return (
+    <div>
     <ListItem>
-        <div className="listitemdiv2">
-        <div>
-          <h3 className="font-italic">{title}</h3>
-          {subtitle && <h5 className="font-italic">{subtitle}</h5>}
-          <p className="font-italic small">Written by {authors}</p>
+        <div className="listitemdiv4">
+        <div className="empnamediv">
+        <div className="empnamecollectionname1">
+        {/* <div className="fontitalicsmall">{name}</div> */}
+        <div><button className="empnamebtn1" onClick={() => hideShowEmp(id)}>{firstName}</button></div>
+        <div><button className="empdelbtn" onClick={() => handleEmployeeDelete(id)}><i className="fas fa-user-minus lg"></i></button></div>
           </div>
+          <div><Link
+            className="nav-link" 
+            to="/quiz"
+          ><button>
+            Quiz Page
+            </button>
+              </Link></div>
+          <div className="font-italic">{id}</div>
+
           <div>
-            <a className="btn btn-light" target="_blank" rel="noopener noreferrer" href={link}>
-              View
-            </a>
-            <Button />
+              {showMeEmp ?
+                <div className="overlay7">
+                  <div className="empinfo1">
+                    <div className="empinfo2">
+                      <div className="empinfo3">
+                        <div className="infoempwrap">
+                        <div>Id No: {empId}</div>
+                          <div>{empfirstName}</div>
+                          <div>{emplastName}</div>
+                          <div>{empEmail}</div>
+                          </div>
+
+                        <br></br>
+
+                      </div>
+                      <div className="btnwrap">
+                        <button><Link
+                          
+                          to="/admin"
+                        >
+                          Others
+          </Link></button>
+
+                        <button onClick={() => hideShowEmp(empId)}>CLOSE</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                : null
+              }
+            </div>
+
+
+
+
+
+
           </div>
-
-          {/* <img className="img-thumbnail img-fluid w-100" src={image} alt={title} /> */}
-      
-
-          <p>{description}</p>
           </div>
     </ListItem>
+    </div>
   );
 }
 

@@ -10,94 +10,120 @@ import wineData from "../franciacorta.json"
 import './style.css';
 
 class Quiz extends Component {
-    // Setting this.state.characters to the character json array
-    // Setting score, losses, and highScore to 0 for the start of each game
-    state = {
-      questions,
-      filteredQs: [],
-      wineData,
-      score: 0,
-      losses: 0,
-      highScore: 0,
-    };
-  
-    // componentWillMount shuffles the CharacterCards before the DOM is loaded
-    componentWillMount() {
-      const categories = Object.keys(wineData)
-      const filteredQs = questions.filter(q => {
-        return categories.includes(q.cat)
-      });
-      console.log(filteredQs)
-      this.setState ({filteredQs: filteredQs})
-      this.shuffle(filteredQs);
+  state = {
+    questions,
+    filteredQs: [],
+    correctFlavors: wineData.primaryFlavors,
+    submittedFlavor: "",
+    wineData,
+    counter: 0,
+    score: 0,
+    highScore: 0,
+  };
 
-    };
-  
-    
+  // componentWillMount shuffles the CharacterCards before the DOM is loaded
+  componentWillMount() {
+    const categories = Object.keys(wineData)
+    const filteredQs = questions.filter(q => {
+      return categories.includes(q.category)
+    });
+    this.setState({ filteredQs: filteredQs })
+    this.shuffle(filteredQs);
 
-    // Here we use the Fisher-Yates alogrithm to randomize the characters array
-    shuffle(arr) {
-      var j, x, i;
-      for (i = arr.length -1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        x = arr[i];
-        arr[i] = arr[j];
-        arr[j] = x
-      }
-      return arr;
-    };
-  
-    handleBtnClick = questionId => {
-      // renaming this.state so we don't have to write it out each time
-      const powerPuff = {...this.state};
-  
-      // in this if statement we check to see if the player lost, log their loss, and clear the guesses array & score
-      // if(powerPuff.guesses.includes(questionId)) {
-      //   console.log("You lose");
-      //   powerPuff.losses = powerPuff.losses +1;
-      //   powerPuff.guesses = [];
-      //   powerPuff.score = 0
-      // }
+    // console.log("Categories for", wineData.name, ": ", categories)
+    // console.log("Answers for ", wineData.name, ": ", truth)
+    // console.log("Questions to be run for", wineData.name, ": ", filteredQs)
+    console.log(this.state.correctFlavors)
+  };
 
-      if ("button#false") {
 
-      }
-      // if they didn't lose, we increment their score and add the character to the guesses array
-      else
-      { powerPuff.score = powerPuff.score +1;
-        powerPuff.guesses.push(questionId)
-      }
-      // here we shuffle the character cards again
-      this.shuffle(questions);
-  
-      // we check the current score against the high score, increasing high score if it is lower than current score.
-      if (powerPuff.score > powerPuff.highScore) {
-        powerPuff.highScore = powerPuff.score
-      }
-  
-      // finally we use setState to update the state to the virtual DOM
-      this.setState(powerPuff);
+  // Here we use the Fisher-Yates alogrithm to randomize the characters array
+  shuffle(arr) {
+    var j, x, i;
+    for (i = arr.length - 1; i > 0; i--) {
+      j = Math.floor(Math.random() * (i + 1));
+      x = arr[i];
+      arr[i] = arr[j];
+      arr[j] = x
     }
-  
-  
-    // renders react elements into the DOM
-    render() {
-      return (
-        // the parent div into which our components will be rendered
-        <div className="background">
-  
+    return arr;
+  };
+
+  handleBtnClick = (event) => {
+    // renaming this.state so we don't have to write it out each time
+    const newState = { ...this.state };
+
+    let points = parseInt(event.target.value);
+    newState.counter = newState.counter + points
+
+    // in this if statement we check to see if the player lost, log their loss, and clear the guesses array & score
+
+    // finally we use setState to update the state to the virtual DOM
+    this.setState(newState);
+  }
+
+  handleInputChange = event => {
+    // Getting the value and name of the input which triggered the change
+    const { name, value } = event.target;
+
+    // Updating the input's state
+    this.setState({
+      [name]: value
+    });
+  };
+
+  handleCheckFlavor = () => {
+
+    const newState = { ...this.state };
+
+    console.log(newState.correctFlavors)
+     if (this.state.correctFlavors.includes(this.state.submittedFlavor)) {
+      this.setState({
+        counter: newState.counter +1,
+        submittedFlavor: ""
+      })
+     } else { 
+       this.setState({
+        submittedFlavor: ""
+    })}
+  }
+
+  handleScoreCalc = () => {
+    const newState = { ...this.state };
+    let hundreds = newState.counter * 100;
+    let total = newState.filteredQs.length;
+    newState.score = hundreds / total
+
+    console.log("hundreds: ", hundreds)
+    console.log("total # of Questions: ", total)
+    console.log("Your score for ", wineData.name, ": ", newState.score, "%")
+    this.setState({
+      score: newState.score
+    });
+  }
+
+
+  // renders react elements into the DOM
+  render() {
+    return (
+      // the parent div into which our components will be rendered
+      <div className="background">
+
         <Wrapper>
           {/* Map over this.state.characters and render a CharacterCard component for each character object */}
-          {this.state.questions.map(question => (
-            <QuestionCard 
+          {this.state.filteredQs.map(filteredQ => (
+            <QuestionCard
               // each card will inherit an id, a key, a name, and an image from its respective array object
               handleBtnClick={this.handleBtnClick}
+              handleInputChange={this.handleInputChange}
+              handleCheckFlavor={this.handleCheckFlavor}
               shuffle={this.shuffle}
-              id={question.id}
-              key={question.id}
-              question={question.question}
-              falseAnswers={question.falseAnswers}
-              category = {question.category}
+
+              id={filteredQ.id}
+              key={filteredQ.id}
+              question={filteredQ.question}
+              answers={filteredQ.falseAnswers}
+              category={filteredQ.category}
               wineName={wineData.name}
               sweetness={wineData.sweetness}
               body={wineData.body}
@@ -107,16 +133,16 @@ class Quiz extends Component {
               temp={wineData.temp}
               decant={wineData.decant}
               ageability={wineData.ageability}
-              // filteredQs={this.filteredQs}
+              counter={this.state.counter}
+              submitFlavor={this.state.submitFlavor}
             />
           ))}
-            <button className="submitFinal">Submit Answers</button>
-  
+          <button onClick={this.handleScoreCalc} className="submitFinal">Submit Answers</button>
+
         </Wrapper>
-        </div>
-      );
-    }
+      </div>
+    );
   }
-  
-  export default Quiz;
-  
+}
+
+export default Quiz;

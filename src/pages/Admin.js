@@ -3,96 +3,107 @@ import React, { Component } from "react";
 import Restowine from "../components/Restowine";
 import Employees from "../components/Employees";
 import Addemployee from "../components/Addemployee";
-// import Footer from "../components/Footer";
+// // import Footer from "../components/Footer";
 import Header from "../components/Header";
+import Userinfo from "../components/Userinfo";
 import API from "../utils/API";
 import { Container } from "../components/Grid";
 import { List } from "../components/List";
 import { Link } from "react-router-dom";
 import "./style.css";
 
-
 class Admin extends Component {
   state = {
     restaurants: [],
-    employees: [],
-    wines:[],
-
+    employeesList: [],
+    winesMaster: [],
+    wineCollections:[],
+    
     showMe: false,
     showMe2: false,
+    showMe3: false,
+    showMeEmp: false,
     // text: "add wine",
     wineId: "",
-    wineName:"",
-    wineacidity: "",
-    wineageability: "",
-    winealcohol: "",
-    winebody: "",
-    winedecant: "",
-    wineglassType: "",
-    winepairings: "",
-    wineprimaryFlavors: [],
-    winepronunciation: "",
-    winesummary: "",
-    winesweetness: "",
-    winetannin: "",
-    winetemp: "",
+    wineName: "",
+    wineacidity: "",
+    wineageability: "",
+    winealcohol: "",
+    winebody: "",
+    winedecant: "",
+    wineglassType: "",
+    winepairings: "",
+    wineprimaryFlavors: [],
+    winepronunciation: "",
+    winesummary: "",
+    winesweetness: "",
+    winetannin: "",
+    winetemp: "",
 
-    user: "",
-    id: "",
-    restaurant: "",
+    empId:"",
+    empfirstName:"",
+    emplastName:"",
+    empEmail:'"',
+    user:"",
+    // restaurantId: "",
     name: "",
     lastName: "",
     email: "",
     password: "",
-    loginemail: "",
-    loginpassword: "",
+    // loginemail: "",
+    // loginpassword: "",
     loggedIn: true,
     redirectTo: null,
+
+    useId:"",
+    usefirstName:""
 
   };
 
   componentDidMount() {
-    this.getSavedWine();
+    this.getUser()
+  }
 
+  getUser = () => {
     API.getUser().then(response => {
       console.log("LOGGED IN USER: ", response)
       if (!!response.data.user) {
-
-        console.log('THERE IS A USER')
+        console.log('THERE IS A USER');
+        console.log(response.data);
         this.setState({
           loggedIn: true,
-          user: response.data.user
+          user: response.data.user,
           
-        });
+        })
+
+        this.getSavedWine()
       } else {
         this.setState({
           loggedIn: false,
-          user: null,
-          redirectTo: "/"
+          user: null
         });
-        console.log(this.state.user)
+        this.props.history.push(`/`);
       }
     });
   }
-
   hideShow2 = () => {
-    const newState = {...this.state}
+    const newState = { ...this.state }
     newState.showMe2 = !newState.showMe2
-    newState.scale = this.state.scale > 1 ? 1 : 1.5
+    // newState.scale = this.state.scale > 1 ? 1 : 1.5
 
     this.setState(newState);
   }
 
   hideShow = id => {
     const newState = { ...this.state }
-    const wine = this.state.wines.find(wine => wine._id === id);
+    const wine = this.state.wineCollections.find(wine => wine._id === id);
     newState.wineId = id
     newState.wineName = wine.name
     newState.wineacidity = wine.acidity
     newState.wineageability = wine.ageability
     newState.winealcohol = wine.alcohol
     newState.winebody = wine.body
-    newState.winedecant = wine.decant
+    newState.winedecant = wine.decant 
     newState.wineglassType = wine.glassType
     newState.winepairings = wine.pairings
     newState.wineprimaryFlavors = wine.primaryFlavors
@@ -107,16 +118,30 @@ class Admin extends Component {
     this.setState(newState);
   }
 
-  
+
+  hideShowEmp = id => {
+    const newState = { ...this.state }
+    const emp = this.state.employeesList.find(emp => emp._id === id);
+ 
+    newState.empId = id
+    newState.empfirstName = emp.firstName
+    newState.emplastName = emp.lastName
+    newState.empEmail = emp.email
+    
+    newState.showMeEmp = !newState.showMeEmp
+   
+    this.setState(newState);
+  }
+
 
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
       [name]: value
-      
+
     });
   };
-  handleLogout = event => {
+  handleLogout = (event) => {
     event.preventDefault();
     console.log('logging out');
     API.logOut().then(response => {
@@ -130,15 +155,26 @@ class Admin extends Component {
   };
 
   getSavedWine = () => {
-    API.getSavedWine()
+    console.log("////////////////");
+    console.log(this.state.user.restaurantId);
+    console.log("////////////////");
+    const admin = { restaurantId: this.state.user.restaurantId };
+    API.getSavedWine(admin)
       .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
+        console.log("DEDADAEDAEDAEDAEDDA");
+        console.log(res.data._id);
         // console.log(res.data[0]);
+        console.log("SAVESTAFF");
+        console.log(res.data);
+        console.log("SAVESTAFF");
         this.setState({
-          restaurants: res.data[0],
-          wines: res.data[0].Wines
+          employeesList: res.data.Employees,
+          wineCollections: res.data.Wines,
+          
         })
       }
+
       )
       .catch(() =>
         this.setState({
@@ -146,45 +182,113 @@ class Admin extends Component {
         })
       );
   };
+  handleAddEmployeeChange = event => {
+    const { name, value } = event.target
+    this.setState({
+      [name]: value
+    });
+  }
+  handleAddEmpolyeeFormSubmit = event => {
+    event.preventDefault();
+    this.addEmployee();
+    // this.hideShow2();
+  }
 
-  // getSavedEmployee = () => {
-  //   API.getSavedEmployee()
-  //     .then(res =>
-  //       this.setState({
-  //         employees: res.data
-  //       })
-  //     )
-  //     .catch(err => console.log(err));
-  // };
+  addEmployee = () => {
+
+    // console.log(restaurantId)
+    const employeeData = {name: this.state.name, lastName: this.state.lastName, email: this.state.email, password:this.state.password, restaurantId: this.state.user.restaurantId };
+    console.log(employeeData);
+    API.addEmployee(employeeData).then((res) => {
+      console.log("ADD Employees");
+      console.log(res.data.employee);
+      console.log(res.data.restaurant);
+      if (res.data==="Employee already exists") {
+        alert(res.data)
+        this.hideShow2();
+      }
+      else{
+        // alert(JSON.stringify(res.data))
+        this.state.employeesList.unshift(res.data.employee)
+        this.setState({
+          employeesList: this.state.employeesList
+       });
+       this.hideShow2();
+    }
+    });
+  }
 
   handleWineDelete = id => {
-    API.deleteWine(id).then(res => this.componentDidMount());
+    console.log("/////");
+    console.log(id);
+    const delelteWine = {id: id, restaurantId: this.state.user.restaurantId};
+    console.log(delelteWine);
+    API.deleteWine(delelteWine).then(res => this.componentDidMount());
   };
 
   handleEmployeeDelete = id => {
-    API.deleteEmployee(id).then(res => this.getSavedEmployee());
-  };
+    const deleteEmp = {id: id, restaurantId: this.state.user.restaurantId};
+    console.log("??????????????");
+    console.log(deleteEmp);
+    console.log("??????????????");
+    // const deleltData = {id: id, restaurantId: this.state.restaurantId}
+
+    API.deleteEmployee(deleteEmp).then(res => 
+      
+       this.componentDidMount()
+    )
+    }
+
+
+  hideShow3 = id=> {
+    const newState = { ...this.state }
+console.log(id)
+    newState.useId = this.state.user.id
+    newState.usefirstName = this.state.user.firstName
+    // const owner = this.state.user.find(owner => owner._id === id);
+    newState.showMe3 = !newState.showMe3
+
+    this.setState(newState);
+  }
+
 
   render() {
     return (
 
       <Container>
+        <Header user={this.state.user} />
 
+{/* <Userinfo
+          id={this.state.user._id}
+          firstName={this.state.user.firstName}
+          useId={this.state.useId}
+          usefirstName={this.state.usefirstName}
+          showMe3={this.state.showMe3}
+          hideShow3={this.hideShow3}
+          handleLogout={this.handleLogout}
+        ></Userinfo> 
+
+                      <button
+onClick={() => this.hideShow3(this.state.user._id)}
+className="btn btn-danger ml-2"
+>Welcome {this.state.user.firstName} !
+                        </button> */}
 
         {/* MODAL ----------------------- */}
-      <Addemployee
-            handleInputChange={this.handleInputChange}
-            id={this.state.id}
-             restaurant={this.state.restaurant}
-             name={this.state.name}
-             lastName={this.state.lastName}
-             email={this.state.email}
-             password={this.state.password}
-             loginemail={this.state.loginemail}
-             loginpassword={this.state.loginpassword}
-showMe2={this.state.showMe2}
-      hideShow2 = {this.hideShow2}
-            ></Addemployee>
+        <Addemployee
+          handleAddEmployeeChange={this.handleAddEmployeeChange}
+          handleAddEmpolyeeFormSubmit={this.handleAddEmpolyeeFormSubmit}
+          id={this.state.id}
+          restaurant={this.state.restaurant}
+          name={this.state.name}
+          lastName={this.state.lastName}
+          email={this.state.email}
+          password={this.state.password}
+          //  loginemail={this.state.loginemail}
+          //  loginpassword={this.state.loginpassword}
+          showMe2={this.state.showMe2}
+          hideShow2={this.hideShow2}
+        ></Addemployee>
 
         {/* MODAL ----------------------- */}
 
@@ -195,116 +299,124 @@ showMe2={this.state.showMe2}
           <h2 className="text-center">Search for wine collections and Add Employees</h2>
         </Jumbotron> */}
 
-<div className="wineandemployeewrapper">
-<div className="brandCol">
-<div>
-<Header user={this.state.user} /> 
-           <Link className="navbar-brand" to="/">
-           <i className="fas fa-wine-glass-alt"></i> Wine academy
+        <div className="wineandemployeewrapper">
+          <div className="brandCol">
+            <div>
+
+
+              <Link className="navbar-brand" to="/">
+                <i className="fas fa-wine-glass-alt"></i> Wine academy
         </Link>
-        </div>
-        <div>
-        <button onClick={this.handleLogout} type="submit" className="btn btn-lg btn-danger float-right">
-            Logout
+            </div>
+            <div>
+              <button onClick={this.handleLogout} type="submit" className="btn btn-lg btn-danger float-right">
+                Logout
          </button>
 
-        
-        </div>
 
-</div>
-        <div className="wineCol">
-        <div className="wineTitleWrap">
-        <div className="wineTitleWrap1">
-        <div>Wine</div>
-        <div><Link
-            className={window.location.pathname === "/wines" ? "nav-link active" : "nav-link"} 
-            to="/wines"
-          ><button>
-            Add Wine
+            </div>
+
+          </div>
+          <div className="wineCol">
+            <div className="wineTitleWrap">
+              <div className="wineTitleWrap1">
+
+              <div><Link
+                  
+                  to="/wines"
+                ><button className="addwinebtnmain"><i className="fas fa-wine-bottle"></i>
             </button>
-              </Link></div>
-        </div>
-        </div>
-        <div className="wineColWrap">
-        <div className="wineColWrap1">
-          {this.state.wines.length ? (
-            <List>
-              {this.state.wines.map(wine => (
-                <Restowine
-                  key={wine._id}
-                  id={wine._id}
-                  name={wine.name}
-                  handleWineDelete={this.handleWineDelete}
-
-                  showMe={this.state.showMe}
-                  hideShow={this.hideShow}
-                  wineName={this.state.wineName}
-                  wineId={this.state.wineId}
-                  wineacidity={this.state.wineacidity}
-                  wineageability={this.state.wineageability}
-                  winealcohol={this.state.winealcohol}
-                  winebody={this.state.winebody}
-                  winedecant={this.state.winedecant}
-                  wineglassType={this.state.wineglassType}
-                  winepairings={this.state.winepairings}
-                  wineprimaryFlavors={this.state.wineprimaryFlavors}
-                  winepronunciation={this.state.winepronunciation}
-                  winesummary={this.state.winesummary}
-                  winesweetness={this.state.winesweetness}
-                  winetannin={this.state.winetannin}
-                  winetemp={this.state.winetemp}
-
-                />
-              ))}
-            </List>
-          ) : (
-              <h2 className="text-center">Not Available</h2>
-            )}
+            
+                </Link></div>
+                <div></div>
+                
+              </div>
             </div>
-            </div>
-        </div>
-{/* -----------------EMPLOYEES COLUMN------------------- */}
-        <div className="employeeCol">
-        <div className="empTitleWrap">
-        <div className="empTitleWrap1">
-        <div>Employees</div>
-        <div><button onClick={() => this.hideShow2()}>Add Employee</button></div>
-        </div>
-        </div>
+            <div className="wineColWrap">
+              <div className="wineColWrap1">
+                {this.state.wineCollections.length ? (
+                  <List>
+                    {this.state.wineCollections.map(wine => (
+                      <Restowine
+                        key={wine._id}
+                        id={wine._id}
+                        name={wine.name}
+                        handleWineDelete={this.handleWineDelete}
 
-        <div className="employeeColWrap">
-        <div className="employeeColWrap1">
-          {this.state.employees.length ? (
-            <List>
-              {this.state.employees.map(employee => (
-                <Employees
-                  key={employee._id}
-                  title={employee.title}
-                  subtitle={employee.subtitle}
-                  link={employee.link}
-                  authors={employee.authors.join(", ")}
-                  description={employee.description}
-                  image={employee.image}
-                  Button={() => (
-                    <button
-                      onClick={() => this.handleEmployeeDelete(employee._id)}
-                      className="btn btn-danger ml-2"
-                    >
-                      Delete
-                        </button>
+                        showMe={this.state.showMe}
+                        hideShow={this.hideShow}
+                        wineName={this.state.wineName}
+                        wineId={this.state.wineId}
+                        wineacidity={this.state.wineacidity}
+                        wineageability={this.state.wineageability}
+                        winealcohol={this.state.winealcohol}
+                        winebody={this.state.winebody}
+                        winedecant={this.state.winedecant}
+                        wineglassType={this.state.wineglassType}
+                        winepairings={this.state.winepairings}
+                        wineprimaryFlavors={this.state.wineprimaryFlavors}
+                        winepronunciation={this.state.winepronunciation}
+                        winesummary={this.state.winesummary}
+                        winesweetness={this.state.winesweetness}
+                        winetannin={this.state.winetannin}
+                        winetemp={this.state.winetemp}
+
+                      />
+                    ))}
+                  </List>
+                ) : (
+                    <h2 className="text-center">Not Available</h2>
                   )}
-                />
-              ))}
-            </List>
-          ) : (
-              <h2 className="text-center">Add Employees</h2>
-            )}
+              </div>
             </div>
+          </div>
+          {/* -----------------EMPLOYEES COLUMN------------------- */}
+          <div className="employeeCol">
+            <div className="empTitleWrap">
+              <div className="empTitleWrap1">
+                <div></div>
+                <div><button className="addempbtnmain" onClick={() => this.hideShow2()}><i class="fas fa-user-plus"></i></button></div>
+              </div>
             </div>
-        </div>
+
+            <div className="employeeColWrap">
+              <div className="employeeColWrap1">
+                {this.state.employeesList.length ? (
+                  <List>
+                    {this.state.employeesList.map(employee => (
+                      <Employees
+                        key={employee._id}
+                        id={employee._id}
+                        firstName={employee.firstName}
+                        handleWineDelete={this.handleWineDelete}
+                        empId={this.state.empId}
+                        empfirstName={this.state.empfirstName}
+                        emplastName={this.state.emplastName}
+                        empEmail={this.state.empEmail}
+                       
+                        showMeEmp={this.state.showMeEmp}
+                        hideShowEmp={this.hideShowEmp}
+                        handleEmployeeDelete={this.handleEmployeeDelete}
+                        // Button={() => (
+                        //   <button
+                        //     onClick={() => this.handleEmployeeDelete(employee._id)}
+                        //     className="btn btn-danger ml-2"
+                        //   >
+                        //     Delete
+                        // </button>
+                        // )}
+                      />
+                    ))}
+                  </List>
+                ) : (
+                    <h2 className="text-center">Add Employees</h2>
+                  )}
+              </div>
+            </div>
+          </div>
         </div>
 
-{/* 
+        {/* 
         <Footer /> */}
       </Container>
     );

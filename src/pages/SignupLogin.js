@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from 'react-router-dom';
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
 import SignupLoginForm from "../components/SignupLoginForm";
 import API from "../utils/API";
 import { Container } from "../components/Grid";
@@ -16,10 +16,11 @@ class SignupLogin extends Component {
     loginemail: "",
     loginpassword: "",
     loggedIn: false,
+    loginMessage:"",
+    signupMessage:"",
     redirectTo: null
   }
-  // this.handleFormSubmit = this.handleFormSubmit.bind(this)
-  // this.handleInChange = this.handleInChange.bind(this)
+
   hideShow = () => {
     const newState = { ...this.state }
     newState.showMe = !newState.showMe
@@ -43,20 +44,17 @@ class SignupLogin extends Component {
       const loginInfor = { email, password }
       // console.log(userInfo);
       API.signUpSubmit(userInfo).then(response => {
-        console.log(">>>>>>>>>>>>>");
-        console.log(response.data.email);
-        console.log(response.data.password);
-        console.log(">>>>>>>>>>>>>")
+        // console.log(">>>>>>>>>>>>>");
+        // console.log(response.data.email);
+        // console.log(response.data.password);
+        // console.log(">>>>>>>>>>>>>")
         if (!response.data.error) {
           console.log('youre good')
           API.logIn(loginInfor).then(response => {
             console.log("USER OBJ: ", response);
             if (response.status === 200) {
-              // update the state
               if (response.data.isAdmin) {
                 this.setState({
-                  // loggedIn: true,
-                  // user: response.data.user,
                   redirectTo: '/admin'
                 });
               }
@@ -72,12 +70,12 @@ class SignupLogin extends Component {
 
         }
         else {
-          console.log('duplicate')
           this.setState({
             redirectTo: null,
             loggedIn: false,
+            signupMessage: "Email already exist, please log in"
           })
-          alert(response.data.error)
+          console.log(response.data.error)
         }
       })
     }
@@ -111,8 +109,18 @@ class SignupLogin extends Component {
           });
         }
       }
+      else {
+       
+      this.setState({
+        loginMessage: "Email does not exist!"
+      })
+      }
     }).catch(err => {
-      console.log(err)
+      console.log(err);
+      this.setState({
+        loginMessage: "Email does not exist!"
+      })
+
     });
   }
 
@@ -135,10 +143,12 @@ class SignupLogin extends Component {
           handleLoginFormSubmit={this.handleLoginFormSubmit}
           loginemail={this.state.loginemail}
           loginpassword={this.state.loginpassword}
+          loginMessage={this.state.loginMessage}
+          signupMessage={this.state.signupMessage}
           showMe={this.state.showMe}
           hideShow={this.hideShow}
         />
-        <Footer />
+        {/* <Footer /> */}
       </Container>
     );
   }
