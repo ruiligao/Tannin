@@ -184,16 +184,16 @@ newState.greet = "Welcome"
           greet = {this.state.greet}
         ></Empinfo> 
 
-<div>
+<div className="emppanel">
+<div className="empwelcomebtnwrap">
             <button
 onClick={() => this.hideShow4()}
-className="welcomebtn"
+className="empwelcomebtn"
 ><Header 
         user={this.state.user} />
                         </button>
-                      
+                        </div>
             </div>
-
 
         <br></br>
 
@@ -222,8 +222,8 @@ className="welcomebtn"
         </div>
 
 
-        <div className="wineColWrap">
-        <div className="wineColWrap1">
+        <div className="emppageColWrap">
+        <div className="emppageColWrap1">
         {this.state.wineCollections.length ? (
                   <List>
                     {this.state.wineCollections.map(wine => (
