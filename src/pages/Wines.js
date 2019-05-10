@@ -37,7 +37,7 @@ class Wines extends Component {
     winetemp: "",
 
     user: "",
-    restaurantId: "",
+    // restaurantId: "",
     name: "",
     lastName: "",
     email: "",
@@ -49,7 +49,10 @@ class Wines extends Component {
   
   };
 
-  
+  componentDidMount() {
+    this.getUser()
+    this.getMaster();
+  }
 
   getUser = () => {
     API.getUser().then(response => {
@@ -62,7 +65,7 @@ class Wines extends Component {
           user: response.data.user
         })
 
-        this.getSavedWine()
+        // this.getSavedWine()
       } else {
         this.setState({
           loggedIn: false,
@@ -74,31 +77,31 @@ class Wines extends Component {
   }
 
 
-  getSavedWine = () => {
-    console.log("////////////////");
-    console.log(this.state.user.email);
-    console.log("////////////////");
-    const admin = { email: this.state.user.email };
-    API.getSavedWine(admin)
-      .then(res => {
-        // console.log("SAVESTAFF")
-        // console.log(res.data);
-        // console.log("SAVESTAFF")
-        // console.log(res.data._id);
-        // console.log(res.data[0]);
-        this.setState({
-          restaurantId: res.data._id,
-          // wines: res.data.Wines,
-        })
-      }
+  // getSavedWine = () => {
+  //   console.log("////////////////");
+  //   console.log(this.state.user.email);
+  //   console.log("////////////////");
+  //   const admin = { email: this.state.user.email };
+  //   API.getSavedWine(admin)
+  //     .then(res => {
+  //       // console.log("SAVESTAFF")
+  //       // console.log(res.data);
+  //       // console.log("SAVESTAFF")
+  //       // console.log(res.data._id);
+  //       // console.log(res.data[0]);
+  //       this.setState({
+  //         restaurantId: res.data._id,
+  //         // wines: res.data.Wines,
+  //       })
+  //     }
 
-      )
-      .catch(() =>
-        this.setState({
-          message: "Wine not available"
-        })
-      );
-  };
+  //     )
+  //     .catch(() =>
+  //       this.setState({
+  //         message: "Wine not available"
+  //       })
+  //     );
+  // };
 
   hideShow = id => {
     const newState = { ...this.state }
@@ -124,10 +127,7 @@ newState.winetemp = wine.temp
     this.setState(newState);
   }
 
-  componentDidMount() {
-    this.getUser()
-    this.getMaster();
-  }
+ 
 
   getMaster = () => {
     API.getMaster()
@@ -147,56 +147,15 @@ newState.winetemp = wine.temp
       );
   };
 
-  // handleInputChange = event => {
-  //   const { name, value } = event.target;
-  //   this.setState({
-  //     [name]: value
-
-  //   });
-  // };
-
-  // getBooks = () => {
-  //   API.getBooks(this.state.q)
-  //     .then(res =>
-  //       this.setState({
-  //         books: res.data
-  //       })
-  //     )
-  //     .catch(() =>
-  //       this.setState({
-  //         books: [],
-  //         message: "No New Books Found, Try a Different Query"
-  //       })
-  //     );
-  // };
-
-  // handleFormSubmit = event => {
-  //   event.preventDefault();
-  //   this.getBooks();
-  // };
-
-//   handleWineAdd = id => {
-//     // const newState = {...this.state}
-//     // newState.text = "added" 
-
-//     const wine = this.state.wines.find(wine => wine._id === id);
-// console.log(id);
-// const wineData = {
-// Wines: wine
-// }
-// API.addWine(wineData).then(() => this.getMaster());
-// console.log(id);
-// };
-
-
+  
 handleWineAdd = id => {
   console.log("???????????????");
   console.log(this.state);
-  console.log("REID: " + this.state.restaurantId);
+  console.log("REID: " + this.state.user.restaurantId);
   const wine = this.state.winesMaster.find(wine => wine._id === id);
   const wineData = {
     Wines: wine._id,
-    restaurantId: this.state.restaurantId
+    restaurantId: this.state.user.restaurantId
     }
     console.log("ADDWINE INFOR");
     console.log(wineData);

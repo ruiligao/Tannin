@@ -10,14 +10,13 @@ import wineData from "../franciacorta.json"
 import './style.css';
 
 class Quiz extends Component {
-  // Setting this.state.characters to the character json array
-  // Setting score, losses, and highScore to 0 for the start of each game
   state = {
     questions,
     filteredQs: [],
-    aFlavor: wineData.primaryFlavors,
-    submitFlavor: "",
+    correctFlavors: wineData.primaryFlavors,
+    submittedFlavor: "",
     wineData,
+    counter: 0,
     score: 0,
     highScore: 0,
   };
@@ -25,17 +24,16 @@ class Quiz extends Component {
   // componentWillMount shuffles the CharacterCards before the DOM is loaded
   componentWillMount() {
     const categories = Object.keys(wineData)
-    const truth = Object.values(wineData)
     const filteredQs = questions.filter(q => {
       return categories.includes(q.category)
     });
     this.setState({ filteredQs: filteredQs })
     this.shuffle(filteredQs);
 
-    console.log("Categories for", wineData.name, ": ", categories)
-    console.log("Answers for ", wineData.name, ": ", truth)
-    console.log("Questions to be run for", wineData.name, ": ", filteredQs)
-    console.log("The list of false answers for", filteredQs[0].category, ": ", filteredQs[0].falseAnswers)
+    // console.log("Categories for", wineData.name, ": ", categories)
+    // console.log("Answers for ", wineData.name, ": ", truth)
+    // console.log("Questions to be run for", wineData.name, ": ", filteredQs)
+    console.log(this.state.correctFlavors)
   };
 
 
@@ -51,11 +49,12 @@ class Quiz extends Component {
     return arr;
   };
 
-  handleBtnClick = () => {
+  handleBtnClick = (event) => {
     // renaming this.state so we don't have to write it out each time
     const newState = { ...this.state };
 
-    newState.score = newState.score +1
+    let points = parseInt(event.target.value);
+    newState.counter = newState.counter + points
 
     // in this if statement we check to see if the player lost, log their loss, and clear the guesses array & score
 
@@ -63,9 +62,44 @@ class Quiz extends Component {
     this.setState(newState);
   }
 
+  handleInputChange = event => {
+    // Getting the value and name of the input which triggered the change
+    const { name, value } = event.target;
+
+    // Updating the input's state
+    this.setState({
+      [name]: value
+    });
+  };
 
   handleCheckFlavor = () => {
-    console.log(this.state.aFlavor)
+
+    const newState = { ...this.state };
+
+    console.log(newState.correctFlavors)
+     if (this.state.correctFlavors.includes(this.state.submittedFlavor)) {
+      this.setState({
+        counter: newState.counter +1,
+        submittedFlavor: ""
+      })
+     } else { 
+       this.setState({
+        submittedFlavor: ""
+    })}
+  }
+
+  handleScoreCalc = () => {
+    const newState = { ...this.state };
+    let hundreds = newState.counter * 100;
+    let total = newState.filteredQs.length;
+    newState.score = hundreds / total
+
+    console.log("hundreds: ", hundreds)
+    console.log("total # of Questions: ", total)
+    console.log("Your score for ", wineData.name, ": ", newState.score, "%")
+    this.setState({
+      score: newState.score
+    });
   }
 
 
@@ -83,6 +117,8 @@ class Quiz extends Component {
             <QuestionCard
               // each card will inherit an id, a key, a name, and an image from its respective array object
               handleBtnClick={this.handleBtnClick}
+              handleInputChange={this.handleInputChange}
+              handleCheckFlavor={this.handleCheckFlavor}
               shuffle={this.shuffle}
 
               id={filteredQ.id}
@@ -99,7 +135,7 @@ class Quiz extends Component {
               temp={wineData.temp}
               decant={wineData.decant}
               ageability={wineData.ageability}
-              truth={this.truth}
+              counter={this.state.counter}
               submitFlavor={this.state.submitFlavor}
             />
           ))}

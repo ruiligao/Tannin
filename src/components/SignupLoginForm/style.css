@@ -286,6 +286,9 @@ font-family: 'Pacifico', cursive;
     top: 50%;
     left:43%;
     transform: translateY(-50%);
-    
-  
+}
+
+.message {
+  color: red;
+  font-weight: bold;
 }
