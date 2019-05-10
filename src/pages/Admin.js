@@ -56,9 +56,9 @@ class Admin extends Component {
     redirectTo: null,
 
     greet:"",
-
     userId:"",
-    usefirstName:""
+    usefirstName:"",
+    uselastName:""
 
   };
 
@@ -254,6 +254,7 @@ class Admin extends Component {
 newState.greet = "Welcome"
       newState.useId= newState.user._id
           newState.usefirstName=newState.user.firstName
+          newState.uselastName=newState.user.lastName
           console.log(newState.useId);
     }
 
@@ -275,6 +276,7 @@ newState.greet = "Welcome"
 <Userinfo
           useId={this.state.useId}
           usefirstName={this.state.usefirstName}
+          uselastName={this.state.uselastName}
           showMe3={this.state.showMe3}
           hideShow3={this.hideShow3}
           handleLogout={this.handleLogout}
@@ -381,7 +383,7 @@ className="welcomebtn"
             <div className="empTitleWrap">
               <div className="empTitleWrap1">
                 <div className="textadmin">Employees</div>
-                <div><button className="addempbtnmain" onClick={() => this.hideShow2()}><i class="fas fa-user-plus"></i></button></div>
+                <div><button className="addempbtnmain" onClick={() => this.hideShow2()}><i className="fas fa-user-plus"></i></button></div>
               </div>
             </div>
 
