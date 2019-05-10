@@ -400,15 +400,15 @@ className="btn btn-danger ml-2"
                        
                         showMeEmp={this.state.showMeEmp}
                         hideShowEmp={this.hideShowEmp}
-                 
-                        Button={() => (
-                          <button
-                            onClick={() => this.handleEmployeeDelete(employee._id)}
-                            className="btn btn-danger ml-2"
-                          >
-                            Delete
-                        </button>
-                        )}
+                        handleEmployeeDelete={this.handleEmployeeDelete}
+                        // Button={() => (
+                        //   <button
+                        //     onClick={() => this.handleEmployeeDelete(employee._id)}
+                        //     className="btn btn-danger ml-2"
+                        //   >
+                        //     Delete
+                        // </button>
+                        // )}
                       />
                     ))}
                   </List>
