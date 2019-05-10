@@ -200,7 +200,8 @@ class Admin extends Component {
   addEmployee = () => {
 
     // console.log(restaurantId)
-    const employeeData = {name: this.state.name, lastName: this.state.lastName, email: this.state.email, password:this.state.password, restaurantId: this.state.user.restaurantId };
+    const employeeData = {name: this.state.name, lastName: this.state.lastName, email: this.state.email, password:this.state.password, restaurantId: this.state.user.restaurantId, restaurantName: this.state.user.restaurantName };
+    console.log("ADDRESNAME?????");
     console.log(employeeData);
     API.addEmployee(employeeData).then((res) => {
       console.log("ADD Employees");
