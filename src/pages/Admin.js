@@ -3,8 +3,9 @@ import React, { Component } from "react";
 import Restowine from "../components/Restowine";
 import Employees from "../components/Employees";
 import Addemployee from "../components/Addemployee";
-// import Footer from "../components/Footer";
+// // import Footer from "../components/Footer";
 import Header from "../components/Header";
+import Userinfo from "../components/Userinfo";
 import API from "../utils/API";
 import { Container } from "../components/Grid";
 import { List } from "../components/List";
@@ -20,6 +21,7 @@ class Admin extends Component {
 
     showMe: false,
     showMe2: false,
+    showMe3: false,
     showMeEmp: false,
     // text: "add wine",
     wineId: "",
@@ -42,7 +44,7 @@ class Admin extends Component {
     empfirstName:"",
     emplastName:"",
     empEmail:'"',
-    user: "",
+    user: [],
     restaurantId: "",
     name: "",
     lastName: "",
@@ -52,6 +54,9 @@ class Admin extends Component {
     // loginpassword: "",
     loggedIn: true,
     redirectTo: null,
+
+    useId:"",
+    usefirstName:""
 
   };
 
@@ -67,7 +72,8 @@ class Admin extends Component {
         console.log(response.data);
         this.setState({
           loggedIn: true,
-          user: response.data.user
+          user: response.data.user,
+          
         })
 
         this.getSavedWine()
@@ -135,7 +141,7 @@ class Admin extends Component {
 
     });
   };
-  handleLogout = event => {
+  handleLogout = (event) => {
     event.preventDefault();
     console.log('logging out');
     API.logOut().then(response => {
@@ -166,6 +172,7 @@ class Admin extends Component {
           employeesList: res.data.Employees,
           wineCollections: res.data.Wines,
           restaurantId: res.data._id
+          
         })
       }
 
@@ -234,11 +241,39 @@ class Admin extends Component {
     API.deleteEmployee(id).then(res => this.getSavedEmployee());
   };
 
+  hideShow3 = id=> {
+    const newState = { ...this.state }
+console.log(id)
+    newState.useId = this.state.user.id
+    newState.usefirstName = this.state.user.firstName
+    // const owner = this.state.user.find(owner => owner._id === id);
+    newState.showMe3 = !newState.showMe3
+
+    this.setState(newState);
+  }
+
+
   render() {
     return (
 
       <Container>
+        <Header user={this.state.user} />
 
+{/* <Userinfo
+          id={this.state.user._id}
+          firstName={this.state.user.firstName}
+          useId={this.state.useId}
+          usefirstName={this.state.usefirstName}
+          showMe3={this.state.showMe3}
+          hideShow3={this.hideShow3}
+          handleLogout={this.handleLogout}
+        ></Userinfo> 
+
+                      <button
+onClick={() => this.hideShow3(this.state.user._id)}
+className="btn btn-danger ml-2"
+>Welcome {this.state.user.firstName} !
+                        </button> */}
 
         {/* MODAL ----------------------- */}
         <Addemployee
@@ -268,7 +303,8 @@ class Admin extends Component {
         <div className="wineandemployeewrapper">
           <div className="brandCol">
             <div>
-              <Header user={this.state.user} />
+
+
               <Link className="navbar-brand" to="/">
                 <i className="fas fa-wine-glass-alt"></i> Wine academy
         </Link>

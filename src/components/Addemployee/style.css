@@ -40,11 +40,7 @@ display: flex;
       
           
       
-          .btnwrap1a {
-            justify-content: center;
-            display: flex;
-            margin-bottom: 20px;
-          }
+
       
           textarea:focus, input:focus{
             outline: none;
@@ -144,9 +140,13 @@ display: flex;
       font-family: 'Zilla Slab Highlight', cursive; */
       }
       
-      
+
       .btnwrap1a{
+        justify-content: center;
+        display: flex;
+        margin-bottom: 20px;
       color:white;
+      margin-top: 10px;
           background-color: rgb(190, 39, 77);
           border-style: none;
           height: 40px;

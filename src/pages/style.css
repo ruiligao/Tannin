@@ -40,7 +40,11 @@ display: flex;
     overflow: auto;
     width: 80%;
     margin-top: 20px;
-border-radius: 30px;
+    border-radius: 30px;
+    border-style: solid;
+    border-width: 10px;
+    border-color: rgb(71, 67, 67);
+
 }
 
 .employeeColWrap {
@@ -57,6 +61,7 @@ border-radius: 30px;
     border-radius: 30px;
     border-style: solid;
     border-width: 10px;
+    border-color: rgb(71, 67, 67);
 }
 
 .empTitleWrap {
