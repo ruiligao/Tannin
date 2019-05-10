@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 // import Jumbotron from "../components/Jumbotron";
 import SavedWine from "../components/SavedWine";
-import Addemployee from "../components/Addemployee";
+// import Addemployee from "../components/Addemployee";
 // import Footer from "../components/Footer";
 import API from "../utils/API";
 import Header from "../components/Header";
+
+import Empinfo from "../components/Empinfo";
 import { Container } from "../components/Grid";
+
 import { List } from "../components/List";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "./style.css";
 
 
@@ -16,7 +19,7 @@ class EmployeePage extends Component {
     wineCollections: [],
 
 
-
+    showMe4: false,
     showMe: false,
     user: "",
     loggedIn: true,
@@ -28,7 +31,13 @@ class EmployeePage extends Component {
     email:"",
     password:"",
     loginemail:"",
-    loginpassword:""
+    loginpassword:"",
+
+    greet:"",
+    empuserId:"",
+    empusefirstName:"",
+    empuselastName:"",
+    empuserestaurantName:""
   };
 
   // componentDidMount() {
@@ -142,36 +151,49 @@ class EmployeePage extends Component {
   }
 
   
+
+  hideShow4 = id=> {
+    const newState = { ...this.state }
+
+
+newState.greet = "Welcome"
+      newState.empuseId= newState.user._id
+          newState.empusefirstName=newState.user.firstName
+          newState.empuselastName=newState.user.lastName
+          newState.empuserestaurantName=newState.user.restaurantName
+          console.log(newState.empuseId);
+    newState.showMe4 = !newState.showMe4
+    this.setState(newState);
+
+  }
+
+
   render() {
     return (
 
       <Container>
-        <div>
-           <Link className="navbar-brand" to="/">
-          Wine academy
-        </Link>
-        </div>
-        <div>
-        <button onClick={this.handleLogout} type="submit" className="btn btn-lg btn-danger float-right">
-            Logout
-        </button>
-        </div>
-        <Header user={this.state.user} />
+<div className="emppagemainwrap">
+<Empinfo
+          useId={this.state.useId}
+          usefirstName={this.state.empusefirstName}
+          uselastName={this.state.empuselastName}
+          userestaurantName={this.state.empuserestaurantName}
+          showMe4={this.state.showMe4}
+          hideShow4={this.hideShow4}
+          handleLogout={this.handleLogout}
+          greet = {this.state.greet}
+        ></Empinfo> 
 
-        <Addemployee
-            handleInputChange={this.handleInputChange}
-            id={this.state.id}
-             restaurant={this.state.restaurant}
-             name={this.state.name}
-             lastName={this.state.lastName}
-             email={this.state.email}
-             password={this.state.password}
-             loginemail={this.state.loginemail}
-             loginpassword={this.state.loginpassword}
-showMe={this.state.showMe}
-      hideShow = {this.hideShow}
-            ></Addemployee>
-
+<div className="emppanel">
+<div className="empwelcomebtnwrap">
+            <button
+onClick={() => this.hideShow4()}
+className="empwelcomebtn"
+><Header 
+        user={this.state.user} />
+                        </button>
+                        </div>
+            </div>
 
         <br></br>
 
@@ -184,8 +206,8 @@ showMe={this.state.showMe}
           <h2 className="text-center">Search for wine collections and Add Employees</h2>
         </Jumbotron> */}
 
-<div className="wineandemployeewrapper">
-        <div className="wineCol">
+<div className="employeepagewrapper">
+        <div className="emppagecol">
         <div className="wineTitleWrap">
         <div className="wineTitleWrap1">
         <div>Employee Chart</div>
@@ -200,8 +222,8 @@ showMe={this.state.showMe}
         </div>
 
 
-        <div className="wineColWrap">
-        <div className="wineColWrap1">
+        <div className="emppageColWrap">
+        <div className="emppageColWrap1">
         {this.state.wineCollections.length ? (
                   <List>
                     {this.state.wineCollections.map(wine => (
@@ -242,6 +264,7 @@ showMe={this.state.showMe}
         
         </div>
         {/* <Footer /> */}
+        </div>
       </Container>
     );
   }

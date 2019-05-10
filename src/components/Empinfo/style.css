@@ -1,4 +1,4 @@
-.overlay1 {
+.overlay9 {
 
     position: absolute;
   
@@ -11,28 +11,28 @@
     /* background: -webkit-gradient(linear, left top, left bottom, from(rgb(248, 252, 250)), to(rgb(102, 42, 42))) fixed; */
     z-index: 2;
     overflow: hidden;
-
-    
+  
+      
   }
-
-  .wrapper1 {
-    display: flex;
-    justify-content: center;
-    margin-top: 50px;
+  
+  .useinfowrapper1 {
+    /* display: flex;
+    justify-content: center; */
+    margin-top: 150px;
   }
-
-  .wrapper2{
-width: 50%;
-background: rgb(113, 100, 126);
-border-style:solid;
-border-width: 10px;
-border-color:  rgb(63, 28, 97);
-border-radius: 50px;
-justify-content: center;
-display: flex;
+  
+  .useinfowrapper2{
+  width: 20%;
+  background-color: #17414e;
+  border-style:solid;
+  border-width: 0px;
+  border-color: rgb(57, 39, 78);
+  border-radius: 0px;
+  justify-content: center;
+  display: flex;
   }
-
-  .wrapper3{
+  
+  .useinfowrapper3{
     width: 80%;
     /* background: rgb(150, 142, 142); */
     margin: 20px;
@@ -40,7 +40,7 @@ display: flex;
       
           
       
-
+  
       
           textarea:focus, input:focus{
             outline: none;
@@ -140,14 +140,14 @@ display: flex;
       font-family: 'Zilla Slab Highlight', cursive; */
       }
       
-
-      .btnwrap1a{
+  
+      .btnwrap1b{
         justify-content: center;
         display: flex;
         margin-bottom: 20px;
       color:white;
       margin-top: 10px;
-          background-color: rgb(190, 39, 77);
+          background-color: rgb(196, 120, 139);
           border-style: none;
           height: 40px;
           padding-left: 20px;
@@ -157,7 +157,7 @@ display: flex;
         }
       
       
-      .btnwrap1a:focus {
+      .btnwrap1b:focus {
         outline: none !important;
       }
       
@@ -166,7 +166,7 @@ display: flex;
       }
     
       
-      .btnwrap1a:hover {
+      .btnwrap1b:hover {
         -ms-transform: scale(1.2); /* IE 9 */
         -webkit-transform: scale(1.2); /* Safari 3-8 */
         transform: scale(1.2); 
@@ -179,6 +179,8 @@ display: flex;
       }
       
       
-      
-        
+  .btnwrap1bclose {
+  justify-content: flex-end;
+  display: flex;
+  }
         

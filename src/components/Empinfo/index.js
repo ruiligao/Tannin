@@ -2,18 +2,18 @@ import React from "react";
 // import { Link } from "react-router-dom";
 import "./style.css";
 
-function Userinfo({ showMe3, useId, hideShow3, usefirstName, uselastName, userestaurantName, handleLogout }) {
+function Empinfo({ showMe4, useId, hideShow4, usefirstName, uselastName, userestaurantName, handleLogout }) {
   return (
 
     <div>
-    {showMe3 ?
-      <div className="overlay8">
+    {showMe4 ?
+      <div className="overlay9">
         <div className="useinfowrapper1">
         <div className="useinfowrapper2">
         <div className="useinfowrapper3">
       <div>
       <div className="btnwrap1bclose">
-      <button className="btnwrap1b" onClick={() => hideShow3(useId)}>Close</button></div>
+      <button className="btnwrap1b" onClick={() => hideShow4(useId)}>Close</button></div>
       <div className="newempformtext"></div>
       <div>Id No: {useId}</div>
       <div>Restaurant Name: {userestaurantName}</div>
@@ -59,4 +59,4 @@ function Userinfo({ showMe3, useId, hideShow3, usefirstName, uselastName, useres
   );
 }
 
-export default Userinfo;
+export default Empinfo;

@@ -1,35 +1,36 @@
 import React from "react";
 import "./style.css";
 
-
-// function QuestionCard(props) {
+// class component QuestionCard(props) {
 class QuestionCard extends React.Component {
 
-
-
     answers = this.props.answers;
-
     falses = this.answers ? this.answers.splice(this.answers.indexOf(this.props[this.props.category]), 1) : null
     shuffledFalses = this.answers ? this.props.shuffle(this.answers) : null
+    selections = this.answers ? (this.answers.slice(0, 3)) : null
+    dummThing = this.selections ? (this.selections.push(this.props[`${this.props.category}`])):null
+    shuffledSelections = this.selections ? this.props.shuffle(this.selections): null
     
-
-
     render() {
+        {console.log(this.selections)}
         return (
-            <div className="card">
+            <div className="qcard">
                 <h2 className="questionName">{this.props.question}{this.props.wineName}?</h2>
                 {/* If false answers are available, render button for each answer, else render a submit (specifically for the flavors question) */}
                 <div>
-                    {this.answers ? this.props.answers.slice(0, 3).map(answer => {
+                    {this.selections ? this.selections.map(answer => {
                         return (
+                            answer === this.props[`${this.props.category}`] ?
                             <div>
+                                <button className={this.props.id} onClick={this.props.handleBtnClick}
+                                    value="1">{answer}</button><br />
+                            </div> : <div>
                                 <button className={this.props.id} onClick={this.props.handleBtnClick}
                                     value="0">{answer}</button><br />
                             </div>
                         )
                     }) :
                         <div className="AnswerButtons">
-                            {/* on change! in input tag */}
                             <input
                                 onChange={this.props.handleInputChange}
                                 value={this.props.submittedFlavor}
@@ -45,9 +46,6 @@ class QuestionCard extends React.Component {
                         </div>
                     }
 
-                    <div>
-                        {this.answers ? <button className={this.props.id} onClick={this.props.handleBtnClick} value="1">{this.props[`${this.props.category}`]}</button> : null}
-                    </div>
                 </div>
             </div>
         );
