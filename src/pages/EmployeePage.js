@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 // import Jumbotron from "../components/Jumbotron";
-import Wine from "../components/Wine";
-
+import SavedWine from "../components/SavedWine";
 import Addemployee from "../components/Addemployee";
 // import Footer from "../components/Footer";
 import API from "../utils/API";
@@ -14,7 +13,9 @@ import "./style.css";
 
 class EmployeePage extends Component {
   state = {
-    books: [],
+    wineCollections: [],
+
+
 
     showMe: false,
     user: "",
@@ -62,16 +63,15 @@ class EmployeePage extends Component {
         this.setState({
           loggedIn: true,
           user: response.data.user,
-          
-        })
-
+        });
         this.getSavedWine()
-      } else {
+      } 
+      else {
         this.setState({
           loggedIn: false,
-          user: null,
-          redirectTo: "/"
+          user: null
         });
+        this.props.history.push(`/`);
       }
     });
   }
@@ -84,7 +84,6 @@ class EmployeePage extends Component {
     API.getSavedWine(admin)
       .then(res => {
         this.setState({
-          employeesList: res.data.Employees,
           wineCollections: res.data.Wines,
           
         })
@@ -118,11 +117,31 @@ class EmployeePage extends Component {
     });
   }
 
+  hideShow = id => {
+    const newState = { ...this.state }
+    const wine = this.state.wineCollections.find(wine => wine._id === id);
+    newState.wineId = id
+    newState.wineName = wine.name
+    newState.wineacidity = wine.acidity
+    newState.wineageability = wine.ageability
+    newState.winealcohol = wine.alcohol
+    newState.winebody = wine.body
+    newState.winedecant = wine.decant 
+    newState.wineglassType = wine.glassType
+    newState.winepairings = wine.pairings
+    newState.wineprimaryFlavors = wine.primaryFlavors
+    newState.winepronunciation = wine.pronunciation
+    newState.winesummary = wine.summary
+    newState.winesweetness = wine.sweetness
+    newState.winetannin = wine.tannin
+    newState.winetemp = wine.temp
+    newState.showMe = !newState.showMe
+    newState.scale = this.state.scale > 1 ? 1 : 1.5
 
-  handleBookDelete = id => {
-    API.deleteBook(id).then(res => this.getSavedBooks());
-  };
+    this.setState(newState);
+  }
 
+  
   render() {
     return (
 
@@ -183,36 +202,36 @@ showMe={this.state.showMe}
 
         <div className="wineColWrap">
         <div className="wineColWrap1">
-          {this.state.books.length ? (
-            <List>
-              {this.state.books.map(book => (
-                <Wine
-                  key={book._id}
-                  title={book.title}
-                  subtitle={book.subtitle}
-                  link={book.link}
-                  authors={book.authors.join(", ")}
-                  description={book.description}
-                  image={book.image}
-                  Button={() => (
-                    <div>
-                    <button
-                      onClick={() => this.handleBookDelete(book._id)}
-                      className="btn btn-danger ml-2"
-                    >
-                      Delete
-                        </button>
+        {this.state.wineCollections.length ? (
+                  <List>
+                    {this.state.wineCollections.map(wine => (
+                      <SavedWine
+                        key={wine._id}
+                        id={wine._id}
+                        name={wine.name}
+                        // handleWineDelete={this.handleWineDelete}
 
-<button
-onClick={() => this.handleBookDelete(book._id)}
-className="btn btn-danger ml-2"
->
-Quiz
-  </button></div>
-                  )}
-                />
-              ))}
-            </List>
+                        showMe={this.state.showMe}
+                        hideShow={this.hideShow}
+                        wineName={this.state.wineName}
+                        wineId={this.state.wineId}
+                        wineacidity={this.state.wineacidity}
+                        wineageability={this.state.wineageability}
+                        winealcohol={this.state.winealcohol}
+                        winebody={this.state.winebody}
+                        winedecant={this.state.winedecant}
+                        wineglassType={this.state.wineglassType}
+                        winepairings={this.state.winepairings}
+                        wineprimaryFlavors={this.state.wineprimaryFlavors}
+                        winepronunciation={this.state.winepronunciation}
+                        winesummary={this.state.winesummary}
+                        winesweetness={this.state.winesweetness}
+                        winetannin={this.state.winetannin}
+                        winetemp={this.state.winetemp}
+
+                      />
+                    ))}
+                  </List>
           ) : (
               <h2 className="text-center">Pick a wine</h2>
             )}

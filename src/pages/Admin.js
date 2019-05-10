@@ -80,9 +80,9 @@ class Admin extends Component {
       } else {
         this.setState({
           loggedIn: false,
-          user: null,
-          redirectTo: "/"
+          user: null
         });
+        this.props.history.push(`/`);
       }
     });
   }
@@ -195,13 +195,7 @@ class Admin extends Component {
   }
 
   addEmployee = () => {
-    console.log("???????????????");
-    console.log(this.state);
-    console.log("REID: " + this.state.user.restaurantId);
 
-    // const { name, lastName, email, password, restaurantId } = this.state;
-    // const { restaurantId} = this.state.user;
-    console.log("RESIDRESIDRESID");
     // console.log(restaurantId)
     const employeeData = {name: this.state.name, lastName: this.state.lastName, email: this.state.email, password:this.state.password, restaurantId: this.state.user.restaurantId };
     console.log(employeeData);
