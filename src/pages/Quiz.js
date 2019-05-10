@@ -24,16 +24,11 @@ class Quiz extends Component {
   // componentWillMount shuffles the CharacterCards before the DOM is loaded
   componentWillMount() {
     const categories = Object.keys(wineData)
-    const cheatSheet = Object.values(wineData)
     const filteredQs = questions.filter(q => {
       return categories.includes(q.category)
     });
     this.setState({ filteredQs: filteredQs })
     this.shuffle(filteredQs);
-
-    // console.log("Categories for", wineData.name, ": ", categories)
-    // console.log("Answers for ", wineData.name, ": ", truth)
-    // console.log("Questions to be run for", wineData.name, ": ", filteredQs)
     console.log(this.state.correctFlavors)
   };
 
@@ -57,9 +52,6 @@ class Quiz extends Component {
     let points = parseInt(event.target.value);
     newState.counter = newState.counter + points
 
-    // in this if statement we check to see if the player lost, log their loss, and clear the guesses array & score
-
-    // finally we use setState to update the state to the virtual DOM
     this.setState(newState);
   }
 
@@ -94,6 +86,7 @@ class Quiz extends Component {
     let hundreds = newState.counter * 100;
     let total = newState.filteredQs.length;
     newState.score = hundreds / total
+    // newState.score > newState.highscore ? newState.highscore = newState.Score : newState.highScore = newState.highscore
 
     console.log("hundreds: ", hundreds)
     console.log("total # of Questions: ", total)
@@ -116,12 +109,13 @@ class Quiz extends Component {
           {/* Map over this.state.characters and render a CharacterCard component for each character object */}
           {this.state.filteredQs.map(filteredQ => (
             <QuestionCard
-              // each card will inherit an id, a key, a name, and an image from its respective array object
+              // functions to be inherited as props
               handleBtnClick={this.handleBtnClick}
               handleInputChange={this.handleInputChange}
               handleCheckFlavor={this.handleCheckFlavor}
               shuffle={this.shuffle}
 
+              //values to be inherited as props
               id={filteredQ.id}
               key={filteredQ.id}
               question={filteredQ.question}
