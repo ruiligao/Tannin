@@ -1,11 +1,8 @@
 import React from "react";
 import "./style.css";
 
-
 // class component QuestionCard(props) {
 class QuestionCard extends React.Component {
-
-
 
     answers = this.props.answers;
     falses = this.answers ? this.answers.splice(this.answers.indexOf(this.props[this.props.category]), 1) : null
@@ -14,12 +11,10 @@ class QuestionCard extends React.Component {
     dummThing = this.selections ? (this.selections.push(this.props[`${this.props.category}`])):null
     shuffledSelections = this.selections ? this.props.shuffle(this.selections): null
     
-
-
     render() {
         {console.log(this.selections)}
         return (
-            <div className="card">
+            <div className="qcard">
                 <h2 className="questionName">{this.props.question}{this.props.wineName}?</h2>
                 {/* If false answers are available, render button for each answer, else render a submit (specifically for the flavors question) */}
                 <div>
