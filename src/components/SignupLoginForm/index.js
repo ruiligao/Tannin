@@ -2,7 +2,7 @@ import React from "react";
 // import { Link } from "react-router-dom";
 import "./style.css";
 
-function SignupLoginForm({ showMe, hideShow, restaurant, firstName, lastName, email, password, loginemail, loginpassword, handleSubmitInputChange, handleSignupFormSubmit, handleLoginInputChange, handleLoginFormSubmit }) {
+function SignupLoginForm({ showMe, hideShow, restaurant, firstName, lastName, email, password, loginemail, loginpassword, handleSubmitInputChange, handleSignupFormSubmit, handleLoginInputChange, handleLoginFormSubmit, message }) {
   return (
 
     <div>
@@ -162,7 +162,7 @@ function SignupLoginForm({ showMe, hideShow, restaurant, firstName, lastName, em
                         </div>
                       </div>
                     </div>
-
+                    <div><h2>{message}</h2></div>
                     <div className="pull-right">
 
                       <button

@@ -18,7 +18,7 @@ class Admin extends Component {
     employeesList: [],
     winesMaster: [],
     wineCollections:[],
-
+    
     showMe: false,
     showMe2: false,
     showMe3: false,
@@ -214,32 +214,35 @@ class Admin extends Component {
       else{
         // alert(JSON.stringify(res.data))
         this.state.employeesList.unshift(res.data.employee)
-      this.setState({
-       employees: this.state.employees
+        this.setState({
+          employeesList: this.state.employeesList
        });
        this.hideShow2();
     }
     });
   }
 
-
-  // getSavedEmployee = () => {
-  //   API.getSavedEmployee()
-  //     .then(res =>
-  //       this.setState({
-  //         employees: res.data
-  //       })
-  //     )
-  //     .catch(err => console.log(err));
-  // };
-
   handleWineDelete = id => {
-    API.deleteWine(id).then(res => this.componentDidMount());
+    console.log("/////");
+    console.log(id);
+    const delelteWine = {id: id, restaurantId: this.state.restaurantId};
+    console.log(delelteWine);
+    API.deleteWine(delelteWine).then(res => this.componentDidMount());
   };
 
   handleEmployeeDelete = id => {
-    API.deleteEmployee(id).then(res => this.getSavedEmployee());
-  };
+    const deleteEmp = {id: id, restaurantId: this.state.restaurantId};
+    console.log("??????????????");
+    console.log(deleteEmp);
+    console.log("??????????????");
+    // const deleltData = {id: id, restaurantId: this.state.restaurantId}
+
+    API.deleteEmployee(deleteEmp).then(res => 
+      
+       this.componentDidMount()
+    )
+    }
+
 
   hideShow3 = id=> {
     const newState = { ...this.state }

@@ -15,7 +15,7 @@
         "id": 3,
         "category": "tannin",
         "question": "How would you describe the tannin level of ",
-        "falseAnswers": [ "High Tannin", "Medium-high Tannin", "Medium Tannin", "Medium-low Tannin", "Low to no Tannin"]
+        "falseAnswers": [ "High T   annin", "Medium-high Tannin", "Medium Tannin", "Medium-low Tannin", "Low to no Tannin"]
     },
     {
         "id": 4,

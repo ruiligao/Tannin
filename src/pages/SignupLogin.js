@@ -16,6 +16,7 @@ class SignupLogin extends Component {
     loginemail: "",
     loginpassword: "",
     loggedIn: false,
+    message:"",
     redirectTo: null
   }
   // this.handleFormSubmit = this.handleFormSubmit.bind(this)
@@ -76,6 +77,7 @@ class SignupLogin extends Component {
           this.setState({
             redirectTo: null,
             loggedIn: false,
+            message: "Email does exist"
           })
           alert(response.data.error)
         }
@@ -111,8 +113,18 @@ class SignupLogin extends Component {
           });
         }
       }
+      else {
+       
+      this.setState({
+        message: "Email does not exist!"
+      })
+      }
     }).catch(err => {
-      console.log(err)
+      console.log(err);
+      this.setState({
+        message: "Email does not exist!"
+      })
+
     });
   }
 
@@ -135,6 +147,7 @@ class SignupLogin extends Component {
           handleLoginFormSubmit={this.handleLoginFormSubmit}
           loginemail={this.state.loginemail}
           loginpassword={this.state.loginpassword}
+          message={this.state.message}
           showMe={this.state.showMe}
           hideShow={this.hideShow}
         />

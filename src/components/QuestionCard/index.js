@@ -2,30 +2,38 @@ import React from "react";
 import "./style.css";
 
 
-function QuestionCard(props) {
-    let { answers } = props;
+// function QuestionCard(props) {
+    class QuestionCard extends React.Component{
 
-    let fakeVar = answers ? answers.splice(answers.indexOf(props[props.category]),1): null
-    let shuffledAnswers = answers ? props.shuffle(answers):null
+    answers  = this.props.answers;
+
+    fakeVar = this.answers ? this.answers.splice(this.answers.indexOf(this.props[this.props.category]),1): null
+    shuffledAnswers = this.answers ? this.props.shuffle(this.answers):null
+    render(){
     return (
         <div className="card">
-        <h2 className="questionName">{props.question}{props.wineName}?</h2>
+        <h2 className="questionName">{this.props.question}{this.props.wineName}?</h2>
                 {/* If false answers are available, render button for each answer, else render a submit (specifically for the flavors question) */}
-                    {answers ? answers.slice(0,3).map(answer => { 
+                    {this.answers ? this.props.answers.slice(0,3).map(answer => { 
                         return (
                         <div>
-                            <button className="false">{ answer }</button><br/>
+                            <button className={this.props.id} onClick = {(event) => {
+                               console.log(event.target.value) 
+                               
+                            }} value="0">{ answer }</button><br/>
                         </div>
                         )
                     }) : <div>
-                            <input></input>
-                            <button className="submitAnswer">Submit</button>
+                        {/* on change! in input tag */}
+                            <input  value={this.props.submitFlavor}></input>
+                            <button onClick={this.props.handleCheckAnswer} className="submitAnswer">Submit</button>
                         </div>
                     }
 
-                    {answers ? <button className="true">{props[`${props.category}`]}</button> : null}
+                    {this.answers ? <button className={this.props.id} value="1">{this.props[`${this.props.category}`]}</button> : null}
         </div>
     );
+                }
 }
 
 export default QuestionCard;

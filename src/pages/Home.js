@@ -38,7 +38,7 @@ class Home extends Component {
 		super()
 		this.state = {
 			loggedIn: false,
-			user: null
+			user: null,
 		}
 	}
 	
