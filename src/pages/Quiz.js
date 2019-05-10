@@ -29,7 +29,6 @@ class Quiz extends Component {
     });
     this.setState({ filteredQs: filteredQs })
     this.shuffle(filteredQs);
-    console.log(this.state.correctFlavors)
   };
 
 
@@ -69,7 +68,6 @@ class Quiz extends Component {
 
     const newState = { ...this.state };
 
-    console.log(newState.correctFlavors)
      if (this.state.correctFlavors.includes(this.state.submittedFlavor)) {
       this.setState({
         counter: newState.counter +1,
@@ -99,10 +97,11 @@ class Quiz extends Component {
 
   // renders react elements into the DOM
   render() {
+    {console.log('clicked wine id:', this.props.location.state.wineId)}
     return (
       // the parent div into which our components will be rendered
       <div className="background">
-
+        
         <Wrapper>
         <div className="qcardwrapper1">
           <div className="qcardwrapper2">
@@ -139,7 +138,7 @@ class Quiz extends Component {
           </div>
         </Wrapper>
         <div className="submitanswersbtn">
-          <button className="submitFinal">Submit Answers</button>
+          <button className="submitFinal" onClick={this.handleScoreCalc}>Submit Answers</button>
 </div>
       </div>
     );
