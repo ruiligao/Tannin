@@ -24,6 +24,7 @@ class Quiz extends Component {
   // componentWillMount shuffles the CharacterCards before the DOM is loaded
   componentWillMount() {
     const categories = Object.keys(wineData)
+    const cheatSheet = Object.values(wineData)
     const filteredQs = questions.filter(q => {
       return categories.includes(q.category)
     });
@@ -135,6 +136,7 @@ class Quiz extends Component {
               temp={wineData.temp}
               decant={wineData.decant}
               ageability={wineData.ageability}
+              region={wineData.region}
               counter={this.state.counter}
               submitFlavor={this.state.submitFlavor}
             />
