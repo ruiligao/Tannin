@@ -58,8 +58,8 @@ class Admin extends Component {
     greet:"",
     userId:"",
     usefirstName:"",
-    uselastName:""
-
+    uselastName:"",
+    userestaurantName:""
   };
 
   componentDidMount() {
@@ -125,12 +125,11 @@ class Admin extends Component {
     const newState = { ...this.state }
 
     const emp = this.state.employeesList.find(emp => emp._id === id);
- 
+
     newState.empId = id
     newState.empfirstName = emp.firstName
     newState.emplastName = emp.lastName
     newState.empEmail = emp.email
-    
     newState.showMeEmp = !newState.showMeEmp
    
     this.setState(newState);
@@ -256,6 +255,7 @@ newState.greet = "Welcome"
       newState.useId= newState.user._id
           newState.usefirstName=newState.user.firstName
           newState.uselastName=newState.user.lastName
+          newState.userestaurantName=newState.user.restaurantName
           console.log(newState.useId);
     }
 
@@ -278,6 +278,7 @@ newState.greet = "Welcome"
           useId={this.state.useId}
           usefirstName={this.state.usefirstName}
           uselastName={this.state.uselastName}
+          userestaurantName={this.state.userestaurantName}
           showMe3={this.state.showMe3}
           hideShow3={this.hideShow3}
           handleLogout={this.handleLogout}

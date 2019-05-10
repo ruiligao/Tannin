@@ -381,3 +381,21 @@ button:focus {
   font-family: 'Pacifico', cursive;
   
 }
+
+/* EMPLOYEEPAGE */
+
+
+.employeepagewrapper {
+  justify-content: center;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width:100%;
+    margin:0;
+}
+
+.emppagecol {
+  width:40%;
+  background-color: rgba(253, 227, 167, 1); 
+  height: 90vh;
+}
