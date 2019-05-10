@@ -334,7 +334,7 @@ display: flex;
 
 }
 
-.welcomebtn {
+.empwelcomebtn {
   color:white;
   background-color: rgb(110, 90, 223);
   border-style: none;
@@ -348,13 +348,13 @@ display: flex;
  
 }
 
-.welcomebtn{
+.empwelcomebtn{
   justify-content: center;
   display: flex;
   margin-bottom: 20px;
 }
 
-.welcomebtn:focus {
+.empwelcomebtn:focus {
   outline: none !important;
 }
 
@@ -363,14 +363,14 @@ button:focus {
 }
 
 
-.welcomebtn:hover {
+.empwelcomebtn:hover {
   -ms-transform: scale(1.2); /* IE 9 */
   -webkit-transform: scale(1.2); /* Safari 3-8 */
   transform: scale(1.2); 
   cursor: pointer;
 }
 
-.welcomebtnwrap {
+.empwelcomebtnwrap {
   justify-content: center;
   display: flex;
   margin-top: 50px;
@@ -395,7 +395,39 @@ button:focus {
 }
 
 .emppagecol {
-  width:40%;
+  width:100%;
   background-color: rgba(253, 227, 167, 1); 
-  height: 90vh;
+  height: 100vh;
 }
+
+.emppagemainwrap {
+  justify-content: center;
+  display: flex;
+}
+
+.emppanel {
+  width: 30%;
+
+  background: -webkit-gradient(linear, left top, left bottom, from(rgb(24, 23, 23)), to(rgb(103, 83, 194))) fixed;
+  height: 100vh;
+}
+
+.emppageColWrap {
+  justify-content: center;
+  display: flex;
+  
+  
+  }
+  
+  .emppageColWrap1 {
+      background-color: gray;
+      height: 70vh;
+      overflow: auto;
+      width: 80%;
+      margin-top: 20px;
+      border-radius: 30px;
+      border-style: solid;
+      border-width: 10px;
+      border-color: rgb(71, 67, 67);
+  
+  }
