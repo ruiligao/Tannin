@@ -17,7 +17,7 @@ function Userinfo({ showMe3, useId, hideShow3, usefirstName, handleLogout }) {
       
       <div>{usefirstName}</div>
       <div>{usefirstName}</div>
-      <div>{usefirstName}</div>
+ 
       
       <div className="form-group">
       <div>

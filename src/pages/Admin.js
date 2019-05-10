@@ -307,17 +307,11 @@ newState.greet = "Welcome"
 
         <div className="wineandemployeewrapper">
           <div className="brandCol">
-            <div>
-
-
-              <Link className="navbar-brand" to="/">
-                <i className="fas fa-wine-glass-alt"></i> Wine academy
-        </Link>
-            </div>
+            <div className="welcomebtnwrap">
             <div>
             <button
 onClick={() => this.hideShow3()}
-className="btn btn-danger ml-2"
+className="welcomebtn"
 ><Header 
         user={this.state.user} />
                         </button>
@@ -329,11 +323,14 @@ className="btn btn-danger ml-2"
 
             </div>
 
+            </div>
+            
+
           </div>
           <div className="wineCol">
             <div className="wineTitleWrap">
               <div className="wineTitleWrap1">
-
+              <div className="textadmin">Wines</div>
               <div><Link
                   
                   to="/wines"
@@ -341,7 +338,7 @@ className="btn btn-danger ml-2"
             </button>
             
                 </Link></div>
-                <div></div>
+                
                 
               </div>
             </div>
@@ -387,7 +384,7 @@ className="btn btn-danger ml-2"
           <div className="employeeCol">
             <div className="empTitleWrap">
               <div className="empTitleWrap1">
-                <div></div>
+                <div className="textadmin">Employees</div>
                 <div><button className="addempbtnmain" onClick={() => this.hideShow2()}><i class="fas fa-user-plus"></i></button></div>
               </div>
             </div>

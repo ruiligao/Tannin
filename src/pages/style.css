@@ -13,18 +13,21 @@
 }
 .brandCol {
   width:20%;
-  background-color: black;
+  /* background-color: rgb(120, 107, 156); */
+   background: -webkit-gradient(linear, left top, left bottom, from(rgb(24, 23, 23)), to(rgb(103, 83, 194))) fixed;
   color: white;
   height: 100vh;
 
 }
 .wineCol {
   width:40%;
+  background-color: rgba(253, 227, 167, 1); 
 }
 
 .employeeCol {
   width:40%;
   margin: 0;
+  background-color: rgba(253, 227, 167, 1); 
 
 }
 .wineColWrap {
@@ -149,13 +152,14 @@ a:link {
     -ms-transform: scale(1.2); /* IE 9 */
     -webkit-transform: scale(1.2); /* Safari 3-8 */
     transform: scale(1.2); 
+    cursor: pointer;
   }
 
   .cardwrapper1 {
  
     width: 80%;
     height: 80vh;
-
+/* beige */
     background-color: rgba(253, 227, 167, 1); 
     
 }
@@ -296,6 +300,7 @@ button:focus {
   -ms-transform: scale(1.2); /* IE 9 */
   -webkit-transform: scale(1.2); /* Safari 3-8 */
   transform: scale(1.2); 
+  cursor: pointer;
 }
 
 .submitFinal {
@@ -327,4 +332,52 @@ display: flex;
   overflow: auto;
   border-radius: 20px;
 
+}
+
+.welcomebtn {
+  color:white;
+  background-color: rgb(110, 90, 223);
+  border-style: none;
+  height: 70px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 10px;
+  font-size: 15px;
+  margin-bottom: 50px;
+
+ 
+}
+
+.welcomebtn{
+  justify-content: center;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.welcomebtn:focus {
+  outline: none !important;
+}
+
+button:focus {
+  outline: none !important;
+}
+
+
+.welcomebtn:hover {
+  -ms-transform: scale(1.2); /* IE 9 */
+  -webkit-transform: scale(1.2); /* Safari 3-8 */
+  transform: scale(1.2); 
+  cursor: pointer;
+}
+
+.welcomebtnwrap {
+  justify-content: center;
+  display: flex;
+  margin-top: 50px;
+}
+
+.textadmin{
+  font-size: 30px;
+  font-family: 'Pacifico', cursive;
+  
 }
