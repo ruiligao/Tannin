@@ -50,22 +50,52 @@ class EmployeePage extends Component {
     this.setState(newState);
   };
   componentDidMount() {
+    this.getUser()
+  }
+
+  getUser = () => {
     API.getUser().then(response => {
-      console.log("GET USER");
-      console.log(response.data)
+      console.log("LOGGED IN USER: ", response)
       if (!!response.data.user) {
-        console.log('THERE IS A USER')
+        console.log('THERE IS A USER');
+        console.log(response.data);
         this.setState({
-          user: response.data.user
+          loggedIn: true,
+          user: response.data.user,
+          
         })
+
+        this.getSavedWine()
       } else {
         this.setState({
-          // loggedIn: false,
-          // user: null,
+          loggedIn: false,
+          user: null,
           redirectTo: "/"
         });
       }
     });
+  }
+
+  getSavedWine = () => {
+    console.log("////////////////");
+    console.log(this.state.user.restaurantId);
+    console.log("////////////////");
+    const admin = { restaurantId: this.state.user.restaurantId };
+    API.getSavedWine(admin)
+      .then(res => {
+        this.setState({
+          employeesList: res.data.Employees,
+          wineCollections: res.data.Wines,
+          
+        })
+      }
+
+      )
+      .catch(() =>
+        this.setState({
+          message: "Wine not available"
+        })
+      );
   };
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -88,15 +118,6 @@ class EmployeePage extends Component {
     });
   }
 
-  // getSavedBooks = () => {
-  //   API.getSavedBooks()
-  //     .then(res =>
-  //       this.setState({
-  //         books: res.data
-  //       })
-  //     )
-  //     .catch(err => console.log(err));
-  // };
 
   handleBookDelete = id => {
     API.deleteBook(id).then(res => this.getSavedBooks());

@@ -44,8 +44,8 @@ class Admin extends Component {
     empfirstName:"",
     emplastName:"",
     empEmail:'"',
-    user: [],
-    restaurantId: "",
+    user:"",
+    // restaurantId: "",
     name: "",
     lastName: "",
     email: "",
@@ -156,9 +156,9 @@ class Admin extends Component {
 
   getSavedWine = () => {
     console.log("////////////////");
-    console.log(this.state.user.email);
+    console.log(this.state.user.restaurantId);
     console.log("////////////////");
-    const admin = { email: this.state.user.email };
+    const admin = { restaurantId: this.state.user.restaurantId };
     API.getSavedWine(admin)
       .then(res => {
         // console.log(res.data);
@@ -166,12 +166,11 @@ class Admin extends Component {
         console.log(res.data._id);
         // console.log(res.data[0]);
         console.log("SAVESTAFF");
-        console.log(res.data.Employees);
+        console.log(res.data);
         console.log("SAVESTAFF");
         this.setState({
           employeesList: res.data.Employees,
           wineCollections: res.data.Wines,
-          restaurantId: res.data._id
           
         })
       }
@@ -198,10 +197,13 @@ class Admin extends Component {
   addEmployee = () => {
     console.log("???????????????");
     console.log(this.state);
-    console.log("REID: " + this.state.restaurantId);
+    console.log("REID: " + this.state.user.restaurantId);
 
-    const { name, lastName, email, password, restaurantId } = this.state;
-    const employeeData = { name, lastName, email, password, restaurantId };
+    // const { name, lastName, email, password, restaurantId } = this.state;
+    // const { restaurantId} = this.state.user;
+    console.log("RESIDRESIDRESID");
+    // console.log(restaurantId)
+    const employeeData = {name: this.state.name, lastName: this.state.lastName, email: this.state.email, password:this.state.password, restaurantId: this.state.user.restaurantId };
     console.log(employeeData);
     API.addEmployee(employeeData).then((res) => {
       console.log("ADD Employees");
@@ -225,13 +227,13 @@ class Admin extends Component {
   handleWineDelete = id => {
     console.log("/////");
     console.log(id);
-    const delelteWine = {id: id, restaurantId: this.state.restaurantId};
+    const delelteWine = {id: id, restaurantId: this.state.user.restaurantId};
     console.log(delelteWine);
     API.deleteWine(delelteWine).then(res => this.componentDidMount());
   };
 
   handleEmployeeDelete = id => {
-    const deleteEmp = {id: id, restaurantId: this.state.restaurantId};
+    const deleteEmp = {id: id, restaurantId: this.state.user.restaurantId};
     console.log("??????????????");
     console.log(deleteEmp);
     console.log("??????????????");
