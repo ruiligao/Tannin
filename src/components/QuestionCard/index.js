@@ -11,7 +11,8 @@ import "./style.css";
     shuffledAnswers = this.answers ? this.props.shuffle(this.answers):null
     render(){
     return (
-        <div className="card">
+        <div className="qcard">
+        
         <h2 className="questionName">{this.props.question}{this.props.wineName}?</h2>
                 {/* If false answers are available, render button for each answer, else render a submit (specifically for the flavors question) */}
                     {this.answers ? this.props.answers.slice(0,3).map(answer => { 

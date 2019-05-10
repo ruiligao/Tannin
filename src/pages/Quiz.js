@@ -76,6 +76,8 @@ class Quiz extends Component {
       <div className="background">
 
         <Wrapper>
+        <div className="qcardwrapper1">
+          <div className="qcardwrapper2">
           {/* Map over this.state.characters and render a CharacterCard component for each character object */}
           {this.state.filteredQs.map(filteredQ => (
             <QuestionCard
@@ -101,9 +103,12 @@ class Quiz extends Component {
               submitFlavor={this.state.submitFlavor}
             />
           ))}
-          <button className="submitFinal">Submit Answers</button>
-
+          </div>
+          </div>
         </Wrapper>
+        <div className="submitanswersbtn">
+          <button className="submitFinal">Submit Answers</button>
+</div>
       </div>
     );
   }
