@@ -55,9 +55,11 @@ class Admin extends Component {
     loggedIn: true,
     redirectTo: null,
 
-    useId:"",
-    usefirstName:""
-
+    greet:"",
+    userId:"",
+    usefirstName:"",
+    uselastName:"",
+    userestaurantName:""
   };
 
   componentDidMount() {
@@ -121,13 +123,13 @@ class Admin extends Component {
 
   hideShowEmp = id => {
     const newState = { ...this.state }
+
     const emp = this.state.employeesList.find(emp => emp._id === id);
- 
+
     newState.empId = id
     newState.empfirstName = emp.firstName
     newState.emplastName = emp.lastName
     newState.empEmail = emp.email
-    
     newState.showMeEmp = !newState.showMeEmp
    
     this.setState(newState);
@@ -141,8 +143,8 @@ class Admin extends Component {
 
     });
   };
-  handleLogout = (event) => {
-    event.preventDefault();
+  handleLogout = () => {
+    
     console.log('logging out');
     API.logOut().then(response => {
       console.log(response.data);
@@ -243,37 +245,47 @@ class Admin extends Component {
 
   hideShow3 = id=> {
     const newState = { ...this.state }
-console.log(id)
-    newState.useId = this.state.user.id
-    newState.usefirstName = this.state.user.firstName
-    // const owner = this.state.user.find(owner => owner._id === id);
-    newState.showMe3 = !newState.showMe3
+    
+    if(newState.user === null) {
+      console.log("you lose");
+      newState.greet = "Hello Guest"
+    }
+    else if (newState.user.firstName) {
+newState.greet = "Welcome"
+      newState.useId= newState.user._id
+          newState.usefirstName=newState.user.firstName
+          newState.uselastName=newState.user.lastName
+          newState.userestaurantName=newState.user.restaurantName
+          console.log(newState.useId);
+    }
 
+    newState.showMe3 = !newState.showMe3
     this.setState(newState);
+
   }
 
 
   render() {
+
+
     return (
 
       <Container>
-        <Header user={this.state.user} />
+ 
+        
 
-{/* <Userinfo
-          id={this.state.user._id}
-          firstName={this.state.user.firstName}
+<Userinfo
           useId={this.state.useId}
           usefirstName={this.state.usefirstName}
+          uselastName={this.state.uselastName}
+          userestaurantName={this.state.userestaurantName}
           showMe3={this.state.showMe3}
           hideShow3={this.hideShow3}
           handleLogout={this.handleLogout}
+          greet = {this.state.greet}
         ></Userinfo> 
 
-                      <button
-onClick={() => this.hideShow3(this.state.user._id)}
-className="btn btn-danger ml-2"
->Welcome {this.state.user.firstName} !
-                        </button> */}
+                      
 
         {/* MODAL ----------------------- */}
         <Addemployee
@@ -293,35 +305,32 @@ className="btn btn-danger ml-2"
 
         {/* MODAL ----------------------- */}
 
-        {/* <Jumbotron>
-          <h1 className="text-center">
-            <strong>ADMIN PAGE WINE COLLECTIONS & EMPLOYEE LIST</strong>
-          </h1>
-          <h2 className="text-center">Search for wine collections and Add Employees</h2>
-        </Jumbotron> */}
-
         <div className="wineandemployeewrapper">
           <div className="brandCol">
+            <div className="welcomebtnwrap">
             <div>
-
-
-              <Link className="navbar-brand" to="/">
-                <i className="fas fa-wine-glass-alt"></i> Wine academy
-        </Link>
-            </div>
-            <div>
-              <button onClick={this.handleLogout} type="submit" className="btn btn-lg btn-danger float-right">
+            <button
+onClick={() => this.hideShow3()}
+className="welcomebtn"
+><Header 
+        user={this.state.user} />
+                        </button>
+                        
+              {/* <button onClick={this.handleLogout} type="submit" className="btn btn-lg btn-danger float-right">
                 Logout
-         </button>
+         </button> */}
 
 
             </div>
+
+            </div>
+            
 
           </div>
           <div className="wineCol">
             <div className="wineTitleWrap">
               <div className="wineTitleWrap1">
-
+              <div className="textadmin">Wines</div>
               <div><Link
                   
                   to="/wines"
@@ -329,7 +338,7 @@ className="btn btn-danger ml-2"
             </button>
             
                 </Link></div>
-                <div></div>
+                
                 
               </div>
             </div>
@@ -375,8 +384,8 @@ className="btn btn-danger ml-2"
           <div className="employeeCol">
             <div className="empTitleWrap">
               <div className="empTitleWrap1">
-                <div></div>
-                <div><button className="addempbtnmain" onClick={() => this.hideShow2()}><i class="fas fa-user-plus"></i></button></div>
+                <div className="textadmin">Employees</div>
+                <div><button className="addempbtnmain" onClick={() => this.hideShow2()}><i className="fas fa-user-plus"></i></button></div>
               </div>
             </div>
 

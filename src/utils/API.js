@@ -60,7 +60,7 @@ getUser: function () {
     console.log(delelteWine);
     return axios.put("http://localhost:3001/api/restaurant/delete", delelteWine);
   },
-  deleteEmployee: function(deleteEmp) {http://localhost:3001/api/addEmployee/
+  deleteEmployee: function(deleteEmp) {//localhost:3001/api/addEmployee/
     console.log(deleteEmp);
     return axios.put("http://localhost:3001/api/addEmployee/", deleteEmp)
   }
