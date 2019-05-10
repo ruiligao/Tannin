@@ -17,7 +17,9 @@ function SavedWine({name, id, hideShow, showMe, wineName, wineId, winetemp, wine
           </div>
           <div><Link
             className="nav-link" 
-            to="/quiz"
+            to={{pathname: "/quiz",
+            state:{wineId:id}}}
+            
           ><button>
             Quiz Page
             </button>
