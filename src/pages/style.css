@@ -12,30 +12,39 @@
   height: 100%;
 }
 .brandCol {
-  width:30%;
+  width:20%;
   background-color: black;
   color: white;
   height: 100vh;
 
 }
 .wineCol {
-  width:35%;
+  width:40%;
 }
 
 .employeeCol {
-  width:35%;
+  width:40%;
+  margin: 0;
+
 }
 .wineColWrap {
 justify-content: center;
 display: flex;
 
+
 }
 
 .wineColWrap1 {
     background-color: gray;
-    height: 500px;
+    height: 70vh;
     overflow: auto;
     width: 80%;
+    margin-top: 20px;
+    border-radius: 30px;
+    border-style: solid;
+    border-width: 10px;
+    border-color: rgb(71, 67, 67);
+
 }
 
 .employeeColWrap {
@@ -45,9 +54,14 @@ display: flex;
 
 .employeeColWrap1 {
     background-color: gray;
-    height: 500px;
+    height: 70vh;
     overflow: auto;
     width: 80%;
+    margin-top: 20px;
+    border-radius: 30px;
+    border-style: solid;
+    border-width: 10px;
+    border-color: rgb(71, 67, 67);
 }
 
 .empTitleWrap {
@@ -235,3 +249,30 @@ span {
   font-family: 'Lato', sans-serif;
 }
 
+.fa-user-plus {
+  font-size:40px;
+  text-shadow: 2px 2px #6d6767;
+  
+  
+}
+
+.addempbtnmain {
+  background-color: gray;
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+  border-style:none;
+}
+
+.addwinebtnmain {
+  background-color: gray;
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+  border-style:none;
+}
+
+.fa-wine-bottle{
+  font-size:40px;
+
+}

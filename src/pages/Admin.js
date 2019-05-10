@@ -3,8 +3,9 @@ import React, { Component } from "react";
 import Restowine from "../components/Restowine";
 import Employees from "../components/Employees";
 import Addemployee from "../components/Addemployee";
-// import Footer from "../components/Footer";
+// // import Footer from "../components/Footer";
 import Header from "../components/Header";
+import Userinfo from "../components/Userinfo";
 import API from "../utils/API";
 import { Container } from "../components/Grid";
 import { List } from "../components/List";
@@ -20,6 +21,8 @@ class Admin extends Component {
     
     showMe: false,
     showMe2: false,
+    showMe3: false,
+    showMeEmp: false,
     // text: "add wine",
     wineId: "",
     wineName: "",
@@ -37,7 +40,11 @@ class Admin extends Component {
     winetannin: "",
     winetemp: "",
 
-    user: "",
+    empId:"",
+    empfirstName:"",
+    emplastName:"",
+    empEmail:'"',
+    user: [],
     restaurantId: "",
     name: "",
     lastName: "",
@@ -47,6 +54,9 @@ class Admin extends Component {
     // loginpassword: "",
     loggedIn: true,
     redirectTo: null,
+
+    useId:"",
+    usefirstName:""
 
   };
 
@@ -62,7 +72,8 @@ class Admin extends Component {
         console.log(response.data);
         this.setState({
           loggedIn: true,
-          user: response.data.user
+          user: response.data.user,
+          
         })
 
         this.getSavedWine()
@@ -78,7 +89,7 @@ class Admin extends Component {
   hideShow2 = () => {
     const newState = { ...this.state }
     newState.showMe2 = !newState.showMe2
-    newState.scale = this.state.scale > 1 ? 1 : 1.5
+    // newState.scale = this.state.scale > 1 ? 1 : 1.5
 
     this.setState(newState);
   }
@@ -108,6 +119,20 @@ class Admin extends Component {
   }
 
 
+  hideShowEmp = id => {
+    const newState = { ...this.state }
+    const emp = this.state.employeesList.find(emp => emp._id === id);
+ 
+    newState.empId = id
+    newState.empfirstName = emp.firstName
+    newState.emplastName = emp.lastName
+    newState.empEmail = emp.email
+    
+    newState.showMeEmp = !newState.showMeEmp
+   
+    this.setState(newState);
+  }
+
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -116,7 +141,7 @@ class Admin extends Component {
 
     });
   };
-  handleLogout = event => {
+  handleLogout = (event) => {
     event.preventDefault();
     console.log('logging out');
     API.logOut().then(response => {
@@ -137,7 +162,8 @@ class Admin extends Component {
     API.getSavedWine(admin)
       .then(res => {
         // console.log(res.data);
-        // console.log(res.data._id);
+        console.log("DEDADAEDAEDAEDAEDDA");
+        console.log(res.data._id);
         // console.log(res.data[0]);
         console.log("SAVESTAFF");
         console.log(res.data.Employees);
@@ -146,6 +172,7 @@ class Admin extends Component {
           employeesList: res.data.Employees,
           wineCollections: res.data.Wines,
           restaurantId: res.data._id
+          
         })
       }
 
@@ -165,6 +192,7 @@ class Admin extends Component {
   handleAddEmpolyeeFormSubmit = event => {
     event.preventDefault();
     this.addEmployee();
+    // this.hideShow2();
   }
 
   addEmployee = () => {
@@ -181,6 +209,7 @@ class Admin extends Component {
       console.log(res.data.restaurant);
       if (res.data==="Employee already exists") {
         alert(res.data)
+        this.hideShow2();
       }
       else{
         // alert(JSON.stringify(res.data))
@@ -188,6 +217,7 @@ class Admin extends Component {
         this.setState({
           employeesList: this.state.employeesList
        });
+       this.hideShow2();
     }
     });
   }
@@ -214,11 +244,39 @@ class Admin extends Component {
     }
 
 
+  hideShow3 = id=> {
+    const newState = { ...this.state }
+console.log(id)
+    newState.useId = this.state.user.id
+    newState.usefirstName = this.state.user.firstName
+    // const owner = this.state.user.find(owner => owner._id === id);
+    newState.showMe3 = !newState.showMe3
+
+    this.setState(newState);
+  }
+
+
   render() {
     return (
 
       <Container>
+        <Header user={this.state.user} />
 
+{/* <Userinfo
+          id={this.state.user._id}
+          firstName={this.state.user.firstName}
+          useId={this.state.useId}
+          usefirstName={this.state.usefirstName}
+          showMe3={this.state.showMe3}
+          hideShow3={this.hideShow3}
+          handleLogout={this.handleLogout}
+        ></Userinfo> 
+
+                      <button
+onClick={() => this.hideShow3(this.state.user._id)}
+className="btn btn-danger ml-2"
+>Welcome {this.state.user.firstName} !
+                        </button> */}
 
         {/* MODAL ----------------------- */}
         <Addemployee
@@ -248,7 +306,8 @@ class Admin extends Component {
         <div className="wineandemployeewrapper">
           <div className="brandCol">
             <div>
-              <Header user={this.state.user} />
+
+
               <Link className="navbar-brand" to="/">
                 <i className="fas fa-wine-glass-alt"></i> Wine academy
         </Link>
@@ -265,14 +324,16 @@ class Admin extends Component {
           <div className="wineCol">
             <div className="wineTitleWrap">
               <div className="wineTitleWrap1">
-                <div>Wine</div>
-                <div><Link
-                  className={window.location.pathname === "/wines" ? "nav-link active" : "nav-link"}
+
+              <div><Link
+                  
                   to="/wines"
-                ><button>
-                    Add Wine
+                ><button className="addwinebtnmain"><i className="fas fa-wine-bottle"></i>
             </button>
+            
                 </Link></div>
+                <div></div>
+                
               </div>
             </div>
             <div className="wineColWrap">
@@ -317,8 +378,8 @@ class Admin extends Component {
           <div className="employeeCol">
             <div className="empTitleWrap">
               <div className="empTitleWrap1">
-                <div>Employees</div>
-                <div><button onClick={() => this.hideShow2()}>Add Employee</button></div>
+                <div></div>
+                <div><button className="addempbtnmain" onClick={() => this.hideShow2()}><i class="fas fa-user-plus"></i></button></div>
               </div>
             </div>
 
@@ -331,21 +392,23 @@ class Admin extends Component {
                         key={employee._id}
                         id={employee._id}
                         firstName={employee.firstName}
+                        handleWineDelete={this.handleWineDelete}
+                        empId={this.state.empId}
+                        empfirstName={this.state.empfirstName}
+                        emplastName={this.state.emplastName}
+                        empEmail={this.state.empEmail}
+                       
+                        showMeEmp={this.state.showMeEmp}
+                        hideShowEmp={this.hideShowEmp}
                         handleEmployeeDelete={this.handleEmployeeDelete}
-                        // title={employee.title}
-                        // subtitle={employee.subtitle}
-                        // link={employee.link}
-                        // authors={employee.authors.join(", ")}
-                        // description={employee.description}
-                        // image={employee.image}
-                        Button={() => (
-                          <button
-                            onClick={() => this.handleEmployeeDelete(employee._id)}
-                            className="btn btn-danger ml-2"
-                          >
-                            Delete
-                        </button>
-                        )}
+                        // Button={() => (
+                        //   <button
+                        //     onClick={() => this.handleEmployeeDelete(employee._id)}
+                        //     className="btn btn-danger ml-2"
+                        //   >
+                        //     Delete
+                        // </button>
+                        // )}
                       />
                     ))}
                   </List>
