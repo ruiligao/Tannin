@@ -12,7 +12,7 @@ class QuestionCard extends React.Component {
     shuffledSelections = this.selections ? this.props.shuffle(this.selections): null
     
     render() {
-        {console.log(this.selections)}
+        // {console.log(this.selections)}
         return (
             <div className="qcard">
                 <h2 className="questionName">{this.props.question}{this.props.wineName}?</h2>
