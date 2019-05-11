@@ -4,27 +4,38 @@ import { Link } from "react-router-dom";
 
 import "./style.css";
 
-function SavedWine({name, id, hideShow, showMe, wineName, wineId, winetemp, winetannin, winesweetness, winesummary, winepronunciation, wineprimaryFlavors, winepairings, winedecant, wineglassType, winebody, winealcohol, wineageability, wineacidity}) {
+function SavedWine({name, hideShowQuiz, ageability, id, hideShow, showMe, wineName, wineId, winetemp, winetannin, winesweetness, winesummary, winepronunciation, wineprimaryFlavors, winepairings, winedecant, wineglassType, winebody, winealcohol, wineageability, wineacidity}) {
   return (
     <div>
     <ListItem>
         <div className="listitemdiv3">
-        <div className="winecollectiondiv1">
+        <div className="empwinecollectiondiv1">
         <div className="winecollectionname1">
         {/* <div className="fontitalicsmall">{name}</div> */}
         <div><button className="winenamebtn1" onClick={() => hideShow(id)}>{name}</button></div>
-        {/* <div><button className="winedelbtn" onClick={() => handleWineDelete(id)}>Delete</button></div> */}
-          </div>
-          <div><Link
-            className="nav-link" 
-            to={{pathname: "/quiz",
-            state:{wineId:id}}}
-            
+        <div>
+
+           
+          <button className="quizpagebutton" onClick={() => hideShowQuiz(id)}>
+            Quiz MODAL
+            </button>
+
+
+            <div><Link
+            className={window.location.pathname === "/quizpage" ? "nav-link active" : "nav-link"} 
+            to="/quiz"
           ><button>
-            Quiz Page
+            Quiz PAGE
             </button>
               </Link></div>
-          <div className="font-italic">{id}</div>
+
+
+              </div>
+        {/* <div><button className="winedelbtn" onClick={() => handleWineDelete(id)}>Delete</button></div> */}
+          </div>
+          <div>{ageability}</div>
+          
+          {/* <div className="font-italic">{id}</div> */}
 
           <div>
               {showMe ?
