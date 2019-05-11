@@ -361,6 +361,8 @@ hideShowQuiz = id => {
             Employee page
             </button>
               </Link> */}
+
+
           <button className="btnwrap1a" onClick={() => {this.hideShowQuiz(this.wineId); window.location.reload()}}>Close</button>
 </div>
         </Wrapper>

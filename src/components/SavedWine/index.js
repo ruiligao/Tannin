@@ -17,8 +17,19 @@ function SavedWine({name, hideShowQuiz, ageability, id, hideShow, showMe, wineNa
 
            
           <button className="quizpagebutton" onClick={() => hideShowQuiz(id)}>
-            Quiz Page
+            Quiz MODAL
             </button>
+
+
+            <div><Link
+            className={window.location.pathname === "/quizpage" ? "nav-link active" : "nav-link"} 
+            to="/quiz"
+          ><button>
+            Quiz PAGE
+            </button>
+              </Link></div>
+
+
               </div>
         {/* <div><button className="winedelbtn" onClick={() => handleWineDelete(id)}>Delete</button></div> */}
           </div>
