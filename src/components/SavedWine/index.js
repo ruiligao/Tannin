@@ -23,7 +23,8 @@ function SavedWine({name, hideShowQuiz, ageability, id, hideShow, showMe, wineNa
 
             <div><Link
             className={window.location.pathname === "/quizpage" ? "nav-link active" : "nav-link"} 
-            to="/quiz"
+            // to="/quiz"
+            to={{pathname:"/quiz", state:{wineId: id}}}
           ><button>
             Quiz PAGE
             </button>

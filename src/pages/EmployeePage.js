@@ -69,27 +69,12 @@ class EmployeePage extends Component {
     winetemp: "",
   };
 
-  // componentDidMount() {
-  //   this.getSavedBooks();
-  // }
-
   hideShow = () => {
     const newState = {...this.state}
     newState.showMe = !newState.showMe 
     newState.scale = this.state.scale > 1 ? 1 : 1.5
-    
-    // this.setState({
-      
-    // })
-    
-    // alert( "hi")
-
-// newState.showMe = !newState.showMe;
-
     this.setState(newState);
   };
-
-  
 
   componentDidMount() {
     this.getUser()

@@ -1,38 +1,115 @@
 import React, { Component } from 'react';
 // importing components
 // import EmployeePage from "./pages/EmployeePage";
+import API from "../utils/API";
 import QuestionCard from "../components/QuestionCard";
 import Wrapper from "../components/Wrapper";
 // importing the question array from the json file
 import questions from "../questions.json";
 // importing the wine template for testing purposes 
-import wineData from "../franciacorta.json"
+// import wineData from "../franciacorta.json"
 //importing css stylings
 import './style.css';
 
 class Quiz extends Component {
 
   state = {
-    user:[],
+    user: [],
     questions,
     filteredQs: [],
-    correctFlavors: wineData.primaryFlavors,
+    correctFlavors: [],
     submittedFlavor: "",
-    wineData,
+    // wineData:[],
     counter: 0,
     score: 0,
     highScore: 0,
-  };
+    wineData: [],
+
+  }
 
   // componentWillMount shuffles the CharacterCards before the DOM is loaded
   componentWillMount() {
-    const categories = Object.keys(wineData)
+    this.getUser();
+  }
+
+  getUser = () => {
+    API.getUser().then(response => {
+      console.log("LOGGED IN USER: ", response)
+      if (!!response.data.user) {
+        console.log('THERE IS A USER');
+        console.log(response.data);
+        this.setState({
+          loggedIn: true,
+          user: response.data.user,
+        });
+        this.getSavedWine();
+      }
+      else {
+        this.setState({
+          loggedIn: false,
+          user: null
+        });
+        this.props.history.push(`/`);
+      }
+    });
+  }
+
+  getSavedWine = () => {
+    console.log("////////////////");
+    console.log(this.state.user.restaurantId);
+    console.log("////////////////");
+    const admin = { restaurantId: this.state.user.restaurantId };
+    API.getSavedWine(admin)
+      .then(res => {
+        this.setState({
+          wineCollections: res.data.Wines,
+        })
+        this.getClickedWine()
+      }
+      )
+      .catch(() =>
+        this.setState({
+          message: "Wine not available"
+        })
+      );
+  }
+
+  getClickedWine = () => {
+    const id = this.props.location.state.wineId
+    const wine = this.state.wineCollections.find(wine => wine._id === id);
+    console.log(wine);
+    this.setState({
+      wineData: wine,
+      correctFlavors: wine.primaryFlavors
+    });
+
+    const categories = Object.keys(this.state.wineData);
+
     const filteredQs = questions.filter(q => {
       return categories.includes(q.category)
     });
-    this.setState({ filteredQs: filteredQs })
-    this.shuffle(filteredQs);
-  };
+    this.setState({ filteredQs: filteredQs });
+    // this.shuffle(filteredQs);
+    console.log("????????????????");
+    console.log(filteredQs);
+  }
+
+  // componentWillMount() {
+  //   console.log("_______________");
+  //   console.log(this.state.user)
+  //   const categories = Object.keys(this.state.wineData);
+  //   console.log(this.state.wineData);
+  //   console.log(questions);
+  //   console.log("_______________");
+  //   console.log(categories);
+  //   const filteredQs = questions.filter(q => {
+  //     return categories.includes(q.category)
+  //   });
+  //   this.setState({ filteredQs: questions });
+  //   this.shuffle(filteredQs);
+  //   console.log("????????????????");
+  //   console.log(filteredQs);
+  // };
 
 
   // Here we use the Fisher-Yates alogrithm to randomize the characters array
@@ -42,7 +119,7 @@ class Quiz extends Component {
       j = Math.floor(Math.random() * (i + 1));
       x = arr[i];
       arr[i] = arr[j];
-      arr[j] = x
+      arr[j] = x;
     }
     return arr;
   };
@@ -71,15 +148,16 @@ class Quiz extends Component {
 
     const newState = { ...this.state };
 
-     if (this.state.correctFlavors.includes(this.state.submittedFlavor)) {
+    if (this.state.correctFlavors.includes(this.state.submittedFlavor)) {
       this.setState({
-        counter: newState.counter +1,
+        counter: newState.counter + 1,
         submittedFlavor: ""
       })
-     } else { 
-       this.setState({
+    } else {
+      this.setState({
         submittedFlavor: ""
-    })}
+      })
+    }
   }
 
   handleScoreCalc = () => {
@@ -91,96 +169,74 @@ class Quiz extends Component {
 
     console.log("hundreds: ", hundreds)
     console.log("total # of Questions: ", total)
-    console.log("Your score for ", wineData.name, ": ", newState.score, "%")
+    console.log("Your score for ", this.state.wineData.name, ": ", newState.score, "%")
     this.setState({
       score: newState.score
     });
+    console.log("SCORE"+this.state.score);
   }
 
-  // componentDidMount() {
-  //   this.getUser()
-  // }
+  handleQuizPageBtn = id => {
+    const getQuiz = { id: id, restaurantId: this.state.user.restaurantId };
+    console.log("??????????????");
+    console.log(getQuiz);
+    console.log("??????????????");
+    // const deleltData = {id: id, restaurantId: this.state.restaurantId}
 
-  // getUser = () => {
-  //   API.getUser().then(response => {
-  //     console.log("LOGGED IN USER: ", response)
-  //     if (!!response.data.user) {
-  //       console.log('THERE IS A USER');
-  //       console.log(response.data);
-  //       this.setState({
-  //         loggedIn: true,
-  //         user: response.data.user,
-  //       });
-  //     } 
-  //     else {
-  //       this.setState({
-  //         loggedIn: false,
-  //         user: null
-  //       });
-  //       this.props.history.push(`/`);
-  //     }
-  //   });
-  // }
+    API.getQuiz(getQuiz).then(res =>
 
-  // handleQuizPageBtn = id => {
-  //   const getQuiz = { id: id, restaurantId: this.state.user.restaurantId };
-  //   console.log("??????????????");
-  //   console.log(getQuiz);
-  //   console.log("??????????????");
-  //   // const deleltData = {id: id, restaurantId: this.state.restaurantId}
-
-  //   API.getQuiz(getQuiz).then(res =>
-
-  //     this.componentDidMount()
-  //   )
-  // }
+      this.componentDidMount()
+    )
+  }
 
 
   // renders react elements into the DOM
   render() {
-    // {console.log('clicked wine id:', this.props.location.state.wineId)}
+    console.log('clicked wine id:', this.props.location.state.wineId)
+    console.log(this.state.wineData);
     return (
       // the parent div into which our components will be rendered
       <div className="background">
-        
-        <Wrapper>
-        <div className="qcardwrapper1">
-          <div className="qcardwrapper2">
-          {/* Map over this.state.characters and render a CharacterCard component for each character object */}
-          {this.state.filteredQs.map(filteredQ => (
-            <QuestionCard
-              // functions to be inherited as props
-              handleBtnClick={this.handleBtnClick}
-              handleInputChange={this.handleInputChange}
-              handleCheckFlavor={this.handleCheckFlavor}
-              shuffle={this.shuffle}
 
-              //values to be inherited as props
-              id={filteredQ.id}
-              key={filteredQ.id}
-              question={filteredQ.question}
-              answers={filteredQ.falseAnswers}
-              category={filteredQ.category}
-              wineName={wineData.name}
-              sweetness={wineData.sweetness}
-              body={wineData.body}
-              tannin={wineData.tannin}
-              acidity={wineData.acidity}
-              alcohol={wineData.alcohol}
-              temp={wineData.temp}
-              decant={wineData.decant}
-              ageability={wineData.ageability}
-              region={wineData.region}
-              counter={this.state.counter}
-              submitFlavor={this.state.submitFlavor}
-            />
-          ))}
-          </div>
+        <Wrapper>
+          <div className="qcardwrapper1">
+            <div className="qcardwrapper2">
+              {/* Map over this.state.characters and render a CharacterCard component for each character object */}
+              {this.state.filteredQs.map(filteredQ => (
+
+                <QuestionCard
+                  // functions to be inherited as props
+                  handleBtnClick={this.handleBtnClick}
+                  handleInputChange={this.handleInputChange}
+                  handleCheckFlavor={this.handleCheckFlavor}
+                  // shuffle={this.shuffle}
+
+                  //values to be inherited as props
+                  id={filteredQ.id}
+                  key={filteredQ.id}
+                  question={filteredQ.question}
+                  answers={filteredQ.falseAnswers}
+                  category={filteredQ.category}
+                  wineName={this.state.wineData.name}
+                  sweetness={this.state.wineData.sweetness}
+                  body={this.state.wineData.body}
+                  tannin={this.state.wineData.tannin}
+                  acidity={this.state.wineData.acidity}
+                  alcohol={this.state.wineData.alcohol}
+                  temp={this.state.wineData.temp}
+                  decant={this.state.wineData.decant}
+                  ageability={this.state.wineData.ageability}
+                  region={this.state.wineData.region}
+                  counter={this.state.counter}
+                  submitFlavor={this.state.submitFlavor}
+                />
+              ))}
+            </div>
           </div>
         </Wrapper>
         <div className="submitanswersbtn">
           <button className="submitFinal" onClick={this.handleScoreCalc}>Submit Answers</button>
-</div>
+        </div>
       </div>
     );
   }
