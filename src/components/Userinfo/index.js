@@ -7,14 +7,16 @@ function Userinfo({ showMe3, useEmail, useId, hideShow3, usefirstName, uselastNa
 
     <div>
     {showMe3 ?
-      <div className="overlay8">
+      <div className="overlay8" onClick={() => hideShow3(useId)}>
         <div className="userinfowrapper1">
         <div className="userinfowrapper2">
         <div className="userinfowrapper3">
       <div>
       <div className="btnwrap1bclose">
-      <button className="btnwrap1buserclose" onClick={() => hideShow3(useId)}><i className="fas fa-times-circle"></i></button></div>
-      <div className="newempformtext"></div>
+      {/* <button className="btnwrap1buserclose" onClick={() => hideShow3(useId)}><i className="fas fa-times-circle"></i></button>
+       */}
+      </div>
+      <div className="userformtext">
       <div>Id No: {useId}</div>
       <br></br>
       <div>Restaurant: {userestaurantName}</div>
@@ -24,6 +26,7 @@ function Userinfo({ showMe3, useEmail, useId, hideShow3, usefirstName, uselastNa
       <div>Last Name: {uselastName}</div>
       <br></br>
       <div>Email: {useEmail}</div>
+      </div>
  
       
       <div className="form-group">

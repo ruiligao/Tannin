@@ -15,8 +15,9 @@
   width:20%;
   /* background-color: rgb(120, 107, 156); */
    /* background: -webkit-gradient(linear, left top, left bottom, from(rgb(24, 23, 23)), to(rgb(103, 83, 194))) fixed; */
-   background: -webkit-gradient(linear, left top, left bottom, from(rgb(24, 23, 23)), to(rgb(44, 35, 83))) fixed;
-  color: white;
+   /* background: -webkit-gradient(linear, left top, left bottom, from(rgb(24, 23, 23)), to(rgb(44, 35, 83))) fixed; */
+   background-color: rgb(74, 53, 107); 
+  color: rgb(8, 8, 8);
   height: 100vh;
 
 }
