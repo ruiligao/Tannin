@@ -7,10 +7,17 @@ const Header = props => {
 		Greeting = <p>Hello guest</p>
 	} else if (props.user.firstName) {
 		Greeting = (
-			<p>
+<div>
+			<div>
+				<strong>{props.user.restaurantName}</strong>
+			</div>
+			<br></br>
+			<div>
 				Welcome <strong>{props.user.firstName}</strong>
-			</p>
+			</div>
+			</div>
 		)
+		
 	}
 	return (
 		<div className="Header">

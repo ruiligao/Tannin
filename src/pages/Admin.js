@@ -59,6 +59,7 @@ class Admin extends Component {
     userId: "",
     usefirstName: "",
     uselastName: "",
+    useEmail: "",
     userestaurantName: ""
   };
 
@@ -255,6 +256,7 @@ class Admin extends Component {
       newState.useId = newState.user._id
       newState.usefirstName = newState.user.firstName
       newState.uselastName = newState.user.lastName
+      newState.useEmail = newState.user.email
       newState.userestaurantName = newState.user.restaurantName
       console.log(newState.useId);
     }
@@ -279,6 +281,7 @@ class Admin extends Component {
           usefirstName={this.state.usefirstName}
           uselastName={this.state.uselastName}
           userestaurantName={this.state.userestaurantName}
+          useEmail = {this.state.useEmail}
           showMe3={this.state.showMe3}
           hideShow3={this.hideShow3}
           handleLogout={this.handleLogout}
@@ -309,6 +312,8 @@ class Admin extends Component {
           <div className="brandCol">
             <div className="welcomebtnwrap">
               <div>
+<div></div>
+
                 <button
                   onClick={() => this.hideShow3()}
                   className="welcomebtn"
@@ -393,6 +398,7 @@ class Admin extends Component {
                         key={employee._id}
                         id={employee._id}
                         firstName={employee.firstName}
+                        lastName={employee.lastName}
                         handleWineDelete={this.handleWineDelete}
                         empId={this.state.empId}
                         empfirstName={this.state.empfirstName}

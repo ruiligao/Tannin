@@ -103,4 +103,10 @@
             margin: 20px;
           }
 
-          
+          .fontitalicbarcode {
+          font-family: 'Libre Barcode 128 Text', cursive;
+          font-size: 20px;
+          color: black;
+          text-align: center;
+
+          }
