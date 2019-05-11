@@ -221,7 +221,7 @@ handleWineAdd = id => {
           <Link
             className={window.location.pathname === "/admin" ? "nav-link active" : "nav-link"}
             to="/admin"
-          ><button className="btnadminpage"><i className="fas fa-wine-glass-alt">   <span>YOUR RESTAURANT</span></i>
+          ><button className="btnadminpage"><i className="fas fa-wine-glass-alt">   <span>Your Restaurant</span></i>
               
             </button>
               </Link>
