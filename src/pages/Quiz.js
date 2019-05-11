@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 // importing components
+// import EmployeePage from "./pages/EmployeePage";
 import QuestionCard from "../components/QuestionCard";
 import Wrapper from "../components/Wrapper";
 // importing the question array from the json file
@@ -10,7 +11,9 @@ import wineData from "../franciacorta.json"
 import './style.css';
 
 class Quiz extends Component {
+
   state = {
+    user:[],
     questions,
     filteredQs: [],
     correctFlavors: wineData.primaryFlavors,
@@ -102,6 +105,44 @@ class Quiz extends Component {
       score: newState.score
     });
   }
+
+  // componentDidMount() {
+  //   this.getUser()
+  // }
+
+  // getUser = () => {
+  //   API.getUser().then(response => {
+  //     console.log("LOGGED IN USER: ", response)
+  //     if (!!response.data.user) {
+  //       console.log('THERE IS A USER');
+  //       console.log(response.data);
+  //       this.setState({
+  //         loggedIn: true,
+  //         user: response.data.user,
+  //       });
+  //     } 
+  //     else {
+  //       this.setState({
+  //         loggedIn: false,
+  //         user: null
+  //       });
+  //       this.props.history.push(`/`);
+  //     }
+  //   });
+  // }
+
+  // handleQuizPageBtn = id => {
+  //   const getQuiz = { id: id, restaurantId: this.state.user.restaurantId };
+  //   console.log("??????????????");
+  //   console.log(getQuiz);
+  //   console.log("??????????????");
+  //   // const deleltData = {id: id, restaurantId: this.state.restaurantId}
+
+  //   API.getQuiz(getQuiz).then(res =>
+
+  //     this.componentDidMount()
+  //   )
+  // }
 
 
   // renders react elements into the DOM

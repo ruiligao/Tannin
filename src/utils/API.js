@@ -93,7 +93,9 @@ getUser: function () {
   deleteEmployee: function(deleteEmp) {//localhost:3001/api/addEmployee/
     console.log(deleteEmp);
     return axios.put("http://localhost:3001/api/addEmployee/", deleteEmp)
-  }
+  },
+
+
 
 
 
