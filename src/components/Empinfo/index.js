@@ -18,8 +18,8 @@ function Empinfo({ showMe4, useId, hideShow4, usefirstName, uselastName, userest
       <div>Id No: {useId}</div>
       <div>Restaurant Name: {userestaurantName}</div>
       
-      <div>{usefirstName}</div>
-      <div>{uselastName}</div>
+      <div>First Name: {usefirstName}</div>
+      <div>Last Name: {uselastName}</div>
  
       
       <div className="form-group">

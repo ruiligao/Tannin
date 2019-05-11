@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "./style.css";
 
 function Addemployee({ showMe2, hideShow2, name, lastName, email,password, handleAddEmployeeChange, handleAddEmpolyeeFormSubmit }) {
@@ -107,13 +107,13 @@ function Addemployee({ showMe2, hideShow2, name, lastName, email,password, handl
 
    
 
-    <div><Link
+    {/* <div><Link
             className={window.location.pathname === "/employeepage" ? "nav-link active" : "nav-link"} 
             to="/employeepage"
           ><button>
             Employee page
             </button>
-              </Link></div>
+              </Link></div> */}
     </div>
     </div>
       </div>

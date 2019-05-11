@@ -15,18 +15,18 @@
   
 }
 
-.useinfowrapper1 {
+.userinfowrapper1 {
   /* display: flex;
   justify-content: center; */
   margin-top: 150px;
 }
 
-.useinfowrapper2{
+.userinfowrapper2{
 width: 20%;
-background-color: #17414e;
+background-color: rgb(23, 65, 78, .5);
 border-style:solid;
 border-width: 0px;
-background-color: rgb(110, 90, 223);
+
 border-radius: 0px;
 justify-content: center;
 display: flex;
@@ -35,7 +35,7 @@ color: white;
 
 
 
-.useinfowrapper3{
+.userinfowrapper3{
   width: 80%;
   /* background: rgb(150, 142, 142); */
   margin: 20px;

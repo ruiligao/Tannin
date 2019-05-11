@@ -8,9 +8,9 @@ function Userinfo({ showMe3, useEmail, useId, hideShow3, usefirstName, uselastNa
     <div>
     {showMe3 ?
       <div className="overlay8">
-        <div className="useinfowrapper1">
-        <div className="useinfowrapper2">
-        <div className="useinfowrapper3">
+        <div className="userinfowrapper1">
+        <div className="userinfowrapper2">
+        <div className="userinfowrapper3">
       <div>
       <div className="btnwrap1bclose">
       <button className="btnwrap1buserclose" onClick={() => hideShow3(useId)}><i className="fas fa-times-circle"></i></button></div>

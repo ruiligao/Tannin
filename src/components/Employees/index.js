@@ -1,8 +1,6 @@
-
-
 import React from "react";
 import { ListItem } from "../List";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 import "./style.css";
 
@@ -34,25 +32,24 @@ function Employees({handleEmployeeDelete, id, firstName, lastName, empId, hideSh
                     <div className="empinfo2">
                       <div className="empinfo3">
                         <div className="infoempwrap">
-                        <div>Id No: {empId}</div>
-                          <div>{empfirstName}</div>
-                          <div>{emplastName}</div>
-                          <div>{empEmail}</div>
+                        <div className="infodetails">Id No: {empId}</div>
+                          <div className="infodetails">First Name: {empfirstName}</div>
+                          <div className="infodetails">Last Name: {emplastName}</div>
+                          <div className="infodetails">Email: {empEmail}</div>
                           </div>
 
                         <br></br>
 
                       </div>
                       <div className="btnwrap">
-                        <button><Link
+                        {/* <button><Link
                           
                           to="/admin"
                         >
                           Others
-          </Link></button>
-
-                        <button onClick={() => hideShowEmp(empId)}>CLOSE</button>
-                      </div>
+          </Link></button> */}
+<button className="btnwrap1buserclose" onClick={() => hideShowEmp(empId)}><i className="fas fa-times-circle"></i></button>
+                       </div>
                     </div>
                   </div>
                 </div>
