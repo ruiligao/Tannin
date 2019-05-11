@@ -138,7 +138,7 @@ class Quiz extends Component {
 
   // renders react elements into the DOM
   render() {
-    {console.log('clicked wine id:', this.props.location.state.wineId)}
+    // {console.log('clicked wine id:', this.props.location.state.wineId)}
     return (
       // the parent div into which our components will be rendered
       <div className="background">
