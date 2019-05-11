@@ -15,14 +15,14 @@ function Restowine({handleWineDelete, name, id, hideShow, showMe, wineName, wine
         <div><button className="winenamebtn1" onClick={() => hideShow(id)}>{name}</button></div>
         <div><button className="winedelbtn" onClick={() => handleWineDelete(id)}>Delete</button></div>
           </div>
-          <div><Link
+          {/* <div><Link
             className="nav-link" 
             to="/quiz"
           ><button>
             Quiz Page
             </button>
-              </Link></div>
-          <div className="font-italic">{id}</div>
+              </Link></div> */}
+          <div className="fontitalicbarcode">Product Id: {id}</div>
 
           <div>
               {showMe ?

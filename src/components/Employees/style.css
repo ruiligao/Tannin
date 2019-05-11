@@ -26,13 +26,13 @@
       margin:20px;
       padding: 10px;
       color: rgb(238, 221, 182);
-      background-color: rgb(173, 24, 61);
+      background-color: rgb(52, 75, 10);
       /* background-color: rgb(187, 25, 66); */
         /* background-color: rgba(218, 73, 121, 0.8); */
       /* background-color: rgb(243, 210, 210); */
       width: 80%;
       border-top-left-radius: 20px;
-      border-bottom-left-radius: 20px;
+      /* border-bottom-left-radius: 20px; */
       border-bottom-right-radius: 20px;
   
     }
@@ -44,7 +44,7 @@
   }
   
     .fa-user-minus {
-        color:rgb(226, 11, 11);
+        color:rgb(12, 11, 11);
         font-size: 20px;
         text-shadow: 1px 1px #3b0b02;
     }

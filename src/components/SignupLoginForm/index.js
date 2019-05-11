@@ -109,7 +109,7 @@ function SignupLoginForm({ showMe, hideShow, restaurant, firstName, lastName, em
                         </div>
                       </div>
                     </div>
-                    <div className="sigupmessage"><h2 class="message">{signupMessage}</h2></div>
+                    <div className="sigupmessage"><h2 className="message">{signupMessage}</h2></div>
                     <div className="pull-right">
 
                       <button
