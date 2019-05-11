@@ -14,7 +14,7 @@ import questions from "../questions.json";
 import wineData from "../franciacorta.json"
 
 import { List } from "../components/List";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "./style.css";
 
 
@@ -271,20 +271,20 @@ hideShowQuiz = id => {
   const newState = { ...this.state }
   const wine = this.state.wineCollections.find(wine => wine._id === id);
   newState.wineId = id
-  // newState.wineName = wine.name
-  // newState.wineacidity = wine.acidity
-  // newState.wineageability = wine.ageability
-  // newState.winealcohol = wine.alcohol
-  // newState.winebody = wine.body
-  // newState.winedecant = wine.decant 
-  // newState.wineglassType = wine.glassType
-  // newState.winepairings = wine.pairings
-  // newState.wineprimaryFlavors = wine.primaryFlavors
-  // newState.winepronunciation = wine.pronunciation
-  // newState.winesummary = wine.summary
-  // newState.winesweetness = wine.sweetness
-  // newState.winetannin = wine.tannin
-  // newState.winetemp = wine.temp
+  newState.wineName = wine.name
+  newState.wineacidity = wine.acidity
+  newState.wineageability = wine.ageability
+  newState.winealcohol = wine.alcohol
+  newState.winebody = wine.body
+  newState.winedecant = wine.decant 
+  newState.wineglassType = wine.glassType
+  newState.winepairings = wine.pairings
+  newState.wineprimaryFlavors = wine.primaryFlavors
+  newState.winepronunciation = wine.pronunciation
+  newState.winesummary = wine.summary
+  newState.winesweetness = wine.sweetness
+  newState.winetannin = wine.tannin
+  newState.winetemp = wine.temp
   newState.showMe6 = !newState.showMe6
   newState.scale = this.state.scale > 1 ? 1 : 1.5
   console.log("WINE ID:")
@@ -441,7 +441,7 @@ className="empwelcomebtn"
                     ))}
                   </List>
           ) : (
-              <h2 className="text-center"></h2>
+              <h2 className="text-center"> </h2>
             )}
             </div>
             </div>

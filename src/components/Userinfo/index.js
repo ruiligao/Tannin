@@ -2,7 +2,7 @@ import React from "react";
 // import { Link } from "react-router-dom";
 import "./style.css";
 
-function Userinfo({ showMe3, useId, hideShow3, usefirstName, uselastName, userestaurantName, handleLogout }) {
+function Userinfo({ showMe3, useEmail, useId, hideShow3, usefirstName, uselastName, userestaurantName, handleLogout }) {
   return (
 
     <div>
@@ -13,26 +13,30 @@ function Userinfo({ showMe3, useId, hideShow3, usefirstName, uselastName, useres
         <div className="useinfowrapper3">
       <div>
       <div className="btnwrap1bclose">
-      <button className="btnwrap1b" onClick={() => hideShow3(useId)}>Close</button></div>
+      <button className="btnwrap1buserclose" onClick={() => hideShow3(useId)}><i className="fas fa-times-circle"></i></button></div>
       <div className="newempformtext"></div>
       <div>Id No: {useId}</div>
-      <div>Restaurant Name: {userestaurantName}</div>
-      
-      <div>{usefirstName}</div>
-      <div>{uselastName}</div>
+      <br></br>
+      <div>Restaurant: {userestaurantName}</div>
+      <br></br>
+      <div>First Name: {usefirstName}</div>
+      <br></br>
+      <div>Last Name: {uselastName}</div>
+      <br></br>
+      <div>Email: {useEmail}</div>
  
       
       <div className="form-group">
       <div>
         </div>
 </div>
+<br></br>
 
-
-      <div className="btnwrap1awrap">
-
-        
+      <div className="btn1logoutwrap">
+      <button className="btn1logout" onClick={() => handleLogout()}>Logout <i className="fas fa-sign-out-alt"></i></button>
       </div>
-      <button className="btnwrap1a" onClick={() => handleLogout()}>Logout</button>
+
+
       
     </div>
 

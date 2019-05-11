@@ -14,7 +14,8 @@
 .brandCol {
   width:20%;
   /* background-color: rgb(120, 107, 156); */
-   background: -webkit-gradient(linear, left top, left bottom, from(rgb(24, 23, 23)), to(rgb(103, 83, 194))) fixed;
+   /* background: -webkit-gradient(linear, left top, left bottom, from(rgb(24, 23, 23)), to(rgb(103, 83, 194))) fixed; */
+   background: -webkit-gradient(linear, left top, left bottom, from(rgb(24, 23, 23)), to(rgb(44, 35, 83))) fixed;
   color: white;
   height: 100vh;
 
@@ -38,33 +39,35 @@ display: flex;
 }
 
 .wineColWrap1 {
-    background-color: gray;
+    background-color: rgb(228, 118, 118);
+    /* background-color: rgb(124, 76, 103); */
     height: 70vh;
     overflow: auto;
     width: 80%;
     margin-top: 20px;
-    border-radius: 30px;
-    border-style: solid;
-    border-width: 10px;
-    border-color: rgb(71, 67, 67);
+    border-radius: 10px;
+    /* border-style: solid; */
+    /* border-width: 10px; */
+    border-color: rgb(73, 22, 22);  
+    box-shadow: 5px 6px 6px rgb(49, 46, 46), 0 3px 3px rgb(59, 58, 58);
 
 }
 
 .employeeColWrap {
-    justify-content: center;
+    justify-content: center;  
     display: flex;
 }
 
 .employeeColWrap1 {
-    background-color: gray;
+    background-color: rgb(130, 156, 80);
     height: 70vh;
     overflow: auto;
     width: 80%;
     margin-top: 20px;
-    border-radius: 30px;
-    border-style: solid;
-    border-width: 10px;
-    border-color: rgb(71, 67, 67);
+    border-radius: 10px;
+    /* border-style: solid;
+    border-width: 10px; */
+    box-shadow: 5px 6px 6px rgb(49, 46, 46), 0 3px 3px rgb(59, 58, 58);
 }
 
 .empTitleWrap {
@@ -255,13 +258,14 @@ span {
 
 .fa-user-plus {
   font-size:40px;
-  text-shadow: 2px 2px #6d6767;
+  /* text-shadow: 2px 2px #6d6767; */
+  color: rgb(25, 69, 71);
   
   
 }
 
 .addempbtnmain {
-  background-color: gray;
+  background-color: rgb(100, 194, 123);
   border-radius: 50%;
   height: 80px;
   width: 80px;
@@ -269,7 +273,7 @@ span {
 }
 
 .addwinebtnmain {
-  background-color: gray;
+  background-color: rgb(136, 34, 97);
   border-radius: 50%;
   height: 80px;
   width: 80px;
@@ -278,6 +282,7 @@ span {
 
 .fa-wine-bottle{
   font-size:40px;
+  color: rgb(231, 200, 160);
 
 }
 
@@ -332,6 +337,62 @@ display: flex;
   overflow: auto;
   border-radius: 20px;
 
+}
+
+
+.welcomebtn {
+  color:white;
+  /* background-color: rgb(110, 90, 223); */
+    background-color: transparent;
+
+  border-style: solid;
+  border-top-style: none;
+  border-left-style: none;
+  border-right-style: none;
+  font-family: Arial, Helvetica, sans-serif;
+
+
+
+  /* height: 70px; */
+  /* padding-left: 20px;
+  padding-right: 20px; */
+  /* border-radius: 10px; */
+  font-size: 15px;
+  margin-bottom: 50px;
+  font-size: 25px;
+
+
+}
+p {
+  margin: 0;
+}
+
+.welcomebtn{
+  justify-content: center;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.welcomebtn:focus {
+  outline: none !important;
+}
+
+button:focus {
+  outline: none !important;
+}
+
+
+.welcomebtn:hover {
+  -ms-transform: scale(1.2); /* IE 9 */
+  -webkit-transform: scale(1.2); /* Safari 3-8 */
+  transform: scale(1.2); 
+  cursor: pointer;
+}
+
+.welcomebtnwrap {
+  justify-content: center;
+  display: flex;
+  margin-top: 50px;
 }
 
 .empwelcomebtn {
