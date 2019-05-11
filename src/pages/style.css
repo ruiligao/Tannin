@@ -15,8 +15,9 @@
   width:20%;
   /* background-color: rgb(120, 107, 156); */
    /* background: -webkit-gradient(linear, left top, left bottom, from(rgb(24, 23, 23)), to(rgb(103, 83, 194))) fixed; */
-   background: -webkit-gradient(linear, left top, left bottom, from(rgb(24, 23, 23)), to(rgb(44, 35, 83))) fixed;
-  color: white;
+   /* background: -webkit-gradient(linear, left top, left bottom, from(rgb(24, 23, 23)), to(rgb(44, 35, 83))) fixed; */
+   background-color: rgb(74, 53, 107); 
+  color: rgb(8, 8, 8);
   height: 100vh;
 
 }
@@ -114,19 +115,22 @@ a:link {
   }
 
   .btnadminpage {
-    color:white;
-    background-color: rgb(173, 24, 61);
-    border-style: none;
+    color:rgb(3, 3, 3);
+    /* background-color: rgb(173, 24, 61); */
+    background-color: transparent;
+    border-style: solid;
+    border-width: 1px;
     height: 50px;
     padding-left: 20px;
     padding-right: 20px;
     border-radius: 50px;
     font-size: 15px;
+    border-color: rgb(7, 7, 7);
   }
 .btnadminpagewrap {
   justify-content: center;
   display: flex;
-  margin-top: 150px;
+  margin-top: 100px;
 }
 
 ::-webkit-scrollbar { 

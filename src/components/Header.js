@@ -13,7 +13,7 @@ const Header = props => {
 			</div>
 			<br></br>
 			<div>
-				Welcome <strong>{props.user.firstName}</strong>
+				Hello <strong>{props.user.firstName}</strong>
 			</div>
 			</div>
 		)

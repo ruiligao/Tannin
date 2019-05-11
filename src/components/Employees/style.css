@@ -13,7 +13,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: -webkit-gradient(linear, left top, left bottom, from(rgb(248, 252, 250)), to(rgb(102, 42, 42))) fixed;
+      /* background: -webkit-gradient(linear, left top, left bottom, from(rgb(248, 252, 250)), to(rgb(102, 42, 42))) fixed; */
       z-index: 2;
       cursor: pointer;
       transition-delay: 10s;
@@ -46,7 +46,7 @@
     .fa-user-minus {
         color:rgb(12, 11, 11);
         font-size: 20px;
-        text-shadow: 1px 1px #3b0b02;
+        /* text-shadow: 1px 1px #3b0b02; */
     }
   
     .btnadd {
@@ -88,14 +88,18 @@
     }
     
     .empinfo2{
-    width: 50%;
-    background: rgb(150, 142, 142);
-    
+      width: 250px;
+      background: rgb(61, 83, 31);
+      border-style:solid;
+      border-width: 10px;
+      border-color:  rgb(90, 112, 59);
+      border-radius: 50px;
+      padding-right: 50px;
     }
     
     .empinfo3{
       width: 100%;
-      background: rgb(150, 142, 142);
+
       justify-content: center;
     display: flex;
         }
@@ -111,4 +115,7 @@
 
         } 
 
+        .infodetails {
+          margin-bottom: 5px;
+        }
         
