@@ -554,3 +554,11 @@ button:focus {
     font-size: 15px;
   
   }
+
+  .tannintextwrap2 {
+    text-align: center;
+    margin-top: 200px;
+font-size: 40px;
+color: rgb(190, 39, 77);
+font-family: 'Pacifico', cursive;
+  }

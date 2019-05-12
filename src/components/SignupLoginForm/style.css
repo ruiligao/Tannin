@@ -283,8 +283,8 @@ font-family: 'Pacifico', cursive;
 .loginsignupbtnmainwrap2 {
   
     position: absolute;
-    top: 50%;
-    left:43%;
+    top: 10%;
+    left:45%;
     transform: translateY(-50%);
 }
 
