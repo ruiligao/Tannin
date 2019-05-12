@@ -8,6 +8,7 @@ import Wrapper from "../components/Wrapper";
 import questions from "../questions.json";
 // importing the wine template for testing purposes 
 // import wineData from "../franciacorta.json"
+import { Link } from "react-router-dom";
 //importing css stylings
 import './style.css';
 
@@ -192,7 +193,7 @@ class Quiz extends Component {
 
   // renders react elements into the DOM
   render() {
-    console.log('clicked wine id:', this.props.location.state.wineId)
+    // console.log('clicked wine id:', this.props.location.state.wineId)
     console.log(this.state.wineData);
     return (
       // the parent div into which our components will be rendered
@@ -234,9 +235,16 @@ class Quiz extends Component {
             </div>
           </div>
         </Wrapper>
-        <div className="submitanswersbtn">
+
+        <div className="submitanswersbtnquizwrap">
+        <div className="submitanswersbtnquiz">
           <button className="submitFinal" onClick={this.handleScoreCalc}>Submit Answers</button>
+          
+          <Link to="/employeepage"><button className="closebtnquiz">maybe next time
+            </button></Link>
         </div>
+        </div>
+
       </div>
     );
   }

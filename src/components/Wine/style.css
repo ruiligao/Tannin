@@ -5,22 +5,21 @@ display: flex;
 }
 
 
-.overlay4 {
+.overlay4b {
 
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 100vw;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(253, 227, 167, 1);
+    /* background: rgb(54, 53, 53, .1); */
     /* background: -webkit-gradient(linear, left top, left bottom, from(rgb(248, 252, 250)), to(rgb(102, 42, 42))) fixed; */
     z-index: 2;
     cursor: pointer;
     transition-delay: 10s;
     transition-timing-function: ease-in;
-    overflow: hidden;
     
   }
 
@@ -89,14 +88,19 @@ display: flex;
   }
   
   .wrapinfo2{
-  width: 50%;
-  background: rgb(150, 142, 142);
+    width: 50%;
+    background: rgb(131, 103, 161);
+    border-style:solid;
+    border-width: 10px;
+    border-color:  rgb(63, 28, 97);
+    border-radius: 50px;
+    padding: 20px;
   
   }
   
   .wrapinfo3{
     width: 100%;
-    background: rgb(150, 142, 142);
+
   
     justify-content: center;
   display: flex;

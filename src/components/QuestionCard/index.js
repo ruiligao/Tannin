@@ -16,6 +16,8 @@ class QuestionCard extends React.Component {
         console.log(this.selections);
         return (
             <div className="qcard">
+            <div className="qcard2">
+
                 <h2 className="questionName">{this.props.question}{this.props.wineName}?</h2>
                 {/* If false answers are available, render button for each answer, else render a submit (specifically for the flavors question) */}
                 <div>
@@ -23,7 +25,7 @@ class QuestionCard extends React.Component {
                         return (
                             answer === this.props[`${this.props.category}`] ?
                                 <div>
-                                    <button className={this.props.id} onClick={this.props.handleBtnClick}
+                                    <button className={this.props.id}  onClick={this.props.handleBtnClick}
                                         value="1">{answer}</button><br />
                                 </div> : <div>
                                     <button className={this.props.id} onClick={this.props.handleBtnClick}
@@ -48,6 +50,7 @@ class QuestionCard extends React.Component {
                     }
 
                 </div>
+            </div>
             </div>
         );
     }
