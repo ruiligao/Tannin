@@ -24,8 +24,7 @@ class Quiz extends Component {
     counter: 0,
     score: 0,
     highScore: 0,
-    wineData: [],
-
+    wineData: []
   }
 
   // componentWillMount shuffles the CharacterCards before the DOM is loaded
@@ -38,7 +37,8 @@ class Quiz extends Component {
       console.log("LOGGED IN USER: ", response)
       if (!!response.data.user) {
         console.log('THERE IS A USER');
-        console.log(response.data);
+        console.log(response.data.user.scores);
+        console.log("???????????????");
         this.setState({
           loggedIn: true,
           user: response.data.user,
@@ -144,20 +144,21 @@ class Quiz extends Component {
   }
 
   handleScoreCalc = () => {
-    // console.log("SCORE:" +this.state.score);
-    const newState = { ...this.state };
-    let hundreds = this.state.counter * 100;
-    let total = newState.filteredQs.length;
-    this.state.score = hundreds / total
+   const newState = {...this.state};
+    let hundreds =  newState.counter * 100;
+    let total = this.state.filteredQs.length;
+    this.state.score = hundreds / total;
+  
+    // this.setState(newState);
+    console.log("STATE");
+    console.log(this.state);
+    console.log("///////////////////");
     // newState.score > newState.highscore ? newState.highscore = newState.Score : newState.highScore = newState.highscore
 
-    console.log("hundreds: ", hundreds)
+    console.log("hundreds: ", hundreds);
     console.log("total # of Questions: ", total)
     console.log("Your score for ", this.state.wineData.name, ": ", this.state.score, "%")
-    this.setState({
-      // score: score
-    });
-    console.log("SCORE"+this.state.score);
+    console.log("SCORE" + this.state.score);
     this.addScore()
   }
 
@@ -174,17 +175,16 @@ class Quiz extends Component {
     )
   }
 
-  addScore=()=>{
-    const scoreData = {userId: this.state.user._id, wine:this.state.wineData.name, score: this.state.score}
+  addScore = () => {
+    const scoreData = { userId: this.state.user._id, wine: this.state.wineData.name, score: this.state.score }
     console.log(scoreData);
-    API.addScore(scoreData).then(res=>{
+    API.addScore(scoreData).then(res => {
+      console.log("ADDSCORE");
       console.log(res);
+      console.log(res.data.scores);
       this.props.history.push('/employeepage');
     })
-   
-
   }
-
 
   // renders react elements into the DOM
   render() {
@@ -232,12 +232,12 @@ class Quiz extends Component {
         </Wrapper>
 
         <div className="submitanswersbtnquizwrap">
-        <div className="submitanswersbtnquiz">
-          <button className="submitFinal" onClick={this.handleScoreCalc}>Submit Answers</button>
-          
-          <Link to="/employeepage"><button className="closebtnquiz">maybe next time
+          <div className="submitanswersbtnquiz">
+            <button className="submitFinal" onClick={this.handleScoreCalc}>Submit Answers</button>
+
+            <Link to="/employeepage"><button className="closebtnquiz">maybe next time
             </button></Link>
-        </div>
+          </div>
         </div>
 
       </div>
