@@ -1,6 +1,6 @@
 import React from "react";
 import { ListItem } from "../List";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 import "./style.css";
 
@@ -18,45 +18,45 @@ function Wine({ name, id, hideShow, showMe, handleWineAdd,wineName, wineId, wine
                <div><button className="btnadd" onClick={() => handleWineAdd(id)}><i className="fa fa-plus-circle fa-2x" aria-hidden="true"></i></button></div>   
                </div>
             
-            <div>{id}</div>
+            <div className="fontitalicbarcode">{id}</div>
 
             <div>
               {showMe ?
-                <div className="overlay4">
+                <div className="overlay4b">
                   <div className="wrapinfo1">
                     <div className="wrapinfo2">
                       <div className="wrapinfo3">
                         <div className="infowrap">
 
-                          <div>{wineName}</div>
-                          <div>{wineacidity}</div>
-                          <div>{wineageability}</div>
-                          <div>{winealcohol}</div>
-                          <div>{winebody}</div>
-                          <div>{winedecant}</div>
-                          <div>{wineglassType}</div>
-                          <div>{winepairings}</div>
-                          <div>{wineprimaryFlavors}</div>
-                          <div>{winepronunciation}</div>
-                          <div>{winesummary}</div>
-                          <div>{winesweetness}</div>
-                          <div>{winetannin}</div>
-                          <div>{winetemp}</div>
-                          <div>{wineId}</div>
+                        <div className="infodetails">Name: {wineName}</div>
+                          <div className="infodetails">Acidity: {wineacidity}</div>
+                          <div className="infodetails">Ageabilty: {wineageability}</div>
+                          <div className="infodetails">Alcohol: {winealcohol}</div>
+                          <div className="infodetails">Body: {winebody}</div>
+                          <div className="infodetails">Decant: {winedecant}</div>
+                          <div className="infodetails">Glass Type: {wineglassType}</div>
+                          <div className="infodetails">Pairings: {winepairings}</div>
+                          <div className="infodetails">Flavors: {wineprimaryFlavors}</div>
+                          <div className="infodetails">Pronunciation: {winepronunciation}</div>
+                          <div className="infodetails">Summary: {winesummary}</div>
+                          <div className="infodetails">Sweetness: {winesweetness}</div>
+                          <div className="infodetails">Tannin: {winetannin}</div>
+                          <div className="infodetails">Temp: {winetemp}</div>
+                          <div className="infodetails">Id: {wineId}</div>
                         </div>
 
                         <br></br>
 
                       </div>
                       <div className="btnwrap">
-                        <button><Link
+                        {/* <button><Link
                           className={window.location.pathname === "/admin" ? "nav-link active" : "nav-link"}
                           to="/admin"
                         >
                           admin
-          </Link></button>
-
-                        <button onClick={() => hideShow(id)}>CLOSE</button>
+          </Link></button> */}
+<button className="btnwrap1buserclose" onClick={() => hideShow(id)}><i className="fas fa-times-circle"></i></button>
+                        {/* <button onClick={() => hideShow(id)}>CLOSE</button> */}
                       </div>
                     </div>
                   </div>

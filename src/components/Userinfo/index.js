@@ -17,15 +17,15 @@ function Userinfo({ showMe3, useEmail, useId, hideShow3, usefirstName, uselastNa
        */}
       </div>
       <div className="userformtext">
-      <div>Id No: {useId}</div>
+      <div className="infodetails">Id No: {useId}</div>
       <br></br>
-      <div>Restaurant: {userestaurantName}</div>
+      <div className="infodetails">Restaurant: {userestaurantName}</div>
       <br></br>
-      <div>First Name: {usefirstName}</div>
+      <div className="infodetails">First Name: {usefirstName}</div>
       <br></br>
-      <div>Last Name: {uselastName}</div>
+      <div className="infodetails">Last Name: {uselastName}</div>
       <br></br>
-      <div>Email: {useEmail}</div>
+      <div className="infodetails">Email: {useEmail}</div>
       </div>
  
       

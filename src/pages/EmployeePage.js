@@ -4,9 +4,10 @@ import SavedWine from "../components/SavedWine";
 // import Addemployee from "../components/Addemployee";
 // import Footer from "../components/Footer";
 import API from "../utils/API";
-import Header from "../components/Header";
-import Wrapper from "../components/Wrapper";
-import QuestionCard from "../components/QuestionCard";
+// import Header from "../components/Header";
+import Header2 from "../components/Header2";
+// import Wrapper from "../components/Wrapper";
+// import QuestionCard from "../components/QuestionCard";
 import Empinfo from "../components/Empinfo";
 import { Container } from "../components/Grid";
 import questions from "../questions.json";
@@ -42,6 +43,7 @@ class EmployeePage extends Component {
     empusefirstName:"",
     empuselastName:"",
     empuserestaurantName:"",
+    empuseEmail:"",
 
     questions,
     filteredQs: [],
@@ -67,6 +69,9 @@ class EmployeePage extends Component {
     winesweetness: "",
     winetannin: "",
     winetemp: "",
+
+   
+
   };
 
   hideShow = () => {
@@ -178,121 +183,12 @@ newState.greet = "Welcome"
           newState.empusefirstName=newState.user.firstName
           newState.empuselastName=newState.user.lastName
           newState.empuserestaurantName=newState.user.restaurantName
+          newState.empuseEmail=newState.user.email
           console.log(newState.empuseId);
     newState.showMe4 = !newState.showMe4
     this.setState(newState);
 
   }
-// --------
-componentWillMount() {
-  const categories = Object.keys(wineData)
-  const cheatSheet = Object.values(wineData)
-  const filteredQs = questions.filter(q => {
-    return categories.includes(q.category)
-  });
-  this.setState({ filteredQs: filteredQs })
-  this.shuffle(filteredQs);
-
-  // console.log("Categories for", wineData.name, ": ", categories)
-  // console.log("Answers for ", wineData.name, ": ", truth)
-  console.log("Questions to be run for", wineData.name, ": ", filteredQs)
-  console.log(this.state.correctFlavors)
-};
-
-
-// Here we use the Fisher-Yates alogrithm to randomize the characters array
-shuffle(arr) {
-  var j, x, i;
-  for (i = arr.length - 1; i > 0; i--) {
-    j = Math.floor(Math.random() * (i + 1));
-    x = arr[i];
-    arr[i] = arr[j];
-    arr[j] = x
-  }
-  return arr;
-};
-
-handleBtnClick = (event) => {
-  // renaming this.state so we don't have to write it out each time
-  const newState = { ...this.state };
-
-  let points = parseInt(event.target.value);
-  newState.counter = newState.counter + points
-
-  // in this if statement we check to see if the player lost, log their loss, and clear the guesses array & score
-
-  // finally we use setState to update the state to the virtual DOM
-  this.setState(newState);
-}
-
-handleInputChange = event => {
-  // Getting the value and name of the input which triggered the change
-  const { name, value } = event.target;
-
-  // Updating the input's state
-  this.setState({
-    [name]: value
-  });
-};
-
-handleCheckFlavor = () => {
-
-  const newState = { ...this.state };
-
-  console.log(newState.correctFlavors)
-   if (this.state.correctFlavors.includes(this.state.submittedFlavor)) {
-    this.setState({
-      counter: newState.counter +1,
-      submittedFlavor: ""
-    })
-   } else { 
-     this.setState({
-      submittedFlavor: ""
-  })}
-}
-
-handleScoreCalc = () => {
-  const newState = { ...this.state };
-  let hundreds = newState.counter * 100;
-  let total = newState.filteredQs.length;
-  newState.score = hundreds / total
-
-  console.log("hundreds: ", hundreds)
-  console.log("total # of Questions: ", total)
-  console.log("Your score for ", wineData.name, ": ", newState.score, "%")
-  this.setState({
-    score: newState.score
-  });
-}
-
-
-
-hideShowQuiz = id => {
-  const newState = { ...this.state }
-  const wine = this.state.wineCollections.find(wine => wine._id === id);
-  newState.wineId = id
-  newState.wineName = wine.name
-  newState.wineacidity = wine.acidity
-  newState.wineageability = wine.ageability
-  newState.winealcohol = wine.alcohol
-  newState.winebody = wine.body
-  newState.winedecant = wine.decant 
-  newState.wineglassType = wine.glassType
-  newState.winepairings = wine.pairings
-  newState.wineprimaryFlavors = wine.primaryFlavors
-  newState.winepronunciation = wine.pronunciation
-  newState.winesummary = wine.summary
-  newState.winesweetness = wine.sweetness
-  newState.winetannin = wine.tannin
-  newState.winetemp = wine.temp
-  newState.showMe6 = !newState.showMe6
-  newState.scale = this.state.scale > 1 ? 1 : 1.5
-  console.log("WINE ID:")
-  console.log(id)
-  this.componentDidMount()
-  this.setState(newState);
-
-}
 
   // ----------
 
@@ -300,66 +196,13 @@ hideShowQuiz = id => {
     return (
 
       <Container>
-        {this.state.showMe6 ?
-  <div className="overlay1">
-  <Wrapper>
-        <div className="qcardwrapper1">
-          <div className="qcardwrapper2">
-          {/* Map over this.state.characters and render a CharacterCard component for each character object */}
-          {this.state.filteredQs.map(filteredQ => (
-            <QuestionCard
-              // each card will inherit an id, a key, a name, and an image from its respective array object
-              handleBtnClick={this.handleBtnClick}
-              handleInputChange={this.handleInputChange}
-              handleCheckFlavor={this.handleCheckFlavor}
-              shuffle={this.shuffle}
-
-              id={filteredQ.id}
-              key={filteredQ.id}
-              question={filteredQ.question}
-              answers={filteredQ.falseAnswers}
-              category={filteredQ.category}
-              wineName={wineData.name}
-              sweetness={wineData.sweetness}
-              body={wineData.body}
-              tannin={wineData.tannin}
-              acidity={wineData.acidity}
-              alcohol={wineData.alcohol}
-              temp={wineData.temp}
-              decant={wineData.decant}
-              ageability={wineData.ageability}
-              region={wineData.region}
-              counter={this.state.counter}
-              submitFlavor={this.state.submitFlavor}
-            />
-          ))}
-          </div>
-          
-          </div>
-          <div className="submitanswersbtn">
-          <button className="submitFinal">Submit Answers</button>
-
-          {/* <Link
-            className={window.location.pathname === "/employeepage" ? "nav-link active" : "nav-link"} 
-            to="/employeepage"
-          ><button onClick={() => {this.hideShowQuiz(this.wineId); window.location.reload()}}>
-            Employee page
-            </button>
-              </Link> */}
-
-
-          <button className="btnwrap1a" onClick={() => {this.hideShowQuiz(this.wineId); window.location.reload()}}>Close</button>
-</div>
-        </Wrapper>
- 
-</div>
-:null
-}
+     
 
 
 <div className="emppagemainwrap">
 <Empinfo
           useId={this.state.useId}
+          useEmail={this.state.empuseEmail}
           usefirstName={this.state.empusefirstName}
           uselastName={this.state.empuselastName}
           userestaurantName={this.state.empuserestaurantName}
@@ -367,18 +210,11 @@ hideShowQuiz = id => {
           hideShow4={this.hideShow4}
           handleLogout={this.handleLogout}
           greet = {this.state.greet}
-        ></Empinfo> 
+        ></Empinfo>
 
-<div className="emppanel">
-<div className="empwelcomebtnwrap">
-            <button
-onClick={() => this.hideShow4()}
-className="empwelcomebtn"
-><Header 
-        user={this.state.user} />
-                        </button>
-                        </div>
-            </div>
+
+                        
+            
 
         <br></br>
 
@@ -392,10 +228,19 @@ className="empwelcomebtn"
         </Jumbotron> */}
 
 <div className="employeepagewrapper">
+
         <div className="emppagecol">
+        <div className="empwelcomebtnwrap">
+        <button
+onClick={() => this.hideShow4()}
+className="empwelcomebtn"
+><Header2
+        user={this.state.user} />
+                        </button>
+                        </div>
         <div className="wineTitleWrap">
         <div className="wineTitleWrap1">
-        <div>Employee Chart</div>
+      
         {/* <div><Link
             className={window.location.pathname === "/wines" ? "nav-link active" : "nav-link"} 
             to="/wines"

@@ -27,7 +27,7 @@ function Employees({handleEmployeeDelete, id, firstName, lastName, empId, hideSh
 
           <div>
               {showMeEmp ?
-                <div className="overlay7">
+                <div onClick={() => hideShowEmp(empId)} className="overlay7">
                   <div className="empinfo1">
                     <div className="empinfo2">
                       <div className="empinfo3">
@@ -48,7 +48,7 @@ function Employees({handleEmployeeDelete, id, firstName, lastName, empId, hideSh
                         >
                           Others
           </Link></button> */}
-<button className="btnwrap1buserclose" onClick={() => hideShowEmp(empId)}><i className="fas fa-times-circle"></i></button>
+{/* <button className="btnwrap1buserclose" onClick={() => hideShowEmp(empId)}><i className="fas fa-times-circle"></i></button> */}
                        </div>
                     </div>
                   </div>

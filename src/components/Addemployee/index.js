@@ -93,11 +93,11 @@ function Addemployee({ showMe2, hideShow2, name, lastName, email,password, handl
 <button
           onClick={handleAddEmpolyeeFormSubmit}
           type="submit"
-          className="btnwrap1a"
+          className="btnwrap1addemp"
         >
           Submit
         </button>
-        <button className="btnwrap1a" onClick={() => hideShow2()}>Close</button>
+        <button className="btnwrap1addemp" onClick={() => hideShow2()}>Close</button>
       </div>
     </form>
     </div>
