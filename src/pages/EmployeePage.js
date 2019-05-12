@@ -13,7 +13,7 @@ import { Container } from "../components/Grid";
 import questions from "../questions.json";
 // importing the wine template for testing purposes 
 import wineData from "../franciacorta.json"
-
+import ScoreSummary from "../components/Scores"
 import { List } from "../components/List";
 // import { Link } from "react-router-dom";
 import "./style.css";
@@ -22,6 +22,7 @@ import "./style.css";
 class EmployeePage extends Component {
   state = {
     wineCollections: [],
+    scoreCollection: [],
 
     showMe6: false,
     showMe4: false,
@@ -29,21 +30,21 @@ class EmployeePage extends Component {
     user: "",
     loggedIn: true,
     redirectTo: null,
-    id:"",
-    restaurant:"",
-    firstName:"",
-    lastName:"",
-    email:"",
-    password:"",
-    loginemail:"",
-    loginpassword:"",
+    id: "",
+    restaurant: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    loginemail: "",
+    loginpassword: "",
 
-    greet:"",
-    empuserId:"",
-    empusefirstName:"",
-    empuselastName:"",
-    empuserestaurantName:"",
-    empuseEmail:"",
+    greet: "",
+    empuserId: "",
+    empusefirstName: "",
+    empuselastName: "",
+    empuserestaurantName: "",
+    empuseEmail: "",
 
     questions,
     filteredQs: [],
@@ -55,28 +56,28 @@ class EmployeePage extends Component {
     highScore: 0,
 
     wineId: "",
-    wineName:"",
-    wineacidity: "",
-    wineageability: "",
-    winealcohol: "",
-    winebody: "",
-    winedecant: "",
-    wineglassType: "",
-    winepairings: "",
-    wineprimaryFlavors: [],
-    winepronunciation: "",
-    winesummary: "",
-    winesweetness: "",
-    winetannin: "",
-    winetemp: "",
+    wineName: "",
+    wineacidity: "",
+    wineageability: "",
+    winealcohol: "",
+    winebody: "",
+    winedecant: "",
+    wineglassType: "",
+    winepairings: "",
+    wineprimaryFlavors: [],
+    winepronunciation: "",
+    winesummary: "",
+    winesweetness: "",
+    winetannin: "",
+    winetemp: "",
 
-   
+
 
   };
 
   hideShow = () => {
-    const newState = {...this.state}
-    newState.showMe = !newState.showMe 
+    const newState = { ...this.state }
+    newState.showMe = !newState.showMe
     newState.scale = this.state.scale > 1 ? 1 : 1.5
     this.setState(newState);
   };
@@ -90,13 +91,14 @@ class EmployeePage extends Component {
       console.log("LOGGED IN USER: ", response)
       if (!!response.data.user) {
         console.log('THERE IS A USER');
-        console.log(response.data);
+        console.log(response.data.user.scores);
         this.setState({
           loggedIn: true,
           user: response.data.user,
+          scoreCollection: response.data.user.scores,
         });
         this.getSavedWine()
-      } 
+      }
       else {
         this.setState({
           loggedIn: false,
@@ -116,7 +118,7 @@ class EmployeePage extends Component {
       .then(res => {
         this.setState({
           wineCollections: res.data.Wines,
-          
+
         })
       }
 
@@ -131,7 +133,7 @@ class EmployeePage extends Component {
     const { name, value } = event.target;
     this.setState({
       [name]: value
-      
+
     });
   };
   handleLogout = event => {
@@ -157,7 +159,7 @@ class EmployeePage extends Component {
     newState.wineageability = wine.ageability
     newState.winealcohol = wine.alcohol
     newState.winebody = wine.body
-    newState.winedecant = wine.decant 
+    newState.winedecant = wine.decant
     newState.wineglassType = wine.glassType
     newState.winepairings = wine.pairings
     newState.wineprimaryFlavors = wine.primaryFlavors
@@ -172,19 +174,19 @@ class EmployeePage extends Component {
     this.setState(newState);
   }
 
-  
 
-  hideShow4 = id=> {
+
+  hideShow4 = id => {
     const newState = { ...this.state }
 
 
-newState.greet = "Welcome"
-      newState.empuseId= newState.user._id
-          newState.empusefirstName=newState.user.firstName
-          newState.empuselastName=newState.user.lastName
-          newState.empuserestaurantName=newState.user.restaurantName
-          newState.empuseEmail=newState.user.email
-          console.log(newState.empuseId);
+    newState.greet = "Welcome"
+    newState.empuseId = newState.user._id
+    newState.empusefirstName = newState.user.firstName
+    newState.empuselastName = newState.user.lastName
+    newState.empuserestaurantName = newState.user.restaurantName
+    newState.empuseEmail = newState.user.email
+    console.log(newState.empuseId);
     newState.showMe4 = !newState.showMe4
     this.setState(newState);
 
@@ -196,105 +198,125 @@ newState.greet = "Welcome"
     return (
 
       <Container>
-     
-
-
-<div className="emppagemainwrap">
-<Empinfo
-          useId={this.state.useId}
-          useEmail={this.state.empuseEmail}
-          usefirstName={this.state.empusefirstName}
-          uselastName={this.state.empuselastName}
-          userestaurantName={this.state.empuserestaurantName}
-          showMe4={this.state.showMe4}
-          hideShow4={this.hideShow4}
-          handleLogout={this.handleLogout}
-          greet = {this.state.greet}
-        ></Empinfo>
-
-
-                        
-            
-
-        <br></br>
 
 
 
-        {/* <Jumbotron>
+        <div className="emppagemainwrap">
+          <Empinfo
+            useId={this.state.useId}
+            useEmail={this.state.empuseEmail}
+            usefirstName={this.state.empusefirstName}
+            uselastName={this.state.empuselastName}
+            userestaurantName={this.state.empuserestaurantName}
+            showMe4={this.state.showMe4}
+            hideShow4={this.hideShow4}
+            handleLogout={this.handleLogout}
+            greet={this.state.greet}
+          ></Empinfo>
+
+
+
+
+
+          <br></br>
+
+
+
+          {/* <Jumbotron>
           <h1 className="text-center">
             <strong>ADMIN PAGE WINE COLLECTIONS & EMPLOYEE LIST</strong>
           </h1>
           <h2 className="text-center">Search for wine collections and Add Employees</h2>
         </Jumbotron> */}
 
-<div className="employeepagewrapper">
+          <div className="employeepagewrapper">
 
-        <div className="emppagecol">
-        <div className="empwelcomebtnwrap">
-        <button
-onClick={() => this.hideShow4()}
-className="empwelcomebtn"
-><Header2
-        user={this.state.user} />
-                        </button>
-                        </div>
-        <div className="wineTitleWrap">
-        <div className="wineTitleWrap1">
-      
-        {/* <div><Link
+            <div className="emppagecol">
+              <div className="empwelcomebtnwrap">
+                <button
+                  onClick={() => this.hideShow4()}
+                  className="empwelcomebtn"
+                ><Header2
+                    user={this.state.user} />
+                </button>
+              </div>
+              <div className="wineTitleWrap">
+                <div className="wineTitleWrap1">
+
+                  {/* <div><Link
             className={window.location.pathname === "/wines" ? "nav-link active" : "nav-link"} 
             to="/wines"
           ><button>
           
             </button>
               </Link></div> */}
-        </div>
-        </div>
+                </div>
+              </div>
 
 
-        <div className="emppageColWrap">
-        <div className="emppageColWrap1">
-        {this.state.wineCollections.length ? (
-                  <List>
-                    {this.state.wineCollections.map(wine => (
-                      <SavedWine
-                        key={wine._id}
-                        id={wine._id}
-                        name={wine.name}
-                        ageability={wine.ageability}
-                        // handleWineDelete={this.handleWineDelete}
-                        hideShowQuiz={this.hideShowQuiz}
-                        showMe={this.state.showMe}
-                        hideShow={this.hideShow}
-                        wineName={this.state.wineName}
-                        wineId={this.state.wineId}
-                        wineacidity={this.state.wineacidity}
-                        wineageability={this.state.wineageability}
-                        winealcohol={this.state.winealcohol}
-                        winebody={this.state.winebody}
-                        winedecant={this.state.winedecant}
-                        wineglassType={this.state.wineglassType}
-                        winepairings={this.state.winepairings}
-                        wineprimaryFlavors={this.state.wineprimaryFlavors}
-                        winepronunciation={this.state.winepronunciation}
-                        winesummary={this.state.winesummary}
-                        winesweetness={this.state.winesweetness}
-                        winetannin={this.state.winetannin}
-                        winetemp={this.state.winetemp}
+              <div className="emppageColWrap">
+                <div className="emppageColWrap1">
+                  {this.state.wineCollections.length ? (
+                    <List>
+                      {this.state.wineCollections.map(wine => (
+                        <SavedWine
+                          key={wine._id}
+                          id={wine._id}
+                          name={wine.name}
+                          ageability={wine.ageability}
+                          // handleWineDelete={this.handleWineDelete}
+                          hideShowQuiz={this.hideShowQuiz}
+                          showMe={this.state.showMe}
+                          hideShow={this.hideShow}
+                          wineName={this.state.wineName}
+                          wineId={this.state.wineId}
+                          wineacidity={this.state.wineacidity}
+                          wineageability={this.state.wineageability}
+                          winealcohol={this.state.winealcohol}
+                          winebody={this.state.winebody}
+                          winedecant={this.state.winedecant}
+                          wineglassType={this.state.wineglassType}
+                          winepairings={this.state.winepairings}
+                          wineprimaryFlavors={this.state.wineprimaryFlavors}
+                          winepronunciation={this.state.winepronunciation}
+                          winesummary={this.state.winesummary}
+                          winesweetness={this.state.winesweetness}
+                          winetannin={this.state.winetannin}
+                          winetemp={this.state.winetemp}
 
-                      />
-                    ))}
-                  </List>
-          ) : (
-              <h2 className="text-center"> </h2>
-            )}
+                        />
+                      ))}
+                    </List>
+                  ) : (
+                      <h2 className="text-center"> </h2>
+                    )}
+                </div>
+              </div>
+
+              <div className="emppageColWrap">
+                <div className="emppageColWrap1">
+                  {this.state.scoreCollection.length ? (
+                    <List>
+                      {this.state.scoreCollection.map(score => (
+                        <ScoreSummary
+                          key={score._id}
+                         wine={score.wine}
+                         score={score.score}
+
+                        />
+                      ))}
+                    </List>
+                  ) : (
+                      <h2 className="text-center"> </h2>
+                    )}
+                </div>
+              </div>
+
             </div>
-            </div>
-        </div>
-{/* -----------------EMPLOYEES COLUMN------------------- */}
-        
-        </div>
-        {/* <Footer /> */}
+            {/* -----------------EMPLOYEES COLUMN------------------- */}
+
+          </div>
+          {/* <Footer /> */}
         </div>
       </Container>
     );
