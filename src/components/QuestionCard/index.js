@@ -53,8 +53,8 @@ class QuestionCard extends React.Component {
         
 
     render() {
-        console.log("selections");
-        console.log(this.selections);
+        // console.log("selections");
+        // console.log(this.selections);
         return (
             <div className="qcard" style={{backgroundColor: this.state.selectedColor}}>
             <div className="qcard2">

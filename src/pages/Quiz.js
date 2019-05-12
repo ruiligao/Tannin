@@ -95,24 +95,6 @@ class Quiz extends Component {
     console.log(filteredQs);
   }
 
-  // componentWillMount() {
-  //   console.log("_______________");
-  //   console.log(this.state.user)
-  //   const categories = Object.keys(this.state.wineData);
-  //   console.log(this.state.wineData);
-  //   console.log(questions);
-  //   console.log("_______________");
-  //   console.log(categories);
-  //   const filteredQs = questions.filter(q => {
-  //     return categories.includes(q.category)
-  //   });
-  //   this.setState({ filteredQs: questions });
-  //   this.shuffle(filteredQs);
-  //   console.log("????????????????");
-  //   console.log(filteredQs);
-  // };
-
-
   // Here we use the Fisher-Yates alogrithm to randomize the characters array
   shuffle(arr) {
     var j, x, i;
@@ -162,19 +144,21 @@ class Quiz extends Component {
   }
 
   handleScoreCalc = () => {
+    // console.log("SCORE:" +this.state.score);
     const newState = { ...this.state };
-    let hundreds = newState.counter * 100;
+    let hundreds = this.state.counter * 100;
     let total = newState.filteredQs.length;
-    newState.score = hundreds / total
+    this.state.score = hundreds / total
     // newState.score > newState.highscore ? newState.highscore = newState.Score : newState.highScore = newState.highscore
 
     console.log("hundreds: ", hundreds)
     console.log("total # of Questions: ", total)
-    console.log("Your score for ", this.state.wineData.name, ": ", newState.score, "%")
+    console.log("Your score for ", this.state.wineData.name, ": ", this.state.score, "%")
     this.setState({
-      score: newState.score
+      // score: score
     });
     console.log("SCORE"+this.state.score);
+    this.addScore()
   }
 
   handleQuizPageBtn = id => {
@@ -190,11 +174,22 @@ class Quiz extends Component {
     )
   }
 
+  addScore=()=>{
+    const scoreData = {userId: this.state.user._id, wine:this.state.wineData.name, score: this.state.score}
+    console.log(scoreData);
+    API.addScore(scoreData).then(res=>{
+      console.log(res);
+      this.props.history.push('/employeepage');
+    })
+   
+
+  }
+
 
   // renders react elements into the DOM
   render() {
-    // console.log('clicked wine id:', this.props.location.state.wineId)
-    console.log(this.state.wineData);
+    console.log('clicked wine id:', this.props.location.state.wineId)
+    console.log(this.props.location.state.wineName);
     return (
       // the parent div into which our components will be rendered
       <div className="background">
