@@ -24,6 +24,7 @@ class EmployeePage extends Component {
     wineCollections: [],
     scoreCollection: [],
 
+    showMeSummary: false,
     showMe6: false,
     showMe4: false,
     showMe: false,
@@ -72,21 +73,33 @@ class EmployeePage extends Component {
     winetemp: "",
 
 
+    winewiththisscore:"",
+    newScores:[],
+    scoreId:"",
+    testmessage:""
 
   };
 
-  hideShow = () => {
+  hideShowSummary = id => {
     const newState = { ...this.state }
-    newState.showMe = !newState.showMe
-    newState.scale = this.state.scale > 1 ? 1 : 1.5
+    newState.empuseId = newState.user._id
+    newState.newScores = newState.scoreCollection
+
+
+    newState.showMeSummary = !newState.showMeSummary
     this.setState(newState);
+    console.log('HEHEHEHEHEHE')
+    console.log(newState.newScores)
   };
+
 
   componentDidMount() {
     this.getUser()
   }
 
   getUser = () => {
+
+    
     API.getUser().then(response => {
       console.log("LOGGED IN USER: ", response)
       if (!!response.data.user) {
@@ -108,18 +121,55 @@ class EmployeePage extends Component {
       }
     });
   }
+// getScore = () => {
 
+//   console.log('asdhoasdhoiahsdohOYYYYYYY');
+//   console.log(res.data.Wines);
+
+// }
   getSavedWine = () => {
     console.log("////////////////");
     console.log(this.state.user.restaurantId);
     console.log("////////////////");
+    console.log(this.state.user.scores);
+    console.log(this.state.wineCollections);
+    
+
+    // this.state.scoreCollection.map(score => (
+    //   newState.newScore= this.state.user.scores
+    //     ))
+      
+// console.log(newState.newScore);
     const admin = { restaurantId: this.state.user.restaurantId };
     API.getSavedWine(admin)
       .then(res => {
+
         this.setState({
           wineCollections: res.data.Wines,
 
         })
+
+        this.showScore()
+
+    //     console.log("////////////////");
+    //     console.log(this.state.user.scores);
+
+    //     let idofwineinscore = []
+    //     let thiswineId= scoreId
+
+    //     this.wineCollections.map(thiswine=> (
+    //       thiswineId = thiswine._id
+    
+    //     ))
+
+    // this.state.user.scores.map(scoreId=> (
+    //   idofwineinscore = scoreId._id
+
+    // ))
+
+    // console.log(idofwineinscore)
+
+
       }
 
       )
@@ -178,8 +228,6 @@ class EmployeePage extends Component {
 
   hideShow4 = id => {
     const newState = { ...this.state }
-
-
     newState.greet = "Welcome"
     newState.empuseId = newState.user._id
     newState.empusefirstName = newState.user.firstName
@@ -189,9 +237,31 @@ class EmployeePage extends Component {
     console.log(newState.empuseId);
     newState.showMe4 = !newState.showMe4
     this.setState(newState);
-
   }
 
+
+  // showScore = winename => {
+  //   const newState = { ...this.state }
+
+
+  //   const score = this.state.scoreCollection.find(score => score.wine === winename);
+
+  //   if (newState.newScore === null) {
+  //     console.log("you lose");
+  //     newState.testmessage = "take Exam"
+  //     newState.newScore = "0"
+  //   }
+  //   else if (newState.user.firstName) {
+  //     newState.testmessage = ""
+  //     newState.winewiththisscore = winename
+  //     newState.scoreId = score._id
+  //     newState.newScore = score.score
+  //   }
+
+  //   this.setState(newState);
+  //   console.log('blablabla')
+  //   console.log(newState.newScore)
+  // }
   // ----------
 
   render() {
@@ -218,16 +288,13 @@ class EmployeePage extends Component {
 
 
 
-          <br></br>
-
-
-
           {/* <Jumbotron>
           <h1 className="text-center">
             <strong>ADMIN PAGE WINE COLLECTIONS & EMPLOYEE LIST</strong>
           </h1>
           <h2 className="text-center">Search for wine collections and Add Employees</h2>
         </Jumbotron> */}
+
 
           <div className="employeepagewrapper">
 
@@ -236,10 +303,22 @@ class EmployeePage extends Component {
                 <button
                   onClick={() => this.hideShow4()}
                   className="empwelcomebtn"
-                ><Header2
-                    user={this.state.user} />
+                >
+                <Header2
+                    user={this.state.user}
+                     />
                 </button>
+
+
               </div>
+<div className = "quizsummarybtnwrap">
+              <button
+                  onClick={() => this.hideShowSummary()}
+                  className="quizsummarybtn"
+                >
+                Test Scores
+                </button>
+                </div>
               <div className="wineTitleWrap">
                 <div className="wineTitleWrap1">
 
@@ -256,10 +335,16 @@ class EmployeePage extends Component {
 
               <div className="emppageColWrap">
                 <div className="emppageColWrap1">
+                 
+                
+                                  
                   {this.state.wineCollections.length ? (
                     <List>
                       {this.state.wineCollections.map(wine => (
+
                         <SavedWine
+                        // showScore = {this.showScore}
+                        // newScore = {this.state.newScore}
                           key={wine._id}
                           id={wine._id}
                           name={wine.name}
@@ -283,8 +368,10 @@ class EmployeePage extends Component {
                           winesweetness={this.state.winesweetness}
                           winetannin={this.state.winetannin}
                           winetemp={this.state.winetemp}
-
-                        />
+                        >
+                        
+                        </SavedWine>
+                        
                       ))}
                     </List>
                   ) : (
@@ -293,8 +380,8 @@ class EmployeePage extends Component {
                 </div>
               </div>
 
-              <div className="emppageColWrap">
-                <div className="emppageColWrap1">
+              
+                <div>
                   {this.state.scoreCollection.length ? (
                     <List>
                       {this.state.scoreCollection.map(score => (
@@ -302,7 +389,9 @@ class EmployeePage extends Component {
                           key={score._id}
                          wine={score.wine}
                          score={score.score}
-
+                         newScores={this.state.newScores}
+                         hideShowSummary={this.hideShowSummary}
+                         showMeSummary={this.state.showMeSummary}
                         />
                       ))}
                     </List>
@@ -311,8 +400,6 @@ class EmployeePage extends Component {
                     )}
                 </div>
               </div>
-
-            </div>
             {/* -----------------EMPLOYEES COLUMN------------------- */}
 
           </div>

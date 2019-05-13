@@ -414,7 +414,6 @@ button:focus {
   font-size: 15px;
   justify-content: center;
   display: flex;
-
   font-size: 30px;
 
 
@@ -440,7 +439,7 @@ button:focus {
 .empwelcomebtnwrap {
   justify-content: center;
   display: flex;
-  margin-top: 20px;
+
 }
 
 .textadmin{
@@ -562,3 +561,29 @@ font-size: 40px;
 color: rgb(190, 39, 77);
 font-family: 'Pacifico', cursive;
   }
+
+
+  .quizsummarybtnwrap {
+    justify-content: center;
+    display: flex;
+    margin-top: 60px;
+  }
+
+  .quizsummarybtn {
+    border-style: none;
+    margin-bottom:5px;
+    box-shadow: 2px 3px 3px rgb(49, 46, 46), 0 2px 2px rgb(59, 58, 58);
+    font-size: 15px;
+    background-color: rgb(175, 224, 120);
+  }
+
+
+/* button {
+  border-style: none;
+  margin-bottom:5px;
+  box-shadow: 2px 3px 3px rgb(49, 46, 46), 0 2px 2px rgb(59, 58, 58);
+  font-size: 12px;
+  background-color: rgb(175, 224, 120);
+
+
+} */
