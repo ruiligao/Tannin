@@ -46,8 +46,6 @@ export default {
       return axios.put("https://tannin-api.herokuapp.com/api/addEmployee/", deleteEmp)
     },
 
-
-
   // //LOCAL ROUTES
   // //------------------------------------------------------
   // signUpSubmit: function (userInfo) {
@@ -99,10 +97,6 @@ export default {
   //   console.log(scoreData);
   //   return axios.put("http://localhost:3001/api/employees/score", scoreData)
   // },
-
-
-
-
 
 };
 
