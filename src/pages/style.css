@@ -87,6 +87,7 @@ display: flex;
 .wineTitleWrap {
     display: flex;
     justify-content: center;
+    flex-direction: row;
     width: 100%;
     margin-top:  50px;
 }
@@ -94,6 +95,7 @@ display: flex;
     display: flex;
     justify-content: space-between;
     width: 80%;
+    flex-direction: row;
 }
 
 .nav-link:link {
@@ -587,3 +589,78 @@ font-family: 'Pacifico', cursive;
 
 
 } */
+
+
+
+@media (device-height: 812px) and (device-width: 375px) and (-webkit-min-device-pixel-ratio: 2){
+
+  .wineandemployeewrapper {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width:100%;
+    margin:0;
+  }
+
+  .brandCol {
+    width:100%;
+    /* background-color: rgb(120, 107, 156); */
+     /* background: -webkit-gradient(linear, left top, left bottom, from(rgb(24, 23, 23)), to(rgb(103, 83, 194))) fixed; */
+     /* background: -webkit-gradient(linear, left top, left bottom, from(rgb(24, 23, 23)), to(rgb(44, 35, 83))) fixed; */
+     background-color: rgb(74, 53, 107); 
+    color: rgb(8, 8, 8);
+    height: 100%;
+  
+  }
+
+  .wineTitleWrap {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    margin-top:  50px;
+}
+.wineTitleWrap1  {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-direction: row;
+}
+
+
+.wineColWrap1 {
+  height: 70vh;
+  overflow: auto;
+  width: 90%;
+  margin-top: 20px;
+  border-radius: 10px;
+  
+
+}
+
+.wineCol {
+  width:100%;
+
+
+}
+
+.employeeCol {
+  width:100%;
+  margin: 0;
+
+
+}
+
+
+.employeeColWrap1 {
+  background-color: rgb(130, 156, 80);
+  height: 70vh;
+  overflow: auto;
+  width:90%;
+  margin-top: 20px;
+  border-radius: 10px;
+
+}
+
+}

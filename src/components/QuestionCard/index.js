@@ -6,10 +6,10 @@ class QuestionCard extends React.Component {
 
     answers = this.props.answers;
     falses = this.answers ? this.answers.splice(this.answers.indexOf(this.props[this.props.category]), 0) : null;
-    // shuffledFalses = this.answers ? this.props.shuffle(this.answers) : null;
+    shuffledFalses = this.answers ? this.props.shuffle(this.answers) : null;
     selections = this.answers ? (this.answers.slice(0, 3)) : null;
     dummThing = this.selections ? (this.selections.push(this.props[`${this.props.category}`])) : null;
-    // shuffledSelections = this.selections ? this.props.shuffle(this.selections) : null;
+    shuffledSelections = this.selections ? this.props.shuffle(this.selections) : null;
 
 
     constructor(props) {
@@ -20,8 +20,6 @@ class QuestionCard extends React.Component {
                 '#16a085',
                 '#68c3a3',
                 '#89c4f4',
-
-
                 '#d5b8ff',
                 '#a2ded0',
                 '#19b5fe',
