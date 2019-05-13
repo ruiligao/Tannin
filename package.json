@@ -1,18 +1,20 @@
 {
-  "name": "react-google-books",
+  "name": "tannin",
+  "homepage": "https://myusername.leifaesoph.github.io/Tannin",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3001/",
   "dependencies": {
     "axios": "^0.18.0",
-    "nodemailer": "^6.1.1",
-    "passport": "^0.4.0",
+    "gh-pages": "^2.0.1",
+
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.1.1"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
