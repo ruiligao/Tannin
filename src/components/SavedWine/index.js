@@ -7,12 +7,15 @@ import "./style.css";
 function SavedWine({name, id, hideShow, showMe, wineName, wineId, winetemp, winetannin, winesweetness, winesummary, winepronunciation, wineprimaryFlavors, winepairings, winedecant, wineglassType, winebody, winealcohol, wineageability, wineacidity}) {
   return (
     <div>
+      
     <ListItem>
         <div className="listitemdiv3">
         <div className="emppagewinecollectiondiv1">
         <div className="winecollectionname1">
         {/* <div className="fontitalicsmall">{name}</div> */}
         <div><button className="winesavenamebtn1" onClick={() => hideShow(id)}>{name}</button></div>
+
+        {/* <div>{score}</div> */}
         <div>
 
 {/*            

@@ -44,6 +44,8 @@ class Admin extends Component {
     empfirstName: "",
     emplastName: "",
     empEmail: '"',
+    empScores:[],
+
     user: "",
     // restaurantId: "",
     name: "",
@@ -131,9 +133,13 @@ class Admin extends Component {
     newState.empfirstName = emp.firstName
     newState.emplastName = emp.lastName
     newState.empEmail = emp.email
+    newState.empScores = emp.scores
+
     newState.showMeEmp = !newState.showMeEmp
 
+
     this.setState(newState);
+    console.log(newState.empScores)
   }
 
 
@@ -352,7 +358,6 @@ class Admin extends Component {
                         id={wine._id}
                         name={wine.name}
                         handleWineDelete={this.handleWineDelete}
-
                         showMe={this.state.showMe}
                         hideShow={this.hideShow}
                         wineName={this.state.wineName}
@@ -404,6 +409,7 @@ class Admin extends Component {
                         empfirstName={this.state.empfirstName}
                         emplastName={this.state.emplastName}
                         empEmail={this.state.empEmail}
+                        empScores={this.state.empScores}
 
                         showMeEmp={this.state.showMeEmp}
                         hideShowEmp={this.hideShowEmp}
