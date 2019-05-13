@@ -39,7 +39,7 @@ function SavedWine({name, id, hideShow, showMe, wineName, wineId, winetemp, wine
 
           <div>
               {showMe ?
-                <div className="overlay5">
+                <div className="overlay5" onClick={() => hideShow(id)}>
                   <div className="wineinfo1">
                     <div className="wineinfo2">
                       <div className="wineinfo3">
@@ -53,7 +53,23 @@ function SavedWine({name, id, hideShow, showMe, wineName, wineId, winetemp, wine
                           <div className="infodetails">Decant: {winedecant}</div>
                           <div className="infodetails">Glass Type: {wineglassType}</div>
                           <div className="infodetails">Pairings: {winepairings}</div>
-                          <div className="infodetails">Flavors: {wineprimaryFlavors}</div>
+                          
+                          
+                          <div className="infodetails">Flavors:</div>
+                          {wineprimaryFlavors.map(flavor => {
+                            return (
+                              <div>
+                              <li className="travelcompany-input">
+                              <span className="input-label">{flavor}</span>
+      
+  </li>
+</div>
+                                       
+                            )
+                        })
+                       }
+
+
                           <div className="infodetails">Pronunciation: {winepronunciation}</div>
                           <div className="infodetails">Summary: {winesummary}</div>
                           <div className="infodetails">Sweetness: {winesweetness}</div>
@@ -80,12 +96,6 @@ function SavedWine({name, id, hideShow, showMe, wineName, wineId, winetemp, wine
                 : null
               }
             </div>
-
-
-
-
-
-
           </div>
           </div>
     </ListItem>

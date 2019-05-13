@@ -26,7 +26,7 @@ function Restowine({handleWineDelete, name, id, hideShow, showMe, wineName, wine
 
           <div>
               {showMe ?
-                <div className="overlayRestowine">
+                <div className="overlayRestowine" onClick={() => hideShow(id)}>
                   <div className="restowineinfo1">
                     <div className="restowineinfo2">
                       <div className="restowineinfo3">
