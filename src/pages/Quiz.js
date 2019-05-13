@@ -205,7 +205,7 @@ class Quiz extends Component {
                   handleBtnClick={this.handleBtnClick}
                   handleInputChange={this.handleInputChange}
                   handleCheckFlavor={this.handleCheckFlavor}
-                  // shuffle={this.shuffle}
+                  shuffle={this.shuffle}
 
                   //values to be inherited as props
                   id={filteredQ.id}

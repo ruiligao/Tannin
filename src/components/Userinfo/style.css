@@ -147,3 +147,20 @@ display: flex;
   height: 20px;
 }
       
+
+@media (device-height: 812px) and (device-width: 375px) and (-webkit-min-device-pixel-ratio: 2){
+
+.userinfowrapper2{
+  width: 100%;
+  background-color: rgb(100, 48, 184);
+  /* background-color: rgb(23, 65, 78, .5); */
+  border-style:solid;
+  border-width: 0px;
+  border-bottom-left-radius:  30px;
+  border-bottom-right-radius:  20px;
+  border-radius: 0px;
+  justify-content: center;
+  display: flex;
+  color: white;
+  }
+}

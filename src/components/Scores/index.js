@@ -22,6 +22,7 @@ function ScoreSummary({newScores, hideShowSummary, showMeSummary}) {
                       <div className="scoreinfo3">
                         <div className="infoscorewrap">
                           <div className="infodetails">Test Scores:</div>
+                          
                        {newScores.map(score => {
                             return (
 
