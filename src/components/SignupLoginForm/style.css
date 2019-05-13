@@ -34,6 +34,7 @@ width: 70%;
 
   justify-content: center;
 display: flex;
+flex-direction: row;
     }
 
     .signUpwrap {
@@ -283,12 +284,44 @@ font-family: 'Pacifico', cursive;
 .loginsignupbtnmainwrap2 {
   
     position: absolute;
-    top: 50%;
-    left:43%;
+    top: 10%;
+    left:45%;
     transform: translateY(-50%);
 }
 
 .message {
   color: red;
   font-weight: bold;
+}
+
+
+
+@media (device-height: 812px) and (device-width: 375px) and (-webkit-min-device-pixel-ratio: 2){
+  .loginsignupbtnmainwrap2 {
+  
+    position: absolute;
+    top: 10%;
+    left:33%;
+    transform: translateY(-50%);
+}
+
+.wrap3{
+  width: 100%;
+  /* background: rgb(150, 142, 142); */
+
+  justify-content: center;
+display: flex;
+flex-direction: column;
+    }
+
+    .signUpwrap {
+      width: 100%;
+      margin: 20px;
+    }
+
+    .loginwrap {
+      width: 100%;
+      margin: 20px;
+    }
+
 }

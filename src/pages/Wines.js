@@ -221,7 +221,7 @@ handleWineAdd = id => {
           <Link
             className={window.location.pathname === "/admin" ? "nav-link active" : "nav-link"}
             to="/admin"
-          ><button className="btnadminpage"><i className="fas fa-wine-glass-alt">   <span>YOUR RESTAURANT</span></i>
+          ><button className="btnadminpage"><i className="fas fa-wine-glass-alt">   <span>Your Restaurant</span></i>
               
             </button>
               </Link>
@@ -259,6 +259,8 @@ handleWineAdd = id => {
                   key={wine._id}
                   id={wine._id}
                   name={wine.name}
+
+                  
                   showMe={this.state.showMe}
                   hideShow={this.hideShow}
                   handleWineAdd={this.handleWineAdd}

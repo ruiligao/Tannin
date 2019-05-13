@@ -1,18 +1,15 @@
 import React from 'react'
 // TODO - add proptypes
 
-const Header = props => {
+const Header2 = props => {
 	let Greeting
 	if (props.user === null) {
 		Greeting = <p>Hello guest</p>
 	} else if (props.user.firstName) {
 		Greeting = (
 <div>
-			<div>
-				<strong>{props.user.restaurantName}</strong>
-			</div>
 			<br></br>
-			<div>
+			<div className="header2emppage">
 				Hello <strong>{props.user.firstName}</strong>
 			</div>
 			</div>
@@ -20,10 +17,10 @@ const Header = props => {
 		
 	}
 	return (
-		<div className="Header">
+		<div className="Header2">
 			{Greeting}
 		</div>
 	)
 }
 
-export default Header
+export default Header2

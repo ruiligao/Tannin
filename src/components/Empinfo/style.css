@@ -15,24 +15,31 @@
       
   }
   
-  .useinfowrapper1 {
-    /* display: flex;
-    justify-content: center; */
+  .empinfoformtext {
+    justify-content: center;
+    display: flex;
+  }
+  .empinfowrapper1 {
+    display: flex;
+    justify-content: center;
     margin-top: 150px;
+    
   }
   
-  .useinfowrapper2{
-  width: 20%;
-  background-color: #17414e;
+  .empinfowrapper2{
+  width: 30%;
+  background-color: rgb(113, 113, 165);
+  box-shadow: 5px 6px 6px rgb(49, 46, 46), 0 3px 3px rgb(59, 58, 58);
+  color: rgb(247, 241, 241);
   border-style:solid;
   border-width: 0px;
-  border-color: rgb(57, 39, 78);
+  border-color:   rgb(22, 15, 31);
   border-radius: 0px;
   justify-content: center;
   display: flex;
   }
   
-  .useinfowrapper3{
+  .empinfowrapper3{
     width: 80%;
     /* background: rgb(150, 142, 142); */
     margin: 20px;

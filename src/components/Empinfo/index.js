@@ -2,37 +2,40 @@ import React from "react";
 // import { Link } from "react-router-dom";
 import "./style.css";
 
-function Empinfo({ showMe4, useId, hideShow4, usefirstName, uselastName, userestaurantName, handleLogout }) {
+function Empinfo({ showMe4, useId, hideShow4, useEmail, usefirstName, uselastName, userestaurantName, handleLogout }) {
   return (
 
     <div>
     {showMe4 ?
-      <div className="overlay9">
-        <div className="useinfowrapper1">
-        <div className="useinfowrapper2">
-        <div className="useinfowrapper3">
+      <div onClick={() => hideShow4(useId)} className="overlay9">
+        <div className="empinfowrapper1">
+        <div className="empinfowrapper2">
+        <div className="empinfowrapper3">
       <div>
       <div className="btnwrap1bclose">
-      <button className="btnwrap1b" onClick={() => hideShow4(useId)}>Close</button></div>
-      <div className="newempformtext"></div>
-      <div>Id No: {useId}</div>
-      <div>Restaurant Name: {userestaurantName}</div>
-      
-      <div>{usefirstName}</div>
-      <div>{uselastName}</div>
- 
-      
-      <div className="form-group">
-      <div>
-        </div>
-</div>
-
-
-      <div className="btnwrap1awrap">
-
-        
+      {/* <button className="btnwrap1b" onClick={() => hideShow4(useId)}>Close</button> */}
       </div>
-      <button className="btnwrap1a" onClick={() => handleLogout()}>Logout</button>
+      <div className="empinfoformtext">
+ 
+      <div className="userformtext">
+      <div className="infodetails">Id No: {useId}</div>
+      <br></br>
+      <div className="infodetails">Restaurant: {userestaurantName}</div>
+      <br></br>
+      <div className="infodetails">First Name: {usefirstName}</div>
+      <br></br>
+      <div className="infodetails">Last Name: {uselastName}</div>
+      <br></br>
+      <div className="infodetails">Email: {useEmail}</div>
+      </div>
+      </div>
+      
+
+
+      <br></br>
+      <div className="btn1logoutwrap">
+      <button className="btn1logout" onClick={() => handleLogout()}>Logout <i className="fas fa-sign-out-alt"></i></button>
+      </div>
       
     </div>
 

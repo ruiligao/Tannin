@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "./style.css";
 
 function Addemployee({ showMe2, hideShow2, name, lastName, email,password, handleAddEmployeeChange, handleAddEmpolyeeFormSubmit }) {
@@ -93,11 +93,11 @@ function Addemployee({ showMe2, hideShow2, name, lastName, email,password, handl
 <button
           onClick={handleAddEmpolyeeFormSubmit}
           type="submit"
-          className="btnwrap1a"
+          className="btnwrap1addemp"
         >
           Submit
         </button>
-        <button className="btnwrap1a" onClick={() => hideShow2()}>Close</button>
+        <button className="btnwrap1addemp" onClick={() => hideShow2()}>Close</button>
       </div>
     </form>
     </div>
@@ -107,13 +107,13 @@ function Addemployee({ showMe2, hideShow2, name, lastName, email,password, handl
 
    
 
-    <div><Link
+    {/* <div><Link
             className={window.location.pathname === "/employeepage" ? "nav-link active" : "nav-link"} 
             to="/employeepage"
           ><button>
             Employee page
             </button>
-              </Link></div>
+              </Link></div> */}
     </div>
     </div>
       </div>

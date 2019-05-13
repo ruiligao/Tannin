@@ -44,6 +44,8 @@ class Admin extends Component {
     empfirstName: "",
     emplastName: "",
     empEmail: '"',
+    empScores:[],
+
     user: "",
     // restaurantId: "",
     name: "",
@@ -59,6 +61,7 @@ class Admin extends Component {
     userId: "",
     usefirstName: "",
     uselastName: "",
+    useEmail: "",
     userestaurantName: ""
   };
 
@@ -130,9 +133,13 @@ class Admin extends Component {
     newState.empfirstName = emp.firstName
     newState.emplastName = emp.lastName
     newState.empEmail = emp.email
+    newState.empScores = emp.scores
+
     newState.showMeEmp = !newState.showMeEmp
 
+
     this.setState(newState);
+    console.log(newState.empScores)
   }
 
 
@@ -255,6 +262,7 @@ class Admin extends Component {
       newState.useId = newState.user._id
       newState.usefirstName = newState.user.firstName
       newState.uselastName = newState.user.lastName
+      newState.useEmail = newState.user.email
       newState.userestaurantName = newState.user.restaurantName
       console.log(newState.useId);
     }
@@ -279,6 +287,7 @@ class Admin extends Component {
           usefirstName={this.state.usefirstName}
           uselastName={this.state.uselastName}
           userestaurantName={this.state.userestaurantName}
+          useEmail = {this.state.useEmail}
           showMe3={this.state.showMe3}
           hideShow3={this.hideShow3}
           handleLogout={this.handleLogout}
@@ -309,6 +318,8 @@ class Admin extends Component {
           <div className="brandCol">
             <div className="welcomebtnwrap">
               <div>
+<div></div>
+
                 <button
                   onClick={() => this.hideShow3()}
                   className="welcomebtn"
@@ -347,7 +358,6 @@ class Admin extends Component {
                         id={wine._id}
                         name={wine.name}
                         handleWineDelete={this.handleWineDelete}
-
                         showMe={this.state.showMe}
                         hideShow={this.hideShow}
                         wineName={this.state.wineName}
@@ -393,11 +403,13 @@ class Admin extends Component {
                         key={employee._id}
                         id={employee._id}
                         firstName={employee.firstName}
+                        lastName={employee.lastName}
                         handleWineDelete={this.handleWineDelete}
                         empId={this.state.empId}
                         empfirstName={this.state.empfirstName}
                         emplastName={this.state.emplastName}
                         empEmail={this.state.empEmail}
+                        empScores={this.state.empScores}
 
                         showMeEmp={this.state.showMeEmp}
                         hideShowEmp={this.hideShowEmp}
