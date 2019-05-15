@@ -99,11 +99,7 @@ export default {
     console.log(scoreData);
     return axios.put("http://localhost:3001/api/employees/score", scoreData)
   },
-
-
-
-
-
+  
 };
 
 
