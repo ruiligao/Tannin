@@ -1,12 +1,11 @@
 {
   "name": "tannin",
-  "homepage": "https://myusername.leifaesoph.github.io/Tannin",
+  "homepage": "https://leifaesoph.github.io/Tannin",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
     "gh-pages": "^2.0.1",
-
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-router-dom": "^4.3.1",
