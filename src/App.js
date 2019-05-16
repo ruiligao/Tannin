@@ -12,7 +12,7 @@ import Quiz from "./pages/Quiz";
 // import Question from "./pages/Question";
 function App() {
   return (
-    <Router>
+    <Router basename = {process.env.PUBLIC_URL}>
       
         {/* <Nav /> */}
         <Switch>
