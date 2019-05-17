@@ -93,10 +93,6 @@ export default {
   //   return axios.put("http://localhost:3001/api/addEmployee/", deleteEmp)
   // },
 
-  // addScore: function (scoreData) {//localhost:3001/api/addEmployee/
-  //   console.log(scoreData);
-  //   return axios.put("http://localhost:3001/api/employees/score", scoreData)
-  // },
 
 };
 
