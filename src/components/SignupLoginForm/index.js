@@ -8,17 +8,17 @@ function SignupLoginForm({ showMe, hideShow, restaurant, firstName, lastName, em
     <div>
       <div className="loginsignupbtnmainwrap">
       <div className="loginsignupbtnmainwrap2">
-      <button className="loginsignupbtnmain" onClick={() => hideShow()}>Login/ Sign Up</button>
+      <button className="loginsignupbtnmain" onClick={() => hideShow()}>Log/ Sign Up</button>
       </div>
       </div>
       {showMe ?
         <div className="overlay">
-        <div className="tannintextwrap">Tannin</div>
+        <div className="tannintextwrap">Tan</div>
           <div className="wrap1">
             <div className="wrap2">
               <div className="wrap3">
                 <div className="signUpwrap">
-                  <div className="signuptext"> Sign Up</div>
+                  <div className="signuptext"> Sign </div>
                   <form>
                     <div className="form-group">
                       <div>
@@ -187,7 +187,7 @@ function SignupLoginForm({ showMe, hideShow, restaurant, firstName, lastName, em
               </Link></button> */}
 
 
-<button className="backtohome" onClick={() => hideShow()}><i class="fa fa-chevron-circle-left 2x" aria-hidden="true"></i></button>
+<button className="backtohome" onClick={() => hideShow()}><i className="fa fa-chevron-circle-left 2x" aria-hidden="true"></i></button>
               </div>
             </div>
           </div>
