@@ -20,7 +20,10 @@ class Quiz extends Component {
     filteredQs: [],
     correctFlavors: [],
     submittedFlavor: "",
-    // wineData:[],
+    correctPairings: [],
+    submittedPairing: "",
+    correctVarietal: [],
+    submittedVarietal: "",
     counter: 0,
     score: 0,
     highScore: 0,
@@ -81,7 +84,9 @@ class Quiz extends Component {
     console.log(wine);
     this.setState({
       wineData: wine,
-      correctFlavors: wine.primaryFlavors
+      correctFlavors: wine.primaryFlavors,
+      correctPairings: wine.pairings,
+      correctVarietal: wine.varietal
     });
 
     const categories = Object.keys(this.state.wineData);
@@ -89,8 +94,8 @@ class Quiz extends Component {
     const filteredQs = questions.filter(q => {
       return categories.includes(q.category)
     });
+    this.shuffle(filteredQs);
     this.setState({ filteredQs: filteredQs });
-    // this.shuffle(filteredQs);
     console.log("????????????????");
     console.log(filteredQs);
   }
@@ -107,14 +112,12 @@ class Quiz extends Component {
     return arr;
   };
 
-  handleBtnClick = (event) => {
-    // renaming this.state so we don't have to write it out each time
-    const newState = { ...this.state };
-
+  // Checks the value of a multiple choice button and adds that to the user's counter
+  handleBtnPoint = (event) => {
     let points = parseInt(event.target.value);
-    newState.counter = newState.counter + points
-
-    this.setState(newState);
+    this.setState({
+      counter: this.state.counter + points,
+    });
   }
 
   handleInputChange = event => {
@@ -127,6 +130,7 @@ class Quiz extends Component {
     });
   };
 
+  // Checks the primary flavor against possible correct answers and add 1 point if a match
   handleCheckFlavor = () => {
 
     const newState = { ...this.state };
@@ -134,40 +138,66 @@ class Quiz extends Component {
     if (this.state.correctFlavors.includes(this.state.submittedFlavor)) {
       this.setState({
         counter: newState.counter + 1,
-        submittedFlavor: ""
+        submittedFlavor: "",
       })
     } else {
       this.setState({
-        submittedFlavor: ""
+        submittedFlavor: "",
       })
     }
+    
+  }
+
+  // Check the input pairing against possible correct answers and add 1 point if a match
+  handleCheckPairing = () => {
+
+    const newState = { ...this.state };
+
+    if (this.state.correctPairings.includes(this.state.submittedPairing)) {
+      this.setState({
+        counter: newState.counter + 1,
+        submittedPairing: "",
+      })
+    } else {
+      this.setState({
+        submittedPairing: "",
+      })
+    }
+    
+  }
+
+  // Check the input varietal against possible correct answers and add 1 point if a match
+  handleCheckVarietal = () => {
+
+    const newState = { ...this.state };
+
+    if (this.state.correctVarietal.includes(this.state.submittedVarietal)) {
+      this.setState({
+        counter: newState.counter + 1,
+        submittedVarietal: "",
+      })
+    } else {
+      this.setState({
+        submittedVarietal: "",
+      })
+    }
+    
   }
 
   handleScoreCalc = () => {
-   const newState = {...this.state};
-    let hundreds =  newState.counter * 100;
+    let hundreds = this.state.counter * 100;
     let total = this.state.filteredQs.length;
+    // let totalScore = hundreds / total;
     this.state.score = hundreds / total;
-  
-    // this.setState(newState);
-    console.log("STATE");
-    console.log(this.state);
-    console.log("///////////////////");
-    // newState.score > newState.highscore ? newState.highscore = newState.Score : newState.highScore = newState.highscore
+    // this.setState({
+    //   score: this.state.score + totalScore
+    // });
 
-    console.log("hundreds: ", hundreds);
-    console.log("total # of Questions: ", total)
-    console.log("Your score for ", this.state.wineData.name, ": ", this.state.score, "%")
-    console.log("SCORE" + this.state.score);
-    this.addScore()
+    this.addScore() 
   }
 
   handleQuizPageBtn = id => {
     const getQuiz = { id: id, restaurantId: this.state.user.restaurantId };
-    console.log("??????????????");
-    console.log(getQuiz);
-    console.log("??????????????");
-    // const deleltData = {id: id, restaurantId: this.state.restaurantId}
 
     API.getQuiz(getQuiz).then(res =>
 
@@ -188,8 +218,6 @@ class Quiz extends Component {
 
   // renders react elements into the DOM
   render() {
-    console.log('clicked wine id:', this.props.location.state.wineId)
-    console.log(this.props.location.state.wineName);
     return (
       // the parent div into which our components will be rendered
       <div className="background">
@@ -202,29 +230,36 @@ class Quiz extends Component {
 
                 <QuestionCard
                   // functions to be inherited as props
-                  handleBtnClick={this.handleBtnClick}
+                  handleBtnPoint={this.handleBtnPoint}
                   handleInputChange={this.handleInputChange}
                   handleCheckFlavor={this.handleCheckFlavor}
+                  handleCheckPairing={this.handleCheckPairing}
+                  handleCheckVarietal={this.handleCheckVarietal}
                   shuffle={this.shuffle}
+                  submitFlavor={this.state.submitFlavor}
 
                   //values to be inherited as props
                   id={filteredQ.id}
                   key={filteredQ.id}
                   question={filteredQ.question}
-                  answers={filteredQ.falseAnswers}
-                  category={filteredQ.category}
-                  wineName={this.state.wineData.name}
-                  sweetness={this.state.wineData.sweetness}
-                  body={this.state.wineData.body}
-                  tannin={this.state.wineData.tannin}
                   acidity={this.state.wineData.acidity}
-                  alcohol={this.state.wineData.alcohol}
-                  temp={this.state.wineData.temp}
-                  decant={this.state.wineData.decant}
                   ageability={this.state.wineData.ageability}
+                  alcohol={this.state.wineData.alcohol}
+                  answers={filteredQ.falseAnswers}
+
+                  body={this.state.wineData.body}
+                  category={filteredQ.category}
+                  color={this.state.wineData.color}
+                  decant={this.state.wineData.decant}
+                  pairings={this.state.wineData.pairings}
                   region={this.state.wineData.region}
+                  sparkling={this.state.wineData.sparkling}
+                  sweetness={this.state.wineData.sweetness}
+                  temp={this.state.wineData.temp}
+                  tannin={this.state.wineData.tannin}
+                  varietal={this.state.wineData.varietal}
+                  wineName={this.state.wineData.name}
                   counter={this.state.counter}
-                  submitFlavor={this.state.submitFlavor}
                 />
               ))}
             </div>
