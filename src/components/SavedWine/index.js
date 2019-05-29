@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import "./style.css";
 
-function SavedWine({name, id, hideShow, showMe, wineName, wineId, winetemp, winetannin, winesweetness, winesummary, winepronunciation, wineprimaryFlavors, winepairings, winedecant, wineglassType, winebody, winealcohol, wineageability, wineacidity}) {
+function SavedWine({name, id, hideShow, showMe, wineName, wineId, winetemp, winetannin, winesweetness, winesummary, winepronunciation, wineprimaryFlavors, winepairings, winedecant, wineglassType, winebody, winealcohol, wineageability, wineacidity, winevarietal}) {
   return (
     <div>
       
@@ -24,7 +24,7 @@ function SavedWine({name, id, hideShow, showMe, wineName, wineId, winetemp, wine
             </button> */}
 
             <div><Link
-            className={window.location.pathname === "/quizpage" ? "nav-link active" : "nav-link"} 
+            className={window.location.pathname === "/quizpage" } 
             // to="/quiz"
             to={{pathname:"/quiz", state:{wineId: id, wineName:name}}}
           ><button className="quizpagebutton"><i className="fas fa-feather-alt"></i>
@@ -52,9 +52,22 @@ function SavedWine({name, id, hideShow, showMe, wineName, wineId, winetemp, wine
                           <div className="infodetails">Body: {winebody}</div>
                           <div className="infodetails">Decant: {winedecant}</div>
                           <div className="infodetails">Glass Type: {wineglassType}</div>
-                          <div className="infodetails">Pairings: {winepairings}</div>
-                          
-                          
+                          <br></br>
+                          <div className="infodetails">Pairings: </div>
+                          {winepairings.map(pairing => {
+                            return (
+                              <div>
+                              <li className="travelcompany-input">
+                              <span className="input-label">{pairing}</span>
+      
+  </li>
+</div>
+
+                            )
+                        })
+                       }
+
+<br></br>
                           <div className="infodetails">Flavors:</div>
                           {wineprimaryFlavors.map(flavor => {
                             return (
@@ -68,6 +81,7 @@ function SavedWine({name, id, hideShow, showMe, wineName, wineId, winetemp, wine
                             )
                         })
                        }
+<br></br>
 
 
                           <div className="infodetails">Pronunciation: {winepronunciation}</div>
@@ -75,6 +89,23 @@ function SavedWine({name, id, hideShow, showMe, wineName, wineId, winetemp, wine
                           <div className="infodetails">Sweetness: {winesweetness}</div>
                           <div className="infodetails">Tannin: {winetannin}</div>
                           <div className="infodetails">Temp: {winetemp}</div>
+                          <br></br>
+
+<div className="infodetails">Varietal:</div>
+{winevarietal.map(variety => {
+  return (
+    <div>
+    <li className="travelcompany-input">
+    <span className="input-label">{variety}</span>
+
+</li>
+</div>
+             
+  )
+})
+}
+<br></br>
+                          
                           <div className="infodetails">Id: {wineId}</div>
                         </div>
 

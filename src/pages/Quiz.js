@@ -270,7 +270,7 @@ class Quiz extends Component {
           <div className="submitanswersbtnquiz">
             <button className="submitFinal" onClick={this.handleScoreCalc}>Submit Answers</button>
 
-            <Link to="/employeepage"><button className="closebtnquiz">maybe next time
+            <Link onClick={window.location.reload} to="/employeepage"><button className="closebtnquiz">maybe next time
             </button></Link>
           </div>
         </div>

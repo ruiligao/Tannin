@@ -5,7 +5,7 @@ import { ListItem } from "../List";
 import "./style.css";
 
 // subtitle, authors, link, description, 
-function Wine({ name, id, hideShow, showMe, handleWineAdd,wineName, wineId, winetemp, winetannin, winesweetness, winesummary, winepronunciation, wineprimaryFlavors, winepairings, winedecant, wineglassType, winebody, winealcohol, wineageability, wineacidity}) {
+function Wine({ name, id, hideShow, showMe, handleWineAdd,wineName, wineId, winetemp, winetannin, winesweetness, winesummary, winepronunciation, wineprimaryFlavors, winepairings, winedecant, wineglassType, winebody, winealcohol, wineageability, wineacidity, winevarietal}) {
 
   return (
     <div>
@@ -35,8 +35,23 @@ function Wine({ name, id, hideShow, showMe, handleWineAdd,wineName, wineId, wine
                           <div className="infodetails">Body: {winebody}</div>
                           <div className="infodetails">Decant: {winedecant}</div>
                           <div className="infodetails">Glass Type: {wineglassType}</div>
-                          <div className="infodetails">Pairings: {winepairings}</div>
+                       
+                          <br></br>
+                          <div className="infodetails">Pairings: </div>
+                          {winepairings.map(pairing => {
+                            return (
+                              <div>
+                              <li className="travelcompany-input">
+                              <span className="input-label">{pairing}</span>
+      
+  </li>
+</div>
 
+                            )
+                        })
+                       }
+
+<br></br>
 
                           <div className="infodetails">Flavors:</div>
                           {wineprimaryFlavors.map(flavor => {
@@ -51,12 +66,28 @@ function Wine({ name, id, hideShow, showMe, handleWineAdd,wineName, wineId, wine
                             )
                         })
                        }
-
+<br></br>
                           <div className="infodetails">Pronunciation: {winepronunciation}</div>
                           <div className="infodetails">Summary: {winesummary}</div>
                           <div className="infodetails">Sweetness: {winesweetness}</div>
                           <div className="infodetails">Tannin: {winetannin}</div>
                           <div className="infodetails">Temp: {winetemp}</div>
+                          <br></br>
+
+                          <div className="infodetails">Varietal:</div>
+                          {winevarietal.map(variety => {
+                            return (
+                              <div>
+                              <li className="travelcompany-input">
+                              <span className="input-label">{variety}</span>
+      
+  </li>
+</div>
+                                       
+                            )
+                        })
+                       }
+<br></br>
                           <div className="infodetails">Id: {wineId}</div>
                         </div>
 

@@ -130,7 +130,7 @@ class SignupLogin extends Component {
     }
     return (
       <Container>
-                <div className="tannintextwrap2">Tan</div>
+                <div className="tannintextwrap2">Tannin</div>
         <SignupLoginForm
           handleSubmitInputChange={this.handleSubmitInputChange}
           handleSignupFormSubmit={this.handleSignupFormSubmit}
