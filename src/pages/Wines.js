@@ -35,6 +35,7 @@ class Wines extends Component {
     winesweetness: "",
     winetannin: "",
     winetemp: "",
+    winevarietal: "",
 
     user: "",
     // restaurantId: "",
@@ -121,6 +122,8 @@ newState.winesummary = wine.summary
 newState.winesweetness = wine.sweetness
 newState.winetannin = wine.tannin
 newState.winetemp = wine.temp
+newState.winevarietal = wine.varietal
+
     newState.showMe = !newState.showMe
     newState.scale = this.state.scale > 1 ? 1 : 1.5
 
@@ -279,6 +282,7 @@ handleWineAdd = id => {
                   winesweetness={this.state.winesweetness}
                   winetannin={this.state.winetannin}
                   winetemp={this.state.winetemp}
+                  winevarietal={this.state.winevarietal}
                 >
                 </Wine>
               ))}

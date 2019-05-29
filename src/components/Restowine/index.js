@@ -4,7 +4,7 @@ import { ListItem } from "../List";
 
 import "./style.css";
 
-function Restowine({handleWineDelete, name, id, hideShow, showMe, wineName, wineId, winetemp, winetannin, winesweetness, winesummary, winepronunciation, wineprimaryFlavors, winepairings, winedecant, wineglassType, winebody, winealcohol, wineageability, wineacidity}) {
+function Restowine({handleWineDelete, name, id, hideShow, showMe, wineName, wineId, winetemp, winetannin, winesweetness, winesummary, winepronunciation, wineprimaryFlavors, winepairings, winedecant, wineglassType, winebody, winealcohol, wineageability, wineacidity, winevarietal}) {
   return (
     <div>
     <ListItem>
@@ -39,13 +39,52 @@ function Restowine({handleWineDelete, name, id, hideShow, showMe, wineName, wine
                           <div className="infodetails">Body: {winebody}</div>
                           <div className="infodetails">Decant: {winedecant}</div>
                           <div className="infodetails">Glass Type: {wineglassType}</div>
-                          <div className="infodetails">Pairings: {winepairings}</div>
-                          <div className="infodetails">Flavors: {wineprimaryFlavors}</div>
+                          <br></br>
+                          <div className="infodetails">Pairings: </div>
+                          {winepairings.map(pairing => {
+                            return (
+                              <div>
+                              <li className="travelcompany-input">
+                              <span className="input-label">{pairing}</span>
+      
+  </li>
+</div>
+
+                            )
+                        })
+                       }
+
+<br></br>
+                          <div className="infodetails">Flavors:</div>
+                          {wineprimaryFlavors.map(flavor => {
+                            return (
+                              <div>
+                              <li className="travelcompany-input">
+                              <span className="input-label">{flavor}</span>
+      
+  </li>
+</div>
+                                       
+                            )
+                        })
+                       }
+<br></br>
+
+
+
+
+
+
+
+
+
                           <div className="infodetails">Pronunciation: {winepronunciation}</div>
                           <div className="infodetails">Summary: {winesummary}</div>
                           <div className="infodetails">Sweetness: {winesweetness}</div>
                           <div className="infodetails">Tannin: {winetannin}</div>
                           <div className="infodetails">Temp: {winetemp}</div>
+                          <div className="infodetails">Varietal: {winevarietal}</div>
+                          
                           <div className="infodetails">Id: {wineId}</div>
                         </div>
 

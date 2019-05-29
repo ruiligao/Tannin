@@ -71,6 +71,8 @@ class EmployeePage extends Component {
     winesweetness: "",
     winetannin: "",
     winetemp: "",
+    winevarietal:"",
+    
 
 
     winewiththisscore:"",
@@ -218,8 +220,11 @@ class EmployeePage extends Component {
     newState.winesweetness = wine.sweetness
     newState.winetannin = wine.tannin
     newState.winetemp = wine.temp
+
+    newState.winevarietal = wine.varietal
+
     newState.showMe = !newState.showMe
-    newState.scale = this.state.scale > 1 ? 1 : 1.5
+
 
     this.setState(newState);
   }
@@ -368,6 +373,7 @@ class EmployeePage extends Component {
                           winesweetness={this.state.winesweetness}
                           winetannin={this.state.winetannin}
                           winetemp={this.state.winetemp}
+                          winevarietal={this.state.winevarietal}
                         >
                         
                         </SavedWine>
