@@ -21,20 +21,23 @@ class Wines extends Component {
     showMe: false,
     // text: "add wine",
     wineId: "",
-    wineName:"",
-    wineacidity: "",
-    wineageability: "",
-    winealcohol: "",
-    winebody: "",
-    winedecant: "",
-    wineglassType: "",
-    winepairings: "",
-    wineprimaryFlavors: [],
-    winepronunciation: "",
-    winesummary: "",
-    winesweetness: "",
-    winetannin: "",
-    winetemp: "",
+    wineName: "",
+    wineAcidity: "",
+    wineAgeability: "",
+    wineAlcohol: "",
+    wineBody: "",
+    wineCountry: "",
+    wineDecant: "",
+    wineGlassType: "",
+    winePairings: [],
+    winePrimaryFlavors: [],
+    winePronunciation: "",
+    wineRegion: "",
+    wineSummary: "",
+    wineSweetness: "",
+    wineTannin: "",
+    wineTemp: "",
+    wineVarietal: [],
 
     user: "",
     // restaurantId: "",
@@ -76,51 +79,27 @@ class Wines extends Component {
     });
   }
 
-
-  // getSavedWine = () => {
-  //   console.log("////////////////");
-  //   console.log(this.state.user.email);
-  //   console.log("////////////////");
-  //   const admin = { email: this.state.user.email };
-  //   API.getSavedWine(admin)
-  //     .then(res => {
-  //       // console.log("SAVESTAFF")
-  //       // console.log(res.data);
-  //       // console.log("SAVESTAFF")
-  //       // console.log(res.data._id);
-  //       // console.log(res.data[0]);
-  //       this.setState({
-  //         restaurantId: res.data._id,
-  //         // wines: res.data.Wines,
-  //       })
-  //     }
-
-  //     )
-  //     .catch(() =>
-  //       this.setState({
-  //         message: "Wine not available"
-  //       })
-  //     );
-  // };
-
   hideShow = id => {
     const newState = { ...this.state }
     const wine = this.state.winesMaster.find(wine => wine._id === id);
     newState.wineId = id
     newState.wineName = wine.name
-    newState.wineacidity = wine.acidity
-newState.wineageability = wine.ageability
-newState.winealcohol = wine.alcohol
-newState.winebody = wine.body
-newState.winedecant = wine.decant
-newState.wineglassType = wine.glassType
-newState.winepairings = wine.pairings
-newState.wineprimaryFlavors = wine.primaryFlavors
-newState.winepronunciation = wine.pronunciation
-newState.winesummary = wine.summary
-newState.winesweetness = wine.sweetness
-newState.winetannin = wine.tannin
-newState.winetemp = wine.temp
+    newState.wineAcidity = wine.acidity
+    newState.wineAgeability = wine.ageability
+    newState.wineAlcohol = wine.alcohol
+    newState.wineBody = wine.body
+    newState.wineCountry = wine.country 
+    newState.wineDecant = wine.decant
+    newState.wineGlassType = wine.glassType
+    newState.winePairings = wine.pairings
+    newState.winePrimaryFlavors = wine.primaryFlavors
+    newState.winePronunciation = wine.pronunciation
+    newState.wineRegion = wine.region 
+    newState.wineSummary = wine.summary
+    newState.wineSweetness = wine.sweetness
+    newState.wineTannin = wine.tannin
+    newState.wineTemp = wine.temp
+    newState.wineVarietal = wine.varietal
     newState.showMe = !newState.showMe
     newState.scale = this.state.scale > 1 ? 1 : 1.5
 
@@ -267,18 +246,20 @@ handleWineAdd = id => {
                   wineName={this.state.wineName}
                   wineId={this.state.wineId}
                   wineacidity={this.state.wineacidity}
-                  wineageability={this.state.wineageability}
-                  winealcohol={this.state.winealcohol}
-                  winebody={this.state.winebody}
-                  winedecant={this.state.winedecant}
-                  wineglassType={this.state.wineglassType}
-                  winepairings={this.state.winepairings}
-                  wineprimaryFlavors={this.state.wineprimaryFlavors}
-                  winepronunciation={this.state.winepronunciation}
-                  winesummary={this.state.winesummary}
-                  winesweetness={this.state.winesweetness}
-                  winetannin={this.state.winetannin}
-                  winetemp={this.state.winetemp}
+                  wineAgeability={this.state.wineAgeability}
+                  wineAlcohol={this.state.wineAlcohol}
+                  wineBody={this.state.wineBody}
+                  wineDecant={this.state.wineDecant}
+                  wineGlassType={this.state.wineGlassType}
+                  winePairings={this.state.winePairings}
+                  winePrimaryFlavors={this.state.winePrimaryFlavors}
+                  winePronunciation={this.state.winePronunciation}
+                  wineRegion={this.state.wineRegion}
+                  wineSummary={this.state.wineSummary}
+                  wineSweetness={this.state.wineSweetness}
+                  wineTannin={this.state.wineTannin}
+                  wineTemp={this.state.wineTemp}
+                  wineVarietal={this.state.wineVarietal}
                 >
                 </Wine>
               ))}

@@ -4,6 +4,28 @@ import "./style.css";
 // class component QuestionCard(props) {
 class QuestionCard extends React.Component {
 
+    handleBtnDis = (event) => {
+        this.setState({disabled: true})
+    };
+
+    handleBtnClick = (event) => {
+        this.props.handleBtnPoint(event);
+        this.handleBtnDis(event)
+    };
+
+    handleFlavorClick = (event) => {
+        this.props.handleCheckFlavor(event);
+        this.handleBtnDis(event)
+    };
+
+    handlePairingClick = (event) => {
+        this.props.handleCheckPairing(event);
+        this.handleBtnDis(event)
+    };
+    handleVarietalClick = (event) => {
+        this.props.handleCheckVarietal(event);
+        this.handleBtnDis(event)
+    };
 
     answers = this.props.answers;
     falses = this.answers ? this.answers.splice(this.answers.indexOf(this.props[this.props.category]), 1) : null;
@@ -11,30 +33,6 @@ class QuestionCard extends React.Component {
     selections = this.answers ? (this.answers.slice(0, 3)) : null;
     dummThing = this.selections ? (this.selections.push(this.props[`${this.props.category}`])) : null;
     shuffledSelections = this.selections ? this.props.shuffle(this.selections) : null;
-
-    handleBtnDis = (event) => {
-        this.setState({disabled: true})
-    }
-
-    handleBtnClick = (event) => {
-        this.props.handleBtnPoint(event);
-        this.handleBtnDis(event)
-    }
-
-    handleFlavorClick = (event) => {
-        this.props.handleCheckFlavor(event);
-        this.handleBtnDis(event)
-    }
-
-    handlePairingClick = (event) => {
-        this.props.handleCheckPairing(event);
-        this.handleBtnDis(event)
-    }
-    handleVarietalClick = (event) => {
-        this.props.handleCheckVarietal(event);
-        this.handleBtnDis(event)
-    }
-
 
     constructor(props) {
         super(props);
