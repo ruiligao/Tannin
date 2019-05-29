@@ -72,8 +72,22 @@ function Wine({ name, id, hideShow, showMe, handleWineAdd,wineName, wineId, wine
                           <div className="infodetails">Sweetness: {winesweetness}</div>
                           <div className="infodetails">Tannin: {winetannin}</div>
                           <div className="infodetails">Temp: {winetemp}</div>
-                          <div className="infodetails">Varietal: {winevarietal}</div>
-                          
+                          <br></br>
+
+                          <div className="infodetails">Varietal:</div>
+                          {winevarietal.map(variety => {
+                            return (
+                              <div>
+                              <li className="travelcompany-input">
+                              <span className="input-label">{variety}</span>
+      
+  </li>
+</div>
+                                       
+                            )
+                        })
+                       }
+<br></br>
                           <div className="infodetails">Id: {wineId}</div>
                         </div>
 
