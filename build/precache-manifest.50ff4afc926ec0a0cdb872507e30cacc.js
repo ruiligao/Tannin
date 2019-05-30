@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "d24e8783a9cb702832d7",
+    "revision": "c8db351d50acda95763f",
     "url": "/Tannin/static/css/main.49ef82f8.chunk.css"
   },
   {
-    "revision": "d24e8783a9cb702832d7",
-    "url": "/Tannin/static/js/main.9e3e2943.chunk.js"
+    "revision": "c8db351d50acda95763f",
+    "url": "/Tannin/static/js/main.73339721.chunk.js"
   },
   {
     "revision": "dafb2ad3982900ac4088",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/Tannin/static/js/2.54045d50.chunk.js"
   },
   {
-    "revision": "265466bc0f29f9023e1a75a061de18d0",
+    "revision": "205bb1b009ab25b1f47ce4b662256536",
     "url": "/Tannin/index.html"
   }
 ];
