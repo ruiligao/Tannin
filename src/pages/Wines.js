@@ -190,49 +190,43 @@ handleWineAdd = id => {
     return (
       <Container>
 <div className="allwrap">
-<div className="mainWrapper1">
-<div className="mainWrapper2">
-<div className="mainWrapper3">
 
-        <div className="winesnav">
-        <div>
-          {/* <Link className="navbar-brand" to="/">
-            Wine academy
-        </Link> */}
-        </div>
-       
-        </div>
 <br></br>
-        <Jumbotron>
-<div className="texttanninwrap">
-        <h1 className="texttannin">
-            <strong>Tannin</strong>
-          </h1>
-          </div>
-          <br></br>
-          <div className="textwinecolwrap">
-          <h1 className="textwinecol">
-            <strong>Wine Collections</strong>
-          </h1>
-</div>
-<div className="textwinecolwrap">
-          <h2 className="text-center">Add Wine to your Restaurant.</h2>
-          </div>
-        </Jumbotron>
 
-        <div className="btnadminpagewrap">
+<div className="texttanninwrap">
+<div className="texttanninwrap2">
+<div className="texttanninwrap3">
+        <h1 className="texttannin">
+            <p>Tannin</p>
+          </h1>
+          <div className="btnadminpagewrap">
           <Link
-            className={window.location.pathname === "/admin" ? "nav-link active" : "nav-link"}
+            className={window.location.pathname === "/admin"}
             to="/admin"
           ><button className="btnadminpage"><i className="fas fa-wine-glass-alt">   <span>Your Restaurant</span></i>
-              
             </button>
               </Link>
         </div>
+        </div>
+          {/* <div className="textwinecolwrap"> */}
+          {/* <h1 className="textwinecol">
+            <strong>Wine Collections</strong>
+          </h1> */}
+          {/* <div className="textwinecolwrap">
+          <h2 className="text-center">Add Wine to your Restaurant.</h2>
+          </div> */}
+{/* </div> */}
+          </div>
+          </div>
+          
+          <br></br>
+          
 
-        </div>
-        </div>
-        </div>
+
+
+        
+
+        
         {/* <Card title="Wine Search">
 
               <Form

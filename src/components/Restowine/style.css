@@ -102,6 +102,7 @@ overflow: auto;
       .infodetails {
         margin-bottom: 5px;
         width: 100%;
+        word-break: break-all ;
       }
       
       .restowineinfo3{
