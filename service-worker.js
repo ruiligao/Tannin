@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/Tannin/precache-manifest.4db326cfd42fd9b5dbdba5a02e6cf10e.js"
+  "/Tannin/precache-manifest.0b22664132f9ade01644e9ce35ef20b0.js"
 );
 
 workbox.clientsClaim();
