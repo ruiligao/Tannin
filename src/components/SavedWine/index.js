@@ -82,7 +82,6 @@ function SavedWine({ name, id, hideShow, showMe, wineName, wineTemp, wineTannin,
                               <div>
                                 <ul className="travelcompany-input">
                                   <span className="input-label">{pairing}</span>
-
                                 </ul>
                               </div>
 
