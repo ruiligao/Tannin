@@ -1,11 +1,10 @@
 import React from "react";
 import { ListItem } from "../List";
-// import { Link } from "react-router-dom";
 
 import "./style.css";
 
-// subtitle, authors, link, description, 
-function Wine({ name, id, hideShow, showMe, handleWineAdd,wineName, wineId, winetemp, winetannin, winesweetness, winesummary, winepronunciation, wineprimaryFlavors, winepairings, winedecant, wineglassType, winebody, winealcohol, wineageability, wineacidity, winevarietal}) {
+function Wine({ name, id, hideShow, showMe, handleWineAdd, wineName, wineTemp, wineTannin, wineSweetness, wineSummary, winePronunciation, winePrimaryFlavors, winePairings, wineDecant, wineGlassType, wineBody, wineAlcohol, wineAgeability, wineAcidity, wineVarietal, wineCountry, wineRegion }) {
+
 
   return (
     <div>
@@ -13,11 +12,11 @@ function Wine({ name, id, hideShow, showMe, handleWineAdd,wineName, wineId, wine
         <div className="listitemdiv">
           <div className="winenamediv">
 
-          <div className="winenamediv2">
-               <div><button className="winenamebtn" onClick={() => hideShow(id)}>{name}</button></div>
-               <div><button className="btnadd" onClick={() => handleWineAdd(id)}><i className="fa fa-plus-circle fa-2x" aria-hidden="true"></i></button></div>   
-               </div>
-            
+            <div className="winenamediv2">
+              <div><button className="winenamebtn" onClick={() => hideShow(id)}>{name}</button></div>
+              <div><button className="btnadd" onClick={() => handleWineAdd(id)}><i className="fa fa-plus-circle fa-2x" aria-hidden="true"></i></button></div>
+            </div>
+
             <div className="fontitalicbarcode">{id}</div>
 
             <div>
@@ -28,81 +27,71 @@ function Wine({ name, id, hideShow, showMe, handleWineAdd,wineName, wineId, wine
                       <div className="wrapinfo3">
                         <div className="infowrap">
 
-                        <div className="infodetails">Name: {wineName}</div>
-                          <div className="infodetails">Acidity: {wineacidity}</div>
-                          <div className="infodetails">Ageabilty: {wineageability}</div>
-                          <div className="infodetails">Alcohol: {winealcohol}</div>
-                          <div className="infodetails">Body: {winebody}</div>
-                          <div className="infodetails">Decant: {winedecant}</div>
-                          <div className="infodetails">Glass Type: {wineglassType}</div>
-                       
-                          <br></br>
-                          <div className="infodetails">Pairings: </div>
-                          {winepairings.map(pairing => {
+
+                          {wineName ? <div className="infodetails">Name: {wineName}</div> : null}
+                          {winePronunciation ? <div className="infodetails">Pronunciation: {winePronunciation}</div> : null}
+                          {wineCountry ? <div className="infodetails">Country of Origin: {wineCountry}</div> : null}
+                          {wineRegion ? <div className="infodetails">Region: {wineRegion}</div> : null}
+                          {wineSummary ? <div className="infodetails">Summary: {wineSummary}</div> : null}
+                          {wineAcidity ? <div className="infodetails">Acidity: {wineAcidity}</div> : null}
+                          {wineAgeability ? <div className="infodetails">Ageability: {wineAgeability}</div> : null}
+                          {wineAlcohol ? <div className="infodetails">Alcohol By Volume: {wineAlcohol}</div> : null}
+                          {wineBody ? <div className="infodetails">Body: {wineBody}</div> : null}
+                          {wineSweetness ? <div className="infodetails">Sweetness: {wineSweetness}</div> : null}
+                          {wineTannin ? <div className="infodetails">Tannin: {wineTannin}</div> : null}
+                          {wineVarietal ? <div> Varietal: {wineVarietal.map(varietal => {
                             return (
                               <div>
-                              <li className="travelcompany-input">
-                              <span className="input-label">{pairing}</span>
-      
-  </li>
-</div>
+                                <ul className="travelcompany-input">
+                                  <span className="input-label">{varietal}</span>
+
+                                </ul>
+                              </div>
 
                             )
-                        })
-                       }
+                          })
+                          } </div> : null
+                          }
 
-<br></br>
-
-                          <div className="infodetails">Flavors:</div>
-                          {wineprimaryFlavors.map(flavor => {
+                          {winePrimaryFlavors ? <div> Primary Flavors : {winePrimaryFlavors.map(flavor => {
                             return (
                               <div>
-                              <li className="travelcompany-input">
-                              <span className="input-label">{flavor}</span>
-      
-  </li>
-</div>
-                                       
-                            )
-                        })
-                       }
-<br></br>
-                          <div className="infodetails">Pronunciation: {winepronunciation}</div>
-                          <div className="infodetails">Summary: {winesummary}</div>
-                          <div className="infodetails">Sweetness: {winesweetness}</div>
-                          <div className="infodetails">Tannin: {winetannin}</div>
-                          <div className="infodetails">Temp: {winetemp}</div>
-                          <br></br>
+                                <ul className="travelcompany-input">
+                                  <span className="input-label">{flavor}</span>
 
-                          <div className="infodetails">Varietal:</div>
-                          {winevarietal.map(variety => {
+                                </ul>
+                              </div>
+
+                            )
+                          })
+                          } </div> : null
+                          }
+
+
+                          {winePairings ? <div> Pairings : {winePairings.map(pairing => {
                             return (
                               <div>
-                              <li className="travelcompany-input">
-                              <span className="input-label">{variety}</span>
-      
-  </li>
-</div>
-                                       
+                                <ul className="travelcompany-input">
+                                  <span className="input-label">{pairing}</span>
+
+                                </ul>
+                              </div>
+
                             )
-                        })
-                       }
-<br></br>
-                          <div className="infodetails">Id: {wineId}</div>
+
+                          })
+                          } </div> : null
+                          }
+                          {wineDecant ? <div className="infodetails">Decant: {wineDecant}</div> : null}
+                          {wineGlassType ? <div className="infodetails">Glass Type: {wineGlassType}</div> : null}
+                          {wineTemp ? <div className="infodetails">Serving Temp: {wineTemp}</div> : null}
                         </div>
 
                         <br></br>
 
                       </div>
                       <div className="btnwrap">
-                        {/* <button><Link
-                          className={window.location.pathname === "/admin" ? "nav-link active" : "nav-link"}
-                          to="/admin"
-                        >
-                          admin
-          </Link></button> */}
-<button className="btnwrap1buserclose" onClick={() => hideShow(id)}><i className="fas fa-times-circle"></i></button>
-                        {/* <button onClick={() => hideShow(id)}>CLOSE</button> */}
+                        <button className="btnwrap1buserclose" onClick={() => hideShow(id)}><i className="fas fa-times-circle"></i></button>
                       </div>
                     </div>
                   </div>
@@ -111,9 +100,9 @@ function Wine({ name, id, hideShow, showMe, handleWineAdd,wineName, wineId, wine
               }
             </div>
 
-            
-            </div>
-            </div>
+
+          </div>
+        </div>
 
 
       </ListItem>

@@ -44,10 +44,6 @@ class SignupLogin extends Component {
       const loginInfor = { email, password }
       // console.log(userInfo);
       API.signUpSubmit(userInfo).then(response => {
-        // console.log(">>>>>>>>>>>>>");
-        // console.log(response.data.email);
-        // console.log(response.data.password);
-        // console.log(">>>>>>>>>>>>>")
         if (!response.data.error) {
           console.log('youre good')
           API.logIn(loginInfor).then(response => {
