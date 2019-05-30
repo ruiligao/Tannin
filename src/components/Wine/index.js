@@ -1,11 +1,10 @@
 import React from "react";
 import { ListItem } from "../List";
-// import { Link } from "react-router-dom";
 
 import "./style.css";
 
-// subtitle, authors, link, description, 
 function Wine({ name, id, hideShow, showMe, handleWineAdd, wineName, wineTemp, wineTannin, wineSweetness, wineSummary, winePronunciation, winePrimaryFlavors, winePairings, wineDecant, wineGlassType, wineBody, wineAlcohol, wineAgeability, wineAcidity, wineVarietal, wineCountry, wineRegion }) {
+
 
   return (
     <div>
@@ -27,6 +26,7 @@ function Wine({ name, id, hideShow, showMe, handleWineAdd, wineName, wineTemp, w
                     <div className="wrapinfo2">
                       <div className="wrapinfo3">
                         <div className="infowrap">
+
 
                           {wineName ? <div className="infodetails">Name: {wineName}</div> : null}
                           {winePronunciation ? <div className="infodetails">Pronunciation: {winePronunciation}</div> : null}
@@ -67,6 +67,7 @@ function Wine({ name, id, hideShow, showMe, handleWineAdd, wineName, wineTemp, w
                           } </div> : null
                           }
 
+
                           {winePairings ? <div> Pairings : {winePairings.map(pairing => {
                             return (
                               <div>
@@ -77,27 +78,20 @@ function Wine({ name, id, hideShow, showMe, handleWineAdd, wineName, wineTemp, w
                               </div>
 
                             )
+
                           })
                           } </div> : null
                           }
                           {wineDecant ? <div className="infodetails">Decant: {wineDecant}</div> : null}
                           {wineGlassType ? <div className="infodetails">Glass Type: {wineGlassType}</div> : null}
                           {wineTemp ? <div className="infodetails">Serving Temp: {wineTemp}</div> : null}
-
                         </div>
 
                         <br></br>
 
                       </div>
                       <div className="btnwrap">
-                        {/* <button><Link
-                          className={window.location.pathname === "/admin" ? "nav-link active" : "nav-link"}
-                          to="/admin"
-                        >
-                          admin
-          </Link></button> */}
                         <button className="btnwrap1buserclose" onClick={() => hideShow(id)}><i className="fas fa-times-circle"></i></button>
-                        {/* <button onClick={() => hideShow(id)}>CLOSE</button> */}
                       </div>
                     </div>
                   </div>

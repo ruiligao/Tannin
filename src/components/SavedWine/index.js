@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import "./style.css";
 
 function SavedWine({ name, id, hideShow, showMe, wineName, wineTemp, wineTannin, wineSweetness, wineSummary, winePronunciation, winePrimaryFlavors, winePairings, wineDecant, wineGlassType, wineBody, wineAlcohol, wineAgeability, wineAcidity, wineVarietal, wineCountry, wineRegion }) {
+
   return (
     <div>
 
@@ -15,13 +16,7 @@ function SavedWine({ name, id, hideShow, showMe, wineName, wineTemp, wineTannin,
               {/* <div className="fontitalicsmall">{name}</div> */}
               <div><button className="winesavenamebtn1" onClick={() => hideShow(id)}>{name}</button></div>
 
-              {/* <div>{score}</div> */}
               <div>
-
-                {/*            
-          <button className="quizpagebutton" onClick={() => hideShowQuiz(id)}>
-            Quiz MODAL
-            </button> */}
 
                 <div><Link
                   className={window.location.pathname === "/quizpage" ? "nav-link active" : "nav-link"}
@@ -30,12 +25,9 @@ function SavedWine({ name, id, hideShow, showMe, wineName, wineTemp, wineTannin,
                 ><button className="quizpagebutton"><i className="fas fa-feather-alt"></i>
                   </button>
                 </Link></div>
+
               </div>
-              {/* <div><button className="winedelbtn" onClick={() => handleWineDelete(id)}>Delete</button></div> */}
             </div>
-
-
-            {/* <div className="font-italic">{id}</div> */}
 
             <div>
               {showMe ?
@@ -71,6 +63,7 @@ function SavedWine({ name, id, hideShow, showMe, wineName, wineTemp, wineTannin,
                           }
 
                           {winePrimaryFlavors ? <div> Primary Flavors : {winePrimaryFlavors.map(flavor => {
+
                             return (
                               <div>
                                 <ul className="travelcompany-input">
@@ -100,18 +93,13 @@ function SavedWine({ name, id, hideShow, showMe, wineName, wineTemp, wineTannin,
                           {wineDecant ? <div className="infodetails">Decant: {wineDecant}</div> : null}
                           {wineGlassType ? <div className="infodetails">Glass Type: {wineGlassType}</div> : null}
                           {wineTemp ? <div className="infodetails">Serving Temp: {wineTemp}</div> : null}
+
                         </div>
 
                         <br></br>
 
                       </div>
                       <div className="btnwrap">
-                        {/* <button><Link
-                          className={window.location.pathname === "/admin" ? "nav-link active" : "nav-link"}
-                          to="/admin"
-                        >
-                          admin
-          </Link></button> */}
                         <button className="btnwrap1buserclose" onClick={() => hideShow(id)}><i className="fas fa-times-circle"></i></button>
                       </div>
                     </div>

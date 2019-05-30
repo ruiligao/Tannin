@@ -1,13 +1,7 @@
 import React, { Component } from "react";
-// import Jumbotron from "../components/Jumbotron";
 import SavedWine from "../components/SavedWine";
-// import Addemployee from "../components/Addemployee";
-// import Footer from "../components/Footer";
 import API from "../utils/API";
-// import Header from "../components/Header";
 import Header2 from "../components/Header2";
-// import Wrapper from "../components/Wrapper";
-// import QuestionCard from "../components/QuestionCard";
 import Empinfo from "../components/Empinfo";
 import { Container } from "../components/Grid";
 import questions from "../questions.json";
@@ -184,7 +178,7 @@ class EmployeePage extends Component {
     newState.wineTemp = wine.temp
     newState.wineVarietal = wine.varietal
     newState.showMe = !newState.showMe
-    newState.scale = this.state.scale > 1 ? 1 : 1.5
+
 
     this.setState(newState);
   }
