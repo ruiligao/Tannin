@@ -39,7 +39,6 @@ function Restowine({handleWineDelete, name, id, hideShow, showMe, wineName, wine
                           <div className="infodetails">Body: {winebody}</div>
                           <div className="infodetails">Decant: {winedecant}</div>
                           <div className="infodetails">Glass Type: {wineglassType}</div>
-                          <br></br>
                           <div className="infodetails">Pairings: </div>
                           {winepairings.map(pairing => {
                             return (
@@ -54,7 +53,7 @@ function Restowine({handleWineDelete, name, id, hideShow, showMe, wineName, wine
                         })
                        }
 
-<br></br>
+
                           <div className="infodetails">Flavors:</div>
                           {wineprimaryFlavors.map(flavor => {
                             return (
@@ -68,7 +67,6 @@ function Restowine({handleWineDelete, name, id, hideShow, showMe, wineName, wine
                             )
                         })
                        }
-<br></br>
 
 
 
@@ -83,8 +81,7 @@ function Restowine({handleWineDelete, name, id, hideShow, showMe, wineName, wine
                           <div className="infodetails">Sweetness: {winesweetness}</div>
                           <div className="infodetails">Tannin: {winetannin}</div>
                           <div className="infodetails">Temp: {winetemp}</div>
-                          <br></br>
-
+                          
                           <div className="infodetails">Varietal:</div>
                           {winevarietal.map(variety => {
                             return (
@@ -98,14 +95,15 @@ function Restowine({handleWineDelete, name, id, hideShow, showMe, wineName, wine
                             )
                         })
                        }
-<br></br>
+
                           
                           <div className="infodetails">Id: {wineId}</div>
                         </div>
 
-                        <br></br>
+
 
                       </div>
+                      <br></br>
                       <div className="btnwrap">
                         {/* <button><Link
                           className={window.location.pathname === "/admin" ? "nav-link active" : "nav-link"}

@@ -4,9 +4,9 @@ import API from "../utils/API";
 import Header2 from "../components/Header2";
 import Empinfo from "../components/Empinfo";
 import { Container } from "../components/Grid";
-import questions from "../questions.json";
-// importing the wine template for testing purposes 
-import wineData from "../franciacorta.json"
+// import questions from "../questions.json";
+// // importing the wine template for testing purposes 
+// import wineData from "../franciacorta.json"
 import ScoreSummary from "../components/Scores"
 import { List } from "../components/List";
 // import { Link } from "react-router-dom";

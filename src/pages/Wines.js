@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Jumbotron from "../components/Jumbotron";
+// import Jumbotron from "../components/Jumbotron";
 import Card from "../components/Card";
 // import Form from "../components/Form";
 import Wine from "../components/Wine";
