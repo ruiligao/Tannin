@@ -37,11 +37,11 @@ class Quiz extends Component {
 
   getUser = () => {
     API.getUser().then(response => {
-      console.log("LOGGED IN USER: ", response)
+      // console.log("LOGGED IN USER: ", response)
       if (!!response.data.user) {
-        console.log('THERE IS A USER');
-        console.log(response.data.user.scores);
-        console.log("???????????????");
+        // console.log('THERE IS A USER');
+        // console.log(response.data.user.scores);
+        // console.log("???????????????");
         this.setState({
           loggedIn: true,
           user: response.data.user,
@@ -59,9 +59,9 @@ class Quiz extends Component {
   }
 
   getSavedWine = () => {
-    console.log("////////////////");
-    console.log(this.state.user.restaurantId);
-    console.log("////////////////");
+    // console.log("////////////////");
+    // console.log(this.state.user.restaurantId);
+    // console.log("////////////////");
     const admin = { restaurantId: this.state.user.restaurantId };
     API.getSavedWine(admin)
       .then(res => {
@@ -81,7 +81,7 @@ class Quiz extends Component {
   getClickedWine = () => {
     const id = this.props.location.state.wineId
     const wine = this.state.wineCollections.find(wine => wine._id === id);
-    console.log(wine);
+    // console.log(wine);
     this.setState({
       wineData: wine,
       correctFlavors: wine.primaryFlavors,
