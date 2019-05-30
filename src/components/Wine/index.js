@@ -36,7 +36,7 @@ function Wine({ name, id, hideShow, showMe, handleWineAdd,wineName, wineId, wine
                           <div className="infodetails">Decant: {winedecant}</div>
                           <div className="infodetails">Glass Type: {wineglassType}</div>
                        
-                          <br></br>
+
                           <div className="infodetails">Pairings: </div>
                           {winepairings.map(pairing => {
                             return (
@@ -51,8 +51,6 @@ function Wine({ name, id, hideShow, showMe, handleWineAdd,wineName, wineId, wine
                         })
                        }
 
-<br></br>
-
                           <div className="infodetails">Flavors:</div>
                           {wineprimaryFlavors.map(flavor => {
                             return (
@@ -66,14 +64,12 @@ function Wine({ name, id, hideShow, showMe, handleWineAdd,wineName, wineId, wine
                             )
                         })
                        }
-<br></br>
+
                           <div className="infodetails">Pronunciation: {winepronunciation}</div>
                           <div className="infodetails">Summary: {winesummary}</div>
                           <div className="infodetails">Sweetness: {winesweetness}</div>
                           <div className="infodetails">Tannin: {winetannin}</div>
                           <div className="infodetails">Temp: {winetemp}</div>
-                          <br></br>
-
                           <div className="infodetails">Varietal:</div>
                           {winevarietal.map(variety => {
                             return (

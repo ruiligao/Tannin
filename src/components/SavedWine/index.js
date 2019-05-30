@@ -52,7 +52,7 @@ function SavedWine({name, id, hideShow, showMe, wineName, wineId, winetemp, wine
                           <div className="infodetails">Body: {winebody}</div>
                           <div className="infodetails">Decant: {winedecant}</div>
                           <div className="infodetails">Glass Type: {wineglassType}</div>
-                          <br></br>
+                          
                           <div className="infodetails">Pairings: </div>
                           {winepairings.map(pairing => {
                             return (
@@ -67,7 +67,7 @@ function SavedWine({name, id, hideShow, showMe, wineName, wineId, winetemp, wine
                         })
                        }
 
-<br></br>
+
                           <div className="infodetails">Flavors:</div>
                           {wineprimaryFlavors.map(flavor => {
                             return (
@@ -81,7 +81,6 @@ function SavedWine({name, id, hideShow, showMe, wineName, wineId, winetemp, wine
                             )
                         })
                        }
-<br></br>
 
 
                           <div className="infodetails">Pronunciation: {winepronunciation}</div>
@@ -89,7 +88,6 @@ function SavedWine({name, id, hideShow, showMe, wineName, wineId, winetemp, wine
                           <div className="infodetails">Sweetness: {winesweetness}</div>
                           <div className="infodetails">Tannin: {winetannin}</div>
                           <div className="infodetails">Temp: {winetemp}</div>
-                          <br></br>
 
 <div className="infodetails">Varietal:</div>
 {winevarietal.map(variety => {
@@ -104,14 +102,14 @@ function SavedWine({name, id, hideShow, showMe, wineName, wineId, winetemp, wine
   )
 })
 }
-<br></br>
-                          
+
                           <div className="infodetails">Id: {wineId}</div>
                         </div>
 
-                        <br></br>
+
 
                       </div>
+                      <br></br>
                       <div className="btnwrap">
                         {/* <button><Link
                           className={window.location.pathname === "/admin" ? "nav-link active" : "nav-link"}
