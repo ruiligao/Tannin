@@ -51,7 +51,6 @@ function Restowine({ handleWineDelete, name, id, hideShow, showMe, wineName, win
 
                                 </ul>
                               </div>
-
                             )
                           })
                           } </div> : null
@@ -66,7 +65,6 @@ function Restowine({ handleWineDelete, name, id, hideShow, showMe, wineName, win
 
                                 </ul>
                               </div>
-
                             )
                           })
                           } </div> : null
@@ -90,9 +88,10 @@ function Restowine({ handleWineDelete, name, id, hideShow, showMe, wineName, win
                           {wineTemp ? <div className="infodetails">Serving Temp: {wineTemp}</div> : null}
                         </div>
 
-                        <br></br>
+
 
                       </div>
+                      <br></br>
                       <div className="btnwrap">
                         {/* <button><Link
                           className={window.location.pathname === "/admin" ? "nav-link active" : "nav-link"}
