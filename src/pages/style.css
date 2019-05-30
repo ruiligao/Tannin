@@ -729,6 +729,12 @@ font-family: 'Pacifico', cursive;
 
 @media (device-height: 812px) and (device-width: 375px) and (-webkit-min-device-pixel-ratio: 2){
   
+  .emppageColWrap1 {
+  
+    width: 100%;
+
+
+}
 
   .cardwrapper0 {
     width:100%;
@@ -941,6 +947,14 @@ justify-content: flex-end;
 
 
 @media (device-height: 736px) and (device-width: 414px) and (-webkit-min-device-pixel-ratio: 2){
+
+
+  .emppageColWrap1 {
+  
+    width: 100%;
+
+
+}
   .cardwrapper0 {
     width:100%;
     
@@ -1145,6 +1159,13 @@ justify-content: flex-end;
 }
 
 @media (device-height: 667px) and (device-width: 375px) and (-webkit-min-device-pixel-ratio: 2){
+
+  .emppageColWrap1 {
+  
+    width: 100%;
+
+
+}
   .cardwrapper0 {
     width:100%;
     
@@ -1349,6 +1370,13 @@ justify-content: flex-end;
 
 
 @media (device-height: 568px) and (device-width: 320px) and (-webkit-min-device-pixel-ratio: 2){
+
+  .emppageColWrap1 {
+  
+    width: 100%;
+
+
+}
   .cardwrapper0 {
     width:100%;
     
@@ -1560,7 +1588,12 @@ margin-top: 20px;
 
 
 @media (device-height: 823px) and (device-width: 411px) and (-webkit-min-device-pixel-ratio: 2){
+  .emppageColWrap1 {
+  
+    width: 100%;
 
+
+}
   .cardwrapper0 {
     width:100%;
     
@@ -1765,6 +1798,13 @@ justify-content: flex-end;
 }
 
 @media (device-height: 731px) and (device-width: 411px) and (-webkit-min-device-pixel-ratio: 2){
+
+  .emppageColWrap1 {
+  
+    width: 100%;
+
+
+}
   .cardwrapper0 {
     width:100%;
     
@@ -1973,6 +2013,13 @@ justify-content: flex-end;
 
 @media (device-height: 640px) and (device-width: 360px) and (-webkit-min-device-pixel-ratio: 2){
 
+
+  .emppageColWrap1 {
+  
+    width: 100%;
+
+
+}
   .cardwrapper0 {
     width:100%;
     
