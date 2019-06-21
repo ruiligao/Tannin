@@ -1,13 +1,13 @@
 {
-  "main.css": "/Tannin/static/css/main.49ef82f8.chunk.css",
-  "main.js": "/Tannin/static/js/main.4cb8690a.chunk.js",
-  "main.js.map": "/Tannin/static/js/main.4cb8690a.chunk.js.map",
+  "main.css": "/Tannin/static/css/main.268b0c4d.chunk.css",
+  "main.js": "/Tannin/static/js/main.46fed6f6.chunk.js",
+  "main.js.map": "/Tannin/static/js/main.46fed6f6.chunk.js.map",
   "runtime~main.js": "/Tannin/static/js/runtime~main.b71e23b5.js",
   "runtime~main.js.map": "/Tannin/static/js/runtime~main.b71e23b5.js.map",
-  "static/js/2.7927bd3e.chunk.js": "/Tannin/static/js/2.7927bd3e.chunk.js",
-  "static/js/2.7927bd3e.chunk.js.map": "/Tannin/static/js/2.7927bd3e.chunk.js.map",
+  "static/js/2.081b986d.chunk.js": "/Tannin/static/js/2.081b986d.chunk.js",
+  "static/js/2.081b986d.chunk.js.map": "/Tannin/static/js/2.081b986d.chunk.js.map",
   "index.html": "/Tannin/index.html",
-  "precache-manifest.b1f7f75538296cf81521388e69f74f88.js": "/Tannin/precache-manifest.b1f7f75538296cf81521388e69f74f88.js",
+  "precache-manifest.d7bde7b01460fb9a74745036572e055f.js": "/Tannin/precache-manifest.d7bde7b01460fb9a74745036572e055f.js",
   "service-worker.js": "/Tannin/service-worker.js",
-  "static/css/main.49ef82f8.chunk.css.map": "/Tannin/static/css/main.49ef82f8.chunk.css.map"
+  "static/css/main.268b0c4d.chunk.css.map": "/Tannin/static/css/main.268b0c4d.chunk.css.map"
 }
