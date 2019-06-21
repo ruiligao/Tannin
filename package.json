@@ -1,7 +1,7 @@
 {
   "name": "tannin",
-  "homepage": "https://leifaesoph.github.io/Tannin",
-  "proxy": "http://localhost:3001/",
+  "homepage": "https://ruiligao.github.io/Tannin",
+  
   "version": "0.1.0",
   "private": true,
   "dependencies": {
