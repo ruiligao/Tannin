@@ -187,6 +187,4 @@ We will also implement a way for admins to grant admin status and for all employ
 
 ## Link:
 
-https://tannin-api.herokuapp.com/api/wine
-
-https://leifaesoph.github.io/Tannin/
+https://tanninapi.herokuapp.com/
